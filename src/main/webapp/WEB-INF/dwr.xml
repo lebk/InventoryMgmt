@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dwr PUBLIC
+    "-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN"
+    "http://directwebremoting.org/schema/dwr20.dtd">
+
+
+<dwr>
+  <allow>
+   <create creator="new" javascript="JDate">
+    	<param name="class" value="java.util.Date"/>
+    </create>
+    
+    <create creator="new" javascript="ProdServ">
+       <param name="class" value="com.leikai.services.impl.ProductServiceImpl"/>
+    </create>
+  
+  	<convert converter="bean" match="com.leikai.upload.UploadInfo">
+    </convert>
+    <create creator="new" javascript="UploadMonitor">
+      <param name="class" value="com.leikai.upload.UploadMonitor"/>
+    </create>
+    
+  </allow>
+</dwr>

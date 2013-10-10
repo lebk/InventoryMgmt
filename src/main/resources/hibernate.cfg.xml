@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost/vmfdb</property>
+		<property name="hibernate.connection.username">dbuser</property>
+		<property name="hibernate.connection.password">dbpassword</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+		<property name="hibernate.search.autoregister_listeners">false</property>
+		<property name="hibernate.c3p0.min_size">1</property>
+		<property name="hibernate.c3p0.max_size">10</property>
+		<property name="hibernate.c3p0.timeout">10800</property>
+		<property name="hibernate.c3p0.max_statements">50</property>
+		<property name="hibernate.c3p0.idle_test_period">14400</property>
+		<mapping resource="hibernate.mapping/User.hbm.xml" />
+		<mapping resource="hibernate.mapping/Os.hbm.xml" />
+		<mapping resource="hibernate.mapping/Usertype.hbm.xml" />
+		<mapping resource="hibernate.mapping/Product.hbm.xml" />
+		<mapping resource="hibernate.mapping/Producttype.hbm.xml" />
+		<mapping resource="hibernate.mapping/Location.hbm.xml" />
+		<mapping resource="hibernate.mapping/Locationtype.hbm.xml" />
+		<mapping resource="hibernate.mapping/Job.hbm.xml" />
+		<mapping resource="hibernate.mapping/Jobstatus.hbm.xml" />
+		<mapping resource="hibernate.mapping/Jobprogress.hbm.xml" />
+
+	</session-factory>
+</hibernate-configuration>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+  <definition name="baseLayout" template="/layouts/baseLayout.jsp">
+      <put-attribute name="title"  value="Template"/>
+      <put-attribute name="header" value="/layouts/header.jsp"/>
+      <put-attribute name="menu"   value="/layouts/menu.jsp"/>
+      <put-attribute name="body"   value="/layouts/body.jsp"/>
+      <put-attribute name="footer"   value="/layouts/footer.jsp"/>
+  </definition>
+  
+  <definition name="jobstatus" extends="baseLayout">
+      <put-attribute name="title"  value="Job Status"/>
+      <put-attribute name="body"   value="/pages/jobstatus.jsp"/>      
+  </definition>
+  
+  <definition name="jobmanage" extends="baseLayout">
+      <put-attribute name="title"  value="New Job"/>
+      <put-attribute name="body"   value="/pages/jobmanage.jsp"/>      
+  </definition>
+
+  <definition name="showvmlist" extends="baseLayout">
+      <put-attribute name="title"  value="VM List"/>
+      <put-attribute name="body"   value="/pages/showvmlist.jsp"/>      
+  </definition>
+  
+   <definition name="admin" extends="baseLayout">
+      <put-attribute name="title"  value="Admin"/>
+      <put-attribute name="body"   value="/pages/admin.jsp"/>      
+  </definition>
+
+    <definition name="showUserList" extends="baseLayout">
+      <put-attribute name="title"  value="User List"/>
+      <put-attribute name="body"   value="/pages/showuserlist.jsp"/>      
+  </definition>
+  
+  <definition name="aboutVMF" extends="baseLayout">
+      <put-attribute name="title"  value="About VMF"/>
+      <put-attribute name="body"   value="/pages/aboutvmf.jsp"/>      
+  </definition>
+  
+    <definition name="displayUser" extends="baseLayout">
+      <put-attribute name="title"  value="Add New User"/>
+      <put-attribute name="body"   value="/pages/adduser.jsp"/>      
+  </definition>
+  
+  
+  <definition name="deleteUserError" extends="baseLayout">
+      <put-attribute name="title"  value="Delete User Error"/>
+      <put-attribute name="body"   value="/pages/deleteusererror.jsp"/>      
+  </definition>
+  
+    <definition name="updateUserError" extends="baseLayout">
+      <put-attribute name="title"  value="Update User Error"/>
+      <put-attribute name="body"   value="/pages/updateusererror.jsp"/>      
+  </definition>
+  
+  <definition name="addUserError" extends="baseLayout">
+      <put-attribute name="title"  value="Add User Error"/>
+      <put-attribute name="body"   value="/pages/addusererror.jsp"/>      
+  </definition>
+  
+  <definition name="showOSList" extends="baseLayout">
+      <put-attribute name="title"  value="OS List"/>
+      <put-attribute name="body"   value="/pages/selectOS.jsp"/>      
+  </definition>
+  
+    <definition name="syncOS" extends="baseLayout">
+      <put-attribute name="title"  value="Sync OS"/>
+      <put-attribute name="body"   value="/pages/showclientinvSphere.jsp"/>      
+  </definition>
+  
+  <definition name="showExtraClientOS" extends="baseLayout">
+      <put-attribute name="title"  value="Extra OS List"/>
+      <put-attribute name="body"   value="/pages/showextraos.jsp"/>      
+  </definition>
+  
+  
+  <definition name="writeExtraOSinDBError" extends="baseLayout">
+      <put-attribute name="title"  value="Sync Error"/>
+      <put-attribute name="body"   value="/pages/syncoserror.jsp"/>      
+  </definition>
+  
+    <definition name="displayAccountandPasswordSetting" extends="baseLayout">
+      <put-attribute name="title"  value="Account and Password Setting for OS"/>
+      <put-attribute name="body"   value="/pages/updateaccountandpassword.jsp"/>      
+  </definition>
+  
+  <definition name="updateOsAccountandPasswordError" extends="baseLayout">
+      <put-attribute name="title"  value="Account and Password Setting Error"/>
+      <put-attribute name="body"   value="/pages/updateaccountpassworderror.jsp"/>      
+  </definition>
+  
+  <definition name="displayProduct" extends="baseLayout">
+      <put-attribute name="title"  value="Product List"/>
+      <put-attribute name="body"   value="/pages/selectProduct.jsp"/>      
+  </definition>
+  
+  <definition name="setProductName" extends="baseLayout">
+      <put-attribute name="title"  value="Update Product Name"/>
+      <put-attribute name="body"   value="/pages/updateproname.jsp"/>      
+  </definition>
+  
+  <definition name="updateProductNameError" extends="baseLayout">
+      <put-attribute name="title"  value="Update Product Name Error"/>
+      <put-attribute name="body"   value="/pages/updatenameerror.jsp"/>      
+  </definition>
+  
+  <definition name="displayUploadFile" extends="baseLayout">
+      <put-attribute name="title"  value="Upload Product"/>
+      <put-attribute name="body"   value="/pages/uploadForm.jsp"/>      
+  </definition>
+  
+  <definition name="uploadFile" extends="baseLayout">
+      <put-attribute name="title"  value="Upload Product Result"/>
+      <put-attribute name="body"   value="/pages/uploadDisplay.jsp"/>      
+  </definition>
+  
+  <definition name="startJob" extends="baseLayout">
+      <put-attribute name="title"  value="Start Job"/>
+      <put-attribute name="body"   value="/pages/startjob.jsp"/>      
+  </definition>
+
+  <definition name="jobexistError" extends="baseLayout">
+      <put-attribute name="title"  value="Error: Job already Exsits"/>
+      <put-attribute name="body"   value="/pages/jobexist.jsp"/>      
+  </definition>
+  
+  <definition name="jobrunningError" extends="baseLayout">
+      <put-attribute name="title"  value="Error: Job is Running"/>
+      <put-attribute name="body"   value="/pages/jobrunning.jsp"/>      
+  </definition>
+  
+  <definition name="jobmaxError" extends="baseLayout">
+      <put-attribute name="title"  value="Error: Maximum Job is Reached"/>
+      <put-attribute name="body"   value="/pages/jobrunning.jsp"/>      
+  </definition>
+  
+  <definition name="jobrequesttostopError" extends="baseLayout">
+      <put-attribute name="title"  value="Error: Job is in Stop"/>
+      <put-attribute name="body"   value="/pages/jobisrequesttostop.jsp"/>      
+  </definition>
+  
+  <definition name="connectionoffError" extends="baseLayout">
+      <put-attribute name="title"  value="Error: Connection is Failed"/>
+      <put-attribute name="body"   value="/pages/startjobconnectionoff.jsp"/>      
+  </definition>
+  
+  <definition name="jobError" extends="baseLayout">
+      <put-attribute name="title"  value="Error: System Exception"/>
+      <put-attribute name="body"   value="/pages/startjoberror.jsp"/>      
+  </definition>
+  
+  <definition name="showJobProgressDetails" extends="baseLayout">
+      <put-attribute name="title"  value="Job Progress Details"/>
+      <put-attribute name="body"   value="/pages/showjobprogress.jsp"/>      
+  </definition>
+  
+  <definition name="stopJobError" extends="baseLayout">
+      <put-attribute name="title"  value="Error: Stop Job Failed"/>
+      <put-attribute name="body"   value="/pages/stopJobError.jsp"/>      
+  </definition>
+</tiles-definitions>

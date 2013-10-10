@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <bean type="org.apache.struts2.dispatcher.multipart.MultiPartRequest" name="SymantecMultiPartRequest"   
+ 		  class="com.leikai.upload.SymantecMultiPartRequest" scope="default" optional="true" />
+ 	<constant name="struts.multipart.parser" value="com.leikai.upload.SymantecMultiPartRequest" /> 
+ 	<constant name="struts.multipart.handler" value="com.leikai.upload.SymantecMultiPartRequest" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.action.extension" value="action," />
+	<constant name="struts.multipart.maxSize" value="524288000" />
+	<constant name="struts.custom.i18n.resources" value="ApplicationResources" />
+	<constant name="struts.enable.SlashesInActionNames" value="true" />
+	<constant name="struts.convention.action.disableScanning" value="true" />
+	
+
+
+	<package name="default" extends="struts-default" namespace="/">
+		
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+		
+
+		<action name="login" method="authUser" class="com.leikai.action.UserAction">
+			<result name="success">index.jsp</result>
+			<result name="error">Login.jsp</result>
+		</action>
+		<action name="logout" method="logout" class="com.leikai.action.UserAction">
+		    <result name="success">Login.jsp</result>
+		</action>
+		
+
+		<action name="*tilesAction" method="{1}"
+			class="com.leikai.action.TilesAction">
+			<result name="jobstatus" type="tiles">jobstatus</result>
+			<result name="jobmanage" type="tiles">jobmanage</result>
+			<result name="showvmlist" type="tiles">showvmlist</result>
+			<result name="admin" type="tiles">admin</result>
+			
+			<result name="showUserList" type="tiles">showUserList</result>
+			<result name="displayUser" type="tiles">displayUser</result>
+			<result name="aboutVMF" type="tiles">aboutVMF</result>
+			
+			<result name="showOSList" type="tiles">showOSList</result>
+			<result name="syncOS" type="tiles">syncOS</result>
+			<result name="showExtraClientOS" type="tiles">showExtraClientOS</result>
+            <result name="displayAccountandPasswordSetting" type="tiles">displayAccountandPasswordSetting</result>
+            
+            <result name="displayProduct" type="tiles">displayProduct</result>
+            <result name="setProductName" type="tiles">setProductName</result>
+            
+            <result name="displayUploadFile" type="tiles">displayUploadFile</result>
+            
+            <result name="startJob" type="tiles">startJob</result>
+          
+		</action>
+		
+		<action name="deleteUsertilesAction" method="deleteUser" class="com.leikai.action.TilesAction">
+            <result name="success" type="redirectAction">showUserListtilesAction</result>
+            <result name="error" type="tiles">deleteUserError</result>
+        </action>
+		<action name="updateUsertilesAction" method="updateUser" class="com.leikai.action.TilesAction">
+            <result name="success" type="redirectAction">showUserListtilesAction</result>
+            <result name="error" type="tiles">updateUserError</result>
+        </action>
+        <action name="addUsertilesAction" method="addUser" class="com.leikai.action.TilesAction">
+            <result name="success" type="redirectAction">showUserListtilesAction</result>
+            <result name="error" type="tiles">addUserError</result>
+        </action>
+        
+        <action name="writeExtraOSinDBtilesAction" method="writeExtraOSinDB" class="com.leikai.action.TilesAction">
+            <result name="success" type="redirectAction">showOSListtilesAction</result>
+            <result name="error" type="tiles">writeExtraOSinDBError</result>
+        </action>
+        <action name="updateOsAccountandPasswordResulttilesAction" method="updateOsAccountandPassword" class="com.leikai.action.TilesAction">
+            <result name="success" type="redirectAction">showOSListtilesAction</result>
+            <result name="error" type="tiles">updateOsAccountandPasswordError</result>
+        </action>
+        
+        <action name="updateProductNameResulttilesAction" method="updateProductName" class="com.leikai.action.TilesAction">
+            <result name="success" type="redirectAction">displayProducttilesAction</result>
+            <result name="error" type="tiles">updateProductNameError</result>
+        </action>
+
+        <action name="uploadFiletilesAction" method="uploadFile" class="com.leikai.action.TilesAction">
+            <interceptor-ref name="exception" />
+			<interceptor-ref name="i18n" />
+			<interceptor-ref name="fileUpload">
+			</interceptor-ref>
+			<interceptor-ref name="params">
+				<param name="excludeParams">dojo\..*,^struts\..*</param>
+			</interceptor-ref>
+			<interceptor-ref name="validation">
+				<param name="excludeMethods">input,back,cancel,browse</param>
+			</interceptor-ref>
+			<interceptor-ref name="workflow">
+				<param name="excludeMethods">input,back,cancel,browse</param>
+			</interceptor-ref>
+            <result name="success" type="tiles">uploadFile</result>
+        </action>
+        
+        <action name="stopJobtilesAction" method="stopJob" class="com.leikai.action.TilesAction">
+            <result name="success" type="redirectAction">jobstatustilesAction</result>
+            <result name="error" type="tiles">stopJobError</result>
+        </action>
+        
+        <action name="showJobProgresstilesAction" method="showJobProgress" class="com.leikai.action.TilesAction">
+            <result name="success" type="tiles">showJobProgressDetails</result>
+        </action>	
+		
+		<action name="checkJob" method="checkJob" class="com.leikai.action.JobAction">
+		    <result name="startjob" type="redirectAction">jobstatustilesAction</result>
+		    <result name="jobexist" type="tiles">jobexistError</result>
+		    <result name="jobrunning" type="tiles">jobrunningError</result>
+		    <result name="jobmax" type="tiles">jobmaxError</result>  
+		    <result name="jobrequesttostop" type="tiles">jobrequesttostopError</result>  
+		    <result name="connectionoff" type="tiles">connectionoffError</result>
+		    <result name="error" type="tiles">jobError</result>
+		</action>	
+		
+		</package>
+</struts>
+
+        <!--<action name="uploadFile" method="display"
+			class="com.leikai.action.FileUploadAction">
+			<result name="none">pages/uploadForm.jsp</result>
+		</action>
+		<action name="uploadDisplay" class="com.leikai.action.FileUploadAction">
+			<interceptor-ref name="exception" />
+			<interceptor-ref name="i18n" />
+			<interceptor-ref name="fileUpload">
+			</interceptor-ref>
+			<interceptor-ref name="params">
+				<param name="excludeParams">dojo\..*,^struts\..*</param>
+			</interceptor-ref>
+			<interceptor-ref name="validation">
+				<param name="excludeMethods">input,back,cancel,browse</param>
+			</interceptor-ref>
+			<interceptor-ref name="workflow">
+				<param name="excludeMethods">input,back,cancel,browse</param>
+			</interceptor-ref>
+			<result name="success">pages/uploadDisplay.jsp</result>	
+		</action>-->
+
+
+		<!--<action name="startJob" class="com.leikai.action.JobAction">
+			<result name="success">pages/startjob.jsp</result>
+		</action>-->
+		<!--<action name="displayJobResult" method="displayJobResult" class="com.leikai.action.JobAction">
+		    <result name="success">pages/jobresult.jsp</result>
+		</action>
+		
+	    <action name="showJobProgress" method="showJobProgress" class="com.leikai.action.JobAction">
+		    <result name="success">pages/showjobprogress.jsp</result>
+		</action>
+		<action name="stopJob" method="stopJob" class="com.leikai.action.JobAction">
+			<result name="success" type="redirectAction">jobstatustilesAction</result>
+			<result name="error">pages/stopJobError.jsp</result>
+		</action>
+	
+		<action name="showJobResult" method="showJobResult" class="com.leikai.action.JobAction">
+		    <result name="success">pages/showjobresult.jsp</result>
+		</action>-->
+		
+		
+		<!--<action name="aboutvmf" method="aboutvmf" class="com.leikai.action.UserAction">
+		    <result name="success">pages/aboutvmf.jsp</result>
+		</action>
+		
+		<action name="userAction" method="showUserList"
+			class="com.leikai.action.UserAction">
+			<result name="success">pages/showuserlist.jsp</result>
+		</action>
+		
+		<action name="deleteUser" method="deleteUser" class="com.leikai.action.UserAction">
+		    <result name="success" type="redirectAction">showUserListtilesAction</result>
+		    <result name="error" type="redirectAction">deleteUserErrortilesAction</result>
+		    <result name="error">pages/deleteusererror.jsp</result>
+		</action>
+		
+		<action name="updateUser" method="updateUser" class="com.leikai.action.UserAction">
+		    <result name="success" type="redirectAction">showUserListtilesAction</result>
+		    <result name="error" type="redirectAction">updateUserErrortilesAction</result>
+		    <result name="error">pages/updateusererror.jsp</result>
+		</action>
+		
+		<action name="addUser" method="display" class="com.leikai.action.UserAction">
+		    <result name="none">pages/adduser.jsp</result>
+		</action>
+		<action name="addUserResult" method="addUser" class="com.leikai.action.UserAction">
+		    <result name="success" type="redirectAction">userAction</result>
+		    <result name="success" type="redirectAction">showUserListtilesAction</result>
+		    <result name="error" type="redirectAction">addUserErrortilesAction</result>
+		    <result name="error">pages/addusererror.jsp</result>
+		</action>-->
+		
+		
+		<!--<action name="osAction" method="display" class="com.leikai.action.OsAction">
+			<result name="none">pages/selectOS.jsp</result>
+		</action>
+	    <action name="updateOsAccountandPassword" method="display" class="com.leikai.action.OsAction">
+			<result name="none">pages/updateaccountandpassword.jsp</result>
+		</action>
+		<action name="updateOsAccountandPasswordResult" method="updateOsAccountandPassword" class="com.leikai.action.OsAction">
+			<result name="success" type="redirectAction">osAction</result>
+			<result name="error">pages/updateaccountpassworderror.jsp</result>  
+		</action>
+		<action name="updateOsNameResult" method="updateOsName" class="com.leikai.action.OsAction">
+		    <result name="success" type="redirectAction">osAction</result>
+			<result name="error">pages/updatenameerror.jsp</result>  
+		</action>
+		
+		<action name="synOs" class="com.leikai.action.OsAction">
+			<result name="success">pages/showclientinvSphere.jsp</result>
+		</action>
+		<action name="showClients" method="showExtraClientOS" class="com.leikai.action.OsAction">
+		    <result name="success">pages/showextraos.jsp</result>
+		</action>
+		<action name="writeExtraOSinDB" method="writeExtraOSinDB" class="com.leikai.action.OsAction">
+			<result name="success" type="redirectAction">showOSListtilesAction</result>
+			<result name="error" type="redirectAction">writeExtraOSinDBErrortilesAction</result>
+			<result name="error">pages/syncoserror.jsp</result>
+		</action>-->
+
+
+		<!--<action name="productAction" class="com.leikai.action.ProductAction"
+			method="display">
+			<result name="none">pages/selectProduct.jsp</result>
+		</action>
+		<action name="updateProductName" method="display"
+			class="com.leikai.action.ProductAction">
+			<result name="none">pages/updateproname.jsp</result>
+		</action>
+        <action name="updateProductNameResult" method="updateProductName" class="com.leikai.action.ProductAction">
+            <result name="success" type="redirectAction">productAction</result>
+            <result name="error">pages/updatenameerror.jsp</result>        
+        </action>-->
+	
+
