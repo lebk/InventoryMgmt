@@ -23,7 +23,7 @@ margin-top:15%;
 
 
 <body>
-<h2 style="text-align:center"> <font color="black">Symantec VMFactory</font></h2>
+<h1 style="text-align:center"> <font color="black">佳瑞佳仓存管理系统</font></h1>
 <s:actionerror />
 <s:form action="login.action" method="post">
 	<s:textfield name="username" key="label.username" size="20" />
