@@ -1,14 +1,5 @@
 package com.leikai.action;
 
-/**
- * copyright: all right reserved.
- * 
- * Author: Lei Bo
- *
- * 2013-10-9
- *
- */
-import java.util.ArrayList;
 import java.util.List;
 
 import com.leikai.po.Location;

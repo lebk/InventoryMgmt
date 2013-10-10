@@ -9,18 +9,18 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.leikai.po.Producttype;
-import com.leikai.po.Usertype;
 import com.leikai.util.HibernateUtil;
-import com.leikai.util.VMFactoryConfigUtil;
+
 
 /**
- * copyright: all right reserved.
+ * copyright: all right reserved
  * 
  * Author: Lei Bo
  *
  * 2013-10-9
  *
  */
+
 public class ProductEnumType
 {
   final public static String nis2012 = "NIS2012";

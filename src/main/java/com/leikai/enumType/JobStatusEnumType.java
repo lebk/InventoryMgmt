@@ -12,7 +12,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.leikai.po.Jobstatus;
-import com.leikai.po.Usertype;
 import com.leikai.util.HibernateUtil;
 
 /**

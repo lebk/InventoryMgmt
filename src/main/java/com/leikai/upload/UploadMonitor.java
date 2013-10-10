@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 
-import com.leikai.enumType.UserEnumType;
 import com.leikai.upload.UploadInfo;
 
 public class UploadMonitor

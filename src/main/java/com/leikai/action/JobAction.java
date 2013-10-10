@@ -1,10 +1,6 @@
 package com.leikai.action;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -18,14 +14,11 @@ import org.apache.struts2.ServletActionContext;
 
 import com.leikai.dto.JobDTO;
 import com.leikai.dto.JobprogressDTO;
-import com.leikai.dto.UserDTO;
-import com.leikai.enumType.ProductEnumType;
 import com.leikai.po.Job;
 import com.leikai.po.Jobprogress;
 import com.leikai.po.Location;
 import com.leikai.po.Os;
 import com.leikai.po.Product;
-import com.leikai.po.User;
 import com.leikai.services.JobService;
 import com.leikai.services.LocationService;
 import com.leikai.services.OsService;
@@ -476,7 +469,8 @@ public class JobAction extends ActionSupport
     return SUCCESS;
   }
 
-  public String execute() throws Exception
+  @Override
+public String execute() throws Exception
   {
     //
     // Show Product Name and Version List
@@ -504,7 +498,7 @@ public class JobAction extends ActionSupport
     List<Location> locationList = getLocationList();
     for (Iterator<Location> iterator = locationList.iterator(); iterator.hasNext();)
     {
-      Location l = (Location) iterator.next();
+      Location l = iterator.next();
       locationNameList.add(l.getUrl());
     }
     return SUCCESS;

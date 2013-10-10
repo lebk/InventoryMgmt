@@ -22,9 +22,6 @@ import com.leikai.services.impl.JobServiceImpl;
 import com.leikai.services.impl.OsServiceImpl;
 import com.leikai.services.impl.ProductServiceImpl;
 import com.leikai.services.impl.UserServiceImpl;
-import com.leikai.util.VMFactoryConfigUtil;
-import com.leikai.util.VMUtil;
-import com.vmware.vim25.mo.VirtualMachine;
 
 /**
  * copyright: all right reserved.

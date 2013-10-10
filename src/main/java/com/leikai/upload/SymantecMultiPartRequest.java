@@ -14,7 +14,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.RequestContext;
 import org.apache.commons.fileupload.disk.DiskFileItem;
@@ -137,7 +136,7 @@ public class SymantecMultiPartRequest implements MultiPartRequest {
    * @see org.apache.struts2.dispatcher.multipart.MultiPartRequest#getContentType(java.lang.String)
    */
   public String[] getContentType(String fieldName) {
-    List items = (List) files.get(fieldName);
+    List items = files.get(fieldName);
 
     if (items == null) {
       return null;
@@ -149,7 +148,7 @@ public class SymantecMultiPartRequest implements MultiPartRequest {
       contentTypes.add(fileItem.getContentType());
     }
 
-    return (String[]) contentTypes.toArray(new String[contentTypes.size()]);
+    return contentTypes.toArray(new String[contentTypes.size()]);
   }
 
   /*
@@ -158,7 +157,7 @@ public class SymantecMultiPartRequest implements MultiPartRequest {
    * @see org.apache.struts2.dispatcher.multipart.MultiPartRequest#getFile(java.lang.String)
    */
   public File[] getFile(String fieldName) {
-    List items = (List) files.get(fieldName);
+    List items = files.get(fieldName);
 
     if (items == null) {
       return null;
@@ -170,7 +169,7 @@ public class SymantecMultiPartRequest implements MultiPartRequest {
       fileList.add(fileItem.getStoreLocation());
     }
 
-    return (File[]) fileList.toArray(new File[fileList.size()]);
+    return fileList.toArray(new File[fileList.size()]);
   }
 
   /*
@@ -191,7 +190,7 @@ public class SymantecMultiPartRequest implements MultiPartRequest {
       fileNames.add(getCanonicalName(fileItem.getName()));
     }
 
-    return (String[]) fileNames.toArray(new String[fileNames.size()]);
+    return fileNames.toArray(new String[fileNames.size()]);
   }
 
   /*
@@ -200,7 +199,7 @@ public class SymantecMultiPartRequest implements MultiPartRequest {
    * @see org.apache.struts2.dispatcher.multipart.MultiPartRequest#getFilesystemName(java.lang.String)
    */
   public String[] getFilesystemName(String fieldName) {
-    List items = (List) files.get(fieldName);
+    List items = files.get(fieldName);
 
     if (items == null) {
       return null;
@@ -212,7 +211,7 @@ public class SymantecMultiPartRequest implements MultiPartRequest {
       fileNames.add(fileItem.getStoreLocation().getName());
     }
 
-    return (String[]) fileNames.toArray(new String[fileNames.size()]);
+    return fileNames.toArray(new String[fileNames.size()]);
   }
 
   /*
@@ -221,7 +220,7 @@ public class SymantecMultiPartRequest implements MultiPartRequest {
    * @see org.apache.struts2.dispatcher.multipart.MultiPartRequest#getParameter(java.lang.String)
    */
   public String getParameter(String name) {
-    List v = (List) params.get(name);
+    List v = params.get(name);
     if (v != null && v.size() > 0) {
       return (String) v.get(0);
     }
@@ -246,7 +245,7 @@ public class SymantecMultiPartRequest implements MultiPartRequest {
   public String[] getParameterValues(String name) {
     List<String> v = params.get(name);
     if (v != null && v.size() > 0) {
-      return (String[]) v.toArray(new String[v.size()]);
+      return v.toArray(new String[v.size()]);
     }
 
     return null;

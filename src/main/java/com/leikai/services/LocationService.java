@@ -1,6 +1,5 @@
 package com.leikai.services;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.leikai.po.Location;

@@ -1,15 +1,8 @@
 package com.leikai.dao;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-
 import com.leikai.po.Os;
-import com.leikai.util.HibernateUtil;
 
 /**
  * copyright: all right reserved.

@@ -16,8 +16,6 @@ import com.leikai.enumType.JobStatusEnumType;
 import com.leikai.po.Job;
 import com.leikai.po.Jobprogress;
 import com.leikai.po.Jobstatus;
-import com.leikai.po.Location;
-import com.leikai.po.Os;
 import com.leikai.util.HibernateUtil;
 
 /**

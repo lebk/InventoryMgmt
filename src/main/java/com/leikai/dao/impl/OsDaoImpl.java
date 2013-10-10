@@ -12,7 +12,6 @@ import org.hibernate.Transaction;
 
 import com.leikai.dao.OsDao;
 import com.leikai.po.Os;
-import com.leikai.po.User;
 import com.leikai.util.HibernateUtil;
 
 /**

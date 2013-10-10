@@ -1,8 +1,5 @@
 package com.leikai.services.impl;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,222 +10,142 @@ import com.leikai.dao.impl.UserDaoImpl;
 import com.leikai.enumType.UserEnumType;
 import com.leikai.po.User;
 import com.leikai.services.UserService;
-import com.leikai.util.VMFactoryConfigUtil;
 
 /**
  * copyright: all right reserved.
  * 
  * Author: Lei Bo
- *
+ * 
  * 2013-10-9
- *
+ * 
  */
-public class UserServiceImpl implements UserService
-{
-  static Logger logger = Logger.getLogger(UserServiceImpl.class);
+public class UserServiceImpl implements UserService {
+	static Logger logger = Logger.getLogger(UserServiceImpl.class);
 
-  private UserDao ud = new UserDaoImpl();
+	private UserDao ud = new UserDaoImpl();
 
-  public boolean authUser(String name, String password)
-  {
-    // For a user which will be authenticated, we will first check whether it
-    // exists in our db, if yes, we
-    // will forward to Etrack to auth, if it authenticate by Etrack system, we
-    // will allow it to login. Otherwise
-    // We will auth it locally, if it authenticated, then we will let it log in.
-    if (name == null || name.equals(""))
-    {
-      logger.info("the user is null or empty!");
-      return false;
-    }
-    if (this.isUserValid(name) == false)
-    {
-      logger.info("the auth user is not valid!");
-      return false;
-    }
+	public boolean authUser(String name, String password) {
+		// For a user which will be authenticated, we will first check whether
+		// it
+		// exists in our db, if yes, we
+		// will forward to Etrack to auth, if it authenticate by Etrack system,
+		// we
+		// will allow it to login. Otherwise
+		// We will auth it locally, if it authenticated, then we will let it log
+		// in.
+		if (name == null || name.equals("")) {
+			logger.info("the user is null or empty!");
+			return false;
+		}
+		if (this.isUserValid(name) == false) {
+			logger.info("the auth user is not valid!");
+			return false;
+		}
 
-    logger.info("Authenticate by local system....");
-    if (ud.authUser(name, password) == true)
-    {
-      logger.info("Authenticated by local system!");
-      return true;
+		logger.info("Authenticate by local system....");
+		if (ud.authUser(name, password) == true) {
+			logger.info("Authenticated by local system!");
+			return true;
 
-    } else
-    {
-      return false;
-    }
-  }
+		} else {
+			return false;
+		}
+	}
 
-  private boolean isAuthByEtrack(String name, String password)
-  {
-    String host = VMFactoryConfigUtil.getEtrackServer();
-    String port = VMFactoryConfigUtil.getEtrackOraclePort();
-    Connection mConn = null;
+	public boolean addUser(String name, String password, Integer type,
+			String email, String opUser) {
+		if (!this.isUserAdmin(opUser)) {
+			logger.error("only admin user can update a user's level");
+			return false;
+		}
+		if (name == null || name.equals("") || email == null
+				|| email.equals("")) {
+			logger.error("name or email address should not be null or empty!");
+			return false;
+		}
+		// if (password == null || password.equals(""))
+		// {
+		// logger.error("password should not be null or empty!");
+		// return false;
+		// }
+		String ut = UserEnumType.getUsertypeById(type);
+		if (!ut.equals(UserEnumType.admin) && !ut.equals(UserEnumType.regular))
 
-    try
-    {
-      Class driverClass = Class.forName("oracle.jdbc.driver.OracleDriver");
-    } catch (ClassNotFoundException e)
-    {
-      e.printStackTrace();
-      logger.error("oracle db driver not found!");
-      return false;
-    } finally
-    {
-      if (mConn != null)
-      {
-        try
-        {
-          mConn.close();
-        } catch (SQLException e)
-        {
-          e.printStackTrace();
-        }
-      }
-    }
-    String url = "jdbc:oracle:thin:/@" + host + ":" + port + ":Etrack";
-    logger.info("URL:" + url);
-    logger.info("usrename:" + name);
-    // Remove to print the password in the log file
-    // logger.info("password:" + password);
+		{
+			logger.error("the user type is not recognized");
+			return false;
+		}
 
-    try
-    {
-      mConn = DriverManager.getConnection(url, name, password);
-    } catch (SQLException e)
-    {
-      // e.printStackTrace();
-      logger.error("Auth failed by the Etrack, name" + name + ", password" + password);
-      return false;
-    } finally
-    {
-      if (mConn != null)
-      {
-        try
-        {
-          mConn.close();
-        } catch (SQLException e)
-        {
-          e.printStackTrace();
-        }
-      }
-    }
+		return ud.addUser(name, password, type, email);
+	}
 
-    return true;
-  }
+	public boolean deleteUser(String name, String opUser) {
+		if (!this.isUserAdmin(opUser)) {
+			logger.error("only admin user can delete a user");
+			return false;
+		}
+		return ud.deleteUser(name);
+	}
 
-  public boolean addUser(String name, String password, Integer type, String email, String opUser)
-  {
-    if (!this.isUserAdmin(opUser))
-    {
-      logger.error("only admin user can update a user's level");
-      return false;
-    }
-    if (name == null || name.equals("") || email == null || email.equals(""))
-    {
-      logger.error("name or email address should not be null or empty!");
-      return false;
-    }
-    // if (password == null || password.equals(""))
-    // {
-    // logger.error("password should not be null or empty!");
-    // return false;
-    // }
-    String ut = UserEnumType.getUsertypeById(type);
-    if (!ut.equals(UserEnumType.admin) && !ut.equals(UserEnumType.regular))
+	public boolean updateUserType(String name, Integer type, String opUser) {
+		if (!this.isUserAdmin(opUser)) {
+			logger.error("only admin user can update a user's level");
+			return false;
+		}
+		return ud.updateUserType(name, type);
+	}
 
-    {
-      logger.error("the user type is not recognized");
-      return false;
-    }
+	public boolean isUserValid(String name) {
+		if (name == null || name.equals("")) {
+			logger.error("the queried user is null or empty");
+			return false;
+		}
+		return ud.isUserValid(name);
+	}
 
-    return ud.addUser(name, password, type, email);
-  }
+	public boolean isEmailValid(String uEmail) {
+		if (uEmail == null || uEmail.equals("")) {
+			logger.error("the queried email should not be null or empty");
+			return false;
+		}
+		return ud.isEmailValid(uEmail);
+	}
 
-  public boolean deleteUser(String name, String opUser)
-  {
-    if (!this.isUserAdmin(opUser))
-    {
-      logger.error("only admin user can delete a user");
-      return false;
-    }
-    return ud.deleteUser(name);
-  }
+	public boolean isUserAdmin(String name) {
+		return ud.isUserAdmin(name);
+	}
 
-  public boolean updateUserType(String name, Integer type, String opUser)
-  {
-    if (!this.isUserAdmin(opUser))
-    {
-      logger.error("only admin user can update a user's level");
-      return false;
-    }
-    return ud.updateUserType(name, type);
-  }
+	public boolean isUserAdmin(Integer userId) {
+		return ud.isUserAdmin(userId);
+	}
 
-  public boolean isUserValid(String name)
-  {
-    if (name == null || name.equals(""))
-    {
-      logger.error("the queried user is null or empty");
-      return false;
-    }
-    return ud.isUserValid(name);
-  }
+	public Integer getUserIdByUsername(String user) {
+		return ud.getUserIdByUsername(user);
+	}
 
-  public boolean isEmailValid(String uEmail)
-  {
-    if (uEmail == null || uEmail.equals(""))
-    {
-      logger.error("the queried email should not be null or empty");
-      return false;
-    }
-    return ud.isEmailValid(uEmail);
-  }
+	public List<User> getUserList(String opUser) {
+		List<User> retUL = new ArrayList<User>();
+		if (!this.isUserAdmin(opUser)) {
+			logger.error("only admin user can get the user list");
+			return null;
+		}
+		List<User> ul = ud.getUserList();
+		// not allow user to update admin/regular in the web gui,
+		for (User u : ul) {
+			if (!(u.getName().equals("admin") || u.getName().equals("regular"))) {
+				retUL.add(u);
+			}
+		}
 
-  public boolean isUserAdmin(String name)
-  {
-    return ud.isUserAdmin(name);
-  }
+		return retUL;
+	}
 
-  public boolean isUserAdmin(Integer userId)
-  {
-    return ud.isUserAdmin(userId);
-  }
-
-  public Integer getUserIdByUsername(String user)
-  {
-    return ud.getUserIdByUsername(user);
-  }
-
-  public List<User> getUserList(String opUser)
-  {
-    List<User> retUL = new ArrayList<User>();
-    if (!this.isUserAdmin(opUser))
-    {
-      logger.error("only admin user can get the user list");
-      return null;
-    }
-    List<User> ul = ud.getUserList();
-    // not allow user to update admin/regular in the web gui,
-    for (User u : ul)
-    {
-      if (!(u.getName().equals("admin") || u.getName().equals("regular")))
-      {
-        retUL.add(u);
-      }
-    }
-
-    return retUL;
-  }
-
-  public User getUserByUserId(Integer userId)
-  {
-    User u = ud.getUserByUserId(userId);
-    if (u == null)
-    {
-      logger.error("No user found by the userId: " + userId);
-      return null;
-    }
-    return u;
-  }
+	public User getUserByUserId(Integer userId) {
+		User u = ud.getUserByUserId(userId);
+		if (u == null) {
+			logger.error("No user found by the userId: " + userId);
+			return null;
+		}
+		return u;
+	}
 }

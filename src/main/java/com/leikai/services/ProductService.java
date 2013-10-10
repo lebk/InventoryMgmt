@@ -1,11 +1,8 @@
 package com.leikai.services;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import com.leikai.po.Os;
 import com.leikai.po.Product;
-import com.leikai.po.Producttype;
 
 /**
  * copyright: all right reserved.

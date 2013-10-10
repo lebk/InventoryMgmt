@@ -1,12 +1,8 @@
 package com.leikai.test;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 import org.apache.log4j.Logger;
-
-import com.leikai.dao.test.ProductDaoTest;
 
 /**
  * copyright: all right reserved.

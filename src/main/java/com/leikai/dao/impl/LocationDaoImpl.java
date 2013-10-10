@@ -11,7 +11,6 @@ import org.hibernate.Transaction;
 
 import com.leikai.dao.LocationDao;
 import com.leikai.po.Location;
-import com.leikai.po.Os;
 import com.leikai.util.HibernateUtil;
 
 /**

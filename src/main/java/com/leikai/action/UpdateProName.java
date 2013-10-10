@@ -25,7 +25,8 @@ public class UpdateProName extends ActionSupport
   {
     this.productname = productname;
   }
-  public String execute()
+  @Override
+public String execute()
   {
     java.util.Map<String, Object> session = ActionContext.getContext().getSession();
     session.put("productname", productname);

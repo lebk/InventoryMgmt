@@ -1,32 +1,9 @@
 package com.leikai.services.impl;
 
-/**
- * copyright: all right reserved.
- * 
- * Author: Lei Bo
- *
- * 2013-10-9
- *
- */
-import java.rmi.RemoteException;
-import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
-
-import com.leikai.dao.OsDao;
-import com.leikai.dao.impl.OsDaoImpl;
-import com.leikai.dao.impl.ProductDaoImpl;
 import com.leikai.po.Os;
-import com.leikai.po.Product;
 import com.leikai.services.OsService;
-import com.leikai.services.ProductService;
-import com.leikai.services.UserService;
-import com.leikai.util.VMFactoryConfigUtil;
-import com.leikai.util.VMUtil;
-import com.vmware.vim25.InvalidProperty;
-import com.vmware.vim25.RuntimeFault;
-import com.vmware.vim25.mo.VirtualMachine;
 
 public class OsServiceImpl implements OsService
 {

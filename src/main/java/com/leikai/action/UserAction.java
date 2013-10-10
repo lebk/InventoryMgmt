@@ -14,9 +14,7 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
-import com.leikai.dto.JobDTO;
 import com.leikai.dto.UserDTO;
-import com.leikai.po.Job;
 import com.leikai.po.User;
 import com.leikai.services.UserService;
 import com.leikai.services.impl.UserServiceImpl;

@@ -3,7 +3,7 @@
 
 <html>
 <head>
-<title>VMF-Login | Symantec</title>
+<title>登录 佳瑞佳仓存管理系统</title>
 <link href="<s:url value="/css/vmfactory.css"/>" rel="stylesheet" type="text/css"/>
 <style type="text/css">
 table.wwFormTable {

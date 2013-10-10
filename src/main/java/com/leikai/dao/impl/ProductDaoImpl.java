@@ -14,7 +14,6 @@ import org.hibernate.Transaction;
 import com.leikai.dao.ProductDao;
 import com.leikai.po.Product;
 import com.leikai.po.Producttype;
-import com.leikai.po.User;
 import com.leikai.services.OsService;
 import com.leikai.services.impl.OsServiceImpl;
 import com.leikai.util.HibernateUtil;

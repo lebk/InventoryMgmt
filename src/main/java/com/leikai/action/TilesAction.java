@@ -10,26 +10,16 @@ package com.leikai.action;
  */
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.log4j.Logger;
-import org.apache.struts2.ServletActionContext;
-
 import com.leikai.dto.JobDTO;
 import com.leikai.dto.JobprogressDTO;
 import com.leikai.dto.UserDTO;
-import com.leikai.enumType.ProductEnumType;
 import com.leikai.po.Job;
 import com.leikai.po.Jobprogress;
 import com.leikai.po.Location;
@@ -46,7 +36,6 @@ import com.leikai.services.impl.LocationServiceImpl;
 import com.leikai.services.impl.OsServiceImpl;
 import com.leikai.services.impl.ProductServiceImpl;
 import com.leikai.services.impl.UserServiceImpl;
-import com.leikai.util.VMFactoryConfigUtil;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -71,7 +60,7 @@ public class TilesAction extends ActionSupport {
   
   private List<Os> osList;
   OsService os = new OsServiceImpl();
-  private static String vsPhereFolder = VMFactoryConfigUtil.getFolder();
+  private static String vsPhereFolder = "";
   private List<String> vsPhereClientList = new ArrayList<String>();
   private List<String> extraOsNameList = new ArrayList<String>();
   private String extraOsName;
@@ -568,98 +557,7 @@ public class TilesAction extends ActionSupport {
   
   public String uploadFile() throws Exception
   {   
-    Map session = ActionContext.getContext().getSession();
-    String userName = (String) session.get("username");
-    boolean bAllowed = true;
     
-    
-    logger.info("supported os list: " + yourSupportOsName);
-    logger.info("product version you input is: " + productVersion);
-    logger.info("product type you select is: " + yourProductType);
-    //logger.info("rightSupportedOsList size is: " + rightSupportedOsList.size());
-    if (yourSupportOsName == null || yourSupportOsName.equals(""))
-      bAllowed = false;
-    if (ps.isProductExisted(yourProductType, productVersion))
-      bAllowed = false;  
-    if (ps.isProductExisted(fileUploadFileName))
-      bAllowed = false;
-    
-    if (!bAllowed){
-      session.put("NotAllowed","true");
-      return SUCCESS;
-    }
-    
-    String[] osList = yourSupportOsName.split(", ");
-    List<String> osStringList = new ArrayList<String>();
-    for (String s:osList)
-    {
-      logger.info("os name list is: " + s);
-      osStringList.add(s);
-    } 
-    
-    // the directory to upload to
-    VMFactoryConfigUtil.init();
-    String uploadDir = VMFactoryConfigUtil.getBaseProductLocation() + yourProductType + "/" + productVersion +"/"; 
-    //String uploadDir = ServletActionContext.getServletContext().getRealPath("/resources") + "\\";
-    fileUploadDir = uploadDir;
-    // write the file to the file specified
-    logger.info("upload dir: " + fileUploadDir);
-    try{
-    File dirPath = new File(uploadDir);
-
-    if (!dirPath.exists())
-    {
-      dirPath.mkdirs();
-    }
-    }
-    catch (Exception e)
-    {
-      logger.info("Create Upload Dir Exception: "+e.getMessage());
-      session.put("NotAllowed","true");
-      return SUCCESS;
-    }
-    if (!fileUpload.exists()){
-      logger.info("File doesn't exist!");
-      session.put("NotAllowed","true");
-      return SUCCESS;
-    }
-    try{
-    // retrieve the file data
-    long filesize = fileUpload.length();
-    
-    logger.info("upload size: " + filesize);
-  
-    InputStream stream = new FileInputStream(fileUpload);
-   
-    // write the file to the file specified
-    OutputStream bos = new FileOutputStream(uploadDir + fileUploadFileName);
-    int bytesRead;
-    byte[] buffer = new byte[blocksize];
-
-    while ((bytesRead = stream.read(buffer, 0, blocksize)) != -1)
-    {
-      bos.write(buffer, 0, bytesRead);
-
-    }
-
-    bos.close();
-    stream.close();
-    }
-    catch(Exception e){
-        logger.info("Unable to create: "+e.getMessage());
-        session.put("NotAllowed","true");
-        return SUCCESS;
-    }
-    boolean badd = ps.addProduct(fileUploadFileName, productVersion, null, yourProductType, osStringList, userName);
-    if (!badd){ 
-      logger.info("Add product falied!");
-      bAllowed = false;
-    }
-    if (!bAllowed){
-      session.put("NotAllowed","true");
-      return SUCCESS;
-    }
-    // place the data into the request for retrieval on next page
 
     logger.info("upload is successful!");
     return SUCCESS;
@@ -944,8 +842,8 @@ public class TilesAction extends ActionSupport {
     {
       logger.info("extra os name is: " + s);
       
-      String adminUser = VMFactoryConfigUtil.getDefaultBaseImageUsername();
-      String adminPassword = VMFactoryConfigUtil.getDefaultBaseImagePassword();  
+      String adminUser = "";
+      String adminPassword = "";  
       boolean badd = os.addOs(s, adminUser, adminPassword, isRBCS, opUser);
       if (!badd)
         return ERROR;

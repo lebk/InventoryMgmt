@@ -8,8 +8,6 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.leikai.dao.impl.UserDaoImpl;
-import com.leikai.po.User;
 import com.leikai.po.Usertype;
 import com.leikai.services.UserService;
 import com.leikai.services.impl.UserServiceImpl;

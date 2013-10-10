@@ -9,12 +9,10 @@ package com.leikai.action;
  *
  */
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.leikai.po.Os;
 import com.leikai.po.Product;
 import com.leikai.services.ProductService;
 import com.leikai.services.impl.ProductServiceImpl;
@@ -151,7 +149,8 @@ public class ProductAction extends ActionSupport
       return "error";
   }
 
-  public String execute()
+  @Override
+public String execute()
   {
     return SUCCESS;
   }

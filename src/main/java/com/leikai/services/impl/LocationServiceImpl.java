@@ -7,20 +7,19 @@ import org.apache.log4j.Logger;
 
 import com.leikai.dao.LocationDao;
 import com.leikai.dao.impl.LocationDaoImpl;
-import com.leikai.dao.impl.UserDaoImpl;
 import com.leikai.po.Location;
 import com.leikai.services.LocationService;
 import com.leikai.services.UserService;
-import com.leikai.util.VMFactoryConfigUtil;
 
 /**
  * copyright: all right reserved.
  * 
- * Author: Lei Bo
+ * @Author: Lei Bo
  *
- * 2013-10-9
+ * @date 2013-10-9
  *
  */
+
 public class LocationServiceImpl implements LocationService
 {
 
@@ -77,7 +76,7 @@ public class LocationServiceImpl implements LocationService
   public List<Location> getBaseTargetVMLocationList()
   {
     List<Location> retLocList = new ArrayList<Location>();
-    String baseTargetVMLocation = VMFactoryConfigUtil.getBaseLocationOfFinalFileServer();
+    String baseTargetVMLocation = "";
     logger.info("the base target to store the configured VM is at:" + baseTargetVMLocation);
     List<Location> existedBaseVMLoc = ld.getBaseVMLocationList();
     if (!existedBaseVMLoc.contains(baseTargetVMLocation))
@@ -93,7 +92,7 @@ public class LocationServiceImpl implements LocationService
   public String getBaseProductLocation()
   {
 
-    return VMFactoryConfigUtil.getBaseProductLocation();
+    return "";
   }
 
 }

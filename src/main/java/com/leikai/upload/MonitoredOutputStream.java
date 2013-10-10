@@ -15,31 +15,36 @@ public class MonitoredOutputStream extends OutputStream
         this.listener.start();
     }
 
-    public void write(byte b[], int off, int len) throws IOException
+    @Override
+	public void write(byte b[], int off, int len) throws IOException
     {
         target.write(b,off,len);
         listener.bytesRead(len - off);
     }
 
-    public void write(byte b[]) throws IOException
+    @Override
+	public void write(byte b[]) throws IOException
     {
         target.write(b);
         listener.bytesRead(b.length);
     }
 
-    public void write(int b) throws IOException
+    @Override
+	public void write(int b) throws IOException
     {
         target.write(b);
         listener.bytesRead(1);
     }
 
-    public void close() throws IOException
+    @Override
+	public void close() throws IOException
     {
         target.close();
         listener.done();
     }
 
-    public void flush() throws IOException
+    @Override
+	public void flush() throws IOException
     {
         target.flush();
     }

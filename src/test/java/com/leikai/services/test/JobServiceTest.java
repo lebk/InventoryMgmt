@@ -31,9 +31,6 @@ import com.leikai.services.impl.OsServiceImpl;
 import com.leikai.services.impl.ProductServiceImpl;
 import com.leikai.services.impl.UserServiceImpl;
 import com.leikai.test.TestUtil;
-import com.leikai.util.RunJob;
-import com.leikai.util.VMUtil;
-import com.vmware.vim25.mo.VirtualMachine;
 
 /**
  * copyright: all right reserved.

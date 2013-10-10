@@ -10,7 +10,6 @@ package com.leikai.action;
  */
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
@@ -18,7 +17,6 @@ import org.apache.log4j.Logger;
 import com.leikai.po.Os;
 import com.leikai.services.OsService;
 import com.leikai.services.impl.OsServiceImpl;
-import com.leikai.util.VMFactoryConfigUtil;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -47,7 +45,7 @@ public class OsAction extends ActionSupport
   private String osPassword = null;
   
   
-  private static String vsPhereFolder = VMFactoryConfigUtil.getFolder();
+  private static String vsPhereFolder = "";
   
   private List<String> vsPhereClientList = new ArrayList<String>();
   private String clientFolder;
@@ -260,8 +258,8 @@ public class OsAction extends ActionSupport
     {
       logger.info("extra os name is: " + s);
       
-      String adminUser = VMFactoryConfigUtil.getDefaultBaseImageUsername();
-      String adminPassword = VMFactoryConfigUtil.getDefaultBaseImagePassword();  
+      String adminUser = "";
+      String adminPassword = "";  
       boolean badd = os.addOs(s, adminUser, adminPassword, isRBCS, opUser);
       if (!badd)
         return ERROR;
@@ -295,7 +293,8 @@ public class OsAction extends ActionSupport
     return "RBCS";
   }
   
-  public String execute()
+  @Override
+public String execute()
   {
 //    Map session = ActionContext.getContext().getSession();
 //    extraOsNameList = new ArrayList<String>();
