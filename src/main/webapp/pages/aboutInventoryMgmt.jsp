@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
 <html>
@@ -12,7 +13,7 @@
 <body>
 
 <center>
-<h3>About VMF</h3>
+<h3>关于本仓存系统</h3>
 <div id="container">
 <div id="link">
 <s:url action="jobstatustilesAction.action" var="aURL" />
@@ -24,16 +25,15 @@
         <td>1.1</td>
     </tr>
     <tr class="even" style="text-align:left">
-        <td>Introduction:</th>
-        <td>The Virtual Machine Factory (VMF) is a new system to produce VM images that can be deployed to RBCS or other systems that utilize VM images for automation needs!</td>
+        <td>简介:</th>
+        <td>本仓存系统用于管理仓库的入库与出库，同时可查询库存状态</td>
     </tr>
     <tr class="even" style="text-align:left">
-        <td>Contact:</th>
+        <td>联系人:</th>
         <td>
         <ul type="disc">
-        <li>Daniel Sosa</li>
-        <li>Terry Lei</li>
-        <li>Azure Gao</li>
+        <li>雷波(lebk.lei@gmail.com)</li>
+        <li>林凯(397769236@qq.com)</li>
         </ul>
         </td>
     </tr>

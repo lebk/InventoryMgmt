@@ -40,8 +40,8 @@
   </definition>
   
   <definition name="aboutVMF" extends="baseLayout">
-      <put-attribute name="title"  value="About VMF"/>
-      <put-attribute name="body"   value="/pages/aboutvmf.jsp"/>      
+      <put-attribute name="title"  value="AboutInventoryMgmt"/>
+      <put-attribute name="body"   value="/pages/aboutInventoryMgmt.jsp"/>      
   </definition>
   
     <definition name="displayUser" extends="baseLayout">

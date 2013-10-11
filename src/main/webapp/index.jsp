@@ -6,7 +6,7 @@
 
 <body>
 <div style="text-align:center">
-<h1 style="font-size:150%">Loading...</h1>
+<h1 style="font-size:150%">载入中...</h1>
 </div>
 </body>
 </html>
