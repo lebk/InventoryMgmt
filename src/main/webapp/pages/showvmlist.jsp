@@ -2,13 +2,13 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <html>
 <head>
-<title>Availble VM</title>
+<title>新增出库单</title>
 <link href="<s:url value="/css/main.css"/>" rel="stylesheet" type="text/css"/>
 </head>
 
 <body>
 <center>
-<h3>All available VMs</h3>
+<h3>新增出库单</h3>
 <%
     String novmfound = (String)session.getAttribute("NOVMFOUND");
     
@@ -16,7 +16,7 @@
     {
         session.removeAttribute("NOVMFOUND");       
 %>
-    Oops! We don't have any available VMs right now...
+   商品出库，新增出库单
 <%
     }
     else

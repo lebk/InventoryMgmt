@@ -8,7 +8,7 @@
 </head>
 <body>
  <center>
- <h3>Welcome <s:property value="username" />!</h3>
+ <h3>欢迎使用本系统， <s:property value="username" />!</h3>
 <%
     String nojobfound = (String)session.getAttribute("NOJOBFOUND");
     
@@ -16,7 +16,7 @@
     {
         session.removeAttribute("NOJOBFOUND");       
 %>
-    Thank you for using VMF, we don't find any record of creating VM by you. Please go to <a href="<s:url action="jobmanagetilesAction"/>"><b>Start</b></a> to create your VM...
+   显示当前库存状态
 <%
     }
     else

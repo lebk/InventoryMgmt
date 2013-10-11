@@ -31,7 +31,7 @@
 %>
 <html>
 <head>
-<title>User Management</title>
+<title>用户管理</title>
 <style type="text/css" rel="stylesheet">
 #container{width:500px; margin:10px auto;}
 #container table{text-align:center;width:100%}
@@ -41,22 +41,22 @@
 </head>
 <body>
 <center>
-<h3>VMF User Management</h3>
+<h3>用户管理</h3>
 <div id="container">
 <div id="link">
 <s:url action="displayUsertilesAction.action" var="aURL" />
-<s:a href="%{aURL}"><u>[Add User]</u></s:a>
+<s:a href="%{aURL}"><u>[添加用户]</u></s:a>
 </div>
 <div id="link">
 <s:url action="admintilesAction.action" var="aURL" />
-<s:a href="%{aURL}"><u>[Go back to Administrator Page]</u></s:a>
+<s:a href="%{aURL}"><u>[返回首页]</u></s:a>
 </div>
 <table align=center class="borderAll">
     <tr>
-        <th><s:text name="Name"/></th>
-        <th><s:text name="Type"/></th>
-        <th><s:text name="Delete User"/></th>
-        <th><s:text name="Privilege"/></th>
+        <th><s:text name="名字"/></th>
+        <th><s:text name="类型"/></th>
+        <th><s:text name="删除"/></th>
+        <th><s:text name="更改权限"/></th>
         <th>&nbsp;</th>
     </tr>
     <s:iterator value="userList" status="status">
@@ -67,13 +67,13 @@
                    	<s:url id="deleteUser" action="deleteUsertilesAction">
 		       		   <s:param name="username" value="name"/>
 		       		</s:url> 
-                <s:a href="%{deleteUser}">Delete</s:a>
+                <s:a href="%{deleteUser}">删除</s:a>
             </td>
             <td class="nowrap">
                    	<s:url id="updateUser" action="updateUsertilesAction">
 		       		   <s:param name="username" value="name"/>
 		       		</s:url> 
-                <s:a href="%{updateUser}">Update</s:a>
+                <s:a href="%{updateUser}">更改</s:a>
             </td>
         </tr>  		
 	 </s:iterator>

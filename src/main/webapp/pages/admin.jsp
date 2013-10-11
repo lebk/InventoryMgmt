@@ -8,10 +8,10 @@
     border:0px; width:1000px;
 }
 </style>
-<title>Admin</title>
+<title>管理页面</title>
 <h3>
 <center>
-Administrator Park
+基本资料配置
 </center>
 </h3>
 </head>
@@ -23,7 +23,7 @@ Administrator Park
 <td>
 <ul type="square">
 <li>
-<s:a href="showUserListtilesAction.action">User Management</s:a>
+<s:a href="showUserListtilesAction.action">用户管理</s:a>
 </li>
 </ul>
 </td>
@@ -33,7 +33,7 @@ Administrator Park
 <td>
 <ul type="square">
 <li>
-<s:a href="showOSListtilesAction.action">OS Management</s:a>
+<s:a href="showOSListtilesAction.action">产品分类管理</s:a>
 </li>
 </ul>
 </td>
@@ -43,7 +43,7 @@ Administrator Park
 <td>
 <ul type="square">
 <li>
-<s:a href="displayProducttilesAction.action">Product Management</s:a>
+<s:a href="displayProducttilesAction.action">产品尺寸管理</s:a>
 </li>
 </ul>
 </td>
@@ -53,7 +53,7 @@ Administrator Park
 <td>
 <ul type="square">
 <li>
-<s:a href="displayUploadFiletilesAction.action">Upload Product</s:a>
+<s:a href="displayUploadFiletilesAction.action">产品花色管理</s:a>
 </li>
 </ul>
 </ul>
