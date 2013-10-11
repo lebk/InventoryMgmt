@@ -2,7 +2,7 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <center>
 <DIV id=footer>
-<a href="<s:url action="aboutVMFtilesAction.action"/>"><font color="yellow"><u>About VMF</u></font></a>
-<P>SYMANTEC PROPRIETARY/CONFIDENTIAL - INTERNAL USE ONLY</P>
+<a href="<s:url action="aboutVMFtilesAction.action"/>"><font color="yellow"><u>关于本系统</u></font></a>
+<P>佳瑞佳木业仓存系统-仅供内部使用</P>
 </DIV>
 </center>

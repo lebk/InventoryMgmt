@@ -33,8 +33,8 @@ margin-top:15%;
    
 	</td>
 	<td style="text-align:left">
-	<s:submit value="Login" name="login" theme="simple"/>
-	<s:reset value="Reset" name="reset" theme="simple"/>
+	<s:submit value="登录" name="login" theme="simple"/>
+	<s:reset value="重置" name="reset" theme="simple"/>
 	</td>
 	</tr>
 </s:form>
