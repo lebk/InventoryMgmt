@@ -26,9 +26,6 @@
 		<property name="lastLoginTime" type="timestamp">
 			<column name="lastLoginTime" length="19" />
 		</property>
-		<property name="etrackId" type="java.lang.Integer">
-			<column name="etrackId" />
-		</property>
 		<property name="isValid" type="java.lang.Boolean">
 			<column name="isValid" />
 		</property>

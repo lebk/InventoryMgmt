@@ -21,7 +21,6 @@ public class User implements java.io.Serializable
   private int type;
   private Date createTime;
   private Date lastLoginTime;
-  private Integer etrackId;
   private Boolean isValid;
 
   public User()
@@ -36,7 +35,7 @@ public class User implements java.io.Serializable
     this.createTime = createTime;
   }
 
-  public User(String name, String password, String email, int type, Date createTime, Date lastLoginTime, Integer etrackId, Boolean isValid)
+  public User(String name, String password, String email, int type, Date createTime, Date lastLoginTime, Boolean isValid)
   {
     this.name = name;
     this.password = password;
@@ -44,7 +43,6 @@ public class User implements java.io.Serializable
     this.type = type;
     this.createTime = createTime;
     this.lastLoginTime = lastLoginTime;
-    this.etrackId = etrackId;
     this.isValid = isValid;
   }
 
@@ -116,16 +114,6 @@ public class User implements java.io.Serializable
   public void setLastLoginTime(Date lastLoginTime)
   {
     this.lastLoginTime = lastLoginTime;
-  }
-
-  public Integer getEtrackId()
-  {
-    return this.etrackId;
-  }
-
-  public void setEtrackId(Integer etrackId)
-  {
-    this.etrackId = etrackId;
   }
 
   public Boolean getIsValid()

@@ -32,7 +32,6 @@ CREATE  TABLE IF NOT EXISTS `InventoryMgmt`.`User` (
   `type` INT UNSIGNED NOT NULL ,
   `createTime` DATETIME NOT NULL ,
   `lastLoginTime` DATETIME NULL ,
-  `etrackId` INT NULL ,
   `isValid` TINYINT(1) NULL DEFAULT true ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `name_UNIQUE` (`name` ASC) ,

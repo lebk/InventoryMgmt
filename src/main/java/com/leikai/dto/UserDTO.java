@@ -23,7 +23,6 @@ public class UserDTO implements java.io.Serializable
   private String type;
   private Date createTime;
   private Date lastLoginTime;
-  private Integer etrackId;
   private Boolean isValid;
 
   public UserDTO()
@@ -39,7 +38,6 @@ public class UserDTO implements java.io.Serializable
     this.type = UserEnumType.getUsertypeById(u.getType());
     this.createTime = u.getCreateTime();
     this.lastLoginTime = u.getLastLoginTime();
-    this.etrackId = u.getEtrackId();
     this.isValid = u.getIsValid();
   }
 
@@ -51,7 +49,7 @@ public class UserDTO implements java.io.Serializable
     this.createTime = createTime;
   }
 
-  public UserDTO(String name, String password, String email, String type, Date createTime, Date lastLoginTime, Integer etrackId, Boolean isValid)
+  public UserDTO(String name, String password, String email, String type, Date createTime, Date lastLoginTime, Boolean isValid)
   {
     this.name = name;
     this.password = password;
@@ -59,7 +57,6 @@ public class UserDTO implements java.io.Serializable
     this.type = type;
     this.createTime = createTime;
     this.lastLoginTime = lastLoginTime;
-    this.etrackId = etrackId;
     this.isValid = isValid;
   }
 
@@ -131,16 +128,6 @@ public class UserDTO implements java.io.Serializable
   public void setLastLoginTime(Date lastLoginTime)
   {
     this.lastLoginTime = lastLoginTime;
-  }
-
-  public Integer getEtrackId()
-  {
-    return this.etrackId;
-  }
-
-  public void setEtrackId(Integer etrackId)
-  {
-    this.etrackId = etrackId;
   }
 
   public Boolean getIsValid()
