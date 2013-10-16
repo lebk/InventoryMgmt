@@ -4,10 +4,6 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-    <bean type="org.apache.struts2.dispatcher.multipart.MultiPartRequest" name="SymantecMultiPartRequest"   
- 		  class="com.leikai.upload.SymantecMultiPartRequest" scope="default" optional="true" />
- 	<constant name="struts.multipart.parser" value="com.leikai.upload.SymantecMultiPartRequest" /> 
- 	<constant name="struts.multipart.handler" value="com.leikai.upload.SymantecMultiPartRequest" />
 	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
 	<constant name="struts.devMode" value="false" />
 	<constant name="struts.action.extension" value="action," />
@@ -16,8 +12,6 @@
 	<constant name="struts.enable.SlashesInActionNames" value="true" />
 	<constant name="struts.convention.action.disableScanning" value="true" />
 	
-
-
 	<package name="default" extends="struts-default" namespace="/">
 		
 		<result-types>
