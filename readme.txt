@@ -18,6 +18,6 @@ How to setup the project locally and run.
 
 Create a user vmfactory/syamtenc, and grant all the privilidges to the db vmfactory.
 1. mysql - u root -p
-2. mysql> grant all on vmfdb.* to dbuser@localhost identified by 'dbpassword';
+2. mysql> grant all on InventoryMgmt.* to dbuser@localhost identified by 'dbpassword';
 
 3. Execute /VMFactory/InitialVMFactory.sql to initial tables and Metadata. (Or drop the db by executing: /VMFactory/DropTables.sql).

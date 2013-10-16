@@ -2,15 +2,15 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 
-CREATE SCHEMA IF NOT EXISTS `vmfdb` ;
-USE `vmfdb` ;
+CREATE SCHEMA IF NOT EXISTS `InventoryMgmt` ;
+USE `InventoryMgmt` ;
 
 -- -----------------------------------------------------
--- Table `vmfdb`.`UserType`
+-- Table `InventoryMgmt`.`UserType`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `vmfdb`.`UserType` ;
+DROP TABLE IF EXISTS `InventoryMgmt`.`UserType` ;
 
-CREATE  TABLE IF NOT EXISTS `vmfdb`.`UserType` (
+CREATE  TABLE IF NOT EXISTS `InventoryMgmt`.`UserType` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(20) NOT NULL ,
   `description` VARCHAR(80) NULL ,
@@ -20,11 +20,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `vmfdb`.`User`
+-- Table `InventoryMgmt`.`User`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `vmfdb`.`User` ;
+DROP TABLE IF EXISTS `InventoryMgmt`.`User` ;
 
-CREATE  TABLE IF NOT EXISTS `vmfdb`.`User` (
+CREATE  TABLE IF NOT EXISTS `InventoryMgmt`.`User` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(40) NOT NULL ,
   `password` VARCHAR(40) NULL ,
@@ -40,18 +40,18 @@ CREATE  TABLE IF NOT EXISTS `vmfdb`.`User` (
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) ,
   CONSTRAINT `uRefer2UserType`
     FOREIGN KEY (`type` )
-    REFERENCES `vmfdb`.`UserType` (`id` )
+    REFERENCES `InventoryMgmt`.`UserType` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `vmfdb`.`ProductType`
+-- Table `InventoryMgmt`.`ProductType`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `vmfdb`.`ProductType` ;
+DROP TABLE IF EXISTS `InventoryMgmt`.`ProductType` ;
 
-CREATE  TABLE IF NOT EXISTS `vmfdb`.`ProductType` (
+CREATE  TABLE IF NOT EXISTS `InventoryMgmt`.`ProductType` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(80) NOT NULL ,
   PRIMARY KEY (`id`) ,
@@ -60,19 +60,19 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `vmfdb`.`Product`
+-- Table `InventoryMgmt`.`Product`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `vmfdb`.`Product` ;
+DROP TABLE IF EXISTS `InventoryMgmt`.`Product` ;
 
-CREATE  TABLE IF NOT EXISTS `vmfdb`.`Product` (
+CREATE  TABLE IF NOT EXISTS `InventoryMgmt`.`Product` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NOT NULL ,
   `pVersion` VARCHAR(45) NULL ,
   `pKey` VARCHAR(100) NULL ,
   `ptId` INT UNSIGNED NOT NULL ,
   `description` VARCHAR(150) NULL ,
-  `location` VARCHAR(300) NOT NULL ,
-  `supportedOSList` VARCHAR(400) NULL ,
+  `location` VARCHAR(200) NOT NULL ,
+  `supportedOSList` VARCHAR(200) NULL ,
   `addTime` DATETIME NULL ,
   `uploadUser` VARCHAR(40) NOT NULL ,
   `isValid` TINYINT(1) NULL DEFAULT true ,
@@ -84,18 +84,18 @@ CREATE  TABLE IF NOT EXISTS `vmfdb`.`Product` (
   UNIQUE INDEX `location_UNIQUE` (`location` ASC) ,
   CONSTRAINT `prefer2ProductType`
     FOREIGN KEY (`ptId` )
-    REFERENCES `vmfdb`.`ProductType` (`id` )
+    REFERENCES `InventoryMgmt`.`ProductType` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `vmfdb`.`Os`
+-- Table `InventoryMgmt`.`Os`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `vmfdb`.`Os` ;
+DROP TABLE IF EXISTS `InventoryMgmt`.`Os` ;
 
-CREATE  TABLE IF NOT EXISTS `vmfdb`.`Os` (
+CREATE  TABLE IF NOT EXISTS `InventoryMgmt`.`Os` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NOT NULL ,
   `adminname` VARCHAR(45) NULL ,
@@ -110,11 +110,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `vmfdb`.`JobStatus`
+-- Table `InventoryMgmt`.`JobStatus`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `vmfdb`.`JobStatus` ;
+DROP TABLE IF EXISTS `InventoryMgmt`.`JobStatus` ;
 
-CREATE  TABLE IF NOT EXISTS `vmfdb`.`JobStatus` (
+CREATE  TABLE IF NOT EXISTS `InventoryMgmt`.`JobStatus` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NOT NULL ,
   `description` VARCHAR(80) NULL ,
@@ -125,11 +125,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `vmfdb`.`Job`
+-- Table `InventoryMgmt`.`Job`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `vmfdb`.`Job` ;
+DROP TABLE IF EXISTS `InventoryMgmt`.`Job` ;
 
-CREATE  TABLE IF NOT EXISTS `vmfdb`.`Job` (
+CREATE  TABLE IF NOT EXISTS `InventoryMgmt`.`Job` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `osId` INT UNSIGNED NOT NULL ,
   `prodId` INT UNSIGNED NOT NULL ,
@@ -153,38 +153,38 @@ CREATE  TABLE IF NOT EXISTS `vmfdb`.`Job` (
   INDEX `StopByRefer2Use` (`stopBy` ASC) ,
   CONSTRAINT `Jrefer2OS`
     FOREIGN KEY (`osId` )
-    REFERENCES `vmfdb`.`Os` (`id` )
+    REFERENCES `InventoryMgmt`.`Os` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `Jrefer2product`
     FOREIGN KEY (`prodId` )
-    REFERENCES `vmfdb`.`Product` (`id` )
+    REFERENCES `InventoryMgmt`.`Product` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `Jrefer2JobStatus`
     FOREIGN KEY (`jobStatusId` )
-    REFERENCES `vmfdb`.`JobStatus` (`id` )
+    REFERENCES `InventoryMgmt`.`JobStatus` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `Jrefer2User`
     FOREIGN KEY (`userId` )
-    REFERENCES `vmfdb`.`User` (`id` )
+    REFERENCES `InventoryMgmt`.`User` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `StopByRefer2Use`
     FOREIGN KEY (`stopBy` )
-    REFERENCES `vmfdb`.`User` (`id` )
+    REFERENCES `InventoryMgmt`.`User` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `vmfdb`.`LocationType`
+-- Table `InventoryMgmt`.`LocationType`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `vmfdb`.`LocationType` ;
+DROP TABLE IF EXISTS `InventoryMgmt`.`LocationType` ;
 
-CREATE  TABLE IF NOT EXISTS `vmfdb`.`LocationType` (
+CREATE  TABLE IF NOT EXISTS `InventoryMgmt`.`LocationType` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NULL ,
   `description` VARCHAR(80) NULL ,
@@ -194,11 +194,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `vmfdb`.`Location`
+-- Table `InventoryMgmt`.`Location`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `vmfdb`.`Location` ;
+DROP TABLE IF EXISTS `InventoryMgmt`.`Location` ;
 
-CREATE  TABLE IF NOT EXISTS `vmfdb`.`Location` (
+CREATE  TABLE IF NOT EXISTS `InventoryMgmt`.`Location` (
   `id` INT UNSIGNED NULL AUTO_INCREMENT ,
   `type` VARCHAR(45) NULL ,
   `url` VARCHAR(200) NULL ,
@@ -206,18 +206,18 @@ CREATE  TABLE IF NOT EXISTS `vmfdb`.`Location` (
   INDEX `refer2LocationType` (`type` ASC) ,
   CONSTRAINT `refer2LocationType`
     FOREIGN KEY (`type` )
-    REFERENCES `vmfdb`.`LocationType` (`name` )
+    REFERENCES `InventoryMgmt`.`LocationType` (`name` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `vmfdb`.`JobProgress`
+-- Table `InventoryMgmt`.`JobProgress`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `vmfdb`.`JobProgress` ;
+DROP TABLE IF EXISTS `InventoryMgmt`.`JobProgress` ;
 
-CREATE  TABLE IF NOT EXISTS `vmfdb`.`JobProgress` (
+CREATE  TABLE IF NOT EXISTS `InventoryMgmt`.`JobProgress` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `jobId` INT UNSIGNED NOT NULL ,
   `jobStatusId` INT UNSIGNED NOT NULL ,
@@ -228,12 +228,12 @@ CREATE  TABLE IF NOT EXISTS `vmfdb`.`JobProgress` (
   INDEX `jobPogressRefer2JobStatus` (`jobStatusId` ASC) ,
   CONSTRAINT `jobProgressRefer2Job`
     FOREIGN KEY (`jobId` )
-    REFERENCES `vmfdb`.`Job` (`id` )
+    REFERENCES `InventoryMgmt`.`Job` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `jobPogressRefer2JobStatus`
     FOREIGN KEY (`jobStatusId` )
-    REFERENCES `vmfdb`.`JobStatus` (`id` )
+    REFERENCES `InventoryMgmt`.`JobStatus` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -244,49 +244,50 @@ ENGINE = InnoDB;
 -- Inital the MetaData:
 -- -----------------------------------------------------
 
-  insert into vmfdb.UserType (name,description) values ("admin" ,"adminstrator user");
+  insert into InventoryMgmt.UserType (name,description) values ("admin" ,"adminstrator user");
   
-  insert into vmfdb.UserType (name,description) values ("regular", "normal user which can any start/stop his own jobs");
+  insert into InventoryMgmt.UserType (name,description) values ("regular", "normal user which can any start/stop his own jobs");
   
 -- initial  default user (admin/password, regular/password: (regular/password).
 
-  insert into vmfdb.User (name,password,email,type, createTime) values ("admin","password","lebk.lei@gmail.com","1" ,now());
+  insert into InventoryMgmt.User (name,password,email,type, createTime) values ("admin","password","lebk.lei@gmail.com","1" ,now());
     
-  insert into vmfdb.User (name,password,email,type, createTime) values ("regular","password","lebk.lei@gmail.com", "2",now());
-  
+  insert into InventoryMgmt.User (name,password,email,type, createTime) values ("regular","password","lebk.lei2@gmail.com", "2",now());
+insert into InventoryMgmt.User (name,password,email,type, createTime) values ("管理员","123456","lebk.lei3@gmail.com", "2",now());
+
 -- Initial JobStatus
   
-  insert into vmfdb.JobStatus (name, description) values ("Start", "Job is starting");
-  insert into vmfdb.JobStatus (name, description) values ("CloneVM", "Clone the image from base image to a new image");
-  insert into vmfdb.JobStatus (name, description) values ("StartupVM", "start up the cloned VM");
-  insert into vmfdb.JobStatus (name, description) values ("UploadFile", "Upload the file to the guest OS where the sofware will be installed");
-  insert into vmfdb.JobStatus (name, description) values ("InstallFile", "Install the software on the guest OS");
-  insert into vmfdb.JobStatus (name, description) values ("SettingProduct", "Configuration the product just installed!");
-  insert into vmfdb.JobStatus (name, description) values ("ActivateProduct", "Activate the Product!");
-  insert into vmfdb.JobStatus (name, description) values ("ConfigVM", "Configure the VM like remove the user/password, enable auto login, etc!");
-  insert into vmfdb.JobStatus (name, description) values ("ShutdownVM", "Shutdown the cloned VM (after install the software)");
-  insert into vmfdb.JobStatus (name, description) values ("RemoveClonedVM", "Shutdown the cloned VM (after install the software)");
-  insert into vmfdb.JobStatus (name, description) values ("ExportToOVF", "Export the image to OVF format");
-  insert into vmfdb.JobStatus (name, description) values ("ZipOVF", "compress the exported OVF files");
-  insert into vmfdb.JobStatus (name, description) values ("MoveToFileServer", "Move the configed OVF file to target location");
-  insert into vmfdb.JobStatus (name, description) values ("RemoveOVF", "Remove the converted OVF Files (and the zipped one)");
-  insert into vmfdb.JobStatus (name, description) values ("Complete", "Job is complete");
-  insert into vmfdb.JobStatus (name, description) values ("Stop", "Job is stoped by the user");
-  insert into vmfdb.JobStatus (name, description) values ("Error", "Job is not finished correctly");
-  insert into vmfdb.JobStatus (name, description) values ("RequestToStop", "Job is requested to stop");
+  insert into InventoryMgmt.JobStatus (name, description) values ("Start", "Job is starting");
+  insert into InventoryMgmt.JobStatus (name, description) values ("CloneVM", "Clone the image from base image to a new image");
+  insert into InventoryMgmt.JobStatus (name, description) values ("StartupVM", "start up the cloned VM");
+  insert into InventoryMgmt.JobStatus (name, description) values ("UploadFile", "Upload the file to the guest OS where the sofware will be installed");
+  insert into InventoryMgmt.JobStatus (name, description) values ("InstallFile", "Install the software on the guest OS");
+  insert into InventoryMgmt.JobStatus (name, description) values ("SettingProduct", "Configuration the product just installed!");
+  insert into InventoryMgmt.JobStatus (name, description) values ("ActivateProduct", "Activate the Product!");
+  insert into InventoryMgmt.JobStatus (name, description) values ("ConfigVM", "Configure the VM like remove the user/password, enable auto login, etc!");
+  insert into InventoryMgmt.JobStatus (name, description) values ("ShutdownVM", "Shutdown the cloned VM (after install the software)");
+  insert into InventoryMgmt.JobStatus (name, description) values ("RemoveClonedVM", "Shutdown the cloned VM (after install the software)");
+  insert into InventoryMgmt.JobStatus (name, description) values ("ExportToOVF", "Export the image to OVF format");
+  insert into InventoryMgmt.JobStatus (name, description) values ("ZipOVF", "compress the exported OVF files");
+  insert into InventoryMgmt.JobStatus (name, description) values ("MoveToFileServer", "Move the configed OVF file to target location");
+  insert into InventoryMgmt.JobStatus (name, description) values ("RemoveOVF", "Remove the converted OVF Files (and the zipped one)");
+  insert into InventoryMgmt.JobStatus (name, description) values ("Complete", "Job is complete");
+  insert into InventoryMgmt.JobStatus (name, description) values ("Stop", "Job is stoped by the user");
+  insert into InventoryMgmt.JobStatus (name, description) values ("Error", "Job is not finished correctly");
+  insert into InventoryMgmt.JobStatus (name, description) values ("RequestToStop", "Job is requested to stop");
   
   -- Initial the location type table.
-  insert into vmfdb.LocationType(name, description) values ("targetVmbaseLocation","Where the configred VM will be copied to");
-  insert into vmfdb.LocationType(name, description) values ("ovftoolConvertLocation","Where the ovf tool existed");
-  insert into vmfdb.LocationType(name, description) values ("osBaseLocation","where the OS is stored");
-  insert into vmfdb.LocationType(name, description) values ("productBaseLocation","where the product is stored after uploaded");
-  insert into vmfdb.LocationType(name, description) values ("productInstallLocation","where the product will be installed");
+  insert into InventoryMgmt.LocationType(name, description) values ("targetVmbaseLocation","Where the configred VM will be copied to");
+  insert into InventoryMgmt.LocationType(name, description) values ("ovftoolConvertLocation","Where the ovf tool existed");
+  insert into InventoryMgmt.LocationType(name, description) values ("osBaseLocation","where the OS is stored");
+  insert into InventoryMgmt.LocationType(name, description) values ("productBaseLocation","where the product is stored after uploaded");
+  insert into InventoryMgmt.LocationType(name, description) values ("productInstallLocation","where the product will be installed");
   -- Initial the product type table.
-  insert into vmfdb.ProductType(name) values ("NIS2012");
-  insert into vmfdb.ProductType(name) values ("NIS2013");
-  insert into vmfdb.ProductType(name) values ("SEP_Amber");
-  insert into vmfdb.ProductType(name) values ("SEP_Jaguar");
-  insert into vmfdb.ProductType(name) values ("N360");
+  insert into InventoryMgmt.ProductType(name) values ("NIS2012");
+  insert into InventoryMgmt.ProductType(name) values ("NIS2013");
+  insert into InventoryMgmt.ProductType(name) values ("SEP_Amber");
+  insert into InventoryMgmt.ProductType(name) values ("SEP_Jaguar");
+  insert into InventoryMgmt.ProductType(name) values ("N360");
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

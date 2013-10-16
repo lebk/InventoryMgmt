@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated Apr 18, 2012 10:34:24 AM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="com.leikai.po.Jobstatus" table="JobStatus" catalog="vmfdb">
+    <class name="com.leikai.po.Jobstatus" table="JobStatus" catalog="InventoryMgmt">
         <id name="id" type="java.lang.Integer">
             <column name="id" />
             <generator class="identity" />

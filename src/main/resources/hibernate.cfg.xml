@@ -6,7 +6,7 @@
 	<session-factory>
 		<property name="hibernate.bytecode.use_reflection_optimizer">false</property>
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="hibernate.connection.url">jdbc:mysql://localhost/vmfdb</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost/InventoryMgmt</property>
 		<property name="hibernate.connection.username">dbuser</property>
 		<property name="hibernate.connection.password">dbpassword</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
