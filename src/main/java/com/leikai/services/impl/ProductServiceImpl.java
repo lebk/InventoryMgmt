@@ -1,23 +1,12 @@
 package com.leikai.services.impl;
 
-/**
- * copyright: all right reserved.
- * 
- * Author: Lei Bo
- *
- * 2013-10-9
- *
- */
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 
 import com.leikai.dao.ProductDao;
 import com.leikai.dao.impl.ProductDaoImpl;
-import com.leikai.enumType.ProductEnumType;
 import com.leikai.po.Product;
-import com.leikai.po.Producttype;
 import com.leikai.services.ProductService;
 import com.leikai.services.UserService;
 

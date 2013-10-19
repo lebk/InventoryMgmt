@@ -3,7 +3,6 @@ package com.leikai.dao;
 import java.util.List;
 
 import com.leikai.po.Product;
-import com.leikai.po.Producttype;
 
 /**
  * copyright: all right reserved.
@@ -17,22 +16,8 @@ import com.leikai.po.Producttype;
 public interface ProductDao
 {
 
-  /**
-   * This method is used to retrieve all the products
-   */
-
   public List<Product> getProductList();
 
-  /**
-   * @param pName
-   * @param version
-   * @param key
-   * @param baseLocation
-   * @param user
-   * @param prodType
-   * @param supportedOsList
-   * @return
-   */
   public boolean addProduct(String pName, String version, String key, String baseLocation, String prodType, List<String> supportedOsList, String addUser);
 
 
