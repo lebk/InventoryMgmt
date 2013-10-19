@@ -14,11 +14,13 @@ public interface PtColorDao {
 
 	public boolean addPtColor(String ptColor);
 
+	public boolean deletePtColor(String ptColor);
+
 	public Integer getIdByPtColorName(String ptcolorName);
 
-	public String getNameByPtColorId(Integer ptcolorId);
+	public String getColorNameByPtColorId(Integer ptcolorId);
 
-	public Ptcolor getPtcolorByPtcolorId(Integer ptcolorId);
+	public Ptcolor getPtColorByPtcolorId(Integer ptcolorId);
 
-	public boolean isPtcolorExisted(String ptcolorName);
+	public boolean isPtColorExisted(String ptcolorName);
 }

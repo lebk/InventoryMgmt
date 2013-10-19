@@ -12,7 +12,9 @@ import com.leikai.po.Ptsize;
 
 public interface PtSizeDao {
 
-	public boolean addPtSize(String pName);
+	public boolean addPtSize(String ptName);
+
+	public boolean deletePtSize(String pName);
 
 	public Integer getIdByPtSizeName(String ptSizeName);
 
