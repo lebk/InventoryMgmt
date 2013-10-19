@@ -14,12 +14,10 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import com.leikai.services.JobService;
-import com.leikai.services.OsService;
+
 import com.leikai.services.ProductService;
 import com.leikai.services.UserService;
-import com.leikai.services.impl.JobServiceImpl;
-import com.leikai.services.impl.OsServiceImpl;
+
 import com.leikai.services.impl.ProductServiceImpl;
 import com.leikai.services.impl.UserServiceImpl;
 

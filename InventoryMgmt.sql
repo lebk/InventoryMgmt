@@ -2,15 +2,12 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 
-DROP SCHEMA IF EXISTS `InventoryMgmt` ;
-CREATE SCHEMA IF NOT EXISTS `InventoryMgmt`;
+CREATE SCHEMA IF NOT EXISTS `InventoryMgmt` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci ;
 USE `InventoryMgmt` ;
 
 -- -----------------------------------------------------
 -- Table `InventoryMgmt`.`PtCategory`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `InventoryMgmt`.`PtCategory` ;
-
 CREATE  TABLE IF NOT EXISTS `InventoryMgmt`.`PtCategory` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(120) NOT NULL ,
@@ -21,8 +18,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `InventoryMgmt`.`PtSize`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `InventoryMgmt`.`PtSize` ;
-
 CREATE  TABLE IF NOT EXISTS `InventoryMgmt`.`PtSize` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `size` VARCHAR(120) NOT NULL ,
@@ -33,8 +28,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `InventoryMgmt`.`ptColor`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `InventoryMgmt`.`ptColor` ;
-
 CREATE  TABLE IF NOT EXISTS `InventoryMgmt`.`ptColor` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `color` VARCHAR(120) NOT NULL ,
@@ -45,8 +38,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `InventoryMgmt`.`Product`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `InventoryMgmt`.`Product` ;
-
 CREATE  TABLE IF NOT EXISTS `InventoryMgmt`.`Product` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(300) NULL ,
@@ -79,8 +70,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `InventoryMgmt`.`businessType`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `InventoryMgmt`.`businessType` ;
-
 CREATE  TABLE IF NOT EXISTS `InventoryMgmt`.`businessType` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `type` VARCHAR(40) NULL ,
@@ -91,8 +80,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `InventoryMgmt`.`ptDetails`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `InventoryMgmt`.`ptDetails` ;
-
 CREATE  TABLE IF NOT EXISTS `InventoryMgmt`.`ptDetails` (
   `id` INT NOT NULL ,
   `productId` INT NULL ,
@@ -112,8 +99,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `InventoryMgmt`.`userType`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `InventoryMgmt`.`userType` ;
-
 CREATE  TABLE IF NOT EXISTS `InventoryMgmt`.`userType` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NULL ,
@@ -125,8 +110,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `InventoryMgmt`.`User`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `InventoryMgmt`.`User` ;
-
 CREATE  TABLE IF NOT EXISTS `InventoryMgmt`.`User` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(80) NOT NULL ,
@@ -134,8 +117,10 @@ CREATE  TABLE IF NOT EXISTS `InventoryMgmt`.`User` (
   `lastLoginTime` TIMESTAMP NULL ,
   `createTime` TIMESTAMP NULL ,
   `type` INT NULL ,
+  `isValid` TINYINT(1)  NULL DEFAULT true ,
   PRIMARY KEY (`id`) ,
   INDEX `refer2ut` (`type` ASC) ,
+  UNIQUE INDEX `name_UNIQUE` (`name` ASC) ,
   CONSTRAINT `refer2ut`
     FOREIGN KEY (`type` )
     REFERENCES `InventoryMgmt`.`userType` (`id` )

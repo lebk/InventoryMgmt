@@ -18,7 +18,6 @@ import com.leikai.dao.impl.ProductDaoImpl;
 import com.leikai.enumType.ProductEnumType;
 import com.leikai.po.Product;
 import com.leikai.po.Producttype;
-import com.leikai.services.LocationService;
 import com.leikai.services.ProductService;
 import com.leikai.services.UserService;
 
@@ -26,7 +25,6 @@ public class ProductServiceImpl implements ProductService
 {
   ProductDao pd = new ProductDaoImpl();
   UserService us = new UserServiceImpl();
-  LocationService ls = new LocationServiceImpl();
   static Logger logger = Logger.getLogger(ProductServiceImpl.class);
 
   public List<Product> getProductList()
@@ -43,7 +41,7 @@ public class ProductServiceImpl implements ProductService
       logger.error("pName:" + pName + ",prodType:" + prodType + ",version:" + version + "could not be null");
       return false;
     }
-    String bpl = ls.getBaseProductLocation();
+    String bpl = "";
     logger.info("base product location is: " + bpl);
     return pd.addProduct(pName, version, key, bpl, prodType, supportedOsList, uploadUser);
   }

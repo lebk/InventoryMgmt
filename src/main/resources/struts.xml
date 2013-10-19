@@ -106,17 +106,7 @@
         <action name="showJobProgresstilesAction" method="showJobProgress" class="com.leikai.action.TilesAction">
             <result name="success" type="tiles">showJobProgressDetails</result>
         </action>	
-		
-		<action name="checkJob" method="checkJob" class="com.leikai.action.JobAction">
-		    <result name="startjob" type="redirectAction">jobstatustilesAction</result>
-		    <result name="jobexist" type="tiles">jobexistError</result>
-		    <result name="jobrunning" type="tiles">jobrunningError</result>
-		    <result name="jobmax" type="tiles">jobmaxError</result>  
-		    <result name="jobrequesttostop" type="tiles">jobrequesttostopError</result>  
-		    <result name="connectionoff" type="tiles">connectionoffError</result>
-		    <result name="error" type="tiles">jobError</result>
-		</action>	
-		
+				
 		</package>
 </struts>
 

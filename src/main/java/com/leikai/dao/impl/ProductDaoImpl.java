@@ -14,8 +14,6 @@ import org.hibernate.Transaction;
 import com.leikai.dao.ProductDao;
 import com.leikai.po.Product;
 import com.leikai.po.Producttype;
-import com.leikai.services.OsService;
-import com.leikai.services.impl.OsServiceImpl;
 import com.leikai.util.HibernateUtil;
 
 /**
@@ -67,7 +65,7 @@ public class ProductDaoImpl implements ProductDao
   {
 
     Integer ptId = this.getprodTypeIdByType(prodType);
-    List<String> osIdList = this.getOsIdList(supportedOsList);
+    List<String> osIdList = null;
     if (ptId == null)
     {
       logger.error("The product type: " + prodType + " is not existed");
@@ -258,22 +256,7 @@ public class ProductDaoImpl implements ProductDao
     return lp;
   }
 
-  private List<String> getOsIdList(List<String> supportedOsList)
-  {
-    List<String> osIdList = new ArrayList<String>();
-    OsService os = new OsServiceImpl();
-    for (String osName : supportedOsList)
-    {
-      Integer osId = os.getIdByOsName(osName);
-      logger.info("osId for: " + osName + " is " + osId);
-      if (osId != null)
-      {
-        osIdList.add(String.valueOf(os.getIdByOsName(osName)));
-      }
-    }
-    return osIdList;
 
-  }
 
   private String convertStringListToString(List<String> osList)
   {

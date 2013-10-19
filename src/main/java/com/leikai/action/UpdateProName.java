@@ -14,7 +14,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class UpdateProName extends ActionSupport
 {
-   private String productname;
+  private String productname;
 
   public String getProductname()
   {
@@ -25,13 +25,15 @@ public class UpdateProName extends ActionSupport
   {
     this.productname = productname;
   }
+
   @Override
-public String execute()
+  public String execute()
   {
     java.util.Map<String, Object> session = ActionContext.getContext().getSession();
     session.put("productname", productname);
     return "success";
   }
+
   public String display()
   {
     return "none";
