@@ -130,7 +130,9 @@ CREATE  TABLE IF NOT EXISTS `InventoryMgmt`.`User` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-===meta data======
+-- -----------------------------------------------------
+-- meta data 
+-- -----------------------------------------------------
 insert into InventoryMgmt.UserType (name,description) values ("admin" ,"adminstrator user");
   
 insert into InventoryMgmt.UserType (name,description) values ("regular", "normal user which can any start/stop his own jobs");
