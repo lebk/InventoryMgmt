@@ -56,7 +56,7 @@ public class UserDaoImpl implements UserDao
 
       u.setName(name);
       u.setPassword(password);
-      u.setType(type.byteValue());
+      u.setType(type);
       u.setEmail(email);
       u.setCreateTime(new Date());
       u.setIsValid(true);
@@ -167,7 +167,7 @@ public class UserDaoImpl implements UserDao
       u.setPassword(password);
       u.setType(type);
       u.setEmail(email);
-      u.setType(type.byteValue());
+      u.setType(type);
       transaction.commit();
       return true;
     } catch (HibernateException e)
@@ -200,7 +200,7 @@ public class UserDaoImpl implements UserDao
     {
       transaction = session.beginTransaction();
       User u = (User) session.get(User.class, userId);
-      u.setType(type.byteValue());
+      u.setType(type);
       transaction.commit();
       return true;
     } catch (HibernateException e)

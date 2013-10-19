@@ -35,9 +35,6 @@ public interface ProductDao
    */
   public boolean addProduct(String pName, String version, String key, String baseLocation, String prodType, List<String> supportedOsList, String addUser);
 
-  public boolean removeProduct(String pName, String version);
-
-  public List<Product> getProductListfilterByOsId(Integer osId);
 
   public Integer getIdByProdName(String pName);
 
@@ -51,7 +48,6 @@ public interface ProductDao
 
   public List<Producttype> getSupportedProductType();
 
-  public boolean isProductSupportedToInstallOnOs(Integer prodId, Integer osId);
 
   public boolean isProductExisted(String pName);
 

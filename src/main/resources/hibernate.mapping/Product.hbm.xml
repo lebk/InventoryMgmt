@@ -1,43 +1,27 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated Apr 20, 2012 4:01:13 PM by Hibernate Tools 3.4.0.CR1 -->
+<!-- Generated Oct 19, 2013 5:02:47 PM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-	<class name="com.leikai.po.Product" table="Product" catalog="InventoryMgmt">
-		<id name="id" type="java.lang.Integer">
-			<column name="id" />
-			<generator class="identity" />
-		</id>
-		<property name="name" type="string">
-			<column name="name" length="45" not-null="true" />
-		</property>
-		<property name="pversion" type="string">
-			<column name="pVersion" length="45" />
-		</property>
-		<property name="pkey" type="string">
-			<column name="pKey" length="100" />
-		</property>
-		<property name="ptId" type="int">
-			<column name="ptId" not-null="true" />
-		</property>
-		<property name="description" type="string">
-			<column name="description" length="150" />
-		</property>
-		<property name="location" type="string">
-			<column name="location" length="300" not-null="true" unique="true" />
-		</property>
-		<property name="supportedOslist" type="string">
-			<column name="supportedOSList" length="400" />
-		</property>
-		<property name="addTime" type="timestamp">
-			<column name="addTime" length="19" />
-		</property>
-		<property name="uploadUser" type="string">
-			<column name="uploadUser" length="40" not-null="true" />
-		</property>
-		<property name="isValid" type="java.lang.Boolean">
-			<column name="isValid" />
-		</property>
-	</class>
+    <class name="com.leikai.po.Product" table="product" catalog="InventoryMgmt">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="300" />
+        </property>
+        <property name="ptTypeId" type="java.lang.Integer">
+            <column name="ptTypeId" />
+        </property>
+        <property name="ptSizeId" type="java.lang.Integer">
+            <column name="ptSizeId" />
+        </property>
+        <property name="ptColorId" type="java.lang.Integer">
+            <column name="ptColorId" />
+        </property>
+        <property name="ptNumber" type="java.lang.Integer">
+            <column name="ptNumber" />
+        </property>
+    </class>
 </hibernate-mapping>
-

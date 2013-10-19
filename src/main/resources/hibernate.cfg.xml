@@ -18,7 +18,12 @@
 		<property name="hibernate.c3p0.idle_test_period">14400</property>
 		<mapping resource="hibernate.mapping/User.hbm.xml" />
 		<mapping resource="hibernate.mapping/Usertype.hbm.xml" />
-
+        <mapping resource="hibernate.mapping/Ptsize.hbm.xml" />
+        <mapping resource="hibernate.mapping/Ptdetails.hbm.xml" />
+        <mapping resource="hibernate.mapping/Product.hbm.xml" />
+        <mapping resource="hibernate.mapping/Ptcolor.hbm.xml" />
+        <mapping resource="hibernate.mapping/Businesstype.hbm.xml" />
+        <mapping resource="hibernate.mapping/Producttype.hbm.xml" />
 
 	</session-factory>
 </hibernate-configuration>

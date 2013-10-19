@@ -1,33 +1,33 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated Apr 20, 2012 10:58:48 AM by Hibernate Tools 3.4.0.CR1 -->
+<!-- Generated Oct 19, 2013 5:02:47 PM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-	<class name="com.leikai.po.User" table="User" catalog="InventoryMgmt">
-		<id name="id" type="java.lang.Integer">
-			<column name="id" />
-			<generator class="identity" />
-		</id>
-		<property name="name" type="string">
-			<column name="name" length="40" not-null="true" unique="true" />
-		</property>
-		<property name="password" type="string">
-			<column name="password" length="40" />
-		</property>
-		<property name="email" type="string">
-			<column name="email" length="50" not-null="true" unique="true" />
-		</property>
-		<property name="type" type="int">
-			<column name="type" not-null="true" />
-		</property>
-		<property name="createTime" type="timestamp">
-			<column name="createTime" length="19" not-null="true" />
-		</property>
-		<property name="lastLoginTime" type="timestamp">
-			<column name="lastLoginTime" length="19" />
-		</property>
-		<property name="isValid" type="java.lang.Boolean">
-			<column name="isValid" />
-		</property>
-	</class>
+    <class name="com.leikai.po.User" table="user" catalog="InventoryMgmt">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="80" not-null="true" unique="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="80" />
+        </property>
+        <property name="lastLoginTime" type="timestamp">
+            <column name="lastLoginTime" length="19" />
+        </property>
+        <property name="createTime" type="timestamp">
+            <column name="createTime" length="19" />
+        </property>
+        <property name="type" type="java.lang.Integer">
+            <column name="type" />
+        </property>
+        <property name="isValid" type="java.lang.Boolean">
+            <column name="isValid" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="45" unique="true" />
+        </property>
+    </class>
 </hibernate-mapping>

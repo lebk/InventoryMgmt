@@ -50,18 +50,6 @@ public interface ProductService
    *         is product name and version, If the user initializes the remove
    *         operation is not a admin user, then it will reject (return false).
    */
-  public boolean removeProduct(String pName, String version, String opUser);
-
-  /**
-   * 
-   * @param osId
-   * @return
-   * 
-   *         Get the product list which is available to be installed in the
-   *         specified os.
-   */
-
-  public List<Product> getProductListfilterByOsId(Integer osId);
 
   /**
    * 
@@ -80,12 +68,6 @@ public interface ProductService
    */
   public Product getProductByProdTypeAndVersion(String ptType, String version);
 
-  /**
-   * 
-   * @param poId
-   * @return
-   */
-  public String getNameByProductId(Integer poId);
 
   /**
    * 
@@ -110,17 +92,6 @@ public interface ProductService
    */
   public List<String> getSupportedProductType();
 
-  /**
-   * 
-   * @param prodId
-   * @param osId
-   * @return
-   * 
-   *         This method will determine whether the product is supported to
-   *         install on the specific OS
-   */
-
-  public boolean isProductSupportedToInstallOnOs(Integer prodId, Integer osId);
 
   /**
    * 
@@ -155,14 +126,6 @@ public interface ProductService
    */
   public String getProdTypebyProdTypeId(Integer productTypeId);
 
-  /**
-   * 
-   * @param prodName
-   * @return
-   * 
-   *         Ths method is used to determine whether we can activation the
-   *         product or not.
-   */
-  public boolean isSupportActivation(String prodName);
+
 
 }

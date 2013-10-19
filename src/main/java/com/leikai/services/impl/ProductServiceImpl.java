@@ -46,36 +46,15 @@ public class ProductServiceImpl implements ProductService
     return pd.addProduct(pName, version, key, bpl, prodType, supportedOsList, uploadUser);
   }
 
-  public boolean removeProduct(String pName, String version, String opUser)
-  {
-    if (!us.isUserAdmin(opUser))
-    {
-      logger.error("only admin user can remove the product");
-      return false;
-    }
-    return pd.removeProduct(pName, version);
 
-  }
 
-  public List<Product> getProductListfilterByOsId(Integer osId)
-  {
-    return pd.getProductListfilterByOsId(osId);
-  }
 
   public Integer getIdByProdName(String pName)
   {
     return pd.getIdByProdName(pName);
   }
 
-  public String getNameByProductId(Integer poId)
-  {
-    if (poId == null)
-    {
-      logger.error("The quried product id should not be null, return null");
-      return null;
-    }
-    return pd.getNameByProductId(poId);
-  }
+
 
   public Product getProductByPoId(Integer poId)
   {
@@ -126,17 +105,6 @@ public class ProductServiceImpl implements ProductService
 
   }
 
-  public boolean isProductSupportedToInstallOnOs(Integer prodId, Integer osId)
-  {
-
-    if (prodId == null || osId == null)
-    {
-      logger.info("the product id or Os id should not be null: prodId=" + prodId + ", osId=" + osId);
-      return false;
-    }
-
-    return pd.isProductSupportedToInstallOnOs(prodId, osId);
-  }
 
   public boolean isProductExisted(String pName)
   {
@@ -176,18 +144,5 @@ public class ProductServiceImpl implements ProductService
     return pd.getProdTypebyProdTypeId(prodTypeId);
   }
 
-  public boolean isSupportActivation(String prodName)
-  {
-    Integer id;
-    String prodtype;
-    ProductService ps = new ProductServiceImpl();
-    id = ps.getIdByProdName(prodName);
-    Integer ptId = ps.getProductByPoId(id).getPtId();
-    prodtype = ps.getProdTypebyProdTypeId(ptId);
-    if (prodtype.equals(ProductEnumType.n360) || prodtype.equals(ProductEnumType.nis2012) || prodtype.equals(ProductEnumType.nis2013))
-    {
-      return true;
-    } else
-      return false;
-  }
+
 }

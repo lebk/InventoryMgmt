@@ -72,18 +72,7 @@ public class ProductDaoImpl implements ProductDao
       return false;
     }
 
-    if (this.isProductExisted(pName))
-    {
-      if (this.isProductValid(pName) == true)
-      {
-        logger.error("The product:" + pName + "," + version + " is already existed");
-        return false;
-      } else
-      {
-        markProductValidStatus(pName, true);
-        return true;
-      }
-    }
+
 
     Session session = HibernateUtil.getSessionFactory().openSession();
 
@@ -97,15 +86,8 @@ public class ProductDaoImpl implements ProductDao
       Product p = new Product();
 
       p.setName(pName);
-      p.setPkey(key);
-      p.setPversion(version);
-      p.setPtId(ptId);
+
       // Remove the FileSeprator as, the baesLocation already contain a "/"
-      p.setLocation(baseLocation + prodType + File.separator + version + File.separator + pName);
-      p.setUploadUser(uploadUser);
-      p.setSupportedOslist(convertStringListToString(osIdList));
-      p.setAddTime(new Date());
-      p.setIsValid(true);
       session.save(p);
       transaction.commit();
       logger.info("add product successfully");
@@ -127,52 +109,8 @@ public class ProductDaoImpl implements ProductDao
     return false;
   }
 
-  public boolean removeProduct(String pName, String version)
-  {
 
-    if (this.isProductExisted(pName) == false)
-    {
-      logger.error("the product: " + pName + ", " + version + " should be existed");
-      return false;
-    } else
-    {
-      if (this.isProductValid(pName) == false)
-      {
-        logger.warn("This user has been delete before, return false");
-        return false;
-      }
-      this.markProductValidStatus(pName, false);
-      return true;
-    }
 
-    // if (!this.isProductExisted(pName, version))
-    // {
-    // logger.error("the product: " + pName + ": " + version +
-    // " should be existed");
-    // return false;
-    // }
-    //
-    // Integer id = this.getIdByProdNameAndVersion(pName, version);
-    //
-    // Session session = HibernateUtil.getSessionFactory().openSession();
-    // Transaction transaction = null;
-    // try
-    // {
-    // transaction = session.beginTransaction();
-    // Product p = (Product) session.get(Product.class, id);
-    // session.delete(p);
-    // transaction.commit();
-    // return true;
-    // } catch (HibernateException e)
-    // {
-    // transaction.rollback();
-    // e.printStackTrace();
-    // } finally
-    // {
-    // session.close();
-    // }
-    // return false;
-  }
 
   public Integer getIdByProdName(String pName)
   {
@@ -220,41 +158,7 @@ public class ProductDaoImpl implements ProductDao
     }
   }
 
-  public List<Product> getProductListfilterByOsId(Integer osId)
-  {
-    List<Product> lp = new ArrayList<Product>();
 
-    Session session = HibernateUtil.getSessionFactory().openSession();
-
-    Transaction transaction = null;
-
-    try
-    {
-      transaction = session.beginTransaction();
-      List ql = session.createQuery("from Product").list();
-      for (Iterator it = ql.iterator(); it.hasNext();)
-      {
-        Product p = (Product) it.next();
-        logger.info("Product: " + p.getName() + ", the supported list is: " + p.getSupportedOslist());
-        if (isContianOsId(p.getSupportedOslist(), osId))
-        {
-          if (this.isProductValid(p.getName()))
-            lp.add(p);
-        }
-      }
-      transaction.commit();
-    } catch (HibernateException e)
-    {
-      transaction.rollback();
-      e.printStackTrace();
-
-    } finally
-    {
-      session.close();
-    }
-
-    return lp;
-  }
 
 
 
@@ -411,79 +315,8 @@ public class ProductDaoImpl implements ProductDao
     return false;
   }
 
-  private boolean isProductValid(String pName)
-  {
-    if (pName == null)
-    {
-      logger.error("the product queried is null");
-      return false;
-    }
-    if (!this.isProductExisted(pName))
-    {
-      logger.error("The product with name, " + pName + ", should be existed");
-      return false;
-    }
 
-    Session session = HibernateUtil.getSessionFactory().openSession();
 
-    Transaction transaction = null;
-
-    try
-    {
-      transaction = session.beginTransaction();
-      List pl = session.createQuery("from Product where name='" + pName + "'").list();
-
-      if (pl.size() != 1)
-      {
-        logger.error("There should be just one product existed with name: " + pName + ", but now there are: " + pl.size());
-        return false;
-      }
-      for (Iterator iterator = pl.iterator(); iterator.hasNext();)
-      {
-        Product p = (Product) iterator.next();
-        logger.info("product: " + pName + ", is valid: " + p.getIsValid());
-
-        return p.getIsValid();
-      }
-      transaction.commit();
-    } catch (HibernateException e)
-    {
-      transaction.rollback();
-      e.printStackTrace();
-    } finally
-    {
-      session.close();
-    }
-    return false;
-
-  }
-
-  private void markProductValidStatus(String pName, boolean isValid)
-  {
-
-    Integer poId = this.getIdByProdName(pName);
-    if (poId == null)
-    {
-      logger.error("no product found by the specifed name: " + pName);
-    }
-    Session session = HibernateUtil.getSessionFactory().openSession();
-    Transaction transaction = null;
-    try
-    {
-      transaction = session.beginTransaction();
-      Product p = (Product) session.get(Product.class, poId);
-      p.setIsValid(isValid);
-      transaction.commit();
-    } catch (HibernateException e)
-    {
-      transaction.rollback();
-      e.printStackTrace();
-    } finally
-    {
-      session.close();
-    }
-
-  }
 
   public String getNameByProductId(Integer poId)
   {
@@ -648,22 +481,7 @@ public class ProductDaoImpl implements ProductDao
     return ptl;
   }
 
-  public boolean isProductSupportedToInstallOnOs(Integer prodId, Integer osId)
-  {
-    Product p = this.getProductByPoId(prodId);
-    if (p == null)
-    {
-      logger.error("could not found the product object by the id: " + prodId);
-      return false;
-    }
-    if (isContianOsId(p.getSupportedOslist(), osId))
-    {
-      logger.info("the product, prodId is supported to install on os, os Id is: " + osId);
-      return true;
 
-    }
-    return false;
-  }
 
   public boolean isProductExisted(String pName)
   {
