@@ -143,6 +143,9 @@ insert into InventoryMgmt.User (name,password,email,type, createTime) values ("a
 insert into InventoryMgmt.User (name,password,email,type, createTime) values ("regular","password","lebk.lei2@gmail.com", "2",now());
 insert into InventoryMgmt.User (name,password,email,type, createTime) values ("管理员","123456","lebk.lei3@gmail.com", "2",now());
 
+insert into InventoryMgmt.businesstype (type) values ("入库");
+insert into InventoryMgmt.businesstype (type) values ("出库");
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
