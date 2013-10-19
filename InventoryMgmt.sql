@@ -2,7 +2,7 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 
-CREATE SCHEMA IF NOT EXISTS `InventoryMgmt` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci ;
+CREATE SCHEMA IF NOT EXISTS `InventoryMgmt`;
 USE `InventoryMgmt` ;
 
 -- -----------------------------------------------------
@@ -128,7 +128,20 @@ CREATE  TABLE IF NOT EXISTS `InventoryMgmt`.`User` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Inital the MetaData:
+-- -----------------------------------------------------
 
+insert into InventoryMgmt.UserType (name,description) values ("admin" ,"adminstrator user");
+  
+insert into InventoryMgmt.UserType (name,description) values ("regular", "normal user which can any start/stop his own jobs");
+  
+-- initial  default user (admin/password, regular/password: (regular/password).
+
+insert into InventoryMgmt.User (name,password,email,type, createTime) values ("admin","password","lebk.lei@gmail.com","1" ,now());
+    
+insert into InventoryMgmt.User (name,password,email,type, createTime) values ("regular","password","lebk.lei2@gmail.com", "2",now());
+insert into InventoryMgmt.User (name,password,email,type, createTime) values ("管理员","123456","lebk.lei3@gmail.com", "2",now());
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
