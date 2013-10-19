@@ -44,14 +44,7 @@ public interface ProductDao
 
   public boolean updateProductName(String oldName, String newName);
 
-  public Product getProductByProdTypeAndVersion(String ptType, String version);
-
-  public List<Producttype> getSupportedProductType();
-
-
   public boolean isProductExisted(String pName);
-
-  public boolean isProductExisted(String prodType, String version);
 
   public String getProdTypebyProdTypeId(Integer prodTypeId);
 

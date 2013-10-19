@@ -58,15 +58,7 @@ public interface ProductService
    */
   public Integer getIdByProdName(String pName);
 
-  /**
-   * 
-   * @param ptType
-   * @param version
-   * @return
-   * 
-   *         Get product by the specific type and version
-   */
-  public Product getProductByProdTypeAndVersion(String ptType, String version);
+
 
 
   /**
@@ -83,14 +75,7 @@ public interface ProductService
    */
   public boolean updateProductName(String oldName, String newName);
 
-  /**
-   * 
-   * @return
-   * 
-   *         This method is used to retrieve the supported product type (which
-   *         is allowed to install by the VMFactory
-   */
-  public List<String> getSupportedProductType();
+
 
 
   /**
@@ -105,18 +90,7 @@ public interface ProductService
    */
   public boolean isProductExisted(String pName);
 
-  /**
-   * 
-   * @param prodType
-   * @param version
-   * @return
-   * 
-   * 
-   *         This method is used to determine whether the product has been
-   *         uploaded before (by product type and version) as the combination of
-   *         productType and version is unique
-   */
-  public boolean isProductExisted(String prodType, String version);
+
 
   /**
    * 

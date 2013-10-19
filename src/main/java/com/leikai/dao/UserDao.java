@@ -30,4 +30,5 @@ public interface UserDao
   public List<User> getUserList();
 
   public User getUserByUserId(Integer userId);
+
 }

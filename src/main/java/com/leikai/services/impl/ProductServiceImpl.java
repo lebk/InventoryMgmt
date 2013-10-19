@@ -78,33 +78,6 @@ public class ProductServiceImpl implements ProductService
     return pd.updateProductName(oldName, newName);
   }
 
-  public Product getProductByProdTypeAndVersion(String ptType, String version)
-  {
-
-    if (ptType == null || version == null)
-    {
-      logger.error("the ptType or version is null return: ptType: " + ptType + ", version: " + version);
-      return null;
-    }
-    return pd.getProductByProdTypeAndVersion(ptType, version);
-  }
-
-  public List<String> getSupportedProductType()
-  {
-
-    List<String> ptNameList = new ArrayList<String>();
-    List<Producttype> ptl = pd.getSupportedProductType();
-
-    for (Producttype pt : ptl)
-    {
-      logger.info("the product type name is: " + pt.getName());
-      ptNameList.add(pt.getName());
-    }
-
-    return ptNameList;
-
-  }
-
 
   public boolean isProductExisted(String pName)
   {
@@ -120,19 +93,7 @@ public class ProductServiceImpl implements ProductService
     return pd.isProductExisted(pName);
   }
 
-  public boolean isProductExisted(String prodType, String version)
-  {
-    // Temp fix, that is while the pass in prodType or version is null,
-    // return
-    // true
-    if (prodType == null || version == null)
-    {
-      logger.error("The prodType:" + prodType + " or version:" + version + " is null, return false");
-
-      return true;
-    }
-    return pd.isProductExisted(prodType, version);
-  }
+  
 
   public String getProdTypebyProdTypeId(Integer prodTypeId)
   {
