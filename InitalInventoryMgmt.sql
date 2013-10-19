@@ -6,9 +6,9 @@ CREATE SCHEMA IF NOT EXISTS `InventoryMgmt`;
 USE `InventoryMgmt` ;
 
 -- -----------------------------------------------------
--- Table `InventoryMgmt`.`PtCategory`
+-- Table `InventoryMgmt`.`Producttype`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `InventoryMgmt`.`PtCategory` (
+CREATE  TABLE IF NOT EXISTS `InventoryMgmt`.`Producttype` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(120) NOT NULL ,
   PRIMARY KEY (`id`) )
@@ -41,17 +41,17 @@ ENGINE = InnoDB;
 CREATE  TABLE IF NOT EXISTS `InventoryMgmt`.`Product` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(300) NULL ,
-  `ptcatetoryId` INT NULL ,
+  `ptTypeId` INT NULL ,
   `ptSizeId` INT NULL ,
   `ptColorId` INT NULL ,
   `ptNumber` INT NULL ,
   PRIMARY KEY (`id`) ,
-  INDEX `refer2ptcat` (`ptcatetoryId` ASC) ,
+  INDEX `refer2ptcat` (`ptTypeId` ASC) ,
   INDEX `refer2ptsiz` (`ptSizeId` ASC) ,
   INDEX `refer2ptcol` (`ptColorId` ASC) ,
   CONSTRAINT `refer2ptcat`
-    FOREIGN KEY (`ptcatetoryId` )
-    REFERENCES `InventoryMgmt`.`PtCategory` (`id` )
+    FOREIGN KEY (`ptTypeId` )
+    REFERENCES `InventoryMgmt`.`Producttype` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `refer2ptsiz`
@@ -118,9 +118,11 @@ CREATE  TABLE IF NOT EXISTS `InventoryMgmt`.`User` (
   `createTime` TIMESTAMP NULL ,
   `type` INT NULL ,
   `isValid` TINYINT(1)  NULL DEFAULT true ,
+  `email` VARCHAR(45) NULL ,
   PRIMARY KEY (`id`) ,
   INDEX `refer2ut` (`type` ASC) ,
   UNIQUE INDEX `name_UNIQUE` (`name` ASC) ,
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) ,
   CONSTRAINT `refer2ut`
     FOREIGN KEY (`type` )
     REFERENCES `InventoryMgmt`.`userType` (`id` )
@@ -128,20 +130,17 @@ CREATE  TABLE IF NOT EXISTS `InventoryMgmt`.`User` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
--- -----------------------------------------------------
--- Inital the MetaData:
--- -----------------------------------------------------
-
+===meta data======
 insert into InventoryMgmt.UserType (name,description) values ("admin" ,"adminstrator user");
   
 insert into InventoryMgmt.UserType (name,description) values ("regular", "normal user which can any start/stop his own jobs");
   
 -- initial  default user (admin/password, regular/password: (regular/password).
-
 insert into InventoryMgmt.User (name,password,email,type, createTime) values ("admin","password","lebk.lei@gmail.com","1" ,now());
     
 insert into InventoryMgmt.User (name,password,email,type, createTime) values ("regular","password","lebk.lei2@gmail.com", "2",now());
 insert into InventoryMgmt.User (name,password,email,type, createTime) values ("管理员","123456","lebk.lei3@gmail.com", "2",now());
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
