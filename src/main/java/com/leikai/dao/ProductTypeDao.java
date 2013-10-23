@@ -17,7 +17,7 @@ public interface ProductTypeDao {
 
 	public boolean addProductType(String pdType);
 
-	public boolean deleteProductTpe(String pdType);
+	public boolean deleteProductType(String pdType);
 
 	public List<Producttype> getAllProductType();
 

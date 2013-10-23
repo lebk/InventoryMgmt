@@ -28,7 +28,7 @@ public class ProductTypeDaoImpl implements ProductTypeDao {
 		return false;
 	}
 
-	public boolean deleteProductTpe(String pdType) {
+	public boolean deleteProductType(String pdType) {
 		// TODO Auto-generated method stub
 		return false;
 	}
