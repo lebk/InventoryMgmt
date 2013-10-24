@@ -1,5 +1,6 @@
 package com.leikai.dao.impl;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -10,6 +11,7 @@ import org.hibernate.Transaction;
 import com.leikai.dao.PtColorDao;
 import com.leikai.po.Product;
 import com.leikai.po.Ptcolor;
+import com.leikai.po.User;
 import com.leikai.util.HibernateUtil;
 
 public class PtColorDaoImpl implements PtColorDao {
@@ -53,11 +55,69 @@ public class PtColorDaoImpl implements PtColorDao {
 
 	public boolean deletePtColor(String ptColor) {
 
+		if (!this.isPtColorExisted(ptColor)) {
+			logger.error("the color: " + ptColor + " should be existed");
+			return false;
+		}
+
+		Integer id = this.getIdByPtColorName(ptColor);
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction transaction = null;
+		try {
+			transaction = session.beginTransaction();
+			Ptcolor pc = (Ptcolor) session.get(Ptcolor.class, id);
+			session.delete(pc);
+			transaction.commit();
+			logger.info("delete color: " + ptColor + " successfully");
+			return true;
+		} catch (HibernateException e) {
+			transaction.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		logger.error("fail to delete color: " + ptColor);
+
 		return false;
 	}
 
 	public Integer getIdByPtColorName(String ptcolorName) {
-		// TODO Auto-generated method stub
+		if (!this.isPtColorExisted(ptcolorName)) {
+			logger.error("The Ptcolor with name: " + ptcolorName
+					+ " should be existed");
+			return null;
+		}
+
+		Session session = HibernateUtil.getSessionFactory().openSession();
+
+		Transaction transaction = null;
+
+		try {
+			transaction = session.beginTransaction();
+			List pcl = session.createQuery(
+					"from " + Ptcolor.class.getName() + " where color='"
+							+ ptcolorName + "'").list();
+
+			if (pcl.size() != 1) {
+				logger.error("There should be just one ptColor existed with name: "
+						+ ptcolorName + ", but now there are: " + pcl.size());
+				return null;
+			}
+			for (Iterator iterator = pcl.iterator(); iterator.hasNext();) {
+				Ptcolor pc = (Ptcolor) iterator.next();
+				logger.info("color: " + ptcolorName + ", id is: " + pc.getId());
+
+				return pc.getId();
+			}
+			transaction.commit();
+		} catch (HibernateException e) {
+			transaction.rollback();
+			e.printStackTrace();
+		} finally {
+			logger.info("session closed: getIdByPtColorName ");
+			session.close();
+		}
+		logger.error("fail to find the record for color name " + ptcolorName);
 		return null;
 	}
 

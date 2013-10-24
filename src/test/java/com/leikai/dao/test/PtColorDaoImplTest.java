@@ -39,33 +39,36 @@ public class PtColorDaoImplTest {
 
 	@Test
 	public void testAddPtColor() {
-
-		Boolean status = pcd.addPtColor(ptColor);
+		Boolean status = pcd.deletePtColor(ptColor);
+		status = pcd.addPtColor(ptColor);
 		Assert.assertTrue("Add color successfully", status);
 	}
 
 	@Test
 	public void testDeletePtColor() {
+
+		Boolean status = pcd.deletePtColor(ptColor);
+		Assert.assertTrue("delete color successfully", status);
 	}
 
 	@Test
 	public void testGetIdByPtColorName() {
-		
+
 	}
 
 	@Test
 	public void testGetColorNameByPtColorId() {
-		
+
 	}
 
 	@Test
 	public void testGetPtColorByPtcolorId() {
-		
+
 	}
 
 	@Test
 	public void testIsPtColorExisted() {
-		
+
 	}
 
 }
