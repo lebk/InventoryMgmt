@@ -12,6 +12,7 @@ import org.hibernate.Transaction;
 import com.leikai.dao.ProductDao;
 import com.leikai.po.Product;
 import com.leikai.po.Producttype;
+import com.leikai.po.Product;
 import com.leikai.util.HibernateUtil;
 
 /**
@@ -38,7 +39,7 @@ public class ProductDaoImpl implements ProductDao
     try
     {
       transaction = session.beginTransaction();
-      List ql = session.createQuery("from Product").list();
+      List ql = session.createQuery("from" + Product.class.getName()).list();
       for (Iterator it = ql.iterator(); it.hasNext();)
       {
         Product p = (Product) it.next();
@@ -62,6 +63,48 @@ public class ProductDaoImpl implements ProductDao
   public boolean addProduct(String pName, String pType, String pColor, String pSize, Integer pNum)
   {
 
+    if (this.isProductExisted(pName))
+    {
+      logger.info("as the product is already exited, increase the nubmer");
+      return false;
+    }
+    Session session = HibernateUtil.getSessionFactory().openSession();
+
+    Transaction transaction = null;
+
+    try
+    {
+      logger.info("begin to add product: " + pName);
+
+      transaction = session.beginTransaction();
+      Product p = new Product();
+
+      p.setName(pName);
+
+      session.save(p);
+      transaction.commit();
+      logger.info("add product successfully");
+      return true;
+
+    } catch (HibernateException e)
+    {
+
+      transaction.rollback();
+      logger.error(e.toString());
+      e.printStackTrace();
+
+    } finally
+    {
+
+      session.close();
+
+    }
+    return false;
+  }
+
+  public boolean reduceProduct(Integer poId, Integer pNum)
+  {
+    // TODO Auto-generated method stub
     return false;
   }
 
@@ -138,45 +181,6 @@ public class ProductDaoImpl implements ProductDao
         logger.info("ProductType: " + prodType + ", id is: " + pt.getId());
 
         return pt.getId();
-      }
-      transaction.commit();
-    } catch (HibernateException e)
-    {
-      transaction.rollback();
-      e.printStackTrace();
-    } finally
-    {
-      session.close();
-    }
-    return null;
-  }
-
-  public String getProdTypebyProdTypeId(Integer prodTypeId)
-  {
-
-    if (prodTypeId == null)
-    {
-      return null;
-    }
-    Session session = HibernateUtil.getSessionFactory().openSession();
-
-    Transaction transaction = null;
-
-    try
-    {
-      transaction = session.beginTransaction();
-      List ptl = session.createQuery("from Producttype where id='" + prodTypeId + "'").list();
-      if (ptl.size() != 1)
-      {
-        logger.error("No prodtype existed with the id: " + prodTypeId);
-        return null;
-      }
-      for (Iterator it = ptl.iterator(); it.hasNext();)
-      {
-        Producttype pt = (Producttype) it.next();
-        logger.info("ProductType: " + prodTypeId + ", name is: " + pt.getName());
-
-        return pt.getName();
       }
       transaction.commit();
     } catch (HibernateException e)
@@ -311,6 +315,11 @@ public class ProductDaoImpl implements ProductDao
     }
   }
 
+  private boolean updateProductNum(Integer pNum)
+  {
+    return true;
+  }
+  
   public boolean updateProductName(String oldName, String newName)
   {
 
@@ -386,4 +395,11 @@ public class ProductDaoImpl implements ProductDao
       return false;
     }
   }
+
+  public String getProdTypebyProdTypeId(Integer prodTypeId)
+  {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
 }

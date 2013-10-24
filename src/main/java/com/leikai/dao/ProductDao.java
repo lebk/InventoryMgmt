@@ -13,23 +13,25 @@ import com.leikai.po.Product;
  * 
  */
 
-public interface ProductDao
-{
+public interface ProductDao {
 
-  public List<Product> getProductList();
+	public List<Product> getProductList();
 
-  public boolean addProduct(String pName, String pType, String pColor, String pSize, Integer pNum);
+	public boolean addProduct(String pName, String pType, String pColor,
+			String pSize, Integer pNum);
 
-  public Integer getIdByProdName(String pName);
+	public boolean reduceProduct(Integer poId, Integer pNum);
 
-  public String getNameByProductId(Integer poId);
+	public Integer getIdByProdName(String pName);
 
-  public Product getProductByPoId(Integer poId);
+	public String getNameByProductId(Integer poId);
 
-  public boolean updateProductName(String oldName, String newName);
+	public Product getProductByPoId(Integer poId);
 
-  public boolean isProductExisted(String pName);
+	public boolean updateProductName(String oldName, String newName);
 
-  public String getProdTypebyProdTypeId(Integer prodTypeId);
+	public boolean isProductExisted(String pName);
+
+	public String getProdTypebyProdTypeId(Integer prodTypeId);
 
 }

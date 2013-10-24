@@ -32,18 +32,15 @@ public class ProductServiceImpl implements ProductService
     }
     String bpl = "";
     logger.info("base product location is: " + bpl);
-    return pd.addProduct(pName, version, key, bpl, prodType, supportedOsList, uploadUser);
+    // return pd.addProduct(pName, version, key, bpl, prodType,
+    // supportedOsList, uploadUser);
+    return false;
   }
-
-
-
 
   public Integer getIdByProdName(String pName)
   {
     return pd.getIdByProdName(pName);
   }
-
-
 
   public Product getProductByPoId(Integer poId)
   {
@@ -67,7 +64,6 @@ public class ProductServiceImpl implements ProductService
     return pd.updateProductName(oldName, newName);
   }
 
-
   public boolean isProductExisted(String pName)
   {
     // Temp fix, that is while the pass in prodType or version is null,
@@ -82,8 +78,6 @@ public class ProductServiceImpl implements ProductService
     return pd.isProductExisted(pName);
   }
 
-  
-
   public String getProdTypebyProdTypeId(Integer prodTypeId)
   {
     if (prodTypeId == null)
@@ -93,6 +87,5 @@ public class ProductServiceImpl implements ProductService
     }
     return pd.getProdTypebyProdTypeId(prodTypeId);
   }
-
 
 }
