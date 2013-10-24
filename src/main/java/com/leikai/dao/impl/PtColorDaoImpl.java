@@ -97,7 +97,7 @@ public class PtColorDaoImpl implements PtColorDao {
 							+ ptcolorName + "'").list();
 
 			if (pcl.size() != 1) {
-				logger.error("There should be just one ptcolorName existed with name: "
+				logger.error("There should be just one ptSizeName existed with name: "
 						+ ptcolorName + ", but now there are: " + pcl.size());
 				return null;
 			}
@@ -131,7 +131,7 @@ public class PtColorDaoImpl implements PtColorDao {
 							+ ptcolorId + "'").list();
 
 			if (pcl.size() != 1) {
-				logger.error("There should be just one ptcolorName existed with id: "
+				logger.error("There should be just one ptSizeName existed with id: "
 						+ ptcolorId + ", but now there are: " + pcl.size());
 				return null;
 			}
@@ -164,7 +164,7 @@ public class PtColorDaoImpl implements PtColorDao {
 							+ ptcolorId + "'").list();
 
 			if (pcl.size() != 1) {
-				logger.error("There should be just one ptcolorName existed with id: "
+				logger.error("There should be just one ptSizeName existed with id: "
 						+ ptcolorId + ", but now there are: " + pcl.size());
 				return null;
 			}
@@ -188,7 +188,7 @@ public class PtColorDaoImpl implements PtColorDao {
 
 	public boolean isPtColorExisted(String ptcolorName) {
 		if (ptcolorName == null) {
-			logger.error("The ptcolorName should not be null");
+			logger.error("The ptSizeName should not be null");
 			return true;
 		}
 
