@@ -8,9 +8,9 @@ import com.leikai.po.Product;
  * copyright: all right reserved.
  * 
  * Author: Lei Bo
- *
+ * 
  * 2013-10-9
- *
+ * 
  */
 
 public interface ProductDao
@@ -18,8 +18,7 @@ public interface ProductDao
 
   public List<Product> getProductList();
 
-  public boolean addProduct(String pName, String version, String key, String baseLocation, String prodType, List<String> supportedOsList, String addUser);
-
+  public boolean addProduct(String pName, String pType, String pColor, String pSize, Integer pNum);
 
   public Integer getIdByProdName(String pName);
 
