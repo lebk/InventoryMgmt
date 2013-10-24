@@ -9,9 +9,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.leikai.dao.PtColorDao;
-import com.leikai.po.Product;
 import com.leikai.po.Ptcolor;
-import com.leikai.po.User;
 import com.leikai.util.HibernateUtil;
 
 public class PtColorDaoImpl implements PtColorDao {
@@ -99,7 +97,7 @@ public class PtColorDaoImpl implements PtColorDao {
 							+ ptcolorName + "'").list();
 
 			if (pcl.size() != 1) {
-				logger.error("There should be just one ptColor existed with name: "
+				logger.error("There should be just one ptcolorName existed with name: "
 						+ ptcolorName + ", but now there are: " + pcl.size());
 				return null;
 			}
@@ -114,7 +112,6 @@ public class PtColorDaoImpl implements PtColorDao {
 			transaction.rollback();
 			e.printStackTrace();
 		} finally {
-			logger.info("session closed: getIdByPtColorName ");
 			session.close();
 		}
 		logger.error("fail to find the record for color name " + ptcolorName);
@@ -122,13 +119,71 @@ public class PtColorDaoImpl implements PtColorDao {
 	}
 
 	public String getColorNameByPtColorId(Integer ptcolorId) {
-		// TODO Auto-generated method stub
+
+		Session session = HibernateUtil.getSessionFactory().openSession();
+
+		Transaction transaction = null;
+
+		try {
+			transaction = session.beginTransaction();
+			List pcl = session.createQuery(
+					"from " + Ptcolor.class.getName() + " where id='"
+							+ ptcolorId + "'").list();
+
+			if (pcl.size() != 1) {
+				logger.error("There should be just one ptcolorName existed with id: "
+						+ ptcolorId + ", but now there are: " + pcl.size());
+				return null;
+			}
+			for (Iterator iterator = pcl.iterator(); iterator.hasNext();) {
+				Ptcolor pc = (Ptcolor) iterator.next();
+				logger.info("color id: " + ptcolorId + ", the color is: "
+						+ pc.getColor());
+				return pc.getColor();
+			}
+			transaction.commit();
+		} catch (HibernateException e) {
+			transaction.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		logger.error("fail to find the record for color id " + ptcolorId);
 		return null;
 	}
 
 	public Ptcolor getPtColorByPtcolorId(Integer ptcolorId) {
-		// TODO Auto-generated method stub
+		Session session = HibernateUtil.getSessionFactory().openSession();
+
+		Transaction transaction = null;
+
+		try {
+			transaction = session.beginTransaction();
+			List pcl = session.createQuery(
+					"from " + Ptcolor.class.getName() + " where id='"
+							+ ptcolorId + "'").list();
+
+			if (pcl.size() != 1) {
+				logger.error("There should be just one ptcolorName existed with id: "
+						+ ptcolorId + ", but now there are: " + pcl.size());
+				return null;
+			}
+			for (Iterator iterator = pcl.iterator(); iterator.hasNext();) {
+				Ptcolor pc = (Ptcolor) iterator.next();
+				logger.info("color id: " + ptcolorId + ", the color is: "
+						+ pc.getColor());
+				return pc;
+			}
+			transaction.commit();
+		} catch (HibernateException e) {
+			transaction.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		logger.error("fail to find the record for color id " + ptcolorId);
 		return null;
+
 	}
 
 	public boolean isPtColorExisted(String ptcolorName) {
