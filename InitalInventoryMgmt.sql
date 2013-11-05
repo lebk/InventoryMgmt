@@ -141,7 +141,7 @@ insert into InventoryMgmt.UserType (name,description) values ("regular", "normal
 insert into InventoryMgmt.User (name,password,email,type, createTime) values ("admin","password","lebk.lei@gmail.com","1" ,now());
     
 insert into InventoryMgmt.User (name,password,email,type, createTime) values ("regular","password","lebk.lei2@gmail.com", "2",now());
-insert into InventoryMgmt.User (name,password,email,type, createTime) values ("管理员","123456","lebk.lei3@gmail.com", "2",now());
+insert into InventoryMgmt.User (name,password,email,type, createTime) values ("管理员","123456","lebk.lei3@gmail.com", "1",now());
 
 insert into InventoryMgmt.businesstype (type) values ("入库");
 insert into InventoryMgmt.businesstype (type) values ("出库");
