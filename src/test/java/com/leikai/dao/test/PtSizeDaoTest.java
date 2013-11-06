@@ -26,7 +26,7 @@ public class PtSizeDaoTest
 {
   static Logger logger = Logger.getLogger(PtSizeDaoTest.class);
   PtSizeDao psd;
-  String ptSizeName = "测试大小";
+  String ptSizeName = TestUtil.getPtSizeName();
 
   @Before
   public void setUp() throws Exception

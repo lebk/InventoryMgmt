@@ -17,8 +17,8 @@ public interface ProductDao {
 
 	public List<Product> getProductList();
 
-	public boolean addProduct(String pName, String pType, String pColor,
-			String pSize, Integer pNum);
+	public boolean addProduct(String pName, Integer ptTypeId, Integer ptColorId,
+			Integer ptSizeId, Integer pNum);
 
 	public boolean reduceProduct(Integer poId, Integer pNum);
 

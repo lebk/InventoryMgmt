@@ -31,7 +31,7 @@ public class PtTypeDaoTest
 
   static Logger logger = Logger.getLogger(PtTypeDaoTest.class);
   PtTypeDao ptd;
-  String ptTypeName = "测试铲平类型";
+  String ptTypeName = TestUtil.getPtTypeName();
 
   @BeforeClass
   public static void setUpBeforeClass() throws Exception
@@ -71,8 +71,9 @@ public class PtTypeDaoTest
   @Test
   public void testDeletePtType()
   {
+    ptd.addPtType(ptTypeName);
     Boolean status = ptd.deletePtType(ptTypeName);
-    Assert.assertTrue("delete product type successfully", status);
+    Assert.assertTrue("delete product type should be successfully", status);
     status = ptd.deletePtType(ptTypeName);
     Assert.assertTrue("delete product type should return false, as it has been deleted before", status == false);
   }

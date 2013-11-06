@@ -10,9 +10,13 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.leikai.dao.ProductDao;
+import com.leikai.dao.PtColorDao;
+import com.leikai.dao.PtSizeDao;
+import com.leikai.dao.PtTypeDao;
 import com.leikai.po.Product;
 import com.leikai.po.Pttype;
 import com.leikai.po.Product;
+import com.leikai.po.User;
 import com.leikai.util.HibernateUtil;
 
 /**
@@ -60,14 +64,17 @@ public class ProductDaoImpl implements ProductDao
 
   }
 
-  public boolean addProduct(String pName, String pType, String pColor, String pSize, Integer pNum)
+  public boolean addProduct(String pName, Integer ptTypeId, Integer ptColorId, Integer ptSizeId, Integer pNum)
   {
 
     if (this.isProductExisted(pName))
     {
       logger.info("as the product is already exited, increase the nubmer");
-      return false;
+      Integer pn = this.getProductByPoId(this.getIdByProdName(pName)).getPtNumber();
+      Boolean status = updateProductNumber(pName, pn + pNum);
+      return status;
     }
+
     Session session = HibernateUtil.getSessionFactory().openSession();
 
     Transaction transaction = null;
@@ -80,7 +87,10 @@ public class ProductDaoImpl implements ProductDao
       Product p = new Product();
 
       p.setName(pName);
-
+      p.setPtColorId(ptColorId);
+      p.setPtTypeId(ptTypeId);
+      p.setPtSizeId(ptSizeId);
+      p.setPtNumber(pNum);
       session.save(p);
       transaction.commit();
       logger.info("add product successfully");
@@ -102,10 +112,48 @@ public class ProductDaoImpl implements ProductDao
     return false;
   }
 
+  private boolean updateProductNumber(Integer poId, Integer ptNumber)
+  {
+
+    Session session = HibernateUtil.getSessionFactory().openSession();
+    Transaction transaction = null;
+    try
+    {
+      transaction = session.beginTransaction();
+      Product u = (Product) session.get(Product.class, poId);
+      u.setPtNumber(ptNumber);
+      transaction.commit();
+      logger.info("Successfully update the product number for po id:" + poId);
+      return true;
+    } catch (HibernateException e)
+    {
+      transaction.rollback();
+      e.printStackTrace();
+    } finally
+    {
+      session.close();
+    }
+    logger.info("Fail to update the product number for po id:" + poId);
+    return false;
+  }
+
+  private boolean updateProductNumber(String pName, Integer ptNumber)
+  {
+    Integer poId = this.getIdByProdName(pName);
+    if (poId == null)
+    {
+      logger.error("Product does not existed with the name:" + pName);
+      return false;
+    }
+
+    return this.updateProductNumber(poId, ptNumber);
+  }
+
   public boolean reduceProduct(Integer poId, Integer pNum)
   {
-    // TODO Auto-generated method stub
-    return false;
+    Integer pn = this.getProductByPoId(poId).getPtNumber();
+
+    return this.updateProductNumber(poId, pn - pNum);
   }
 
   public Integer getIdByProdName(String pName)
@@ -313,11 +361,6 @@ public class ProductDaoImpl implements ProductDao
 
       return null;
     }
-  }
-
-  private boolean updateProductNum(Integer pNum)
-  {
-    return true;
   }
 
   public boolean updateProductName(String oldName, String newName)
