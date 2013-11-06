@@ -8,17 +8,16 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.leikai.po.Producttype;
+import com.leikai.po.Pttype;
 import com.leikai.util.HibernateUtil;
-
 
 /**
  * copyright: all right reserved
  * 
  * Author: Lei Bo
- *
+ * 
  * 2013-10-9
- *
+ * 
  */
 
 public class ProductEnumType
@@ -40,16 +39,16 @@ public class ProductEnumType
     try
     {
       transaction = session.beginTransaction();
-      List ptl = session.createQuery("from Producttype where id='" + id + "'").list();
+      List ptl = session.createQuery("from " + Pttype.class.getName() + " where id='" + id + "'").list();
 
       if (ptl.size() != 1)
       {
-        logger.error("There should be just one Producttype existed with id: " + id + ", but now there are: " + ptl.size());
+        logger.error("There should be just one " + Pttype.class.getName() + " existed with id: " + id + ", but now there are: " + ptl.size());
         return unknown;
       }
       for (Iterator iterator = ptl.iterator(); iterator.hasNext();)
       {
-        Producttype pt = (Producttype) iterator.next();
+        Pttype pt = (Pttype) iterator.next();
         logger.info("usertype id: " + id + ", the type is: " + pt.getName());
 
         if (pt.getName().equalsIgnoreCase(nis2012))

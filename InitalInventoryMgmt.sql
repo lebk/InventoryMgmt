@@ -6,9 +6,9 @@ CREATE SCHEMA IF NOT EXISTS `InventoryMgmt`;
 USE `InventoryMgmt` ;
 
 -- -----------------------------------------------------
--- Table `InventoryMgmt`.`Producttype`
+-- Table `InventoryMgmt`.`PtType`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `InventoryMgmt`.`Producttype` (
+CREATE  TABLE IF NOT EXISTS `InventoryMgmt`.`PtType` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(120) NOT NULL ,
   PRIMARY KEY (`id`) )
@@ -51,7 +51,7 @@ CREATE  TABLE IF NOT EXISTS `InventoryMgmt`.`Product` (
   INDEX `refer2ptcol` (`ptColorId` ASC) ,
   CONSTRAINT `refer2ptcat`
     FOREIGN KEY (`ptTypeId` )
-    REFERENCES `InventoryMgmt`.`Producttype` (`id` )
+    REFERENCES `InventoryMgmt`.`PtType` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `refer2ptsiz`
@@ -147,9 +147,9 @@ insert into InventoryMgmt.businesstype (type) values ("入库");
 insert into InventoryMgmt.businesstype (type) values ("出库");
 
 
-insert into inventorymgmt. producttype(name) values("强化地板类");
-insert into inventorymgmt. producttype(name) values("多层实木地板类");
-insert into inventorymgmt. producttype(name) values("油漆地板类");
+insert into inventorymgmt.PtType(name) values("强化地板类");
+insert into inventorymgmt.PtType(name) values("多层实木地板类");
+insert into inventorymgmt.PtType(name) values("油漆地板类");
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

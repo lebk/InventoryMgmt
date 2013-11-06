@@ -11,7 +11,7 @@ import org.hibernate.Transaction;
 
 import com.leikai.dao.ProductDao;
 import com.leikai.po.Product;
-import com.leikai.po.Producttype;
+import com.leikai.po.Pttype;
 import com.leikai.po.Product;
 import com.leikai.util.HibernateUtil;
 
@@ -169,7 +169,7 @@ public class ProductDaoImpl implements ProductDao
     try
     {
       transaction = session.beginTransaction();
-      List ptl = session.createQuery("from Producttype where name='" + prodType + "'").list();
+      List ptl = session.createQuery("from " + Pttype.class.getName() + " where name='" + prodType + "'").list();
       if (ptl.size() != 1)
       {
         logger.error("No prodtype existed with the name: " + prodType);
@@ -177,7 +177,7 @@ public class ProductDaoImpl implements ProductDao
       }
       for (Iterator it = ptl.iterator(); it.hasNext();)
       {
-        Producttype pt = (Producttype) it.next();
+        Pttype pt = (Pttype) it.next();
         logger.info("ProductType: " + prodType + ", id is: " + pt.getId());
 
         return pt.getId();
@@ -209,7 +209,7 @@ public class ProductDaoImpl implements ProductDao
     try
     {
       transaction = session.beginTransaction();
-      List ptl = session.createQuery("from Producttype where name='" + prodType + "'").list();
+      List ptl = session.createQuery("from " + Pttype.class.getName() + " where name='" + prodType + "'").list();
 
       if (ptl.size() == 1)
       {
@@ -319,7 +319,7 @@ public class ProductDaoImpl implements ProductDao
   {
     return true;
   }
-  
+
   public boolean updateProductName(String oldName, String newName)
   {
 

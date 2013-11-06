@@ -23,7 +23,7 @@
         <mapping resource="hibernate.mapping/Product.hbm.xml" />
         <mapping resource="hibernate.mapping/Ptcolor.hbm.xml" />
         <mapping resource="hibernate.mapping/Businesstype.hbm.xml" />
-        <mapping resource="hibernate.mapping/Producttype.hbm.xml" />
+        <mapping resource="hibernate.mapping/Pttype.hbm.xml" />
 
 	</session-factory>
 </hibernate-configuration>

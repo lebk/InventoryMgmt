@@ -12,7 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.leikai.dao.ProductDao;
-import com.leikai.dao.ProductTypeDao;
+import com.leikai.dao.PtTypeDao;
 import com.leikai.dao.impl.ProductDaoImpl;
 import com.leikai.po.Product;
 
