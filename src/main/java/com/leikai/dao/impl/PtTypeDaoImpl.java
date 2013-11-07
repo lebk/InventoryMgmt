@@ -45,7 +45,7 @@ public class PtTypeDaoImpl implements PtTypeDao
       transaction = session.beginTransaction();
       Pttype pt = new Pttype();
 
-      pt.setName(ptType);
+      pt.setType(ptType);
       session.save(pt);
       transaction.commit();
       logger.info("add product type successfully");
@@ -142,11 +142,11 @@ public class PtTypeDaoImpl implements PtTypeDao
     try
     {
       transaction = session.beginTransaction();
-      List ptl = session.createQuery("from " + Pttype.class.getName() + " where name='" + ptTypeName + "'").list();
+      List ptl = session.createQuery("from " + Pttype.class.getName() + " where type='" + ptTypeName + "'").list();
 
       if (ptl.size() != 1)
       {
-        logger.error("There should be just one pttypeName existed with name: " + ptTypeName + ", but now there are: " + ptl.size());
+        logger.error("There should be just one pttypeName existed with type name: " + ptTypeName + ", but now there are: " + ptl.size());
         return null;
       }
       for (Iterator iterator = ptl.iterator(); iterator.hasNext();)
@@ -188,8 +188,8 @@ public class PtTypeDaoImpl implements PtTypeDao
       for (Iterator iterator = ptl.iterator(); iterator.hasNext();)
       {
         Pttype pt = (Pttype) iterator.next();
-        logger.info("product type id: " + ptTypeId + ", the type name is: " + pt.getName());
-        return pt.getName();
+        logger.info("product type id: " + ptTypeId + ", the type name is: " + pt.getType());
+        return pt.getType();
       }
       transaction.commit();
     } catch (HibernateException e)
@@ -223,7 +223,7 @@ public class PtTypeDaoImpl implements PtTypeDao
       for (Iterator iterator = ptl.iterator(); iterator.hasNext();)
       {
         Pttype pt = (Pttype) iterator.next();
-        logger.info("product type id: " + ptTypeId + ", the type name is: " + pt.getName());
+        logger.info("product type id: " + ptTypeId + ", the type name is: " + pt.getType());
         return pt;
       }
       transaction.commit();
@@ -254,7 +254,7 @@ public class PtTypeDaoImpl implements PtTypeDao
     try
     {
       transaction = session.beginTransaction();
-      List pl = session.createQuery("from " + Pttype.class.getName() + " where name='" + ptTypeName + "'").list();
+      List pl = session.createQuery("from " + Pttype.class.getName() + " where type='" + ptTypeName + "'").list();
 
       if (pl.size() >= 1)
       {

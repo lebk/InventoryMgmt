@@ -10,7 +10,7 @@ import com.leikai.po.Ptdetails;
 
 interface PtDetailsDao
 {
-  public boolean addPtDetail(Integer poId, Integer btId, String opUser,);
+  public boolean addPtDetail(Integer poId, Integer btId, Integer opUserId);
 
   public boolean deletePtDetail();
 

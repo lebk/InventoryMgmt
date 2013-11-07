@@ -1,24 +1,27 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated Oct 19, 2013 5:02:47 PM by Hibernate Tools 3.4.0.CR1 -->
+<!-- Generated Nov 7, 2013 6:36:31 PM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
     <class name="com.leikai.po.Ptdetails" table="ptdetails" catalog="InventoryMgmt">
         <id name="id" type="int">
             <column name="id" />
             <generator class="assigned" />
         </id>
-        <property name="productId" type="java.lang.Integer">
-            <column name="productId" />
+        <property name="poId" type="int">
+            <column name="poId" not-null="true" />
         </property>
-        <property name="btId" type="java.lang.Integer">
-            <column name="btId" />
+        <property name="btId" type="int">
+            <column name="btId" not-null="true" />
+        </property>
+        <property name="num" type="java.lang.Integer">
+            <column name="num" />
+        </property>
+        <property name="opUserId" type="java.lang.Integer">
+            <column name="opUserId" />
         </property>
         <property name="date" type="date">
             <column name="date" length="10" />
-        </property>
-        <property name="opUser" type="string">
-            <column name="opUser" length="80" />
         </property>
     </class>
 </hibernate-mapping>

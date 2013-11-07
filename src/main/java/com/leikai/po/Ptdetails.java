@@ -1,6 +1,7 @@
 package com.leikai.po;
+
 // default package
-// Generated Oct 19, 2013 5:02:47 PM by Hibernate Tools 3.4.0.CR1
+// Generated Nov 7, 2013 6:36:31 PM by Hibernate Tools 3.4.0.CR1
 
 import java.util.Date;
 
@@ -11,27 +12,31 @@ public class Ptdetails implements java.io.Serializable
 {
 
   private int id;
-  private Integer productId;
-  private Integer btId;
+  private int poId;
+  private int btId;
+  private Integer num;
+  private Integer opUserId;
   private Date date;
-  private String opUser;
 
   public Ptdetails()
   {
   }
 
-  public Ptdetails(int id)
+  public Ptdetails(int id, int poId, int btId)
   {
     this.id = id;
+    this.poId = poId;
+    this.btId = btId;
   }
 
-  public Ptdetails(int id, Integer productId, Integer btId, Date date, String opUser)
+  public Ptdetails(int id, int poId, int btId, Integer num, Integer opUserId, Date date)
   {
     this.id = id;
-    this.productId = productId;
+    this.poId = poId;
     this.btId = btId;
+    this.num = num;
+    this.opUserId = opUserId;
     this.date = date;
-    this.opUser = opUser;
   }
 
   public int getId()
@@ -44,24 +49,44 @@ public class Ptdetails implements java.io.Serializable
     this.id = id;
   }
 
-  public Integer getProductId()
+  public int getPoId()
   {
-    return this.productId;
+    return this.poId;
   }
 
-  public void setProductId(Integer productId)
+  public void setPoId(int poId)
   {
-    this.productId = productId;
+    this.poId = poId;
   }
 
-  public Integer getBtId()
+  public int getBtId()
   {
     return this.btId;
   }
 
-  public void setBtId(Integer btId)
+  public void setBtId(int btId)
   {
     this.btId = btId;
+  }
+
+  public Integer getNum()
+  {
+    return this.num;
+  }
+
+  public void setNum(Integer num)
+  {
+    this.num = num;
+  }
+
+  public Integer getOpUserId()
+  {
+    return this.opUserId;
+  }
+
+  public void setOpUserId(Integer opUserId)
+  {
+    this.opUserId = opUserId;
   }
 
   public Date getDate()
@@ -72,16 +97,6 @@ public class Ptdetails implements java.io.Serializable
   public void setDate(Date date)
   {
     this.date = date;
-  }
-
-  public String getOpUser()
-  {
-    return this.opUser;
-  }
-
-  public void setOpUser(String opUser)
-  {
-    this.opUser = opUser;
   }
 
 }

@@ -120,7 +120,7 @@ public class PtTypeDaoTest
     logger.info("The product type id is:" + id);
 
     Pttype pt = ptd.getPtTypeByPtTypeId(id);
-    logger.info("The pt type name is:" + pt.getName());
+    logger.info("The pt type name is:" + pt.getType());
     Assert.assertTrue("The pt type name should not be null", pt != null);
 
   }

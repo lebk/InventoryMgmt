@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated Oct 19, 2013 5:02:47 PM by Hibernate Tools 3.4.0.CR1 -->
+<!-- Generated Nov 7, 2013 6:36:31 PM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
     <class name="com.leikai.po.User" table="user" catalog="InventoryMgmt">
         <id name="id" type="java.lang.Integer">
