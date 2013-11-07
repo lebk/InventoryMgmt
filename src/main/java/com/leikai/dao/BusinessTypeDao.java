@@ -12,7 +12,12 @@ import com.leikai.po.Businesstype;
  * @date 2013-10-19
  */
 
-public interface BusinessTypeDao {
+public interface BusinessTypeDao
+{
 
-	public List<Businesstype> getAllBusinessType();
+  public List<Businesstype> getAllBusinessType();
+
+  public Integer getIdByType(String type);
+
+  public Integer getTypeById(Integer id);
 }

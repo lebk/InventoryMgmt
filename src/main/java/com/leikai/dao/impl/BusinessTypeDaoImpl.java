@@ -48,4 +48,16 @@ public class BusinessTypeDaoImpl implements BusinessTypeDao {
 		return bl;
 	}
 
+  public Integer getIdByType(String type)
+  {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  public Integer getTypeById(Integer id)
+  {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
 }
