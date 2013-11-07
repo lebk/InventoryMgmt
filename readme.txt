@@ -20,4 +20,4 @@ Create a user vmfactory/syamtenc, and grant all the privilidges to the db vmfact
 1. mysql - u root -p
 2. mysql> grant all on InventoryMgmt.* to dbuser@localhost identified by 'dbpassword';
 
-3. Execute /VMFactory/InitialVMFactory.sql to initial tables and Metadata. (Or drop the db by executing: /VMFactory/DropTables.sql).
+3. Execute InitalInventoryMgmt.sql to initial tables and Metadata.

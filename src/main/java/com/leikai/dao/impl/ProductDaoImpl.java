@@ -112,6 +112,12 @@ public class ProductDaoImpl implements ProductDao
     return false;
   }
 
+  public boolean removeProduct(Integer poId)
+  {
+    // TODO Auto-generated method stub
+    return false;
+  }
+
   private boolean updateProductNumber(Integer poId, Integer ptNumber)
   {
 
