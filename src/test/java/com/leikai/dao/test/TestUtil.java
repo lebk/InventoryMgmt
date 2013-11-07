@@ -1,5 +1,14 @@
 package com.leikai.dao.test;
 
+import com.leikai.dao.ProductDao;
+import com.leikai.dao.PtColorDao;
+import com.leikai.dao.PtSizeDao;
+import com.leikai.dao.PtTypeDao;
+import com.leikai.dao.impl.ProductDaoImpl;
+import com.leikai.dao.impl.PtColorDaoImpl;
+import com.leikai.dao.impl.PtSizeDaoImpl;
+import com.leikai.dao.impl.PtTypeDaoImpl;
+
 public class TestUtil
 {
 
@@ -13,9 +22,21 @@ public class TestUtil
     return ptTypeName;
   }
 
+  private static Integer getPtTypeId()
+  {
+    PtTypeDao ptd = new PtTypeDaoImpl();
+    return ptd.getIdByPtType(ptTypeName);
+  }
+
   public static String getPtColorName()
   {
     return ptcolorName;
+  }
+
+  private static Integer getPtColorId()
+  {
+    PtColorDao pcd = new PtColorDaoImpl();
+    return pcd.getIdByPtColorName(ptcolorName);
   }
 
   public static String getPtSizeName()
@@ -23,9 +44,27 @@ public class TestUtil
     return ptSizeName;
   }
 
+  private static Integer getPtSizeId()
+  {
+    PtSizeDao psd = new PtSizeDaoImpl();
+    return psd.getIdByPtSizeName(ptSizeName);
+  }
+
   public static Integer getPNum()
   {
     return pNum;
   }
 
+  public static String getPName()
+  {
+    String pName = ptTypeName + "-" + ptSizeName + "-" + ptcolorName;
+    return pName;
+  }
+
+  public static Integer getPoId()
+  {
+    ProductDao pd = new ProductDaoImpl();
+    pd.addProduct(getPName(), getPtTypeId(), getPtColorId(), getPtSizeId(), pNum);
+    return pd.getIdByProdName(getPName());
+  }
 }

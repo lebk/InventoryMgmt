@@ -15,4 +15,6 @@ public interface PtDetailsDao
   public boolean deletePtDetail(Integer id);
 
   public List<Ptdetails> getAllPtDetails();
+
+  public List<Ptdetails> getAllPtDetailsbyPoId(Integer poId);
 }

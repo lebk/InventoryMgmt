@@ -38,13 +38,13 @@ public class PtDetailsDaoImpl implements PtDetailsDao
       Ptdetails pd = new Ptdetails();
 
       pd.setPoId(poId);
-      pd.setId(btId);
+      pd.setBtId(btId);
       pd.setNum(pNum);
       pd.setOpUserId(opUserId);
       pd.setDate(new Date());
       session.save(pd);
       transaction.commit();
-      logger.info("add product size successfully");
+      logger.info("add product detail successfully");
       return true;
 
     } catch (HibernateException e)
@@ -95,20 +95,51 @@ public class PtDetailsDaoImpl implements PtDetailsDao
     List pdl = new ArrayList<Ptdetails>();
     Transaction transaction = null;
 
-    try {
+    try
+    {
       transaction = session.beginTransaction();
-      List pdq = session.createQuery(
-          "from " + Ptdetails.class.getName()).list();
-      for (Iterator it = pdq.iterator(); it.hasNext();) {
+      List pdq = session.createQuery("from " + Ptdetails.class.getName()).list();
+      for (Iterator it = pdq.iterator(); it.hasNext();)
+      {
         Ptdetails pd = (Ptdetails) it.next();
         pdl.add(pd);
       }
       transaction.commit();
-    } catch (HibernateException e) {
+    } catch (HibernateException e)
+    {
       transaction.rollback();
       e.printStackTrace();
 
-    } finally {
+    } finally
+    {
+      session.close();
+    }
+    return pdl;
+  }
+
+  public List<Ptdetails> getAllPtDetailsbyPoId(Integer poId)
+  {
+    Session session = HibernateUtil.getSessionFactory().openSession();
+    List pdl = new ArrayList<Ptdetails>();
+    Transaction transaction = null;
+
+    try
+    {
+      transaction = session.beginTransaction();
+      List pdq = session.createQuery("from " + Ptdetails.class.getName() + " where poId=" + poId).list();
+      for (Iterator it = pdq.iterator(); it.hasNext();)
+      {
+        Ptdetails pd = (Ptdetails) it.next();
+        pdl.add(pd);
+      }
+      transaction.commit();
+    } catch (HibernateException e)
+    {
+      transaction.rollback();
+      e.printStackTrace();
+
+    } finally
+    {
       session.close();
     }
     return pdl;

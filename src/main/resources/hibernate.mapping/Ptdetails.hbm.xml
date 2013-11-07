@@ -20,7 +20,7 @@
         <property name="opUserId" type="java.lang.Integer">
             <column name="opUserId" />
         </property>
-        <property name="date" type="date">
+        <property name="date" type="timestamp">
             <column name="date" length="10" />
         </property>
     </class>

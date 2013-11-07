@@ -143,12 +143,12 @@ ENGINE = InnoDB;
 -- Table `InventoryMgmt`.`ptDetails`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `InventoryMgmt`.`ptDetails` (
-  `id` INT NOT NULL ,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `poId` INT NOT NULL ,
   `btId` INT NOT NULL ,
   `num` INT NULL ,
   `opUserId` INT NULL ,
-  `date` DATE NULL ,
+  `date` TIMESTAMP NULL ,
   PRIMARY KEY (`id`) ,
   INDEX `pd_refer2bt` (`btId` ASC) ,
   INDEX `pd_refer2po` (`poId` ASC) ,
