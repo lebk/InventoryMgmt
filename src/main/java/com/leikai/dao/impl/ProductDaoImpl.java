@@ -11,6 +11,7 @@ import org.hibernate.Transaction;
 
 import com.leikai.dao.ProductDao;
 import com.leikai.dao.PtColorDao;
+import com.leikai.dao.PtDetailsDao;
 import com.leikai.dao.PtSizeDao;
 import com.leikai.dao.PtTypeDao;
 import com.leikai.po.Product;
@@ -64,14 +65,23 @@ public class ProductDaoImpl implements ProductDao
 
   }
 
+  private boolean addPtDetails(Integer poId, Integer btId, Integer pNum, Integer opUserId)
+  {
+    PtDetailsDao pdd = new PtDetailsDaoImpl();
+    pdd.addPtDetail(poId, btId, pNum, opUserId);
+    return false;
+  }
+
   public boolean addProduct(String pName, Integer ptTypeId, Integer ptColorId, Integer ptSizeId, Integer pNum)
   {
 
     if (this.isProductExisted(pName))
     {
       logger.info("as the product is already exited, increase the nubmer");
-      Integer pn = this.getProductByPoId(this.getIdByProdName(pName)).getPtNumber();
+      Integer poId = this.getIdByProdName(pName);
+      Integer pn = this.getProductByPoId(poId).getPtNumber();
       Boolean status = updateProductNumber(pName, pn + pNum);
+    //  status=this.addPtDetails(poId, btId, pNum, opUserId);
       return status;
     }
 
