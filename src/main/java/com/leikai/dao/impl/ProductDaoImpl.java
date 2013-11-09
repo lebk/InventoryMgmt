@@ -47,7 +47,7 @@ public class ProductDaoImpl implements ProductDao
     try
     {
       transaction = session.beginTransaction();
-      List ql = session.createQuery("from" + Product.class.getName()).list();
+      List ql = session.createQuery("from " + Product.class.getName()).list();
       for (Iterator it = ql.iterator(); it.hasNext();)
       {
         Product p = (Product) it.next();
