@@ -145,4 +145,59 @@ public class PtDetailsDaoImpl implements PtDetailsDao
     return pdl;
   }
 
+  private List<Integer> getAllIdsByPoId(Integer poId)
+  {
+    List<Integer> idl = new ArrayList<Integer>();
+
+    List<Ptdetails> pdl = this.getAllPtDetailsbyPoId(poId);
+    Iterator it = pdl.iterator();
+    while (it.hasNext())
+    {
+      Ptdetails pd = (Ptdetails) it.next();
+      idl.add(pd.getId());
+    }
+    return idl;
+
+  }
+
+  public boolean deletePtDetialByPoId(Integer poId)
+  {
+
+    List<Integer> idl = this.getAllIdsByPoId(poId);
+
+    Session session = HibernateUtil.getSessionFactory().openSession();
+    Transaction transaction = null;
+    try
+    {
+      transaction = session.beginTransaction();
+      Iterator it = idl.iterator();
+      while (it.hasNext())
+      {
+        Integer id = (Integer) it.next();
+        Ptdetails ps = (Ptdetails) session.get(Ptdetails.class, id);
+        session.delete(ps);
+      }
+      transaction.commit();
+      logger.info("delete product detail by poId: " + poId + " successfully");
+
+      return true;
+    } catch (HibernateException e)
+    {
+      transaction.rollback();
+      e.printStackTrace();
+    } finally
+    {
+      session.close();
+    }
+    logger.error("fail to product detail with poId: " + poId);
+
+    return false;
+  }
+
+  public boolean cleanUpAll()
+  {
+    // TODO Auto-generated method stub
+    return false;
+  }
+
 }

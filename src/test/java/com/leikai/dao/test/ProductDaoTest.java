@@ -97,7 +97,7 @@ public class ProductDaoTest
 
     Assert.assertTrue("Should add product successfully", status == true);
     Integer poId = pd.getIdByProdName(pName);
-    status = pd.reduceProduct(poId, pNum+3);
+    status = pd.reduceProduct(poId, pNum + 3);
     Assert.assertTrue("Should reduce product successfully", status == true);
 
   }
@@ -149,4 +149,12 @@ public class ProductDaoTest
     Assert.assertTrue("The product should be existed", status);
   }
 
+  @Test
+  public void testRemoveProduct()
+  {
+    Integer poId = TestUtil.getPoId();
+    logger.info("The poId is:" + poId);
+    Boolean status = pd.removeProduct(poId);
+    Assert.assertTrue("Expect return true", status == true);
+  }
 }

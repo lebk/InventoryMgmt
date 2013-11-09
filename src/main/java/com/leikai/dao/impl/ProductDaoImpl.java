@@ -15,6 +15,7 @@ import com.leikai.dao.PtDetailsDao;
 import com.leikai.dao.PtSizeDao;
 import com.leikai.dao.PtTypeDao;
 import com.leikai.po.Product;
+import com.leikai.po.Ptdetails;
 import com.leikai.po.Pttype;
 import com.leikai.po.Product;
 import com.leikai.po.User;
@@ -32,6 +33,8 @@ import com.leikai.util.HibernateUtil;
 public class ProductDaoImpl implements ProductDao
 {
   static Logger logger = Logger.getLogger(ProductDaoImpl.class);
+
+  PtDetailsDao pdd = new PtDetailsDaoImpl();
 
   public List<Product> getProductList()
   {
@@ -81,7 +84,7 @@ public class ProductDaoImpl implements ProductDao
       Integer poId = this.getIdByProdName(pName);
       Integer pn = this.getProductByPoId(poId).getPtNumber();
       Boolean status = updateProductNumber(pName, pn + pNum);
-    //  status=this.addPtDetails(poId, btId, pNum, opUserId);
+      // status=this.addPtDetails(poId, btId, pNum, opUserId);
       return status;
     }
 
@@ -124,7 +127,47 @@ public class ProductDaoImpl implements ProductDao
 
   public boolean removeProduct(Integer poId)
   {
-    // TODO Auto-generated method stub
+    logger.info("Remove poduduct with id:" + poId);
+    Boolean status = pdd.deletePtDetialByPoId(poId);
+    if (status == false)
+    {
+      logger.error("Fail to remove the ptdetails records!");
+      return false;
+    }
+    status = this.deleteProductRecord(poId);
+    if (status == false)
+    {
+      logger.error("Fail to remove the product record!");
+      return false;
+    }
+    return true;
+  }
+
+  private boolean deleteProductRecord(Integer id)
+  {
+
+    Session session = HibernateUtil.getSessionFactory().openSession();
+    Transaction transaction = null;
+    try
+    {
+      transaction = session.beginTransaction();
+
+      Product ps = (Product) session.get(Product.class, id);
+      session.delete(ps);
+
+      transaction.commit();
+      logger.info("delete product by id: " + id + " successfully");
+      return true;
+    } catch (HibernateException e)
+    {
+      transaction.rollback();
+      e.printStackTrace();
+    } finally
+    {
+      session.close();
+    }
+    logger.error("fail to product  with id: " + id);
+
     return false;
   }
 
