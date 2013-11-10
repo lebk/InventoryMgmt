@@ -16,7 +16,7 @@ How to setup the project locally and run.
 
 -------------DB Schema Initialize--------
 
-Create a user vmfactory/syamtenc, and grant all the privilidges to the db vmfactory.
+Create a user root/123456, and grant all the privilidges to the db inventorymgmt.
 1. mysql - u root -p
 2. mysql> grant all on InventoryMgmt.* to dbuser@localhost identified by 'dbpassword';
 
