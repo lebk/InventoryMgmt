@@ -1,6 +1,7 @@
 package com.lebk.dao.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class PtTypeDaoImpl implements PtTypeDao
 {
   static Logger logger = Logger.getLogger(PtTypeDaoImpl.class);
 
-  public boolean addPtType(String ptType)
+  public boolean addPtType(String ptType, Integer opUserId)
   {
     if (this.isPtTypeExisted(ptType))
     {
@@ -46,6 +47,8 @@ public class PtTypeDaoImpl implements PtTypeDao
       Pttype pt = new Pttype();
 
       pt.setType(ptType);
+      pt.setOpUserId(opUserId);
+      pt.setCreateTime(new Date());
       session.save(pt);
       transaction.commit();
       logger.info("add product type successfully");

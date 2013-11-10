@@ -49,13 +49,14 @@ public class ProductDaoTest
     String ptType = TestUtil.getPtTypeName();
     String ptSize = TestUtil.getPtSizeName();
     String ptColor = TestUtil.getPtColorName();
+    Integer opUserId=TestUtil.getOpUserId();
     pName = ptType + "-" + ptSize + "-" + ptColor;
     PtSizeDao psd = new PtSizeDaoImpl();
     psd.addPtSize(ptSize);
     ptSizeId = psd.getIdByPtSizeName(ptSize);
 
     PtTypeDao ptd = new PtTypeDaoImpl();
-    ptd.addPtType(ptType);
+    ptd.addPtType(ptType, opUserId);
     ptTypeId = ptd.getIdByPtType(ptType);
 
     PtColorDao pcd = new PtColorDaoImpl();

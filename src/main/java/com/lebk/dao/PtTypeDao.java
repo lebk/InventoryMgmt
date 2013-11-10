@@ -13,20 +13,22 @@ import com.lebk.po.Ptcolor;
  * @date 2013-10-19
  */
 
-public interface PtTypeDao {
+public interface PtTypeDao
+{
 
-	public boolean addPtType(String ptType);
+  public boolean addPtType(String ptType, Integer opUserId);
 
-	public boolean deletePtType(String ptType);
 
-	public List<Pttype> getAllPtType();
+  public boolean deletePtType(String ptType);
 
-	public Integer getIdByPtType(String ptTypeName);
+  public List<Pttype> getAllPtType();
 
-	public String getNameByPtTypeId(Integer pdTypeId);
+  public Integer getIdByPtType(String ptTypeName);
 
-	public Pttype getPtTypeByPtTypeId(Integer ptTypeId);
+  public String getNameByPtTypeId(Integer pdTypeId);
 
-	public boolean isPtTypeExisted(String ptTypeName);
+  public Pttype getPtTypeByPtTypeId(Integer ptTypeId);
+
+  public boolean isPtTypeExisted(String ptTypeName);
 
 }

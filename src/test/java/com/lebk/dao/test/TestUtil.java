@@ -18,12 +18,18 @@ public class TestUtil
   private static String ptTypeName = "测试产品类型";
   private static String ptcolorName = "测试颜色";
   private static String ptSizeName = "测试大小";
+  private static Integer opUserId = 1;// 管理员
   private static Integer pNum = 100;
   static Logger logger = Logger.getLogger(TestUtil.class);
 
   public static String getPtTypeName()
   {
     return ptTypeName;
+  }
+
+  public static Integer getOpUserId()
+  {
+    return opUserId;
   }
 
   private static Integer getPtTypeId()
@@ -72,9 +78,14 @@ public class TestUtil
     return pd.getIdByProdName(getPName());
   }
 
-  public static String getRandomPName()
+  public static String getRandString(int count)
   {
-    String rStr = RandomStringUtils.randomAscii(8);
+    if (count <= 0)
+    {
+      logger.error("Expect count greater than 0,return empty");
+      return "";
+    }
+    String rStr = RandomStringUtils.randomAscii(count);
     logger.info("The random string is:" + rStr);
     return rStr;
   }
@@ -82,7 +93,7 @@ public class TestUtil
   public static void main(String[] args)
   {
     for (int i = 0; i < 10; i++)
-      logger.info("the string is:" + getRandomPName());
+      logger.info("the string is:" + getRandString(8));
   }
 
 }

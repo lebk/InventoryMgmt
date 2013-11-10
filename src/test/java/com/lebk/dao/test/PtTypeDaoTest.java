@@ -31,6 +31,7 @@ public class PtTypeDaoTest
 
   static Logger logger = Logger.getLogger(PtTypeDaoTest.class);
   PtTypeDao ptd;
+  Integer opUserId=TestUtil.getOpUserId();
   String ptTypeName = TestUtil.getPtTypeName();
 
   @BeforeClass
@@ -61,7 +62,7 @@ public class PtTypeDaoTest
   public void testAddPtType()
   {// delete first, then added.
     ptd.deletePtType(ptTypeName);
-    Boolean status = ptd.addPtType(ptTypeName);
+    Boolean status = ptd.addPtType(ptTypeName, opUserId);
     Assert.assertTrue("expect return true", status);
     status = ptd.isPtTypeExisted(ptTypeName);
     Assert.assertTrue("expect return true, as has been added before", status);
@@ -71,7 +72,7 @@ public class PtTypeDaoTest
   @Test
   public void testDeletePtType()
   {
-    ptd.addPtType(ptTypeName);
+    ptd.addPtType(ptTypeName, opUserId);
     Boolean status = ptd.deletePtType(ptTypeName);
     Assert.assertTrue("delete product type should be successfully", status);
     status = ptd.deletePtType(ptTypeName);
@@ -92,7 +93,7 @@ public class PtTypeDaoTest
   @Test
   public void testGetIdByPtType()
   {
-    ptd.addPtType(ptTypeName);
+    ptd.addPtType(ptTypeName, opUserId);
     Integer id = ptd.getIdByPtType(ptTypeName);
     logger.info("The id is:" + id);
     Assert.assertTrue("The id should be greater than 0", id > 0);
@@ -101,7 +102,7 @@ public class PtTypeDaoTest
   @Test
   public void testGetNameByPtTypeId()
   {
-    ptd.addPtType(ptTypeName);
+    ptd.addPtType(ptTypeName, opUserId);
     Integer id = ptd.getIdByPtType(ptTypeName);
     String name = ptd.getNameByPtTypeId(id);
     logger.info("The name is:" + name);
@@ -115,7 +116,7 @@ public class PtTypeDaoTest
   @Test
   public void testGetPtTypeByPtTypeId()
   {
-    ptd.addPtType(ptTypeName);
+    ptd.addPtType(ptTypeName, opUserId);
     Integer id = ptd.getIdByPtType(ptTypeName);
     logger.info("The product type id is:" + id);
 
@@ -128,7 +129,7 @@ public class PtTypeDaoTest
   @Test
   public void testIsPtTypeExisted()
   {
-    ptd.addPtType(ptTypeName);
+    ptd.addPtType(ptTypeName, opUserId);
     Boolean status = ptd.isPtTypeExisted(ptTypeName);
     Assert.assertTrue("The product type should be existed as I just added it", status);
     ptd.deletePtType(ptTypeName);
