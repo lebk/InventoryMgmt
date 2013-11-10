@@ -17,7 +17,7 @@
 		
 	<filter>
 		<filter-name>SessionCheckFilter</filter-name>
-		<filter-class>com.leikai.filter.SessionCheckFilter</filter-class>
+		<filter-class>com.lebk.filter.SessionCheckFilter</filter-class>
 		<init-param>
 			<param-name>checkSessionKey</param-name>
 			<param-value>username</param-value>

@@ -20,17 +20,17 @@
 		</result-types>
 		
 
-		<action name="login" method="authUser" class="com.leikai.action.UserAction">
+		<action name="login" method="authUser" class="com.lebk.action.UserAction">
 			<result name="success">index.jsp</result>
 			<result name="error">Login.jsp</result>
 		</action>
-		<action name="logout" method="logout" class="com.leikai.action.UserAction">
+		<action name="logout" method="logout" class="com.lebk.action.UserAction">
 		    <result name="success">Login.jsp</result>
 		</action>
 		
 
 		<action name="*tilesAction" method="{1}"
-			class="com.leikai.action.TilesAction">
+			class="com.lebk.action.TilesAction">
 			<result name="jobstatus" type="tiles">jobstatus</result>
 			<result name="jobmanage" type="tiles">jobmanage</result>
 			<result name="showvmlist" type="tiles">showvmlist</result>
@@ -54,34 +54,34 @@
           
 		</action>
 		
-		<action name="deleteUsertilesAction" method="deleteUser" class="com.leikai.action.TilesAction">
+		<action name="deleteUsertilesAction" method="deleteUser" class="com.lebk.action.TilesAction">
             <result name="success" type="redirectAction">showUserListtilesAction</result>
             <result name="error" type="tiles">deleteUserError</result>
         </action>
-		<action name="updateUsertilesAction" method="updateUser" class="com.leikai.action.TilesAction">
+		<action name="updateUsertilesAction" method="updateUser" class="com.lebk.action.TilesAction">
             <result name="success" type="redirectAction">showUserListtilesAction</result>
             <result name="error" type="tiles">updateUserError</result>
         </action>
-        <action name="addUsertilesAction" method="addUser" class="com.leikai.action.TilesAction">
+        <action name="addUsertilesAction" method="addUser" class="com.lebk.action.TilesAction">
             <result name="success" type="redirectAction">showUserListtilesAction</result>
             <result name="error" type="tiles">addUserError</result>
         </action>
         
-        <action name="writeExtraOSinDBtilesAction" method="writeExtraOSinDB" class="com.leikai.action.TilesAction">
+        <action name="writeExtraOSinDBtilesAction" method="writeExtraOSinDB" class="com.lebk.action.TilesAction">
             <result name="success" type="redirectAction">showOSListtilesAction</result>
             <result name="error" type="tiles">writeExtraOSinDBError</result>
         </action>
-        <action name="updateOsAccountandPasswordResulttilesAction" method="updateOsAccountandPassword" class="com.leikai.action.TilesAction">
+        <action name="updateOsAccountandPasswordResulttilesAction" method="updateOsAccountandPassword" class="com.lebk.action.TilesAction">
             <result name="success" type="redirectAction">showOSListtilesAction</result>
             <result name="error" type="tiles">updateOsAccountandPasswordError</result>
         </action>
         
-        <action name="updateProductNameResulttilesAction" method="updateProductName" class="com.leikai.action.TilesAction">
+        <action name="updateProductNameResulttilesAction" method="updateProductName" class="com.lebk.action.TilesAction">
             <result name="success" type="redirectAction">displayProducttilesAction</result>
             <result name="error" type="tiles">updateProductNameError</result>
         </action>
 
-        <action name="uploadFiletilesAction" method="uploadFile" class="com.leikai.action.TilesAction">
+        <action name="uploadFiletilesAction" method="uploadFile" class="com.lebk.action.TilesAction">
             <interceptor-ref name="exception" />
 			<interceptor-ref name="i18n" />
 			<interceptor-ref name="fileUpload">
@@ -98,12 +98,12 @@
             <result name="success" type="tiles">uploadFile</result>
         </action>
         
-        <action name="stopJobtilesAction" method="stopJob" class="com.leikai.action.TilesAction">
+        <action name="stopJobtilesAction" method="stopJob" class="com.lebk.action.TilesAction">
             <result name="success" type="redirectAction">jobstatustilesAction</result>
             <result name="error" type="tiles">stopJobError</result>
         </action>
         
-        <action name="showJobProgresstilesAction" method="showJobProgress" class="com.leikai.action.TilesAction">
+        <action name="showJobProgresstilesAction" method="showJobProgress" class="com.lebk.action.TilesAction">
             <result name="success" type="tiles">showJobProgressDetails</result>
         </action>	
 				

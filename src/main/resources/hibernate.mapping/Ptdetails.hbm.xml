@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated Nov 7, 2013 6:36:31 PM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="com.leikai.po.Ptdetails" table="ptdetails" catalog="InventoryMgmt">
+    <class name="com.lebk.po.Ptdetails" table="ptdetails" catalog="InventoryMgmt">
         <id name="id" type="int">
             <column name="id" />
             <generator class="assigned" />

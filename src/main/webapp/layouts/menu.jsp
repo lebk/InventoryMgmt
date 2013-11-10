@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8" import="com.leikai.services.*, com.leikai.services.impl.*"%>
+<%@ page contentType="text/html; charset=UTF-8" import="com.lebk.services.*, com.lebk.services.impl.*"%>
 <%@taglib uri="/struts-tags" prefix="s"%>
 
 <!--nav begin -->

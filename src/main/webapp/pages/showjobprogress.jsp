@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ page import="com.leikai.services.*, com.leikai.services.impl.*" %>
+<%@ page import="com.lebk.services.*, com.lebk.services.impl.*" %>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <head>
 <title>Job Progress</title>
