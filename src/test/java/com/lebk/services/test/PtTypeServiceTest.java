@@ -1,6 +1,10 @@
 package com.lebk.services.test;
 
 import static org.junit.Assert.*;
+
+import java.util.Iterator;
+import java.util.List;
+
 import junit.framework.Assert;
 
 import org.apache.log4j.Logger;
@@ -9,6 +13,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.lebk.dao.test.TestUtil;
+import com.lebk.po.Pttype;
 import com.lebk.services.PtTypeService;
 import com.lebk.services.impl.PtTypeServiceImpl;
 
@@ -44,13 +49,20 @@ public class PtTypeServiceTest
   @Test
   public void testDeletePtType()
   {
-   // fail("Not yet implemented");
+    // fail("Not yet implemented");
   }
 
   @Test
   public void testGetAllPtType()
   {
-    fail("Not yet implemented");
-  }
+    List<Pttype> ptl = pts.getAllPtType();
+    Iterator it = ptl.iterator();
+    while (it.hasNext())
+    {
+      Pttype pt = (Pttype) it.next();
+      logger.info("The type is:" + pt);
 
+    }
+
+  }
 }

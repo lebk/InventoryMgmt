@@ -72,4 +72,10 @@ public class Pttype implements java.io.Serializable
     this.createTime = createTime;
   }
 
+  public String toString()
+  {
+
+    return this.id + ":" + this.getType() + ":" + this.getOpUserId() + ":" + this.getCreateTime();
+  }
+
 }
