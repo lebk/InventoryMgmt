@@ -132,13 +132,6 @@ public class TilesAction extends ActionSupport
     return "admin";
   }
 
-  public String uploadFile() throws Exception
-  {
-
-    logger.info("upload is successful!");
-    return SUCCESS;
-
-  }
 
   public String getAddUserName()
   {
