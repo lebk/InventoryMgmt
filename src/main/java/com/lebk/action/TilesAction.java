@@ -45,7 +45,6 @@ public class TilesAction extends ActionSupport
   private boolean addasAdmin;
   private List<UserDTO> userDtoList;
 
-
   ProductTypeService pts = new ProductTypeServiceImpl();
 
   private List<Pttype> productTypeList = new ArrayList<Pttype>();
@@ -127,7 +126,7 @@ public class TilesAction extends ActionSupport
   {
     this.productTypeList = productTypeList;
   }
-  
+
   public String admin()
   {
     return "admin";
@@ -211,13 +210,14 @@ public class TilesAction extends ActionSupport
 
   public String showProductTypeList()
   {
-    this.productTypeList = new ArrayList<Pttype>();
+    // this.productTypeList = new ArrayList<Pttype>();
 
     List<Pttype> ptl = pts.getAllPtType();
+    this.productTypeList = ptl;
 
     return "showProductTypeList";
   }
-  
+
   public boolean addUser(String name, String password, Integer type, String email, String opUser)
   {
     return us.addUser(name, password, type, email, opUser);
@@ -307,8 +307,6 @@ public class TilesAction extends ActionSupport
 
   }
 
-
-  
   private void convertUserListToUserDTOList(List<User> ul, List<UserDTO> userDtoList)
   {
     for (User u : ul)
