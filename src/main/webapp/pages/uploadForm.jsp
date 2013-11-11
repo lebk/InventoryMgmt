@@ -8,7 +8,7 @@ Upload Product
 
 <head>
 <title>Upload Product</title>
-<link href="<s:url value="/css/vmfactory.css"/>" rel="stylesheet" type="text/css"/>
+<link href="<s:url value="/css/InventoryMgmt.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<s:url value="/css/main.css"/>" rel="stylesheet" type="text/css"/>
 <style type="text/css">
 table.wwFormTable {

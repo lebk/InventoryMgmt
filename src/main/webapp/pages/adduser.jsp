@@ -12,7 +12,7 @@ Add New User
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Add New User</title>
-<link href="<s:url value="/css/vmfactory.css"/>" rel="stylesheet" type="text/css"/>
+<link href="<s:url value="/css/InventoryMgmt.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<s:url value="/css/main.css"/>" rel="stylesheet" type="text/css"/>
 </head>
 

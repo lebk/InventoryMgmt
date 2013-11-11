@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 
-$path = "/opt/vmfactory/logs";
-$file_to_del = "vmfactory.log.";
+$path = "/opt/InventoryMgmt/logs";
+$file_to_del = "InventoryMgmt.log.";
 $expire_day = 10;
 
 opendir(ML,$path);
@@ -11,7 +11,7 @@ closedir(ML);
 foreach $file_name(@counter)
 {
 	chomp($file_name);
-	if (index($file_name,$file_to_del) == 0) #if file_name starts with "vmfactory.log."
+	if (index($file_name,$file_to_del) == 0) #if file_name starts with "InventoryMgmt.log."
 	{
 		$file_path = join("/",$path,$file_name); #absolute path
 		$time_intval = 0 + time() - (stat($file_path))[9]; #change string into number, time_intval is in second

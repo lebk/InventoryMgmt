@@ -4,7 +4,7 @@
 <html>
 <head>
 <title>Extra OS List</title>
-<link href="<s:url value="/css/vmfactory.css"/>" rel="stylesheet" type="text/css"/>
+<link href="<s:url value="/css/InventoryMgmt.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<s:url value="/css/main.css"/>" rel="stylesheet" type="text/css"/>
 <h3>
 <center>

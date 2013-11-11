@@ -7,7 +7,7 @@
 
 <html>
     <head>
-        <link href="<s:url value="/css/vmfactory.css"/>" rel="stylesheet" type="text/css" />
+        <link href="<s:url value="/css/InventoryMgmt.css"/>" rel="stylesheet" type="text/css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title><tiles:insertAttribute name="title" ignore="true" /></title>
     </head>

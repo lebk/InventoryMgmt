@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>update your OS name</title>
-<link href="<s:url value="/css/vmfactory.css"/>" rel="stylesheet" type="text/css"/>
+<link href="<s:url value="/css/InventoryMgmt.css"/>" rel="stylesheet" type="text/css"/>
 </head>
 
 <s:form action="updateOsNameResult" enctype="multipart/form-data" method="post">

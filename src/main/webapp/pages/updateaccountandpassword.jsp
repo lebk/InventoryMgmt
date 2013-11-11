@@ -8,7 +8,7 @@
 </center>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>OS Edit</title>
-<link href="<s:url value="/css/vmfactory.css"/>" rel="stylesheet" type="text/css"/>
+<link href="<s:url value="/css/InventoryMgmt.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<s:url value="/css/main.css"/>" rel="stylesheet" type="text/css"/>
 </head>
 
