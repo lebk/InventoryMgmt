@@ -109,7 +109,6 @@ public class UserAction extends ActionSupport
       }
     } catch (Exception e)
     {
-      // System.out.println(e);
       logger.info("Login Exception: " + e);
       return ERROR;
     }
