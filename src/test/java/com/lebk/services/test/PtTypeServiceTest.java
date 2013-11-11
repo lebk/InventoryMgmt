@@ -14,14 +14,14 @@ import org.junit.Test;
 
 import com.lebk.dao.test.TestUtil;
 import com.lebk.po.Pttype;
-import com.lebk.services.PtTypeService;
-import com.lebk.services.impl.PtTypeServiceImpl;
+import com.lebk.services.ProductTypeService;
+import com.lebk.services.impl.ProductTypeServiceImpl;
 
 public class PtTypeServiceTest
 {
   static Logger logger = Logger.getLogger(PtTypeServiceTest.class);
 
-  PtTypeService pts = new PtTypeServiceImpl();
+  ProductTypeService pts = new ProductTypeServiceImpl();
   // String ptType=TestUtil.getRandString(8);
   String opUser = "管理员";
 

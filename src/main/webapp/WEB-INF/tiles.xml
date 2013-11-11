@@ -35,8 +35,13 @@
   </definition>
 
     <definition name="showUserList" extends="baseLayout">
-      <put-attribute name="title"  value="User List"/>
+      <put-attribute name="title"  value="用户列表"/>
       <put-attribute name="body"   value="/pages/showuserlist.jsp"/>      
+  </definition>
+  
+      <definition name="showProductTypeList" extends="baseLayout">
+      <put-attribute name="title"  value="产品类型列表"/>
+      <put-attribute name="body"   value="/pages/showproducttypeList.jsp"/>      
   </definition>
   
   <definition name="aboutVMF" extends="baseLayout">

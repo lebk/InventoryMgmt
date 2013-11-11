@@ -33,7 +33,7 @@
 <td>
 <ul type="square">
 <li>
-<s:a href="showOSListtilesAction.action">产品分类管理</s:a>
+<s:a href="showProductTypeListtilesAction.action">产品分类管理</s:a>
 </li>
 </ul>
 </td>

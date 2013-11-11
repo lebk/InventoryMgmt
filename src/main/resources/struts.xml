@@ -40,6 +40,8 @@
 			<result name="displayUser" type="tiles">displayUser</result>
 			<result name="aboutVMF" type="tiles">aboutVMF</result>
 			
+			<result name="showProductTypeList" type="tiles">showProductTypeList</result>
+			
 			<result name="showOSList" type="tiles">showOSList</result>
 			<result name="syncOS" type="tiles">syncOS</result>
 			<result name="showExtraClientOS" type="tiles">showExtraClientOS</result>

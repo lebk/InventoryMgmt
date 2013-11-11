@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.lebk.po.Pttype;
 
-public interface PtTypeService
+public interface ProductTypeService
 {
   /**
    * Add a new product type, if it existed, then return false.
