@@ -43,7 +43,7 @@
 <td>
 <ul type="square">
 <li>
-<s:a href="displayProducttilesAction.action">产品尺寸管理</s:a>
+<s:a href="showProductSizeListtilesAction.action">产品尺寸管理</s:a>
 </li>
 </ul>
 </td>

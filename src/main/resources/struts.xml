@@ -10,24 +10,25 @@
 	<constant name="struts.multipart.maxSize" value="524288000" />
 	<constant name="struts.custom.i18n.resources" value="ApplicationResources" />
 	<constant name="struts.enable.SlashesInActionNames" value="true" />
-	<constant name="struts.convention.action.disableScanning" value="true" />
-	
+	<constant name="struts.convention.action.disableScanning"
+		value="true" />
+
 	<package name="default" extends="struts-default" namespace="/">
-		
+
 		<result-types>
 			<result-type name="tiles"
 				class="org.apache.struts2.views.tiles.TilesResult" />
 		</result-types>
-		
+
 
 		<action name="login" method="authUser" class="com.lebk.action.UserAction">
 			<result name="success">index.jsp</result>
 			<result name="error">Login.jsp</result>
 		</action>
 		<action name="logout" method="logout" class="com.lebk.action.UserAction">
-		    <result name="success">Login.jsp</result>
+			<result name="success">Login.jsp</result>
 		</action>
-		
+
 
 		<action name="*tilesAction" method="{1}"
 			class="com.lebk.action.TilesAction">
@@ -35,56 +36,64 @@
 			<result name="jobmanage" type="tiles">jobmanage</result>
 			<result name="showvmlist" type="tiles">showvmlist</result>
 			<result name="admin" type="tiles">admin</result>
-			
+
 			<result name="showUserList" type="tiles">showUserList</result>
 			<result name="displayUser" type="tiles">displayUser</result>
 			<result name="aboutVMF" type="tiles">aboutVMF</result>
-			
+
 			<result name="showProductTypeList" type="tiles">showProductTypeList</result>
-			
+			<result name="showProductSizeList" type="tiles">showProductSizeList</result>
+
 			<result name="showOSList" type="tiles">showOSList</result>
 			<result name="syncOS" type="tiles">syncOS</result>
 			<result name="showExtraClientOS" type="tiles">showExtraClientOS</result>
-            <result name="displayAccountandPasswordSetting" type="tiles">displayAccountandPasswordSetting</result>
-            
-            <result name="displayProduct" type="tiles">displayProduct</result>
-            <result name="setProductName" type="tiles">setProductName</result>
-            
-            <result name="displayUploadFile" type="tiles">displayUploadFile</result>
-            
-            <result name="startJob" type="tiles">startJob</result>
-          
-		</action>
-		
-		<action name="deleteUsertilesAction" method="deleteUser" class="com.lebk.action.TilesAction">
-            <result name="success" type="redirectAction">showUserListtilesAction</result>
-            <result name="error" type="tiles">deleteUserError</result>
-        </action>
-		<action name="updateUsertilesAction" method="updateUser" class="com.lebk.action.TilesAction">
-            <result name="success" type="redirectAction">showUserListtilesAction</result>
-            <result name="error" type="tiles">updateUserError</result>
-        </action>
-        <action name="addUsertilesAction" method="addUser" class="com.lebk.action.TilesAction">
-            <result name="success" type="redirectAction">showUserListtilesAction</result>
-            <result name="error" type="tiles">addUserError</result>
-        </action>
-        
-        <action name="writeExtraOSinDBtilesAction" method="writeExtraOSinDB" class="com.lebk.action.TilesAction">
-            <result name="success" type="redirectAction">showOSListtilesAction</result>
-            <result name="error" type="tiles">writeExtraOSinDBError</result>
-        </action>
-        <action name="updateOsAccountandPasswordResulttilesAction" method="updateOsAccountandPassword" class="com.lebk.action.TilesAction">
-            <result name="success" type="redirectAction">showOSListtilesAction</result>
-            <result name="error" type="tiles">updateOsAccountandPasswordError</result>
-        </action>
-        
-        <action name="updateProductNameResulttilesAction" method="updateProductName" class="com.lebk.action.TilesAction">
-            <result name="success" type="redirectAction">displayProducttilesAction</result>
-            <result name="error" type="tiles">updateProductNameError</result>
-        </action>
+			<result name="displayAccountandPasswordSetting" type="tiles">displayAccountandPasswordSetting</result>
 
-        <action name="uploadFiletilesAction" method="uploadFile" class="com.lebk.action.TilesAction">
-            <interceptor-ref name="exception" />
+			<result name="displayProduct" type="tiles">displayProduct</result>
+			<result name="setProductName" type="tiles">setProductName</result>
+
+			<result name="displayUploadFile" type="tiles">displayUploadFile</result>
+
+			<result name="startJob" type="tiles">startJob</result>
+
+		</action>
+
+		<action name="deleteUsertilesAction" method="deleteUser"
+			class="com.lebk.action.TilesAction">
+			<result name="success" type="redirectAction">showUserListtilesAction</result>
+			<result name="error" type="tiles">deleteUserError</result>
+		</action>
+		<action name="updateUsertilesAction" method="updateUser"
+			class="com.lebk.action.TilesAction">
+			<result name="success" type="redirectAction">showUserListtilesAction</result>
+			<result name="error" type="tiles">updateUserError</result>
+		</action>
+		<action name="addUsertilesAction" method="addUser"
+			class="com.lebk.action.TilesAction">
+			<result name="success" type="redirectAction">showUserListtilesAction</result>
+			<result name="error" type="tiles">addUserError</result>
+		</action>
+
+		<action name="writeExtraOSinDBtilesAction" method="writeExtraOSinDB"
+			class="com.lebk.action.TilesAction">
+			<result name="success" type="redirectAction">showOSListtilesAction</result>
+			<result name="error" type="tiles">writeExtraOSinDBError</result>
+		</action>
+		<action name="updateOsAccountandPasswordResulttilesAction"
+			method="updateOsAccountandPassword" class="com.lebk.action.TilesAction">
+			<result name="success" type="redirectAction">showOSListtilesAction</result>
+			<result name="error" type="tiles">updateOsAccountandPasswordError</result>
+		</action>
+
+		<action name="updateProductNameResulttilesAction" method="updateProductName"
+			class="com.lebk.action.TilesAction">
+			<result name="success" type="redirectAction">showProductSizeListtilesAction</result>
+			<result name="error" type="tiles">updateProductNameError</result>
+		</action>
+
+		<action name="uploadFiletilesAction" method="uploadFile"
+			class="com.lebk.action.TilesAction">
+			<interceptor-ref name="exception" />
 			<interceptor-ref name="i18n" />
 			<interceptor-ref name="fileUpload">
 			</interceptor-ref>
@@ -97,19 +106,21 @@
 			<interceptor-ref name="workflow">
 				<param name="excludeMethods">input,back,cancel,browse</param>
 			</interceptor-ref>
-            <result name="success" type="tiles">uploadFile</result>
-        </action>
-        
-        <action name="stopJobtilesAction" method="stopJob" class="com.lebk.action.TilesAction">
-            <result name="success" type="redirectAction">jobstatustilesAction</result>
-            <result name="error" type="tiles">stopJobError</result>
-        </action>
-        
-        <action name="showJobProgresstilesAction" method="showJobProgress" class="com.lebk.action.TilesAction">
-            <result name="success" type="tiles">showJobProgressDetails</result>
-        </action>	
-				
-		</package>
+			<result name="success" type="tiles">uploadFile</result>
+		</action>
+
+		<action name="stopJobtilesAction" method="stopJob"
+			class="com.lebk.action.TilesAction">
+			<result name="success" type="redirectAction">jobstatustilesAction</result>
+			<result name="error" type="tiles">stopJobError</result>
+		</action>
+
+		<action name="showJobProgresstilesAction" method="showJobProgress"
+			class="com.lebk.action.TilesAction">
+			<result name="success" type="tiles">showJobProgressDetails</result>
+		</action>
+
+	</package>
 </struts>
 
 

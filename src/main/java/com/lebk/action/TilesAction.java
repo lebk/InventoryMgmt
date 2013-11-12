@@ -20,12 +20,18 @@ import org.apache.log4j.Logger;
 import com.lebk.dto.UserDTO;
 import com.lebk.enumType.UserEnumType;
 import com.lebk.po.Product;
+import com.lebk.po.Ptcolor;
+import com.lebk.po.Ptsize;
 import com.lebk.po.Pttype;
 import com.lebk.po.User;
+import com.lebk.services.ProductColorService;
 import com.lebk.services.ProductService;
+import com.lebk.services.ProductSizeService;
 import com.lebk.services.ProductTypeService;
 import com.lebk.services.UserService;
+import com.lebk.services.impl.ProductColorServiceImpl;
 import com.lebk.services.impl.ProductServiceImpl;
+import com.lebk.services.impl.ProductSizeServiceImpl;
 import com.lebk.services.impl.ProductTypeServiceImpl;
 import com.lebk.services.impl.UserServiceImpl;
 import com.opensymphony.xwork2.ActionContext;
@@ -46,9 +52,10 @@ public class TilesAction extends ActionSupport
   private List<UserDTO> userDtoList;
 
   ProductTypeService pts = new ProductTypeServiceImpl();
-
+  ProductSizeService pss = new ProductSizeServiceImpl();
+  ProductColorService pcs = new ProductColorServiceImpl();
   private List<Pttype> productTypeList = new ArrayList<Pttype>();
-
+  private List<Ptsize> productSizeList = new ArrayList<Ptsize>();
   private String username;
 
   private Integer pageNow = 1;
@@ -127,11 +134,20 @@ public class TilesAction extends ActionSupport
     this.productTypeList = productTypeList;
   }
 
+  public List<Ptsize> getProductSizeList()
+  {
+    return productSizeList;
+  }
+
+  public void setProductSizeList(List<Ptsize> productSizeList)
+  {
+    this.productSizeList = productSizeList;
+  }
+
   public String admin()
   {
     return "admin";
   }
-
 
   public String getAddUserName()
   {
@@ -209,6 +225,15 @@ public class TilesAction extends ActionSupport
     this.productTypeList = ptl;
 
     return "showProductTypeList";
+  }
+
+  public String showProductSizeList()
+  {
+
+    List<Ptsize> psl = pss.getAllPtSize();
+    this.productSizeList = psl;
+
+    return "showProductSizeList";
   }
 
   public boolean addUser(String name, String password, Integer type, String email, String opUser)
