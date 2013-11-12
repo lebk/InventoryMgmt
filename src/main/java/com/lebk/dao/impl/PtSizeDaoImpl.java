@@ -1,5 +1,6 @@
 package com.lebk.dao.impl;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import com.lebk.dao.PtSizeDao;
 import com.lebk.po.Ptcolor;
 import com.lebk.po.Ptsize;
 import com.lebk.po.Ptsize;
+import com.lebk.po.Pttype;
 import com.lebk.util.HibernateUtil;
 
 /**
@@ -26,7 +28,7 @@ public class PtSizeDaoImpl implements PtSizeDao
 {
   static Logger logger = Logger.getLogger(PtSizeDaoImpl.class);
 
-  public boolean addPtSize(String ptSizeName)
+  public boolean addPtSize(String ptSizeName, Integer opUserId)
   {
     if (this.isPtSizeExisted(ptSizeName))
     {
@@ -243,6 +245,34 @@ public class PtSizeDaoImpl implements PtSizeDao
     }
     logger.info("The size " + ptSizeName + " is not existed");
     return false;
+  }
+
+  public List<Ptsize> getAllPtSize()
+  {
+    Session session = HibernateUtil.getSessionFactory().openSession();
+    List psl = new ArrayList<Ptsize>();
+    Transaction transaction = null;
+
+    try
+    {
+      transaction = session.beginTransaction();
+      List psq = session.createQuery("from " + Ptsize.class.getName()).list();
+      for (Iterator it = psq.iterator(); it.hasNext();)
+      {
+        Ptsize ps = (Ptsize) it.next();
+        psl.add(ps);
+      }
+      transaction.commit();
+    } catch (HibernateException e)
+    {
+      transaction.rollback();
+      e.printStackTrace();
+
+    } finally
+    {
+      session.close();
+    }
+    return psl;
   }
 
 }

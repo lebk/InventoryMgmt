@@ -44,9 +44,9 @@ public class PtSizeDaoTest
   public void testAddPtSize()
   {
     Boolean status = psd.deletePtSize(ptSizeName);
-    status = psd.addPtSize(ptSizeName);
+    status = psd.addPtSize(ptSizeName, TestUtil.getOpUserId());
     Assert.assertTrue("Add size successfully", status);
-    status = psd.addPtSize(ptSizeName);
+    status = psd.addPtSize(ptSizeName, TestUtil.getOpUserId());
     Assert.assertTrue("Add size should be failed as it is already existed", status == false);
   }
 
@@ -92,7 +92,7 @@ public class PtSizeDaoTest
     Boolean status = psd.isPtSizeExisted(ptSizeName);
     Assert.assertTrue("The size should not be existed after deleting", status == false);
 
-    psd.addPtSize(ptSizeName);
+    psd.addPtSize(ptSizeName, TestUtil.getOpUserId());
     status = psd.isPtSizeExisted(ptSizeName);
     Assert.assertTrue("The size should be existed after adding", status == true);
   }

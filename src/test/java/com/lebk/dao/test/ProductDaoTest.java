@@ -52,7 +52,7 @@ public class ProductDaoTest
     Integer opUserId=TestUtil.getOpUserId();
     pName = ptType + "-" + ptSize + "-" + ptColor;
     PtSizeDao psd = new PtSizeDaoImpl();
-    psd.addPtSize(ptSize);
+    psd.addPtSize(ptSize, TestUtil.getOpUserId());
     ptSizeId = psd.getIdByPtSizeName(ptSize);
 
     PtTypeDao ptd = new PtTypeDaoImpl();

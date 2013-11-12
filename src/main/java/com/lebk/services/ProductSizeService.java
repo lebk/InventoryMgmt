@@ -3,6 +3,7 @@ package com.lebk.services;
 import java.util.List;
 
 import com.lebk.po.Ptcolor;
+import com.lebk.po.Ptsize;
 
 /**
  * Copyright: All Right Reserved.
@@ -14,10 +15,10 @@ import com.lebk.po.Ptcolor;
 
 public interface ProductSizeService
 {
-  public boolean addPtColor(String ptColor, String opUser);
+  public boolean addPtSize(String ptSize, String opUser);
 
-  public boolean deletePtColor(String ptColor, String opUser);
+  public boolean deletePtSize(String ptSize, String opUser);
 
-  public List<Ptcolor> getAllPtColor();
+  public List<Ptsize> getAllPtSize();
 
 }

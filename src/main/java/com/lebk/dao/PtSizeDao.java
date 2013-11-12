@@ -1,5 +1,7 @@
 package com.lebk.dao;
 
+import java.util.List;
+
 import com.lebk.po.Ptsize;
 
 /**
@@ -12,7 +14,7 @@ import com.lebk.po.Ptsize;
 
 public interface PtSizeDao {
 
-	public boolean addPtSize(String ptSizeName);
+	public boolean addPtSize(String ptSizeName, Integer opUserId);
 
 	public boolean deletePtSize(String ptSizeName);
 
@@ -24,4 +26,5 @@ public interface PtSizeDao {
 
 	public boolean isPtSizeExisted(String ptSizeName);
 
+	public List<Ptsize> getAllPtSize();
 }
