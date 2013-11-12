@@ -47,9 +47,9 @@ public class PtColorDaoTest
   public void testAddPtColor()
   {
     Boolean status = pcd.deletePtColor(ptcolorName);
-    status = pcd.addPtColor(ptcolorName);
+    status = pcd.addPtColor(ptcolorName, TestUtil.getOpUserId());
     Assert.assertTrue("Add color successfully", status);
-    status = pcd.addPtColor(ptcolorName);
+    status = pcd.addPtColor(ptcolorName, null);
     Assert.assertTrue("Add color should be failed as it already existed", status == false);
   }
 
@@ -96,7 +96,7 @@ public class PtColorDaoTest
     Boolean status = pcd.isPtColorExisted(ptcolorName);
     Assert.assertTrue("The color should not be existed after deleting", status == false);
 
-    pcd.addPtColor(ptcolorName);
+    pcd.addPtColor(ptcolorName, TestUtil.getOpUserId());
     status = pcd.isPtColorExisted(ptcolorName);
     Assert.assertTrue("The color should be existed after adding", status == true);
   }

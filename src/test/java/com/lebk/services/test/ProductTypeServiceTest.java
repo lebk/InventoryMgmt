@@ -17,9 +17,9 @@ import com.lebk.po.Pttype;
 import com.lebk.services.ProductTypeService;
 import com.lebk.services.impl.ProductTypeServiceImpl;
 
-public class PtTypeServiceTest
+public class ProductTypeServiceTest
 {
-  static Logger logger = Logger.getLogger(PtTypeServiceTest.class);
+  static Logger logger = Logger.getLogger(ProductTypeServiceTest.class);
 
   ProductTypeService pts = new ProductTypeServiceImpl();
   // String ptType=TestUtil.getRandString(8);

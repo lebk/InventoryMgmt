@@ -1,5 +1,7 @@
 package com.lebk.dao;
 
+import java.util.List;
+
 import com.lebk.po.Ptcolor;
 
 /**
@@ -10,17 +12,20 @@ import com.lebk.po.Ptcolor;
  * @date 2013-10-19
  */
 
-public interface PtColorDao {
+public interface PtColorDao
+{
 
-	public boolean addPtColor(String ptColor);
+  public boolean addPtColor(String ptColor, Integer opUserId);
 
-	public boolean deletePtColor(String ptColor);
+  public boolean deletePtColor(String ptColor);
 
-	public Integer getIdByPtColorName(String ptcolorName);
+  public Integer getIdByPtColorName(String ptcolorName);
 
-	public String getColorNameByPtColorId(Integer ptcolorId);
+  public String getColorNameByPtColorId(Integer ptcolorId);
 
-	public Ptcolor getPtColorByPtcolorId(Integer ptcolorId);
+  public Ptcolor getPtColorByPtcolorId(Integer ptcolorId);
 
-	public boolean isPtColorExisted(String ptcolorName);
+  public boolean isPtColorExisted(String ptcolorName);
+
+  public List<Ptcolor> getAllPtColor();
 }

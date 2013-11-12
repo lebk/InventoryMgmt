@@ -60,7 +60,7 @@ public class ProductDaoTest
     ptTypeId = ptd.getIdByPtType(ptType);
 
     PtColorDao pcd = new PtColorDaoImpl();
-    pcd.addPtColor(ptColor);
+    pcd.addPtColor(ptColor, TestUtil.getOpUserId());
     ptColorId = pcd.getIdByPtColorName(ptColor);
 
   }
