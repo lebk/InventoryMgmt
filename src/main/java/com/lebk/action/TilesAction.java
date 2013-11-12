@@ -56,6 +56,7 @@ public class TilesAction extends ActionSupport
   ProductColorService pcs = new ProductColorServiceImpl();
   private List<Pttype> productTypeList = new ArrayList<Pttype>();
   private List<Ptsize> productSizeList = new ArrayList<Ptsize>();
+  private List<Ptcolor> productColorList = new ArrayList<Ptcolor>();
   private String username;
 
   private Integer pageNow = 1;
@@ -142,6 +143,16 @@ public class TilesAction extends ActionSupport
   public void setProductSizeList(List<Ptsize> productSizeList)
   {
     this.productSizeList = productSizeList;
+  }
+
+  public List<Ptcolor> getProductColorList()
+  {
+    return this.productColorList;
+  }
+
+  public void setProductColorList(List<Ptcolor> productColorList)
+  {
+    this.productColorList = productColorList;
   }
 
   public String admin()
@@ -234,6 +245,15 @@ public class TilesAction extends ActionSupport
     this.productSizeList = psl;
 
     return "showProductSizeList";
+  }
+
+  public String showProductColorList()
+  {
+
+    List<Ptcolor> pcl = pcs.getAllPtColor();
+    this.productColorList = pcl;
+
+    return "showProductColorList";
   }
 
   public boolean addUser(String name, String password, Integer type, String email, String opUser)

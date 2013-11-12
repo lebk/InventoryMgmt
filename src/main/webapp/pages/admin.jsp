@@ -53,7 +53,7 @@
 <td>
 <ul type="square">
 <li>
-<s:a href="displayUploadFiletilesAction.action">产品花色管理</s:a>
+<s:a href="showProductColorListtilesAction.action">产品花色管理</s:a>
 </li>
 </ul>
 </ul>

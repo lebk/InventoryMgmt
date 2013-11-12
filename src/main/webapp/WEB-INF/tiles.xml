@@ -49,6 +49,10 @@
 		<put-attribute name="body" value="/pages/showproductsizelist.jsp" />
 	</definition>
 
+	<definition name="showProductColorList" extends="baseLayout">
+		<put-attribute name="title" value="产品尺寸列表" />
+		<put-attribute name="body" value="/pages/showproductcolorlist.jsp" />
+	</definition>
 
 	<definition name="aboutVMF" extends="baseLayout">
 		<put-attribute name="title" value="AboutInventoryMgmt" />
