@@ -32,8 +32,7 @@
         <td>联系人:</th>
         <td>
         <ul type="disc">
-        <li>雷波(lebk.lei@gmail.com)</li>
-        <li>林凯(397769236@qq.com)</li>
+        <li>雷波(qq:87535204)</li>
         </ul>
         </td>
     </tr>

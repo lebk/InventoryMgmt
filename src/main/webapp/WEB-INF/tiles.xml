@@ -54,7 +54,7 @@
 		<put-attribute name="body" value="/pages/showproductcolorlist.jsp" />
 	</definition>
 
-	<definition name="aboutVMF" extends="baseLayout">
+	<definition name="aboutSystem" extends="baseLayout">
 		<put-attribute name="title" value="AboutInventoryMgmt" />
 		<put-attribute name="body" value="/pages/aboutInventoryMgmt.jsp" />
 	</definition>

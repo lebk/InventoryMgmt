@@ -210,9 +210,9 @@ public class TilesAction extends ActionSupport
     this.userDtoList = userList;
   }
 
-  public String aboutVMF()
+  public String aboutSystem()
   {
-    return "aboutVMF";
+    return "aboutSystem";
   }
 
   public String showUserList()

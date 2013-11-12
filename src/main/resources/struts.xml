@@ -39,7 +39,7 @@
 
 			<result name="showUserList" type="tiles">showUserList</result>
 			<result name="displayUser" type="tiles">displayUser</result>
-			<result name="aboutVMF" type="tiles">aboutVMF</result>
+			<result name="aboutSystem" type="tiles">aboutSystem</result>
 
 			<result name="showProductTypeList" type="tiles">showProductTypeList</result>
 			<result name="showProductSizeList" type="tiles">showProductSizeList</result>
