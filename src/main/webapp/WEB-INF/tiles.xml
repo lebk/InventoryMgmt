@@ -79,12 +79,6 @@
 		<put-attribute name="title" value="Add User Error" />
 		<put-attribute name="body" value="/pages/addusererror.jsp" />
 	</definition>
-
-	<definition name="showOSList" extends="baseLayout">
-		<put-attribute name="title" value="OS List" />
-		<put-attribute name="body" value="/pages/selectOS.jsp" />
-	</definition>
-
 	<definition name="syncOS" extends="baseLayout">
 		<put-attribute name="title" value="Sync OS" />
 		<put-attribute name="body" value="/pages/showclientinvSphere.jsp" />

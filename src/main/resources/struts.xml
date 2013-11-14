@@ -45,22 +45,14 @@
 			<result name="showProductSizeList" type="tiles">showProductSizeList</result>
 			<result name="showProductColorList" type="tiles">showProductColorList</result>
 
-			<result name="showOSList" type="tiles">showOSList</result>
-			<result name="syncOS" type="tiles">syncOS</result>
-			<result name="showExtraClientOS" type="tiles">showExtraClientOS</result>
 			<result name="displayAccountandPasswordSetting" type="tiles">displayAccountandPasswordSetting</result>
 
-			<result name="displayProduct" type="tiles">displayProduct</result>
-			<result name="setProductName" type="tiles">setProductName</result>
-
-			<result name="displayUploadFile" type="tiles">displayUploadFile</result>
 
 			<result name="startJob" type="tiles">startJob</result>
 
 		</action>
 
-		<action name="deleteUsertilesAction" method="deleteUser"
-			class="com.lebk.action.TilesAction">
+		<action name="deleteUsertilesAction" method="deleteUser" class="com.lebk.action.TilesAction">
 			<result name="success" type="redirectAction">showUserListtilesAction</result>
 			<result name="error" type="tiles">deleteUserError</result>
 		</action>
