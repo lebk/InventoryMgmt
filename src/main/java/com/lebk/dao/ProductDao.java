@@ -18,11 +18,9 @@ public interface ProductDao
 
   public List<Product> getProductList();
 
-  public boolean addProduct(String pName, Integer ptTypeId, Integer ptColorId, Integer ptSizeId, Integer pNum);
+  public boolean updateProduct(String pName, Integer ptTypeId, Integer ptColorId, Integer ptSizeId, Integer pNum, Integer btId, Integer opUserId);
 
   public boolean removeProduct(Integer poId);
-
-  public boolean reduceProduct(Integer poId, Integer pNum);
 
   public Integer getIdByProdName(String pName);
 
@@ -36,4 +34,5 @@ public interface ProductDao
 
   public String getProdTypebyProdTypeId(Integer prodTypeId);
 
+  public boolean cleanUpAll();
 }

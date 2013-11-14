@@ -74,7 +74,7 @@ public class TestUtil
   public static Integer getPoId()
   {
     ProductDao pd = new ProductDaoImpl();
-    pd.addProduct(getPName(), getPtTypeId(), getPtColorId(), getPtSizeId(), pNum);
+    pd.updateProduct(getPName(), getPtTypeId(), getPtColorId(), getPtSizeId(), 1, pNum, 1);
     return pd.getIdByProdName(getPName());
   }
 

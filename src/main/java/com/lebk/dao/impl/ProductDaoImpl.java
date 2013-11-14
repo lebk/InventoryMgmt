@@ -75,54 +75,86 @@ public class ProductDaoImpl implements ProductDao
     return false;
   }
 
-  public boolean addProduct(String pName, Integer ptTypeId, Integer ptColorId, Integer ptSizeId, Integer pNum)
+  public boolean updateProduct(String pName, Integer ptTypeId, Integer ptColorId, Integer ptSizeId, Integer pNum, Integer btId, Integer opUserId)
+  {
+    Integer poId = this.updateProductRecord(pName, ptTypeId, ptColorId, ptSizeId, pNum);
+    if (poId == null)
+    {
+
+      logger.info("Fail to update the product record by pName:" + pName + " return false");
+      return false;
+    }
+    return this.addPtDetails(poId, btId, pNum, opUserId);
+  }
+
+  private Integer updateProductRecord(String pName, Integer ptTypeId, Integer ptColorId, Integer ptSizeId, Integer pNum)
   {
 
     if (this.isProductExisted(pName))
     {
-      logger.info("as the product is already exited, increase the nubmer");
+      logger.info("as the product is already existed, update the nubmer");
       Integer poId = this.getIdByProdName(pName);
+      if (poId == null)
+      {
+        logger.info("Fail to get the poId by pName:" + pName + " return null");
+        return null;
+      }
       Integer pn = this.getProductByPoId(poId).getPtNumber();
+      // ship the product
+      if (pNum < 0)
+      {
+        if (pn + pNum < 0)
+        {
+          logger.error("N0 enough product to ship for:" + pName + ", return false");
+          return null;
+        }
+      }
+
       Boolean status = updateProductNumber(pName, pn + pNum);
-      // status=this.addPtDetails(poId, btId, pNum, opUserId);
-      return status;
+      if (status == false)
+      {
+        logger.info("Fail to update the product number for pName: " + pName + " return null");
+        return null;
+      }
+    } else
+    {
+      // insert a new product record
+      Session session = HibernateUtil.getSessionFactory().openSession();
+
+      Transaction transaction = null;
+
+      try
+      {
+        logger.info("begin to add product: " + pName);
+
+        transaction = session.beginTransaction();
+        Product p = new Product();
+
+        p.setName(pName);
+        p.setPtColorId(ptColorId);
+        p.setPtTypeId(ptTypeId);
+        p.setPtSizeId(ptSizeId);
+        p.setPtNumber(pNum);
+        session.save(p);
+        transaction.commit();
+        logger.info("add product successfully");
+
+      } catch (HibernateException e)
+      {
+
+        transaction.rollback();
+        logger.error(e.toString());
+        e.printStackTrace();
+
+      } finally
+      {
+
+        session.close();
+
+      }
+
     }
-
-    Session session = HibernateUtil.getSessionFactory().openSession();
-
-    Transaction transaction = null;
-
-    try
-    {
-      logger.info("begin to add product: " + pName);
-
-      transaction = session.beginTransaction();
-      Product p = new Product();
-
-      p.setName(pName);
-      p.setPtColorId(ptColorId);
-      p.setPtTypeId(ptTypeId);
-      p.setPtSizeId(ptSizeId);
-      p.setPtNumber(pNum);
-      session.save(p);
-      transaction.commit();
-      logger.info("add product successfully");
-      return true;
-
-    } catch (HibernateException e)
-    {
-
-      transaction.rollback();
-      logger.error(e.toString());
-      e.printStackTrace();
-
-    } finally
-    {
-
-      session.close();
-
-    }
-    return false;
+    return this.getIdByProdName(pName);
   }
 
   public boolean removeProduct(Integer poId)
@@ -206,13 +238,6 @@ public class ProductDaoImpl implements ProductDao
     }
 
     return this.updateProductNumber(poId, ptNumber);
-  }
-
-  public boolean reduceProduct(Integer poId, Integer pNum)
-  {
-    Integer pn = this.getProductByPoId(poId).getPtNumber();
-
-    return this.updateProductNumber(poId, pn - pNum);
   }
 
   public Integer getIdByProdName(String pName)
@@ -502,6 +527,14 @@ public class ProductDaoImpl implements ProductDao
   {
     // TODO Auto-generated method stub
     return null;
+  }
+
+  public boolean cleanUpAll()
+  {
+    boolean status = true;
+    status = pdd.cleanUpAll();
+
+    return status;
   }
 
 }

@@ -60,6 +60,7 @@ public class PtDetailsDaoImpl implements PtDetailsDao
       session.close();
 
     }
+    logger.info("add product detail fail");
     return false;
   }
 
@@ -196,7 +197,38 @@ public class PtDetailsDaoImpl implements PtDetailsDao
 
   public boolean cleanUpAll()
   {
-    // TODO Auto-generated method stub
+    List<Integer> idl = new ArrayList<Integer>();
+    List<Ptdetails> ptdl = this.getAllPtDetails();
+    for (Iterator it = ptdl.iterator(); it.hasNext();)
+    {
+      Ptdetails pd = (Ptdetails) it.next();
+
+      idl.add(pd.getId());
+    }
+    Session session = HibernateUtil.getSessionFactory().openSession();
+    Transaction transaction = null;
+    try
+    {
+      transaction = session.beginTransaction();
+      Iterator it = idl.iterator();
+      while (it.hasNext())
+      {
+        Integer id = (Integer) it.next();
+        Ptdetails ps = (Ptdetails) session.get(Ptdetails.class, id);
+        session.delete(ps);
+      }
+      transaction.commit();
+      return true;
+    } catch (HibernateException e)
+    {
+      transaction.rollback();
+      e.printStackTrace();
+    } finally
+    {
+      session.close();
+    }
+    logger.error("fail to clear all the ptdetails");
+
     return false;
   }
 

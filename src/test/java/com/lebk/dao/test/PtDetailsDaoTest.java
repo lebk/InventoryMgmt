@@ -17,6 +17,7 @@ import com.lebk.dao.ProductDao;
 import com.lebk.dao.PtDetailsDao;
 import com.lebk.dao.impl.ProductDaoImpl;
 import com.lebk.dao.impl.PtDetailsDaoImpl;
+import com.lebk.enumType.BusinessEnumType;
 import com.lebk.po.Ptdetails;
 
 /**
@@ -29,8 +30,8 @@ public class PtDetailsDaoTest
   PtDetailsDao pdd;
   Integer opUserId = 1;
   Integer pNum = TestUtil.getPNum();
-  Integer btId = 1;
-  Integer poId = TestUtil.getPoId();
+  Integer btId = BusinessEnumType.getIdByBusinessType(BusinessEnumType.in);
+  Integer poId = 1;
 
   @BeforeClass
   public static void setUpBeforeClass() throws Exception
@@ -40,7 +41,7 @@ public class PtDetailsDaoTest
   @AfterClass
   public static void tearDownAfterClass() throws Exception
   {
-   
+
   }
 
   @Before
@@ -90,5 +91,11 @@ public class PtDetailsDaoTest
     List<Ptdetails> pdl = pdd.getAllPtDetailsbyPoId(poId);
     logger.info("There should be no Ptdetails record for poId:" + poId + " after delete");
     Assert.assertTrue("expect 0 after detail", pdl.size() == 0);
+  }
+
+  @Test
+  public void testCleanUpAll()
+  {
+    pdd.cleanUpAll();
   }
 }

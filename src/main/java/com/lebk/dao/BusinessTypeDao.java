@@ -19,5 +19,5 @@ public interface BusinessTypeDao
 
   public Integer getIdByType(String type);
 
-  public Integer getTypeById(Integer id);
+  public String getTypeById(Integer id);
 }
