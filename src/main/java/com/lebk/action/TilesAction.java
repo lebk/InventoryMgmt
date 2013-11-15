@@ -12,6 +12,7 @@ package com.lebk.action;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -58,6 +59,9 @@ public class TilesAction extends ActionSupport
   private List<Ptsize> productSizeList = new ArrayList<Ptsize>();
   private List<Ptcolor> productColorList = new ArrayList<Ptcolor>();
   private String username;
+
+  ProductService ps = new ProductServiceImpl();
+  private List<Product> productList;
 
   private Integer pageNow = 1;
   private Integer pageSize = 30;
@@ -153,6 +157,38 @@ public class TilesAction extends ActionSupport
   public void setProductColorList(List<Ptcolor> productColorList)
   {
     this.productColorList = productColorList;
+  }
+
+  public List<Product> getProductList()
+  {
+    return productList;
+  }
+
+  public void setProductList(List<Product> productList)
+  {
+    this.productList = productList;
+  }
+
+  public String showProductList()
+  {
+
+    productList = new ArrayList<Product>();
+    //
+    // String userName = (String)
+    // ActionContext.getContext().getSession().get("username");
+    logger.info("calling showProductList");
+    List<Product> pl = ps.getAllProductList();
+    for (Product p : pl)
+    {
+      logger.info("the product is:" + p);
+      productList.add(p);
+    }
+    for (Iterator it = productList.iterator(); it.hasNext();)
+    {
+      logger.info("showProductList:" + (Product) it.next());
+    }
+    return "showProductList";
+
   }
 
   public String admin()

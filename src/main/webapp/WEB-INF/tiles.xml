@@ -14,8 +14,8 @@
 		<put-attribute name="footer" value="/layouts/footer.jsp" />
 	</definition>
 
-	<definition name="jobstatus" extends="baseLayout">
-		<put-attribute name="title" value="Job Status" />
+	<definition name="showProductList" extends="baseLayout">
+		<put-attribute name="title" value="show Product List" />
 		<put-attribute name="body" value="/pages/jobstatus.jsp" />
 	</definition>
 
