@@ -1,6 +1,7 @@
 package com.lebk.dao.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -14,6 +15,7 @@ import com.lebk.dao.PtColorDao;
 import com.lebk.dao.PtDetailsDao;
 import com.lebk.dao.PtSizeDao;
 import com.lebk.dao.PtTypeDao;
+import com.lebk.enumType.BusinessEnumType;
 import com.lebk.po.Product;
 import com.lebk.po.Ptdetails;
 import com.lebk.po.Pttype;
@@ -71,13 +73,12 @@ public class ProductDaoImpl implements ProductDao
   private boolean addPtDetails(Integer poId, Integer btId, Integer pNum, Integer opUserId)
   {
     PtDetailsDao pdd = new PtDetailsDaoImpl();
-    pdd.addPtDetail(poId, btId, pNum, opUserId);
-    return false;
+    return pdd.addPtDetail(poId, btId, pNum, opUserId);
   }
 
   public boolean updateProduct(String pName, Integer ptTypeId, Integer ptColorId, Integer ptSizeId, Integer pNum, Integer btId, Integer opUserId)
   {
-    Integer poId = this.updateProductRecord(pName, ptTypeId, ptColorId, ptSizeId, pNum);
+    Integer poId = this.updateProductRecord(pName, ptTypeId, ptColorId, ptSizeId, pNum, btId);
     if (poId == null)
     {
 
@@ -87,9 +88,10 @@ public class ProductDaoImpl implements ProductDao
     return this.addPtDetails(poId, btId, pNum, opUserId);
   }
 
-  private Integer updateProductRecord(String pName, Integer ptTypeId, Integer ptColorId, Integer ptSizeId, Integer pNum)
+  private Integer updateProductRecord(String pName, Integer ptTypeId, Integer ptColorId, Integer ptSizeId, Integer pNum, Integer btId)
   {
 
+    Integer shipoutBtId = BusinessEnumType.getIdByBusinessType(BusinessEnumType.out);
     if (this.isProductExisted(pName))
     {
       logger.info("as the product is already existed, update the nubmer");
@@ -99,15 +101,20 @@ public class ProductDaoImpl implements ProductDao
         logger.info("Fail to get the poId by pName:" + pName + " return null");
         return null;
       }
-      Integer pn = this.getProductByPoId(poId).getPtNumber();
-      // ship the product
-      if (pNum < 0)
+      Integer pn = this.getProductById(poId).getPtNumber();
+
+      // ship out the product
+      if (btId == shipoutBtId)
       {
-        if (pn + pNum < 0)
+        logger.info("the product in wareshouse is:" + pn);
+        logger.info("the product to be ship out is:" + pNum);
+
+        if (pn < pNum)
         {
           logger.error("N0 enough product to ship for:" + pName + ", return false");
           return null;
         }
+        pNum = -pNum;
       }
 
       Boolean status = updateProductNumber(pName, pn + pNum);
@@ -118,6 +125,11 @@ public class ProductDaoImpl implements ProductDao
       }
     } else
     {
+      if (btId == shipoutBtId)
+      {
+        logger.error("No product existed in the warehouse for:" + pName + ", how can I ship? return null:");
+        return null;
+      }
       // insert a new product record
       Session session = HibernateUtil.getSessionFactory().openSession();
 
@@ -135,6 +147,7 @@ public class ProductDaoImpl implements ProductDao
         p.setPtTypeId(ptTypeId);
         p.setPtSizeId(ptSizeId);
         p.setPtNumber(pNum);
+        p.setLastUpdateTime(new Date());
         session.save(p);
         transaction.commit();
         logger.info("add product successfully");
@@ -154,19 +167,21 @@ public class ProductDaoImpl implements ProductDao
       }
 
     }
-    return this.getIdByProdName(pName);
+    Integer id = this.getIdByProdName(pName);
+    logger.info("the id for:" + pName + "is:" + id);
+    return id;
   }
 
-  public boolean removeProduct(Integer poId)
+  public boolean removeProduct(Integer id)
   {
-    logger.info("Remove poduduct with id:" + poId);
-    Boolean status = pdd.deletePtDetialByPoId(poId);
+    logger.info("Remove poduduct with id:" + id);
+    Boolean status = pdd.deletePtDetialByPoId(id);
     if (status == false)
     {
       logger.error("Fail to remove the ptdetails records!");
       return false;
     }
-    status = this.deleteProductRecord(poId);
+    status = this.deleteProductRecord(id);
     if (status == false)
     {
       logger.error("Fail to remove the product record!");
@@ -206,6 +221,11 @@ public class ProductDaoImpl implements ProductDao
   private boolean updateProductNumber(Integer poId, Integer ptNumber)
   {
 
+    if (ptNumber < 0)
+    {
+      logger.error("ptNumber should not be negative:" + ptNumber);
+      return false;
+    }
     Session session = HibernateUtil.getSessionFactory().openSession();
     Transaction transaction = null;
     try
@@ -361,10 +381,10 @@ public class ProductDaoImpl implements ProductDao
     return false;
   }
 
-  public String getNameByProductId(Integer poId)
+  public String getNameByProductId(Integer id)
   {
     {
-      if (poId == null)
+      if (id == null)
       {
         logger.error("The poId should not be null");
         return null;
@@ -377,11 +397,11 @@ public class ProductDaoImpl implements ProductDao
       try
       {
         transaction = session.beginTransaction();
-        List pl = session.createQuery("from Product where id='" + poId + "'").list();
+        List pl = session.createQuery("from Product where id='" + id + "'").list();
 
         if (pl.size() > 1)
         {
-          logger.error("There should be just one product existed with product id: " + poId + ", but now there is: " + pl.size());
+          logger.error("There should be just one product existed with product id: " + id + ", but now there is: " + pl.size());
 
           return null;
         }
@@ -404,10 +424,10 @@ public class ProductDaoImpl implements ProductDao
     }
   }
 
-  public Product getProductByPoId(Integer poId)
+  public Product getProductById(Integer id)
   {
     {
-      if (poId == null)
+      if (id == null)
       {
         logger.error("The poId should not be null");
         return null;
@@ -420,11 +440,11 @@ public class ProductDaoImpl implements ProductDao
       try
       {
         transaction = session.beginTransaction();
-        List pl = session.createQuery("from Product where id='" + poId + "'").list();
+        List pl = session.createQuery("from Product where id='" + id + "'").list();
 
         if (pl.size() > 1)
         {
-          logger.error("There should be just one product existed with product id: " + poId + ", but now there is: " + pl.size());
+          logger.error("There should be just one product existed with product id: " + id + ", but now there is: " + pl.size());
 
           return null;
         }

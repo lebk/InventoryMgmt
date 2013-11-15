@@ -26,6 +26,11 @@ public class PtDetailsDaoImpl implements PtDetailsDao
   public boolean addPtDetail(Integer poId, Integer btId, Integer pNum, Integer opUserId)
   {
 
+    if (pNum <= 0)
+    {
+      logger.error("the product number should be greater than 0, 0 or negative number is not allowed!, pNum:" + pNum);
+      return false;
+    }
     Session session = HibernateUtil.getSessionFactory().openSession();
 
     Transaction transaction = null;

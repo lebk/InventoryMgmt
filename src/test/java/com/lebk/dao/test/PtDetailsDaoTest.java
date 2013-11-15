@@ -59,6 +59,7 @@ public class PtDetailsDaoTest
   @Test
   public void testAddPtDetail()
   {
+    // in
     int n1 = pdd.getAllPtDetails().size();
     logger.info("Before calling, the size is: " + n1);
     Boolean status = pdd.addPtDetail(poId, btId, pNum, opUserId);
@@ -66,6 +67,16 @@ public class PtDetailsDaoTest
     int n2 = pdd.getAllPtDetails().size();
     logger.info("after calling, the size is: " + n2);
     Assert.assertTrue("Expect a newly ptdetails record in the table", n2 - n1 == 1);
+    // out
+    btId = BusinessEnumType.getIdByBusinessType(BusinessEnumType.out);
+    status = pdd.addPtDetail(poId, btId, pNum, opUserId);
+    Assert.assertTrue("Expect add successfully, and return a non null value", status == true);
+    
+    // invalid product number
+    btId = BusinessEnumType.getIdByBusinessType(BusinessEnumType.out);
+    status = pdd.addPtDetail(poId, btId, -1, opUserId);
+    Assert.assertTrue("Expect add fail, as the pNum is negative", status == false);
+    
   }
 
   @Test

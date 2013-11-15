@@ -49,7 +49,7 @@ public class ProductServiceImpl implements ProductService
       logger.error("The quried product id should not be null, return null");
       return null;
     }
-    return pd.getProductByPoId(poId);
+    return pd.getProductById(poId);
   }
 
   public boolean updateProductName(String oldName, String newName)

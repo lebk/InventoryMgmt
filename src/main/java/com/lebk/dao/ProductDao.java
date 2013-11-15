@@ -20,13 +20,13 @@ public interface ProductDao
 
   public boolean updateProduct(String pName, Integer ptTypeId, Integer ptColorId, Integer ptSizeId, Integer pNum, Integer btId, Integer opUserId);
 
-  public boolean removeProduct(Integer poId);
+  public boolean removeProduct(Integer id);
 
   public Integer getIdByProdName(String pName);
 
-  public String getNameByProductId(Integer poId);
+  public String getNameByProductId(Integer id);
 
-  public Product getProductByPoId(Integer poId);
+  public Product getProductById(Integer id);
 
   public boolean updateProductName(String oldName, String newName);
 
@@ -35,4 +35,5 @@ public interface ProductDao
   public String getProdTypebyProdTypeId(Integer prodTypeId);
 
   public boolean cleanUpAll();
+
 }
