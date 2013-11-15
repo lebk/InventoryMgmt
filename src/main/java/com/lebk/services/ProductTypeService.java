@@ -28,4 +28,6 @@ public interface ProductTypeService
 
   public List<Pttype> getAllPtType();
 
+  public Integer getIdByPtType(String pttypeName);
+
 }

@@ -35,4 +35,9 @@ public class ProductSizeServiceImpl implements ProductSizeService
     return psd.getAllPtSize();
   }
 
+  public Integer getIdByPtSize(String ptsizeName)
+  {
+    return psd.getIdByPtSizeName(ptsizeName);
+  }
+
 }

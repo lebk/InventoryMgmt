@@ -21,4 +21,5 @@ public interface ProductSizeService
 
   public List<Ptsize> getAllPtSize();
 
+  public Integer getIdByPtSize(String ptsizeName);
 }

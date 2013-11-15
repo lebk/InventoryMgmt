@@ -36,4 +36,6 @@ public interface ProductColorService
 
   public List<Ptcolor> getAllPtColor();
 
+  public Integer getIdByPtColor(String ptcolorName);
+
 }

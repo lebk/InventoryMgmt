@@ -36,4 +36,9 @@ public class ProductTypeServiceImpl implements ProductTypeService
     return ptd.getAllPtType();
   }
 
+  public Integer getIdByPtType(String pttypeName)
+  {
+    return ptd.getIdByPtType(pttypeName);
+  }
+
 }

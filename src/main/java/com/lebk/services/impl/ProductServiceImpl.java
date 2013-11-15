@@ -6,86 +6,88 @@ import org.apache.log4j.Logger;
 
 import com.lebk.dao.ProductDao;
 import com.lebk.dao.impl.ProductDaoImpl;
+import com.lebk.enumType.BusinessEnumType;
 import com.lebk.po.Product;
+import com.lebk.po.Pttype;
+import com.lebk.services.ProductColorService;
 import com.lebk.services.ProductService;
+import com.lebk.services.ProductSizeService;
+import com.lebk.services.ProductTypeService;
 import com.lebk.services.UserService;
 
 public class ProductServiceImpl implements ProductService
 {
   ProductDao pd = new ProductDaoImpl();
   UserService us = new UserServiceImpl();
+  ProductTypeService pts = new ProductTypeServiceImpl();
+  ProductColorService pcs = new ProductColorServiceImpl();
+  ProductSizeService pss = new ProductSizeServiceImpl();
   static Logger logger = Logger.getLogger(ProductServiceImpl.class);
 
-  public List<Product> getProductList()
+  public boolean updateProduct(String pName, String ptType, String ptColor, String ptSize, Integer pNum, String businessType, String opUser)
   {
-    return pd.getProductList();
-  }
 
-  public boolean addProduct(String pName, String version, String key, String prodType, List<String> supportedOsList, String uploadUser)
-  {
-    // TODO, upload the file to target location //baseLocation + /prodType
-    // +/version + pName
-    if (pName == null || version == null || prodType == null)
+    Integer ptTypeId = pts.getIdByPtType(ptType);
+    if (ptTypeId == null)
     {
-      logger.error("pName:" + pName + ",prodType:" + prodType + ",version:" + version + "could not be null");
+      logger.info("Fail to get the product type id by:" + ptType);
       return false;
     }
-    String bpl = "";
-    logger.info("base product location is: " + bpl);
-    // return pd.addProduct(pName, version, key, bpl, prodType,
-    // supportedOsList, uploadUser);
+    Integer ptColorId = pcs.getIdByPtColor(ptColor);
+    if (ptColorId == null)
+    {
+      logger.info("Fail to get the product color id by:" + ptColor);
+      return false;
+    }
+    Integer ptSizeId = pss.getIdByPtSize(ptSize);
+    if (ptSizeId == null)
+    {
+      logger.info("Fail to get the product size id by:" + ptSize);
+      return false;
+    }
+    Integer btId = BusinessEnumType.getIdByBusinessType(businessType);
+    if (btId == null)
+    {
+      logger.info("Fail to get the businessType id by:" + businessType);
+      return false;
+    }
+    Integer opUserId = us.getUserIdByUsername(opUser);
+    if (opUserId == null)
+    {
+      logger.info("Fail to get the user id by:" + opUser);
+      return false;
+    }
+    logger.info("the product is:" + pName);
+    logger.info("the type id for:" + ptType + " is:" + ptTypeId);
+    logger.info("the color id for:" + ptColor + " is:" + ptColorId);
+    logger.info("the size id for:" + ptSize + " is:" + ptSizeId);
+    logger.info("the business type id for:" + businessType + " is:" + btId);
+    logger.info("the user id for:" + ptType + " is:" + opUserId);
+    logger.info("the product number is:" + pNum);
+    if (pName == null)
+    {
+      pName = this.constructProductName(ptType, ptColor, ptSize);
+    }
+
+    return pd.updateProduct(pName, ptTypeId, ptColorId, ptSizeId, pNum, btId, opUserId);
+  }
+
+  public boolean deleteAllProduct(String opUser)
+  {
+    // TODO Auto-generated method stub
     return false;
   }
 
-  public Integer getIdByProdName(String pName)
-  {
-    return pd.getIdByProdName(pName);
-  }
-
-  public Product getProductByPoId(Integer poId)
-  {
-    if (poId == null)
-    {
-      logger.error("The quried product id should not be null, return null");
-      return null;
-    }
-    return pd.getProductById(poId);
-  }
-
-  public boolean updateProductName(String oldName, String newName)
+  public List<Pttype> getAllProductList()
   {
     // TODO Auto-generated method stub
-    if (newName == null)
-    {
-      logger.info("the new product name can not be null");
-      return false;
-    }
-
-    return pd.updateProductName(oldName, newName);
+    return null;
   }
 
-  public boolean isProductExisted(String pName)
+  private String constructProductName(String ptType, String ptColor, String ptSize)
   {
-    // Temp fix, that is while the pass in prodType or version is null,
-    // return
-    // true
-
-    if (pName == null)
-    {
-      logger.error("'the name is null, return true");
-      return true;
-    }
-    return pd.isProductExisted(pName);
-  }
-
-  public String getProdTypebyProdTypeId(Integer prodTypeId)
-  {
-    if (prodTypeId == null)
-    {
-      logger.error("the quried type id is null");
-      return null;
-    }
-    return pd.getProdTypebyProdTypeId(prodTypeId);
+    String pName = ptType + "-" + ptColor + "-" + ptSize;
+    return pName;
   }
 
 }

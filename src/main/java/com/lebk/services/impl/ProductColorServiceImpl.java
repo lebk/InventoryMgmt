@@ -39,4 +39,9 @@ public class ProductColorServiceImpl implements ProductColorService
 
     return pcd.getAllPtColor();
   }
+
+  public Integer getIdByPtColor(String ptcolorName)
+  {
+    return pcd.getIdByPtColorName(ptcolorName);
+  }
 }
