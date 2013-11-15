@@ -2,6 +2,9 @@ package com.lebk.services.test;
 
 import static org.junit.Assert.*;
 
+import java.util.Iterator;
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Assert;
@@ -9,6 +12,8 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import com.lebk.po.Product;
+import com.lebk.po.Pttype;
 import com.lebk.services.ProductService;
 import com.lebk.services.impl.ProductServiceImpl;
 import com.lebk.services.test.ProductServiceTest;
@@ -46,7 +51,7 @@ public class ProductServiceTest
     Integer pNum = 99;
     String businessType = "入库";
     String opUser = "管理员";
-    Boolean status = ps.updateProduct(pName, ptType, ptColor, ptSize, -pNum, businessType, opUser);
+    Boolean status = ps.updateProduct(pName, ptType, ptColor, ptSize, pNum, businessType, opUser);
     Assert.assertTrue("Expect update successfully, return true", status == true);
 
     status = ps.updateProduct(pName, ptType, ptColor, ptSize, pNum, businessType, opUser);
@@ -73,6 +78,12 @@ public class ProductServiceTest
   @Test
   public void testGetAllProductList()
   {
+    List<Product> pl = ps.getAllProductList();
+
+    for (Iterator it = pl.iterator(); it.hasNext();)
+    {
+      logger.info("The product is:" + (Product) it.next());
+    }
   }
 
 }

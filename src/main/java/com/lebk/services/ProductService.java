@@ -44,6 +44,6 @@ public interface ProductService
    * 
    * @return
    */
-  public List<Pttype> getAllProductList();
+  public List<Product> getAllProductList();
 
 }

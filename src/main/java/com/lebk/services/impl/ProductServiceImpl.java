@@ -91,10 +91,9 @@ public class ProductServiceImpl implements ProductService
     return pd.cleanUpAll();
   }
 
-  public List<Pttype> getAllProductList()
+  public List<Product> getAllProductList()
   {
-    // TODO Auto-generated method stub
-    return null;
+    return pd.getProductList();
   }
 
   private String constructProductName(String ptType, String ptColor, String ptSize)

@@ -100,4 +100,10 @@ public class Product implements java.io.Serializable
     this.lastUpdateTime = lastUpdateTime;
   }
 
+  public String toString()
+  {
+    return this.getId() + ":" + this.getName() + ":" + this.getPtNumber() + ":" + this.getPtTypeId() + ":" + this.getPtSizeId() + ":" + this.getPtColorId()
+        + ":" + this.getLastUpdateTime();
+  }
+
 }
