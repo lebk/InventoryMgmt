@@ -37,7 +37,7 @@ public interface ProductService
    * @param opUser
    * @return
    */
-  public boolean deleteAllProduct(String opUser);
+  public boolean cleanUpAll(String opUser);
 
   /**
    * This method is used to get all the product in our store.

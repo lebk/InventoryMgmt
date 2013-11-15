@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import com.lebk.dao.ProductDao;
 import com.lebk.dao.impl.ProductDaoImpl;
 import com.lebk.enumType.BusinessEnumType;
+import com.lebk.enumType.UserEnumType;
 import com.lebk.po.Product;
 import com.lebk.po.Pttype;
 import com.lebk.services.ProductColorService;
@@ -27,6 +28,11 @@ public class ProductServiceImpl implements ProductService
   public boolean updateProduct(String pName, String ptType, String ptColor, String ptSize, Integer pNum, String businessType, String opUser)
   {
 
+    if (pNum <= 0)
+    {
+      logger.info("The product number should greater than 0,but:" + pNum);
+      return false;
+    }
     Integer ptTypeId = pts.getIdByPtType(ptType);
     if (ptTypeId == null)
     {
@@ -64,7 +70,7 @@ public class ProductServiceImpl implements ProductService
     logger.info("the business type id for:" + businessType + " is:" + btId);
     logger.info("the user id for:" + ptType + " is:" + opUserId);
     logger.info("the product number is:" + pNum);
-    if (pName == null)
+    if (pName == null || pName.length() == 0)
     {
       pName = this.constructProductName(ptType, ptColor, ptSize);
     }
@@ -72,10 +78,17 @@ public class ProductServiceImpl implements ProductService
     return pd.updateProduct(pName, ptTypeId, ptColorId, ptSizeId, pNum, btId, opUserId);
   }
 
-  public boolean deleteAllProduct(String opUser)
+  public boolean cleanUpAll(String opUser)
   {
-    // TODO Auto-generated method stub
-    return false;
+    Integer id = us.getUserIdByUsername(opUser);
+    logger.info("The id for user:" + opUser + " is:" + id);
+    Integer userTypeId = us.getUserByUserId(id).getType();
+    if (!UserEnumType.getUsertypeById(userTypeId).equals(UserEnumType.admin))
+    {
+      logger.error("Only admin user can call this method, deleteAllProduct()");
+      return false;
+    }
+    return pd.cleanUpAll();
   }
 
   public List<Pttype> getAllProductList()

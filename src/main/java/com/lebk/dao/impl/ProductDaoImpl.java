@@ -78,6 +78,11 @@ public class ProductDaoImpl implements ProductDao
 
   public boolean updateProduct(String pName, Integer ptTypeId, Integer ptColorId, Integer ptSizeId, Integer pNum, Integer btId, Integer opUserId)
   {
+    if (pNum <= 0)
+    {
+      logger.error("The proudct number should >0,but," + pNum);
+      return false;
+    }
     Integer poId = this.updateProductRecord(pName, ptTypeId, ptColorId, ptSizeId, pNum, btId);
     if (poId == null)
     {
@@ -553,7 +558,29 @@ public class ProductDaoImpl implements ProductDao
   {
     boolean status = true;
     status = pdd.cleanUpAll();
-
+    if (status == false)
+    {
+      logger.error("fail to delete product details record,return false");
+      return false;
+    }
+    List<Product> pl = this.getProductList();
+    List<Integer> pidl = new ArrayList<Integer>();
+    for (Iterator it = pl.iterator(); it.hasNext();)
+    {
+      Product p = (Product) it.next();
+      pidl.add(p.getId());
+    }
+    for (Iterator it = pidl.iterator(); it.hasNext();)
+    {
+      Integer id = (Integer) it.next();
+      logger.info("Delete product with id:" + id);
+      status = this.deleteProductRecord(id);
+      if (status == false)
+      {
+        logger.error("fail to delete product record,return false");
+        return false;
+      }
+    }
     return status;
   }
 
