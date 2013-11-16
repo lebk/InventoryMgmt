@@ -3,7 +3,7 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <html>
 <head>
-<title>welcome</title>
+<title>欢迎使用本系统</title>
 <META HTTP-EQUIV="Refresh" CONTENT="15" />
 <link href="<s:url value="/css/main.css"/>" rel="stylesheet"
 	type="text/css" />
@@ -11,9 +11,7 @@
 <body>
 	<center>
 		<h3>
-			欢迎使用本系统，
-			<s:property value="username" />
-			!
+			欢迎使用本系统，<s:property value="username" />!
 		</h3>
 		<%
 		  String nojobfound = (String) session.getAttribute("NOJOBFOUND");

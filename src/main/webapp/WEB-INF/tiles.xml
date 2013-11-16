@@ -16,7 +16,7 @@
 
 	<definition name="showProductList" extends="baseLayout">
 		<put-attribute name="title" value="show Product List" />
-		<put-attribute name="body" value="/pages/jobstatus.jsp" />
+		<put-attribute name="body" value="/pages/showProductList.jsp" />
 	</definition>
 
 	<definition name="jobmanage" extends="baseLayout">

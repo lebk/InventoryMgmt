@@ -32,7 +32,7 @@
 
 		<action name="*tilesAction" method="{1}"
 			class="com.lebk.action.TilesAction">
-			<result name="jobstatus" type="tiles">showProductList</result>
+			<result name="showProductList" type="tiles">showProductList</result>
 			<result name="jobmanage" type="tiles">jobmanage</result>
 			<result name="showvmlist" type="tiles">showvmlist</result>
 			<result name="admin" type="tiles">admin</result>

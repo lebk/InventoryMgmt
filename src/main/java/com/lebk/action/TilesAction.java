@@ -260,7 +260,10 @@ public class TilesAction extends ActionSupport
     List<User> ul = us.getUserList(userName);
 
     convertUserListToUserDTOList(ul, userDtoList);
-
+    for (User u : ul)
+    {
+      logger.info("showUserList:" + u.getName());
+    }
     return "showUserList";
   }
 

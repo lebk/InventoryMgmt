@@ -2,7 +2,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>
-    <META HTTP-EQUIV="Refresh" CONTENT="0;URL=jobstatustilesAction.action"/>
+    <META HTTP-EQUIV="Refresh" CONTENT="0;URL=showProductListtilesAction.action"/>
 </head>
 
 <body>
