@@ -11,7 +11,9 @@
 <body>
 	<center>
 		<h3>
-			欢迎使用本系统，<s:property value="username" />!
+			欢迎使用本系统，
+			<s:property value="username" />
+			!
 		</h3>
 		<%
 		  String nojobfound = (String) session.getAttribute("NOJOBFOUND");
@@ -27,12 +29,12 @@
 		%>
 		<table align=center class="borderAll">
 			<tr>
-				<th><s:text name="id" /></th>
-				<th><s:text name="name" /></th>
-				<th><s:text name="ptTypeId" /></th>
-				<th><s:text name="ptColorId" /></th>
-				<th><s:text name="ptSizeId" /></th>
-				<th><s:text name="ptNumber" /></th>
+				<th><s:text name="编号" /></th>
+				<th><s:text name="名字" /></th>
+				<th><s:text name="类型" /></th>
+				<th><s:text name="花色" /></th>
+				<th><s:text name="大小" /></th>
+				<th><s:text name="数量" /></th>
 				<th>&nbsp;</th>
 			</tr>
 			<s:iterator value="productList" status="status">
@@ -56,35 +58,35 @@
 				</tr>
 			</s:iterator>
 		</table>
-		<s:url id="url_first" action="jobstatustilesAction">
+		<s:url id="url_first" action="showProductListtilesAction">
 			<s:param name="pageNow" value="1" />
 		</s:url>
-		<s:a href="%{url_first}">First Page</s:a>
+		<s:a href="%{url_first}">第一页</s:a>
 		&nbsp; &nbsp; &nbsp;
-		<s:url id="url_pre" action="jobstatustilesAction">
+		<s:url id="url_pre" action="showProductListtilesAction">
 			<s:param name="pageNow" value="pageNow-1" />
 		</s:url>
-		<s:url id="url_next" action="jobstatustilesAction">
+		<s:url id="url_next" action="showProductListtilesAction">
 			<s:param name="pageNow" value="pageNow+1" />
 		</s:url>
 		<s:if test="pageNow>1">
-			<s:a href="%{url_pre}">[Page Up]</s:a>
+			<s:a href="%{url_pre}">[上一页]</s:a>
 		</s:if>
 		<s:if test="pageNow<=1">
- [Page Up]
+ [上一页]
  </s:if>
 		&nbsp; &nbsp; &nbsp;
 		<s:if test="pageNow<pageInTotal">
-			<s:a href="%{url_next}">[Page Down]</s:a>
+			<s:a href="%{url_next}">[下一页]</s:a>
 		</s:if>
 		<s:if test="pageNow>=pageInTotal">
- [Page Down]
+ [下一页]
  </s:if>
 		&nbsp; &nbsp; &nbsp;
-		<s:url id="url_last" action="jobstatustilesAction">
+		<s:url id="url_last" action="showProductListtilesAction">
 			<s:param name="pageNow" value="pageInTotal" />
 		</s:url>
-		<s:a href="%{url_last}">Last Page</s:a>
+		<s:a href="%{url_last}">最后一页</s:a>
 		<%
 		  }
 		%>
