@@ -11,9 +11,7 @@
 <body>
 	<center>
 		<h3>
-			欢迎使用本系统，
-			<s:property value="username" />
-			!
+		当前库存状态
 		</h3>
 		<%
 		  String nojobfound = (String) session.getAttribute("NOJOBFOUND");
@@ -46,15 +44,15 @@
 					<td class="nowrap"><s:property value="ptColorId" /></td>
 					<td class="nowrap"><s:property value="ptSizeId" /></td>
 					<td class="nowrap"><s:property value="ptNumber" /></td>
-					<!--             <td class="nowrap"><s:date name="startTime" nice="false" format="HH:mm:ss MM/dd/yyyy"/></td>
-            <td class="nowrap"><s:property value="jobStatus"/></td>
-            <td class="nowrap">
-                   	<s:url id="showJobProgress" action="showJobProgresstilesAction">
-		       		   <s:param name="jobID" value="id"/>
-		       		</s:url> 
-                <s:a href="%{showJobProgress}">Progress</s:a>
-            </td>
-     -->
+					<!--
+					<td class="nowrap"><s:date name="startTime" nice="false"
+							format="HH:mm:ss MM/dd/yyyy" /></td>
+					<td class="nowrap"><s:property value="jobStatus" /></td>-->
+					<td class="nowrap"><s:url id="showJobProgress"
+							action="showJobProgresstilesAction">
+							<s:param name="jobID" value="id" />
+						</s:url> <s:a href="%{showJobProgress}">Progress</s:a></td>
+
 				</tr>
 			</s:iterator>
 		</table>
