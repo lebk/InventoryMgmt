@@ -99,4 +99,8 @@ public class Ptdetails implements java.io.Serializable
     this.date = date;
   }
 
+  public String toString()
+  {
+    return this.getId() + ":" + this.getPoId() + ":" + this.getBtId() + ":" + this.getNum() + ":" + this.getOpUserId() + ":" + this.getDate();
+  }
 }
