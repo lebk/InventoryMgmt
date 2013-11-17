@@ -22,15 +22,18 @@ import com.lebk.dto.UserDTO;
 import com.lebk.enumType.UserEnumType;
 import com.lebk.po.Product;
 import com.lebk.po.Ptcolor;
+import com.lebk.po.Ptdetails;
 import com.lebk.po.Ptsize;
 import com.lebk.po.Pttype;
 import com.lebk.po.User;
 import com.lebk.services.ProductColorService;
+import com.lebk.services.ProductDetailsService;
 import com.lebk.services.ProductService;
 import com.lebk.services.ProductSizeService;
 import com.lebk.services.ProductTypeService;
 import com.lebk.services.UserService;
 import com.lebk.services.impl.ProductColorServiceImpl;
+import com.lebk.services.impl.ProductDetailsServiceImpl;
 import com.lebk.services.impl.ProductServiceImpl;
 import com.lebk.services.impl.ProductSizeServiceImpl;
 import com.lebk.services.impl.ProductTypeServiceImpl;
@@ -62,6 +65,9 @@ public class TilesAction extends ActionSupport
 
   ProductService ps = new ProductServiceImpl();
   private List<Product> productList;
+
+  ProductDetailsService pds = new ProductDetailsServiceImpl();
+  private List<Ptdetails> productDetailsList;
 
   private Integer pageNow = 1;
   private Integer pageSize = 30;
@@ -189,6 +195,21 @@ public class TilesAction extends ActionSupport
     }
     return "showProductList";
 
+  }
+
+  public List<Ptdetails> getProductDetailsList()
+  {
+    return productDetailsList;
+  }
+
+  public void setProductDetailsList(List<Ptdetails> productDetailsList)
+  {
+    this.productDetailsList = productDetailsList;
+  }
+
+  public String showProductDetailsList()
+  {
+    return "showProductDetailslList";
   }
 
   public String admin()

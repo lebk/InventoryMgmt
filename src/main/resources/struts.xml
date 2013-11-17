@@ -108,9 +108,9 @@
 			<result name="error" type="tiles">stopJobError</result>
 		</action>
 
-		<action name="showJobProgresstilesAction" method="showJobProgress"
+		<action name="showProductDetailsListtilesAction" method="showProductDetailsList"
 			class="com.lebk.action.TilesAction">
-			<result name="success" type="tiles">showJobProgressDetails</result>
+			<result name="success" type="tiles">showProductDetailsList</result>
 		</action>
 
 	</package>

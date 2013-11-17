@@ -168,9 +168,9 @@
 		<put-attribute name="body" value="/pages/startjoberror.jsp" />
 	</definition>
 
-	<definition name="showJobProgressDetails" extends="baseLayout">
-		<put-attribute name="title" value="Job Progress Details" />
-		<put-attribute name="body" value="/pages/showjobprogress.jsp" />
+	<definition name="showProductDetailsList" extends="baseLayout">
+		<put-attribute name="title" value="产品详细信息" />
+		<put-attribute name="body" value="/pages/showProductDetails.jsp" />
 	</definition>
 
 	<definition name="stopJobError" extends="baseLayout">

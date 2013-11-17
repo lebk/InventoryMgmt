@@ -48,10 +48,10 @@
 					<td class="nowrap"><s:date name="startTime" nice="false"
 							format="HH:mm:ss MM/dd/yyyy" /></td>
 					<td class="nowrap"><s:property value="jobStatus" /></td>-->
-					<td class="nowrap"><s:url id="showJobProgress"
-							action="showJobProgresstilesAction">
-							<s:param name="jobID" value="id" />
-						</s:url> <s:a href="%{showJobProgress}">Progress</s:a></td>
+					<td class="nowrap"><s:url id="showProductDetails"
+							action="showProductDetailsListtilesAction">
+							<s:param name="id" value="id" />
+						</s:url> <s:a href="%{showProductDetails}">详情</s:a></td>
 
 				</tr>
 			</s:iterator>
