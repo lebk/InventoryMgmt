@@ -33,6 +33,7 @@
 				<th><s:text name="花色" /></th>
 				<th><s:text name="大小" /></th>
 				<th><s:text name="数量" /></th>
+				<th><s:text name="详情" /></th>
 				<th>&nbsp;</th>
 			</tr>
 			<s:iterator value="productList" status="status">
@@ -40,13 +41,13 @@
 					class="<s:if test="#status.even">even</s:if><s:else>odd</s:else>">
 					<td class="nowrap"><s:property value="id" /></td>
 					<td class="nowrap"><s:property value="name" /></td>
-					<td class="nowrap"><s:property value="ptTypeId" /></td>
-					<td class="nowrap"><s:property value="ptColorId" /></td>
-					<td class="nowrap"><s:property value="ptSizeId" /></td>
+					<td class="nowrap"><s:property value="ptType" /></td>
+					<td class="nowrap"><s:property value="ptColor" /></td>
+					<td class="nowrap"><s:property value="ptSize" /></td>
 					<td class="nowrap"><s:property value="ptNumber" /></td>
 					<!--
-					<td class="nowrap"><s:date name="startTime" nice="false"
-							format="HH:mm:ss MM/dd/yyyy" /></td>
+					<td class="nowrap"><s:date name="lastUpdateTime" nice="false"
+							format="HH:mm:ss MM/dd/yyyy" /></td>	
 					<td class="nowrap"><s:property value="jobStatus" /></td>-->
 					<td class="nowrap"><s:url id="showProductDetails"
 							action="showProductDetailsListtilesAction">

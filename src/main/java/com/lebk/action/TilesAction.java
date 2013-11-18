@@ -18,6 +18,7 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
+import com.lebk.dto.ProductDTO;
 import com.lebk.dto.UserDTO;
 import com.lebk.enumType.UserEnumType;
 import com.lebk.po.Product;
@@ -64,7 +65,7 @@ public class TilesAction extends ActionSupport
   private String username;
 
   ProductService ps = new ProductServiceImpl();
-  private List<Product> productList;
+  private List<ProductDTO> productDtoList;
 
   ProductDetailsService pds = new ProductDetailsServiceImpl();
   private List<Ptdetails> productDetailsList;
@@ -165,34 +166,28 @@ public class TilesAction extends ActionSupport
     this.productColorList = productColorList;
   }
 
-  public List<Product> getProductList()
+  public List<ProductDTO> getProductList()
   {
-    return productList;
+    return productDtoList;
   }
 
-  public void setProductList(List<Product> productList)
+  public void setProductList(List<ProductDTO> productList)
   {
-    this.productList = productList;
+    this.productDtoList = productList;
   }
 
   public String showProductList()
   {
 
-    productList = new ArrayList<Product>();
-    //
-    // String userName = (String)
-    // ActionContext.getContext().getSession().get("username");
+    productDtoList = new ArrayList<ProductDTO>();
     logger.info("calling showProductList");
     List<Product> pl = ps.getAllProductList();
+    convertProductListToProductDTOList(pl, productDtoList);
     for (Product p : pl)
     {
-      logger.info("the product is:" + p);
-      productList.add(p);
+      logger.info("showProductList:" + p.getName());
     }
-    for (Iterator it = productList.iterator(); it.hasNext();)
-    {
-      logger.info("showProductList:" + (Product) it.next());
-    }
+    logger.info("There are:" + productDtoList.size() + " in productDtoList");
     return "showProductList";
 
   }
@@ -410,6 +405,14 @@ public class TilesAction extends ActionSupport
     for (User u : ul)
     {
       userDtoList.add(new UserDTO(u));
+    }
+  }
+
+  private void convertProductListToProductDTOList(List<Product> pl, List<ProductDTO> ProductDtoList)
+  {
+    for (Product p : pl)
+    {
+      productDtoList.add(new ProductDTO(p));
     }
   }
 }
