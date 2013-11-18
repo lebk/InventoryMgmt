@@ -19,6 +19,7 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 
 import com.lebk.dto.ProductDTO;
+import com.lebk.dto.PtDetailsDTO;
 import com.lebk.dto.UserDTO;
 import com.lebk.enumType.UserEnumType;
 import com.lebk.po.Product;
@@ -71,7 +72,7 @@ public class TilesAction extends ActionSupport
 
   ProductDetailsService pds = new ProductDetailsServiceImpl();
 
-  private List<Ptdetails> productDetailsList;
+  private List<PtDetailsDTO> productDetailsList;
 
   private Integer pageNow = 1;
   private Integer pageSize = 30;
@@ -205,18 +206,20 @@ public class TilesAction extends ActionSupport
     this.selectedPoId = selectedPoId;
   }
 
-  public List<Ptdetails> getProductDetailsList()
+  public List<PtDetailsDTO> getProductDetailsList()
   {
     return productDetailsList;
   }
 
-  public void setProductDetailsList(List<Ptdetails> productDetailsList)
+  public void setProductDetailsList(List<PtDetailsDTO> productDetailsList)
   {
     this.productDetailsList = productDetailsList;
   }
 
   public String showProductDetailsList()
   {
+
+    productDetailsList = new ArrayList<PtDetailsDTO>();
 
     Map session = ActionContext.getContext().getSession();
 
@@ -229,7 +232,7 @@ public class TilesAction extends ActionSupport
       logger.info("showProductDetailsList:" + pd);
     }
     logger.info("There are:" + pdl.size() + " in showProductDetailsList");
-    productDetailsList = pdl;
+    convertPtdetailsListToPtdetailsDTOList(pdl, productDetailsList);
     return "showProductDetailsList";
   }
 
@@ -441,4 +444,14 @@ public class TilesAction extends ActionSupport
       productDtoList.add(new ProductDTO(p));
     }
   }
+
+  private void convertPtdetailsListToPtdetailsDTOList(List<Ptdetails> pdl, List<PtDetailsDTO> productDetailsList)
+  {
+    for (Ptdetails pd : pdl)
+    {
+      logger.info("the pd is:" + pd);
+      this.productDetailsList.add(new PtDetailsDTO(pd));
+    }
+  }
+
 }

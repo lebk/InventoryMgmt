@@ -36,9 +36,9 @@
    <tr class="<s:if test="#status.even">even</s:if><s:else>odd</s:else>">
       	<td class="nowrap"><s:property value="id"/></td>
       	<td class="nowrap"><s:property value="poId"/></td>
-      	<td class="nowrap"><s:property value="btId"/></td>
-      	<td class="nowrap"><s:property value="num"/></td>
-      	<td class="nowrap"><s:property value="opUserId"/></td>
+      	<td class="nowrap"><s:property value="businessType"/></td>
+      	<td class="nowrap"><s:property value="ptNumber"/></td>
+      	<td class="nowrap"><s:property value="opUser"/></td>
       	<td class="nowrap"><s:date name="date" nice="false" format="HH:mm:ss MM/dd/yyyy"/></td>   	
     </tr>
    </s:iterator>
