@@ -18,8 +18,8 @@
 <center>
 <div id="container">
 <div id="link">
-<s:url action="jobstatustilesAction.action" var="aURL" />
-<s:a href="%{aURL}"><u>[Go back to job status page]</u></s:a>
+<s:url action="showProductListtilesAction.action" var="aURL" />
+<s:a href="%{aURL}"><u>[返回首页]</u></s:a>
 </div>
 <table align=center class="borderAll">
     <tr>
