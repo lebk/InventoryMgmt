@@ -33,6 +33,7 @@
 		<action name="*tilesAction" method="{1}"
 			class="com.lebk.action.TilesAction">
 			<result name="showProductList" type="tiles">showProductList</result>
+			<result name="showProductDetailsList" type="tiles">showProductDetailsList</result>
 			<result name="jobmanage" type="tiles">jobmanage</result>
 			<result name="showvmlist" type="tiles">showvmlist</result>
 			<result name="admin" type="tiles">admin</result>
@@ -82,12 +83,6 @@
 			class="com.lebk.action.TilesAction">
 			<result name="success" type="redirectAction">showProductSizeListtilesAction</result>
 			<result name="error" type="tiles">updateProductNameError</result>
-		</action>
-
-
-		<action name="showProductDetailsListtilesAction" method="showProductDetailsList"
-			class="com.lebk.action.TilesAction">
-			<result name="success" type="tiles">showProductDetailsList</result>
 		</action>
 
 	</package>

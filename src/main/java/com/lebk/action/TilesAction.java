@@ -70,6 +70,7 @@ public class TilesAction extends ActionSupport
   private Integer selectedPoId;
 
   ProductDetailsService pds = new ProductDetailsServiceImpl();
+
   private List<Ptdetails> productDetailsList;
 
   private Integer pageNow = 1;
@@ -221,6 +222,14 @@ public class TilesAction extends ActionSupport
 
     logger.info("The selected product id is: " + this.selectedPoId);
 
+    List<Ptdetails> pdl = pds.getProductDetailsByProductId(selectedPoId);
+    // convertProductListToProductDTOList(pl, productDtoList);
+    for (Ptdetails pd : pdl)
+    {
+      logger.info("showProductDetailsList:" + pd);
+    }
+    logger.info("There are:" + pdl.size() + " in showProductDetailsList");
+    productDetailsList = pdl;
     return "showProductDetailsList";
   }
 

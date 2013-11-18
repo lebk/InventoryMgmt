@@ -23,54 +23,28 @@
 </div>
 <table align=center class="borderAll">
     <tr>
-        <th><s:text name="Progress"/></th>
-        <th><s:text name="Start Time"/></th>
-        <th><s:text name="End Time"/></th>	 
+        <th><s:text name="编号"/></th>
+        <th><s:text name="产品编号"/></th>
+        <th><s:text name="出库/入库"/></th>
+         <th><s:text name="数量"/></th>
+         <th><s:text name="操作员"/></th>
+         <th><s:text name="时间"/></th>	 
         <th>&nbsp;</th>
     </tr>
-<s:subset source="jobprogressDtoList">
+<s:subset source="productDetailsList">
    <s:iterator>
    <tr class="<s:if test="#status.even">even</s:if><s:else>odd</s:else>">
-      	<td class="nowrap"><s:property value="jobStatus"/></td>
-      	<td class="nowrap"><s:date name="startTime" nice="false" format="HH:mm:ss MM/dd/yyyy"/></td>
-      	<td class="nowrap"><s:date name="endTime" nice="false" format="HH:mm:ss MM/dd/yyyy"/></td>   	
+      	<td class="nowrap"><s:property value="id"/></td>
+      	<td class="nowrap"><s:property value="poId"/></td>
+      	<td class="nowrap"><s:property value="btId"/></td>
+      	<td class="nowrap"><s:property value="num"/></td>
+      	<td class="nowrap"><s:property value="opUserId"/></td>
+      	<td class="nowrap"><s:date name="date" nice="false" format="HH:mm:ss MM/dd/yyyy"/></td>   	
     </tr>
    </s:iterator>
 </s:subset>
 </table>
 </div>
-
-<%
-   String allowtostop = (String)session.getAttribute("ALLOWTOSTOP");
-   String requesttostop = (String)session.getAttribute("REQUESTTOSTOP");
-   
-   if("YES" == allowtostop)
-    {
-        session.removeAttribute("ALLOWTOSTOP");
-%>
-
-<s:form action="stopJobtilesAction" method="post" theme="simple">
-<s:submit key="Stop Job" name="stopjob"/>
-</s:form>
-<%
-    }
-%>
-
-
-<%
-   if("YES" == requesttostop )
-   {
-       session.removeAttribute("REQUESTTOSTOP");
-%>
-
-<script type="text/javascript">
-    alert("Job is in stop process, please wait!")
-</script> 
-<META HTTP-EQUIV="Refresh" CONTENT="0;URL=jobstatustilesAction.action"/>
-<%
-    
-    }
-%>
 
 </center>
 </body>
