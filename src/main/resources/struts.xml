@@ -84,29 +84,6 @@
 			<result name="error" type="tiles">updateProductNameError</result>
 		</action>
 
-		<action name="uploadFiletilesAction" method="uploadFile"
-			class="com.lebk.action.TilesAction">
-			<interceptor-ref name="exception" />
-			<interceptor-ref name="i18n" />
-			<interceptor-ref name="fileUpload">
-			</interceptor-ref>
-			<interceptor-ref name="params">
-				<param name="excludeParams">dojo\..*,^struts\..*</param>
-			</interceptor-ref>
-			<interceptor-ref name="validation">
-				<param name="excludeMethods">input,back,cancel,browse</param>
-			</interceptor-ref>
-			<interceptor-ref name="workflow">
-				<param name="excludeMethods">input,back,cancel,browse</param>
-			</interceptor-ref>
-			<result name="success" type="tiles">uploadFile</result>
-		</action>
-
-		<action name="stopJobtilesAction" method="stopJob"
-			class="com.lebk.action.TilesAction">
-			<result name="success" type="redirectAction">jobstatustilesAction</result>
-			<result name="error" type="tiles">stopJobError</result>
-		</action>
 
 		<action name="showProductDetailsListtilesAction" method="showProductDetailsList"
 			class="com.lebk.action.TilesAction">

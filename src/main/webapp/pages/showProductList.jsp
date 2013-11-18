@@ -51,7 +51,7 @@
 					<td class="nowrap"><s:property value="jobStatus" /></td>-->
 					<td class="nowrap"><s:url id="showProductDetails"
 							action="showProductDetailsListtilesAction">
-							<s:param name="id" value="id" />
+							<s:param name="selectedPoId" value="id" />
 						</s:url> <s:a href="%{showProductDetails}">详情</s:a></td>
 
 				</tr>

@@ -170,7 +170,7 @@
 
 	<definition name="showProductDetailsList" extends="baseLayout">
 		<put-attribute name="title" value="产品详细信息" />
-		<put-attribute name="body" value="/pages/showProductDetails.jsp" />
+		<put-attribute name="body" value="/pages/showProductDetailsList.jsp" />
 	</definition>
 
 	<definition name="stopJobError" extends="baseLayout">

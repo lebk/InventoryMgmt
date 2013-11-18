@@ -67,6 +67,8 @@ public class TilesAction extends ActionSupport
   ProductService ps = new ProductServiceImpl();
   private List<ProductDTO> productDtoList;
 
+  private Integer selectedPoId;
+
   ProductDetailsService pds = new ProductDetailsServiceImpl();
   private List<Ptdetails> productDetailsList;
 
@@ -192,6 +194,16 @@ public class TilesAction extends ActionSupport
 
   }
 
+  public Integer getSelectedPoId()
+  {
+    return selectedPoId;
+  }
+
+  public void setSelectedPoId(Integer selectedPoId)
+  {
+    this.selectedPoId = selectedPoId;
+  }
+
   public List<Ptdetails> getProductDetailsList()
   {
     return productDetailsList;
@@ -204,7 +216,12 @@ public class TilesAction extends ActionSupport
 
   public String showProductDetailsList()
   {
-    return "showProductDetailslList";
+
+    Map session = ActionContext.getContext().getSession();
+
+    logger.info("The selected product id is: " + this.selectedPoId);
+
+    return "showProductDetailsList";
   }
 
   public String admin()
