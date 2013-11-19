@@ -57,16 +57,16 @@ public class UserServiceImpl implements UserService
       logger.error("only admin user can update a user's level");
       return false;
     }
-    if (name == null || name.equals("") || email == null || email.equals(""))
+    if (name == null || name.equals(""))
     {
-      logger.error("name or email address should not be null or empty!");
+      logger.error("name should not be null or empty!");
       return false;
     }
-    // if (password == null || password.equals(""))
-    // {
-    // logger.error("password should not be null or empty!");
-    // return false;
-    // }
+    if (password == null || password.equals(""))
+    {
+      logger.error("password should not be null or empty!");
+      return false;
+    }
     String ut = UserEnumType.getUsertypeById(type);
     if (!ut.equals(UserEnumType.admin) && !ut.equals(UserEnumType.regular))
 

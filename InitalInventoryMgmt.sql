@@ -31,7 +31,6 @@ CREATE  TABLE IF NOT EXISTS `InventoryMgmt`.`user` (
   PRIMARY KEY (`id`) ,
   INDEX `u_refer2ut` (`type` ASC) ,
   UNIQUE INDEX `name_UNIQUE` (`name` ASC) ,
-  UNIQUE INDEX `email_UNIQUE` (`email` ASC) ,
   CONSTRAINT `u_refer2ut`
     FOREIGN KEY (`type` )
     REFERENCES `InventoryMgmt`.`userType` (`id` )
