@@ -46,7 +46,7 @@
 
 	<definition name="showUserList" extends="baseLayout">
 		<put-attribute name="title" value="用户列表" />
-		<put-attribute name="body" value="/pages/showuserlist.jsp" />
+		<put-attribute name="body" value="/pages/showUserList.jsp" />
 	</definition>
 
 	
