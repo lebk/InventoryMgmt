@@ -41,11 +41,12 @@ public class ProductServiceTest
   {
   }
 
+  
   @Test
   public void testUpdateProduct()
   {
     String pName = "";
-    String ptType = "测试产品类型";
+    String ptType = "油漆地板类";
     String ptColor = "测试颜色";
     String ptSize = "测试大小";
     Integer pNum = 99;
@@ -66,7 +67,6 @@ public class ProductServiceTest
     Assert.assertTrue("Expect update successfully, return true", status == false);
 
   }
-
   @Ignore
   @Test
   public void testCleanUpAll()
