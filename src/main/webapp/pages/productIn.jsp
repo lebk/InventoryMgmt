@@ -13,30 +13,12 @@
 <body>
 
 <center>
-<h3>关于本仓存系统</h3>
+<h3>入库单</h3>
 <div id="container">
 <div id="link">
 <s:url action="showProductListtilesAction.action" var="aURL" />
 <s:a href="%{aURL}"><u>[返回首页]</u></s:a>
 </div>
-<table align=center class="borderAll">
-    <tr class="even"style="text-align:left">
-        <td>版本:</th>
-        <td>1.0</td>
-    </tr>
-    <tr class="even" style="text-align:left">
-        <td>简介:</th>
-        <td>本仓存系统用于管理仓库的入库与出库，同时可查询库存状态</td>
-    </tr>
-    <tr class="even" style="text-align:left">
-        <td>联系人:</th>
-        <td>
-        <ul type="disc">
-        <li>雷波(qq:87535204)</li>
-        </ul>
-        </td>
-    </tr>
-</table>
 </div>
 </center>
 </body>

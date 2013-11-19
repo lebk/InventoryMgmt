@@ -8,8 +8,8 @@
 <br>
 
 <ul><a href="<s:url action="showProductListtilesAction"/>"><b>库存状态</b></a><br></ul>
-<ul><a href="<s:url action="jobmanagetilesAction"/>"><b>入库单</b></a><br></ul>
-<ul><a href="<s:url action="showvmlisttilesAction"/>"><b>出库单</b></a><br></ul>
+<ul><a href="<s:url action="productIntilesAction"/>"><b>入库单</b></a><br></ul>
+<ul><a href="<s:url action="productOuttilesAction"/>"><b>出库单</b></a><br></ul>
 <% 
   String userName = (String) session.getAttribute("username");
   UserService us = new UserServiceImpl();
@@ -21,7 +21,7 @@
 <%
   }
 %>
-<ul><a href="<s:url action="showProductListtilesAction"/>"><b>库存查询</b></a><br></ul>
+<ul><a href="<s:url action="productQuerytilesAction"/>"><b>库存查询</b></a><br></ul>
 
 </DIV>
    

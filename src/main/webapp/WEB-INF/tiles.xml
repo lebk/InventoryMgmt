@@ -15,15 +15,32 @@
 	</definition>
 
 	<definition name="showProductList" extends="baseLayout">
-		<put-attribute name="title" value="show Product List" />
+		<put-attribute name="title" value="显示库存状态" />
 		<put-attribute name="body" value="/pages/showProductList.jsp" />
 	</definition>
 
+	<definition name="showProductDetailsList" extends="baseLayout">
+		<put-attribute name="title" value="产品详细信息" />
+		<put-attribute name="body" value="/pages/showProductDetailsList.jsp" />
+	</definition>
 
+	<definition name="productIn" extends="baseLayout">
+		<put-attribute name="title" value="入库单" />
+		<put-attribute name="body" value="/pages/productIn.jsp" />
+	</definition>
 
+	<definition name="productOut" extends="baseLayout">
+		<put-attribute name="title" value="出库单" />
+		<put-attribute name="body" value="/pages/productOut.jsp" />
+	</definition>
 
+	<definition name="productQuery" extends="baseLayout">
+		<put-attribute name="title" value="库存查询" />
+		<put-attribute name="body" value="/pages/productQuery.jsp" />
+	</definition>
+	
 	<definition name="admin" extends="baseLayout">
-		<put-attribute name="title" value="Admin" />
+		<put-attribute name="title" value="管理页面" />
 		<put-attribute name="body" value="/pages/admin.jsp" />
 	</definition>
 
@@ -32,10 +49,6 @@
 		<put-attribute name="body" value="/pages/showuserlist.jsp" />
 	</definition>
 
-	<definition name="showProductDetailsList" extends="baseLayout">
-		<put-attribute name="title" value="产品详细信息" />
-		<put-attribute name="body" value="/pages/showProductDetailsList.jsp" />
-	</definition>
 	
 	<definition name="showProductTypeList" extends="baseLayout">
 		<put-attribute name="title" value="产品类型列表" />
