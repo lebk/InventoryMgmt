@@ -35,7 +35,6 @@ public class UserAction extends ActionSupport
 
   private String addUserName;
   private String addUserPassword;
-  private String addUserEmail;
   private boolean addasAdmin;
 
   public void setAddUserName(String addUserName)
@@ -56,16 +55,6 @@ public class UserAction extends ActionSupport
   public String getAddUserPassword()
   {
     return addUserPassword;
-  }
-
-  public void setAddUserEmail(String addUserEmail)
-  {
-    this.addUserEmail = addUserEmail;
-  }
-
-  public String getAddUserEmail()
-  {
-    return addUserEmail;
   }
 
   public void setAddasAdmin(boolean addasAdmin)
@@ -157,9 +146,9 @@ public class UserAction extends ActionSupport
     return SUCCESS;
   }
 
-  public boolean addUser(String name, String password, Integer type, String email, String opUser)
+  public boolean addUser(String name, String password, Integer type, String opUser)
   {
-    return us.addUser(name, password, type, email, opUser);
+    return us.addUser(name, password, type, opUser);
   }
 
   public String addUser()
@@ -172,21 +161,16 @@ public class UserAction extends ActionSupport
       session.put("ADDUSER", "false");
       return SUCCESS;
     }
-    if (us.isEmailValid(addUserEmail))
-    {
-      session.put("ADDEMAIL", "false");
-      return SUCCESS;
-    }
     if (true == addasAdmin)
     {
-      boolean badd = us.addUser(addUserName, addUserPassword, iAdminType, addUserEmail, opUser);
+      boolean badd = us.addUser(addUserName, addUserPassword, iAdminType, opUser);
       if (true == badd)
         return SUCCESS;
       else
         return ERROR;
     } else
     {
-      boolean badd = us.addUser(addUserName, addUserPassword, iRegularType, addUserEmail, opUser);
+      boolean badd = us.addUser(addUserName, addUserPassword, iRegularType, opUser);
       if (true == badd)
         return SUCCESS;
       else

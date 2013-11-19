@@ -29,14 +29,13 @@ public interface UserService
    * @param password
    * @param type
    *          (1 means admin user, 2 means regular user
-   * @param email
    * @return
    * 
    *         This method is user to add new user (register a user), admin
    *         privilege required.
    */
 
-  public boolean addUser(String name, String password, Integer type, String email, String opUser);
+  public boolean addUser(String name, String password, Integer type, String opUser);
 
   /**
    * 

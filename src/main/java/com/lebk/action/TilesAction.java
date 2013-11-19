@@ -256,16 +256,6 @@ public class TilesAction extends ActionSupport
     return addUserPassword;
   }
 
-  public void setAddUserEmail(String addUserEmail)
-  {
-    this.addUserEmail = addUserEmail;
-  }
-
-  public String getAddUserEmail()
-  {
-    return addUserEmail;
-  }
-
   public void setAddasAdmin(boolean addasAdmin)
   {
     this.addasAdmin = addasAdmin;
@@ -354,9 +344,9 @@ public class TilesAction extends ActionSupport
     return "showProductColorList";
   }
 
-  public boolean addUser(String name, String password, Integer type, String email, String opUser)
+  public boolean addUser(String name, String password, Integer type, String opUser)
   {
-    return us.addUser(name, password, type, email, opUser);
+    return us.addUser(name, password, type, opUser);
   }
 
   public String addUser()
@@ -369,21 +359,17 @@ public class TilesAction extends ActionSupport
       session.put("ADDUSER", "false");
       return SUCCESS;
     }
-    if (us.isEmailValid(addUserEmail))
-    {
-      session.put("ADDEMAIL", "false");
-      return SUCCESS;
-    }
+    
     if (true == addasAdmin)
     {
-      boolean badd = us.addUser(addUserName, addUserPassword, iAdminType, addUserEmail, opUser);
+      boolean badd = us.addUser(addUserName, addUserPassword, iAdminType, opUser);
       if (true == badd)
         return SUCCESS;
       else
         return ERROR;
     } else
     {
-      boolean badd = us.addUser(addUserName, addUserPassword, iRegularType, addUserEmail, opUser);
+      boolean badd = us.addUser(addUserName, addUserPassword, iRegularType, opUser);
       if (true == badd)
         return SUCCESS;
       else

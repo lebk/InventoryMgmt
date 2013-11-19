@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService
     }
   }
 
-  public boolean addUser(String name, String password, Integer type, String email, String opUser)
+  public boolean addUser(String name, String password, Integer type, String opUser)
   {
     if (!this.isUserAdmin(opUser))
     {
@@ -75,7 +75,7 @@ public class UserServiceImpl implements UserService
       return false;
     }
 
-    return ud.addUser(name, password, type, email);
+    return ud.addUser(name, password, type, null);
   }
 
   public boolean deleteUser(String name, String opUser)

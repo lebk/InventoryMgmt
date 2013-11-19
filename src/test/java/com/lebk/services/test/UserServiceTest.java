@@ -48,9 +48,8 @@ public class UserServiceTest
     String name = TestUtil.getRandString(6);
     String password = "123456";
     Integer type = UserEnumType.getUserTypeId(UserEnumType.admin);
-    String email = "";
     String opUser = "管理员";
-    Boolean status = us.addUser(name, password, type, null, opUser);
+    Boolean status = us.addUser(name, password, type, opUser);
     Assert.assertTrue("expect return true", status == true);
   }
 
