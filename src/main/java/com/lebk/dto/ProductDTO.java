@@ -36,7 +36,7 @@ public class ProductDTO
     this.id = p.getId();
     this.name = p.getName();
     this.ptType = ptd.getNameByPtTypeId(p.getPtTypeId());
-    this.ptColor = psd.getNameByPtSizeId(p.getPtSizeId());
+    this.ptColor = pcd.getColorNameByPtColorId(p.getPtColorId());
     this.ptSize = psd.getNameByPtSizeId(p.getPtSizeId());
     this.ptNumber = p.getPtNumber();
     this.lastUpateTime = p.getLastUpdateTime();
