@@ -6,9 +6,9 @@
 </head>
 <center>
 <h1>
-Deleting User Error!
+删除用户错误！
 </h1>
 <p>
-System Exceptions, You may try again...
+系统错误，请联系管理员....
 </p>
 </center>

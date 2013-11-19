@@ -33,7 +33,8 @@
 		<action name="*tilesAction" method="{1}"
 			class="com.lebk.action.TilesAction">
 			<result name="showProductList" type="tiles">showProductList</result>
-			<result name="showProductDetailsList" type="tiles">showProductDetailsList</result>
+			<result name="showProductDetailsList" type="tiles">showProductDetailsList
+			</result>
 			<result name="jobmanage" type="tiles">jobmanage</result>
 			<result name="showvmlist" type="tiles">showvmlist</result>
 			<result name="admin" type="tiles">admin</result>
@@ -42,18 +43,17 @@
 			<result name="displayUser" type="tiles">displayUser</result>
 			<result name="aboutSystem" type="tiles">aboutSystem</result>
 
-			<result name="showProductTypeList" type="tiles">showProductTypeList</result>
-			<result name="showProductSizeList" type="tiles">showProductSizeList</result>
-			<result name="showProductColorList" type="tiles">showProductColorList</result>
-
-			<result name="displayAccountandPasswordSetting" type="tiles">displayAccountandPasswordSetting</result>
-
-
-			<result name="startJob" type="tiles">startJob</result>
+			<result name="showProductTypeList" type="tiles">showProductTypeList
+			</result>
+			<result name="showProductSizeList" type="tiles">showProductSizeList
+			</result>
+			<result name="showProductColorList" type="tiles">showProductColorList
+			</result>
 
 		</action>
 
-		<action name="deleteUsertilesAction" method="deleteUser" class="com.lebk.action.TilesAction">
+		<action name="deleteUsertilesAction" method="deleteUser"
+			class="com.lebk.action.TilesAction">
 			<result name="success" type="redirectAction">showUserListtilesAction</result>
 			<result name="error" type="tiles">deleteUserError</result>
 		</action>
@@ -68,22 +68,6 @@
 			<result name="error" type="tiles">addUserError</result>
 		</action>
 
-		<action name="writeExtraOSinDBtilesAction" method="writeExtraOSinDB"
-			class="com.lebk.action.TilesAction">
-			<result name="success" type="redirectAction">showOSListtilesAction</result>
-			<result name="error" type="tiles">writeExtraOSinDBError</result>
-		</action>
-		<action name="updateOsAccountandPasswordResulttilesAction"
-			method="updateOsAccountandPassword" class="com.lebk.action.TilesAction">
-			<result name="success" type="redirectAction">showOSListtilesAction</result>
-			<result name="error" type="tiles">updateOsAccountandPasswordError</result>
-		</action>
-
-		<action name="updateProductNameResulttilesAction" method="updateProductName"
-			class="com.lebk.action.TilesAction">
-			<result name="success" type="redirectAction">showProductSizeListtilesAction</result>
-			<result name="error" type="tiles">updateProductNameError</result>
-		</action>
 
 	</package>
 </struts>
