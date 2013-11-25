@@ -62,8 +62,11 @@
 			<result name="addProductType" type="tiles">addProductType</result>
 			<result name="showProductSizeList" type="tiles">showProductSizeList
 			</result>
+			<result name="addProductSize" type="tiles">addProductSize</result>
+
 			<result name="showProductColorList" type="tiles">showProductColorList
 			</result>
+			<result name="addProductColor" type="tiles">addProductColor</result>
 
 		</action>
 

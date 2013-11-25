@@ -376,7 +376,17 @@ public class TilesAction extends ActionSupport
   {
     return "addProductType";
   }
-  
+
+  public String addProductSize()
+  {
+    return "addProductSize";
+  }
+
+  public String addProductColor()
+  {
+    return "addProductColor";
+  }
+
   private boolean deleteUser(Integer userId, String opUser)
   {
 

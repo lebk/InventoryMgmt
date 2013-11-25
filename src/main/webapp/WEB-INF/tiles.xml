@@ -38,7 +38,7 @@
 		<put-attribute name="title" value="库存查询" />
 		<put-attribute name="body" value="/pages/productQuery.jsp" />
 	</definition>
-	
+
 	<definition name="admin" extends="baseLayout">
 		<put-attribute name="title" value="管理页面" />
 		<put-attribute name="body" value="/pages/admin.jsp" />
@@ -49,7 +49,7 @@
 		<put-attribute name="body" value="/pages/showUserList.jsp" />
 	</definition>
 
-	
+
 	<definition name="showProductTypeList" extends="baseLayout">
 		<put-attribute name="title" value="产品类型列表" />
 		<put-attribute name="body" value="/pages/showproducttypelist.jsp" />
@@ -74,7 +74,17 @@
 		<put-attribute name="title" value="添加产品类型" />
 		<put-attribute name="body" value="/pages/addProductType.jsp" />
 	</definition>
-	
+
+	<definition name="addProductSize" extends="baseLayout">
+		<put-attribute name="title" value="添加产品大小" />
+		<put-attribute name="body" value="/pages/addProductSize.jsp" />
+	</definition>
+
+	<definition name="addProductColor" extends="baseLayout">
+		<put-attribute name="title" value="添加产品花色" />
+		<put-attribute name="body" value="/pages/addProductColor.jsp" />
+	</definition>
+
 	<definition name="displayUser" extends="baseLayout">
 		<put-attribute name="title" value="添加新用户" />
 		<put-attribute name="body" value="/pages/adduser.jsp" />
