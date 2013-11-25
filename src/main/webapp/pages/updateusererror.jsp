@@ -1,14 +1,14 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <head>
-<title>Update User Error</title>
+<title>更改用户错误</title>
 <link href="<s:url value="/css/main.css"/>" rel="stylesheet" type="text/css"/>
 </head>
 <center>
 <h1>
-Updating User Error!
+更改用户错误!
 </h1>
 <p>
-System Exceptions, You may try it again...
+系统错误，请联系管理员
 </p>
 </center>

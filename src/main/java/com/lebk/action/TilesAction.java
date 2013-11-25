@@ -125,22 +125,6 @@ public class TilesAction extends ActionSupport
     return totalPage;
   }
 
-  public String jobstatus()
-  {
-    return "jobstatus";
-  }
-
-  public String jobmanage()
-  {
-    return "jobmanage";
-  }
-
-  public String showvmlist()
-  {
-
-    return "showvmlist";
-  }
-
   public List<Pttype> getProductTypeList()
   {
     return productTypeList;
@@ -399,6 +383,11 @@ public class TilesAction extends ActionSupport
     Map session = ActionContext.getContext().getSession();
     String userName = (String) session.get("username");
     logger.info("The selected user id is: " + this.selectedUserId);
+    if (us.getUserByUserId(this.selectedUserId).getName().equalsIgnoreCase(userName))
+    {
+      logger.info("Can not delete the user itself");
+      return ERROR;
+    }
     boolean bdelete = deleteUser(selectedUserId, userName);
     if (true == bdelete)
     {
@@ -420,19 +409,24 @@ public class TilesAction extends ActionSupport
     Map session = ActionContext.getContext().getSession();
     String userName = (String) session.get("username");
     logger.info("The selected user id is: " + this.selectedUserId);
-    boolean bAdmin = us.isUserAdmin(username);
+    boolean bAdmin = us.isUserAdmin(this.selectedUserId);
+    if (us.getUserByUserId(this.selectedUserId).getName().equalsIgnoreCase(userName))
+    {
+      logger.info("Can not update the user itself");
+      return ERROR;
+    }
     if (true == bAdmin)
     {
-      boolean bdelete = updateUserType(selectedUserId, iRegularType, userName);
-      if (true == bdelete)
+      boolean bUpdate = updateUserType(selectedUserId, iRegularType, userName);
+      if (true == bUpdate)
       {
         return SUCCESS;
       } else
         return ERROR;
     } else
     {
-      boolean bdelete = updateUserType(selectedUserId, iAdminType, userName);
-      if (true == bdelete)
+      boolean bUpdate = updateUserType(selectedUserId, iAdminType, userName);
+      if (true == bUpdate)
       {
         return SUCCESS;
       } else
