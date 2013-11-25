@@ -70,6 +70,11 @@
 		<put-attribute name="body" value="/pages/aboutInventoryMgmt.jsp" />
 	</definition>
 
+	<definition name="addProductType" extends="baseLayout">
+		<put-attribute name="title" value="添加产品类型" />
+		<put-attribute name="body" value="/pages/addProductType.jsp" />
+	</definition>
+	
 	<definition name="displayUser" extends="baseLayout">
 		<put-attribute name="title" value="添加新用户" />
 		<put-attribute name="body" value="/pages/adduser.jsp" />

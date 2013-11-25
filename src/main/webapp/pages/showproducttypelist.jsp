@@ -2,33 +2,7 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
 <link href="<s:url value="/css/main.css"/>" rel="stylesheet" type="text/css"/>
-<%
-    String addname = (String)session.getAttribute("ADDUSER");
-    String addemail = (String)session.getAttribute("ADDEMAIL");
-    
-    if ("false" == addname)
-    {
-        session.removeAttribute("ADDUSER");       
-%>
-<script type="text/javascript">
-    alert("Error: User name already exist! Please try again...")
-</script> 
-<META HTTP-EQUIV="Refresh" CONTENT="0"/>
-<%
-    }
-    else if ("false" == addemail)
-    {
-        session.removeAttribute("ADDEMAIL");
-%>
-<script type="text/javascript">
-    alert("Error: Email adress already exist! Please try again...")
-</script> 
-<META HTTP-EQUIV="Refresh" CONTENT="0"/>
-<%
-    }
-    else
-    {
-%>
+
 <html>
 <head>
 <title>产品类型管理</title>
@@ -44,7 +18,7 @@
 <h3>产品类型管理</h3>
 <div id="container">
 <div id="link">
-<s:url action="displayUsertilesAction.action" var="aURL" />
+<s:url action="addProductTypetilesAction.action" var="aURL" />
 <s:a href="%{aURL}"><u>[添加产品类型]</u></s:a>
 </div>
 <div id="link">
@@ -73,6 +47,3 @@
  </center>
 </body>
 </html>
-<%
-    }
-%>

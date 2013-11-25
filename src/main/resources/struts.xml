@@ -59,6 +59,7 @@
 			<result name="aboutSystem" type="tiles">aboutSystem</result>
 			<result name="showProductTypeList" type="tiles">showProductTypeList
 			</result>
+			<result name="addProductType" type="tiles">addProductType</result>
 			<result name="showProductSizeList" type="tiles">showProductSizeList
 			</result>
 			<result name="showProductColorList" type="tiles">showProductColorList

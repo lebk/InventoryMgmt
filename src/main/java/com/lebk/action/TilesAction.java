@@ -372,6 +372,11 @@ public class TilesAction extends ActionSupport
 
   }
 
+  public String addProductType()
+  {
+    return "addProductType";
+  }
+  
   private boolean deleteUser(Integer userId, String opUser)
   {
 
