@@ -53,7 +53,6 @@ public class TilesAction extends ActionSupport
   static final Integer iRegularType = 2;
   private String addUserName;
   private String addUserPassword;
-  private String addUserEmail;
   private boolean addasAdmin;
   private List<UserDTO> userDtoList;
 
@@ -241,6 +240,11 @@ public class TilesAction extends ActionSupport
     return "admin";
   }
 
+  public void setAddUserName(String addUserName)
+  {
+    this.addUserName = addUserName;
+  }
+
   public String getAddUserName()
   {
     return addUserName;
@@ -295,6 +299,7 @@ public class TilesAction extends ActionSupport
   {
     return "productOut";
   }
+
   public String productQuery()
   {
     return "productQuery";
@@ -353,13 +358,6 @@ public class TilesAction extends ActionSupport
   {
     Map session = ActionContext.getContext().getSession();
     String opUser = (String) session.get("username");
-
-    if (us.isUserValid(addUserName))
-    {
-      session.put("ADDUSER", "false");
-      return SUCCESS;
-    }
-    
     if (true == addasAdmin)
     {
       boolean badd = us.addUser(addUserName, addUserPassword, iAdminType, opUser);

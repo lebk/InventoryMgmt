@@ -66,22 +66,22 @@
 	</definition>
 
 	<definition name="aboutSystem" extends="baseLayout">
-		<put-attribute name="title" value="AboutInventoryMgmt" />
+		<put-attribute name="title" value="关于本仓存系统" />
 		<put-attribute name="body" value="/pages/aboutInventoryMgmt.jsp" />
 	</definition>
 
 	<definition name="displayUser" extends="baseLayout">
-		<put-attribute name="title" value="Add New User" />
+		<put-attribute name="title" value="添加新用户" />
 		<put-attribute name="body" value="/pages/adduser.jsp" />
 	</definition>
 
 	<definition name="deleteUserError" extends="baseLayout">
-		<put-attribute name="title" value="Delete User Error" />
+		<put-attribute name="title" value="删除用户出错" />
 		<put-attribute name="body" value="/pages/deleteusererror.jsp" />
 	</definition>
 
 	<definition name="updateUserError" extends="baseLayout">
-		<put-attribute name="title" value="Update User Error" />
+		<put-attribute name="title" value="更新用户出错" />
 		<put-attribute name="body" value="/pages/updateusererror.jsp" />
 	</definition>
 

@@ -172,9 +172,9 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- meta data 
 -- -----------------------------------------------------
-insert into InventoryMgmt.UserType (name,description) values ("admin" ,"adminstrator user");
+insert into InventoryMgmt.UserType (name,description) values ("管理员" ,"管理员，有所有权限");
   
-insert into InventoryMgmt.UserType (name,description) values ("regular", "normal user");
+insert into InventoryMgmt.UserType (name,description) values ("普通用户", "普通用户，无管理权限");
   
 -- initial  default user (admin/password, regular/password: (regular/password).
 insert into InventoryMgmt.User (name,password,email,type, createTime) values ("管理员","123456","lebk.lei3@gmail.com", "1",now());

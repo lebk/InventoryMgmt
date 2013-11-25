@@ -23,9 +23,9 @@ import com.lebk.util.HibernateUtil;
  */
 public class UserEnumType
 {
-  final public static String admin = "admin";
-  final public static String regular = "regular";
-  final public static String unknown = "unknown";
+  final public static String admin = "管理员";
+  final public static String regular = "普通用户";
+  final public static String unknown = "未知类型";
   static Logger logger = Logger.getLogger(UserEnumType.class);
   private static UserService us = new UserServiceImpl();
 
