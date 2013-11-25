@@ -10,7 +10,7 @@ public interface UserDao
   public boolean addUser(String name, String password, Integer type, String email);
 
   public boolean deleteUser(String name);
-
+  
   public boolean updateUserType(String name, Integer type);
 
   public boolean authUser(String name, String password);

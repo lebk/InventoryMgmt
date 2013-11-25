@@ -69,6 +69,8 @@ public class TilesAction extends ActionSupport
 
   private Integer selectedPoId;
 
+  private Integer selectedUserId;
+
   ProductDetailsService pds = new ProductDetailsServiceImpl();
 
   private List<PtDetailsDTO> productDetailsList;
@@ -203,6 +205,16 @@ public class TilesAction extends ActionSupport
   public void setSelectedPoId(Integer selectedPoId)
   {
     this.selectedPoId = selectedPoId;
+  }
+
+  public Integer getSelectedUserId()
+  {
+    return selectedUserId;
+  }
+
+  public void setSelectedUserId(Integer selectedUserId)
+  {
+    this.selectedUserId = selectedUserId;
   }
 
   public List<PtDetailsDTO> getProductDetailsList()
@@ -376,17 +388,18 @@ public class TilesAction extends ActionSupport
 
   }
 
-  private boolean deleteUser(String name, String opUser)
+  private boolean deleteUser(Integer userId, String opUser)
   {
 
-    return us.deleteUser(name, opUser);
+    return us.deleteUser(userId, opUser);
   }
 
   public String deleteUser()
   {
     Map session = ActionContext.getContext().getSession();
     String userName = (String) session.get("username");
-    boolean bdelete = deleteUser(username, userName);
+    logger.info("The selected user id is: " + this.selectedUserId);
+    boolean bdelete = deleteUser(selectedUserId, userName);
     if (true == bdelete)
     {
       return SUCCESS;
@@ -396,9 +409,9 @@ public class TilesAction extends ActionSupport
     }
   }
 
-  private boolean updateUserType(String name, Integer type, String opUser)
+  private boolean updateUserType(Integer userId, Integer type, String opUser)
   {
-    return us.updateUserType(name, type, opUser);
+    return us.updateUserType(userId, type, opUser);
 
   }
 
@@ -406,10 +419,11 @@ public class TilesAction extends ActionSupport
   {
     Map session = ActionContext.getContext().getSession();
     String userName = (String) session.get("username");
+    logger.info("The selected user id is: " + this.selectedUserId);
     boolean bAdmin = us.isUserAdmin(username);
     if (true == bAdmin)
     {
-      boolean bdelete = updateUserType(username, iRegularType, userName);
+      boolean bdelete = updateUserType(selectedUserId, iRegularType, userName);
       if (true == bdelete)
       {
         return SUCCESS;
@@ -417,7 +431,7 @@ public class TilesAction extends ActionSupport
         return ERROR;
     } else
     {
-      boolean bdelete = updateUserType(username, iAdminType, userName);
+      boolean bdelete = updateUserType(selectedUserId, iAdminType, userName);
       if (true == bdelete)
       {
         return SUCCESS;

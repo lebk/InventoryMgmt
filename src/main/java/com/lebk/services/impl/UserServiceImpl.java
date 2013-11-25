@@ -88,6 +88,17 @@ public class UserServiceImpl implements UserService
     return ud.deleteUser(name);
   }
 
+  public boolean deleteUser(Integer userId, String opUser)
+  {
+    if (!this.isUserAdmin(opUser))
+    {
+      logger.error("only admin user can delete a user");
+      return false;
+    }
+    String name = ud.getUsernamebyUserid(userId);
+    return ud.deleteUser(name);
+  }
+
   public boolean updateUserType(String name, Integer type, String opUser)
   {
     if (!this.isUserAdmin(opUser))
@@ -98,6 +109,17 @@ public class UserServiceImpl implements UserService
     return ud.updateUserType(name, type);
   }
 
+  public boolean updateUserType(Integer userId, Integer type, String opUser)
+  {
+    if (!this.isUserAdmin(opUser))
+    {
+      logger.error("only admin user can update a user's level");
+      return false;
+    }
+    String name = ud.getUsernamebyUserid(userId);
+    return ud.updateUserType(name, type);
+  }
+  
   public boolean isUserValid(String name)
   {
     if (name == null || name.equals(""))

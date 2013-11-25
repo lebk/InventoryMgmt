@@ -8,9 +8,9 @@ import com.lebk.po.User;
  * copyright: all right reserved.
  * 
  * Author: Lei Bo
- *
+ * 
  * 2013-10-9
- *
+ * 
  */
 public interface UserService
 {
@@ -51,6 +51,17 @@ public interface UserService
 
   /**
    * 
+   * @param userId
+   * @param opUser
+   * @return
+   * 
+   *         This method is used to delete the user, only admin user (opUser)
+   *         can delete a user.
+   */
+  public boolean deleteUser(Integer userId, String opUser);
+
+  /**
+   * 
    * @param name
    * @param type
    *          (The new level of user( 1 means admin, 2 means regular),
@@ -62,6 +73,17 @@ public interface UserService
    *         only admin user can call this method
    */
   public boolean updateUserType(String name, Integer type, String opUser);
+
+  /**
+   * 
+   * @param userId
+   * @param type
+   * @param opUser
+   * @return
+   * 
+   *         only admin user can call this method
+   */
+  public boolean updateUserType(Integer userId, Integer type, String opUser);
 
   /**
    * 

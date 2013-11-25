@@ -38,15 +38,15 @@
             <td class="nowrap"><s:property value="type"/></td>
             <td class="nowrap">
                    	<s:url id="deleteUser" action="deleteUsertilesAction">
-		       		   <s:param name="username" value="name"/>
+		       		   <s:param name="selectedUserId" value="id"/>
 		       		</s:url> 
                 <s:a href="%{deleteUser}">删除</s:a>
             </td>
             <td class="nowrap">
                    	<s:url id="updateUser" action="updateUsertilesAction">
-		       		   <s:param name="username" value="name"/>
+		       		    <s:param name="selectedUserId" value="id"/>
 		       		</s:url> 
-                <s:a href="%{updateUser}">更改</s:a>
+                <s:a href="%{updateUser}">更改权限</s:a>
             </td>
         </tr>  		
 	 </s:iterator>
