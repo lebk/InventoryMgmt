@@ -38,7 +38,7 @@
                    	<s:url id="deleteProductType" action="deleteProductTypetilesAction">
 		       		   <s:param name="selectedProductTypeId" value="id"/>
 		       		</s:url> 
-                <s:a href="%{deleteUser}">删除</s:a>
+                <s:a href="%{deleteProductType}">删除</s:a>
             </td>
         </tr>  		
 	 </s:iterator>

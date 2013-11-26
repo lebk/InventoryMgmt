@@ -347,9 +347,15 @@ public class TilesAction extends ActionSupport
     logger.info("The selected product type id is:" + this.selectedProductTypeId);
     logger.info("The user is::" + userName);
 
-    pts.deletePtType(this.selectedProductTypeId, userName);
+    Boolean status = pts.deletePtType(this.selectedProductTypeId, userName);
 
-    return this.SUCCESS;
+    if (status == true)
+    {
+      logger.info("Delete the product type successfully, the product type id is:" + selectedProductTypeId);
+      return SUCCESS;
+    }
+
+    return ERROR;
   }
 
   public String showProductSizeList()

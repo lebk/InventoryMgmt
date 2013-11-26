@@ -27,6 +27,13 @@ public class ProductTypeServiceImpl implements ProductTypeService
 
   public boolean deletePtType(String ptType, String opUser)
   {
+    Integer id = ptd.getIdByPtType(ptType);
+    if (this.isUsed(id))
+    {
+      logger.info("The product type is already is used, the product type id:" + id);
+      return false;
+    }
+
     // TODO Auto-generated method stub
     return ptd.deletePtType(ptType);
   }
@@ -41,8 +48,18 @@ public class ProductTypeServiceImpl implements ProductTypeService
     return ptd.getIdByPtType(pttypeName);
   }
 
+  public boolean isUsed(Integer ptTypeId)
+  {
+    return ptd.isUsed(ptTypeId);
+  }
+
   public boolean deletePtType(Integer ptTypeId, String opUser)
   {
+    if (this.isUsed(ptTypeId))
+    {
+      logger.info("The product type is already used, product id is:" + ptTypeId);
+      return false;
+    }
     String ptType = ptd.getNameByPtTypeId(ptTypeId);
     logger.info("The pt type name of ptTypeId:" + ptTypeId + " is:" + ptType);
     return ptd.deletePtType(ptType);

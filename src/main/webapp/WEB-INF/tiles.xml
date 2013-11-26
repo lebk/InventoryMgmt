@@ -94,7 +94,7 @@
 		<put-attribute name="title" value="删除用户出错" />
 		<put-attribute name="body" value="/pages/deleteusererror.jsp" />
 	</definition>
-	<definition name=deleteProductTypeError extends="baseLayout">
+	<definition name="deleteProductTypeError" extends="baseLayout">
 		<put-attribute name="title" value="删除产品类型出错" />
 		<put-attribute name="body" value="/pages/deleteProductTypeError.jsp" />
 	</definition>

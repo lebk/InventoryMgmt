@@ -31,7 +31,7 @@ public class PtTypeDaoTest
 
   static Logger logger = Logger.getLogger(PtTypeDaoTest.class);
   PtTypeDao ptd;
-  Integer opUserId=TestUtil.getOpUserId();
+  Integer opUserId = TestUtil.getOpUserId();
   String ptTypeName = TestUtil.getPtTypeName();
 
   @BeforeClass
@@ -135,6 +135,27 @@ public class PtTypeDaoTest
     ptd.deletePtType(ptTypeName);
     status = ptd.isPtTypeExisted(ptTypeName);
     Assert.assertTrue("The product should not be existed, as I just delete it", status == false);
+  }
+
+  @Test
+  public void testIsUsed()
+  {
+    Integer ptTypeId = 1;
+    Boolean status = ptd.isUsed(ptTypeId);
+    logger.info("The status should be false:" + status);
+    Assert.assertTrue("expect false", status == false);
+
+    status = ptd.isUsed(3);
+    logger.info("The status should be true:" + status);
+    Assert.assertTrue("expect true", status == true);
+    status = ptd.isUsed(2);
+    logger.info("The status should be false:" + status);
+    Assert.assertTrue("expect false", status == false);
+
+    status = ptd.isUsed(7);
+    logger.info("The status should be true:" + status);
+    Assert.assertTrue("expect true", status == true);
+
   }
 
 }

@@ -32,4 +32,6 @@ public interface ProductTypeService
 
   public Integer getIdByPtType(String pttypeName);
 
+  public boolean isUsed(Integer ptTypeId);
+
 }
