@@ -73,6 +73,9 @@ public class TilesAction extends ActionSupport
 
   private Integer selectedProductTypeId;
 
+  private Integer selectedProductColorId;
+  private Integer selectedProductSizeId;
+
   ProductDetailsService pds = new ProductDetailsServiceImpl();
 
   private List<PtDetailsDTO> productDetailsList;
@@ -211,6 +214,26 @@ public class TilesAction extends ActionSupport
   public void setSelectedProductTypeId(Integer selectedProductTypeId)
   {
     this.selectedProductTypeId = selectedProductTypeId;
+  }
+
+  public Integer getSelectedProductColorId()
+  {
+    return selectedProductColorId;
+  }
+
+  public void setSelectedProductColorId(Integer selectedProductColorId)
+  {
+    this.selectedProductColorId = selectedProductColorId;
+  }
+
+  public Integer getSelectedProductSizeId()
+  {
+    return selectedProductSizeId;
+  }
+
+  public void setSelectedProductSizeId(Integer selectedProductSizeId)
+  {
+    this.selectedProductSizeId = selectedProductSizeId;
   }
 
   public List<PtDetailsDTO> getProductDetailsList()
@@ -352,6 +375,44 @@ public class TilesAction extends ActionSupport
     if (status == true)
     {
       logger.info("Delete the product type successfully, the product type id is:" + selectedProductTypeId);
+      return SUCCESS;
+    }
+
+    return ERROR;
+  }
+
+  public String deleteProductColor()
+  {
+    Map session = ActionContext.getContext().getSession();
+    String userName = (String) session.get("username");
+
+    logger.info("The selected product color id is:" + this.selectedProductColorId);
+    logger.info("The user is::" + userName);
+
+    Boolean status = pcs.deletePtColor(this.selectedProductColorId, userName);
+
+    if (status == true)
+    {
+      logger.info("Delete the product color successfully, the product color id is:" + selectedProductColorId);
+      return SUCCESS;
+    }
+
+    return ERROR;
+  }
+
+  public String deleteProductSize()
+  {
+    Map session = ActionContext.getContext().getSession();
+    String userName = (String) session.get("username");
+
+    logger.info("The selected product size id is:" + this.selectedProductSizeId);
+    logger.info("The user is::" + userName);
+
+    Boolean status = pss.deletePtSize(this.selectedProductSizeId, userName);
+
+    if (status == true)
+    {
+      logger.info("Delete the product size successfully, the product size id is:" + selectedProductSizeId);
       return SUCCESS;
     }
 

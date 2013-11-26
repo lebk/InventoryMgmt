@@ -72,8 +72,23 @@
 
 		<action name="deleteProductTypetilesAction" method="deleteProductType"
 			class="com.lebk.action.TilesAction">
-			<result name="success" type="redirectAction">showProductTypeListtilesAction</result>
+			<result name="success" type="redirectAction">showProductTypeListtilesAction
+			</result>
 			<result name="error" type="tiles">deleteProductTypeError</result>
+		</action>
+
+		<action name="deleteProductColortilesAction" method="deleteProductColor"
+			class="com.lebk.action.TilesAction">
+			<result name="success" type="redirectAction">showProductColorListtilesAction
+			</result>
+			<result name="error" type="tiles">deleteProductColorError</result>
+		</action>
+
+		<action name="deleteProductSizetilesAction" method="deleteProductSize"
+			class="com.lebk.action.TilesAction">
+			<result name="success" type="redirectAction">showProductSizeListtilesAction
+			</result>
+			<result name="error" type="tiles">deleteProductSizeError</result>
 		</action>
 	</package>
 </struts>
