@@ -49,7 +49,7 @@ public class ProductColorServiceTest
   @Test
   public void testDeletePtColor()
   {
-    fail("Not yet implemented");
+
   }
 
   @Test
@@ -61,7 +61,21 @@ public class ProductColorServiceTest
       Ptcolor pt = (Ptcolor) it.next();
       logger.info("pt color is:" + pt.getColor());
     }
-    Assert.assertTrue("The size should be greater than 0", pcl.size() > 0);
+    Assert.assertTrue("The color should be greater than 0", pcl.size() > 0);
   }
 
+  @Test
+  public void testIsUsed()
+  {
+    Integer ptColorId = 2;
+    Boolean status = pcs.isUsed(ptColorId);
+    Assert.assertTrue("expect true", status == true);
+
+    status = pcs.isUsed(3);
+    Assert.assertTrue("expect false", status == false);
+
+    status = pcs.isUsed(1);
+    Assert.assertTrue("expect false", status == false);
+
+  }
 }

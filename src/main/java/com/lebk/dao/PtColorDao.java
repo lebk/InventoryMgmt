@@ -28,4 +28,7 @@ public interface PtColorDao
   public boolean isPtColorExisted(String ptcolorName);
 
   public List<Ptcolor> getAllPtColor();
+
+  public boolean isUsed(Integer ptColorId);
+
 }

@@ -10,7 +10,9 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.lebk.dao.ProductDao;
 import com.lebk.dao.PtColorDao;
+import com.lebk.po.Product;
 import com.lebk.po.Ptcolor;
 import com.lebk.po.Pttype;
 import com.lebk.util.HibernateUtil;
@@ -270,6 +272,21 @@ public class PtColorDaoImpl implements PtColorDao
       session.close();
     }
     return pcl;
+  }
+
+  public boolean isUsed(Integer ptColorId)
+  {
+    ProductDao pd = new ProductDaoImpl();
+    List<Product> pl = pd.getProductList();
+    for (Product p : pl)
+    {
+      if (ptColorId.equals(p.getPtColorId()))
+      {
+        logger.info("This product color id is already used by product:" + p.getName());
+        return true;
+      }
+    }
+    return false;
   }
 
 }

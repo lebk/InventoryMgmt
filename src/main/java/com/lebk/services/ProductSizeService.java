@@ -15,11 +15,16 @@ import com.lebk.po.Ptsize;
 
 public interface ProductSizeService
 {
-  public boolean addPtSize(String ptSize, String opUser);
+  public Boolean addPtSize(String ptSize, String opUser);
 
-  public boolean deletePtSize(String ptSize, String opUser);
+  public Boolean deletePtSize(String ptSize, String opUser);
+
+  public Boolean deletePtSize(Integer ptSizeId, String opUser);
 
   public List<Ptsize> getAllPtSize();
 
   public Integer getIdByPtSize(String ptsizeName);
+
+  public Boolean isUsed(Integer ptSizeId);
+
 }

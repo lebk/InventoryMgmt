@@ -12,19 +12,22 @@ import com.lebk.po.Ptsize;
  * @date 2013-10-19
  */
 
-public interface PtSizeDao {
+public interface PtSizeDao
+{
 
-	public boolean addPtSize(String ptSizeName, Integer opUserId);
+  public boolean addPtSize(String ptSizeName, Integer opUserId);
 
-	public boolean deletePtSize(String ptSizeName);
+  public boolean deletePtSize(String ptSizeName);
 
-	public Integer getIdByPtSizeName(String ptSizeName);
+  public Integer getIdByPtSizeName(String ptSizeName);
 
-	public String getNameByPtSizeId(Integer ptSizeId);
+  public String getNameByPtSizeId(Integer ptSizeId);
 
-	public Ptsize getPtSizeByPtsizeId(Integer ptSizeId);
+  public Ptsize getPtSizeByPtsizeId(Integer ptSizeId);
 
-	public boolean isPtSizeExisted(String ptSizeName);
+  public boolean isPtSizeExisted(String ptSizeName);
 
-	public List<Ptsize> getAllPtSize();
+  public List<Ptsize> getAllPtSize();
+
+  public boolean isUsed(Integer ptSizeId);
 }

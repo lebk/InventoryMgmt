@@ -2,6 +2,8 @@ package com.lebk.services.impl;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.lebk.dao.PtColorDao;
 import com.lebk.dao.PtTypeDao;
 import com.lebk.dao.impl.PtColorDaoImpl;
@@ -20,6 +22,8 @@ import com.lebk.services.UserService;
 
 public class ProductColorServiceImpl implements ProductColorService
 {
+  static Logger logger = Logger.getLogger(ProductColorServiceImpl.class);
+
   PtColorDao pcd = new PtColorDaoImpl();
   UserService us = new UserServiceImpl();
 
@@ -31,6 +35,26 @@ public class ProductColorServiceImpl implements ProductColorService
 
   public boolean deletePtColor(String ptColor, String opUser)
   {
+    Integer id = pcd.getIdByPtColorName(ptColor);
+    if (this.isUsed(id))
+    {
+      logger.info("The product color is already is used, the product color id:" + id);
+      return false;
+    }
+
+    return pcd.deletePtColor(ptColor);
+  }
+
+  public boolean deletePtColor(Integer ptColorId, String opUser)
+  {
+    if (this.isUsed(ptColorId))
+    {
+      logger.info("The product color is already used, product id is:" + ptColorId);
+      return false;
+    }
+    String ptColor = pcd.getColorNameByPtColorId(ptColorId);
+    logger.info("The pt color name of ptColorId:" + ptColorId + " is:" + ptColor);
+
     return pcd.deletePtColor(ptColor);
   }
 
@@ -43,5 +67,10 @@ public class ProductColorServiceImpl implements ProductColorService
   public Integer getIdByPtColor(String ptcolorName)
   {
     return pcd.getIdByPtColorName(ptcolorName);
+  }
+
+  public Boolean isUsed(Integer ptColorId)
+  {
+    return pcd.isUsed(ptColorId);
   }
 }

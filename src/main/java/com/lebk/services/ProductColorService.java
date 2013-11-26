@@ -34,8 +34,11 @@ public interface ProductColorService
    */
   public boolean deletePtColor(String ptColor, String opUser);
 
+  public boolean deletePtColor(Integer ptColorId, String opUser);
+
   public List<Ptcolor> getAllPtColor();
 
   public Integer getIdByPtColor(String ptcolorName);
 
+  public Boolean isUsed(Integer ptColorId);
 }

@@ -9,7 +9,9 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.lebk.dao.ProductDao;
 import com.lebk.dao.PtSizeDao;
+import com.lebk.po.Product;
 import com.lebk.po.Ptcolor;
 import com.lebk.po.Ptsize;
 import com.lebk.po.Ptsize;
@@ -273,6 +275,21 @@ public class PtSizeDaoImpl implements PtSizeDao
       session.close();
     }
     return psl;
+  }
+
+  public boolean isUsed(Integer ptSizeId)
+  {
+    ProductDao pd = new ProductDaoImpl();
+    List<Product> pl = pd.getProductList();
+    for (Product p : pl)
+    {
+      if (ptSizeId.equals(p.getPtSizeId()))
+      {
+        logger.info("This product size id is already used by product:" + p.getName());
+        return true;
+      }
+    }
+    return false;
   }
 
 }

@@ -67,4 +67,19 @@ public class ProductSizeServiceTest
 
   }
 
+  @Test
+  public void testIsUsed()
+  {
+    Integer ptSizeId = 4;
+    Boolean status = pss.isUsed(ptSizeId);
+    Assert.assertTrue("expect true", status == true);
+
+    status = pss.isUsed(5);
+    Assert.assertTrue("expect false", status == false);
+
+    status = pss.isUsed(1);
+    Assert.assertTrue("expect false", status == false);
+
+  }
+  
 }
