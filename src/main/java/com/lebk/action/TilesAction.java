@@ -71,6 +71,8 @@ public class TilesAction extends ActionSupport
 
   private Integer selectedUserId;
 
+  private Integer selectedProductTypeId;
+
   ProductDetailsService pds = new ProductDetailsServiceImpl();
 
   private List<PtDetailsDTO> productDetailsList;
@@ -201,6 +203,16 @@ public class TilesAction extends ActionSupport
     this.selectedUserId = selectedUserId;
   }
 
+  public Integer getSelectedProductTypeId()
+  {
+    return selectedProductTypeId;
+  }
+
+  public void setSelectedProductTypeId(Integer selectedProductTypeId)
+  {
+    this.selectedProductTypeId = selectedProductTypeId;
+  }
+
   public List<PtDetailsDTO> getProductDetailsList()
   {
     return productDetailsList;
@@ -325,6 +337,19 @@ public class TilesAction extends ActionSupport
     this.productTypeList = ptl;
 
     return "showProductTypeList";
+  }
+
+  public String deleteProductType()
+  {
+    Map session = ActionContext.getContext().getSession();
+    String userName = (String) session.get("username");
+
+    logger.info("The selected product type id is:" + this.selectedProductTypeId);
+    logger.info("The user is::" + userName);
+
+    pts.deletePtType(this.selectedProductTypeId, userName);
+
+    return this.SUCCESS;
   }
 
   public String showProductSizeList()

@@ -18,7 +18,6 @@ public interface PtTypeDao
 
   public boolean addPtType(String ptType, Integer opUserId);
 
-
   public boolean deletePtType(String ptType);
 
   public List<Pttype> getAllPtType();
@@ -30,5 +29,7 @@ public interface PtTypeDao
   public Pttype getPtTypeByPtTypeId(Integer ptTypeId);
 
   public boolean isPtTypeExisted(String ptTypeName);
+
+  public boolean isUsed(Integer ptTypeId);
 
 }

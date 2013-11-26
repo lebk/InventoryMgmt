@@ -26,6 +26,8 @@ public interface ProductTypeService
    */
   public boolean deletePtType(String ptType, String opUser);
 
+  public boolean deletePtType(Integer ptTypeId, String opUser);
+
   public List<Pttype> getAllPtType();
 
   public Integer getIdByPtType(String pttypeName);

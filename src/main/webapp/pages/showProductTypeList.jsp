@@ -35,8 +35,8 @@
         <tr class="<s:if test="#status.even">even</s:if><s:else>odd</s:else>">
             <td class="nowrap"><s:property value="type"/></td>
             <td class="nowrap">
-                   	<s:url id="deleteUser" action="deleteUsertilesAction">
-		       		   <s:param name="username" value="name"/>
+                   	<s:url id="deleteProductType" action="deleteProductTypetilesAction">
+		       		   <s:param name="selectedProductTypeId" value="id"/>
 		       		</s:url> 
                 <s:a href="%{deleteUser}">删除</s:a>
             </td>

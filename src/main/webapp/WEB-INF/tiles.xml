@@ -52,7 +52,7 @@
 
 	<definition name="showProductTypeList" extends="baseLayout">
 		<put-attribute name="title" value="产品类型列表" />
-		<put-attribute name="body" value="/pages/showproducttypelist.jsp" />
+		<put-attribute name="body" value="/pages/showProductTypeList.jsp" />
 	</definition>
 
 	<definition name="showProductSizeList" extends="baseLayout">
@@ -93,6 +93,10 @@
 	<definition name="deleteUserError" extends="baseLayout">
 		<put-attribute name="title" value="删除用户出错" />
 		<put-attribute name="body" value="/pages/deleteusererror.jsp" />
+	</definition>
+	<definition name=deleteProductTypeError extends="baseLayout">
+		<put-attribute name="title" value="删除产品类型出错" />
+		<put-attribute name="body" value="/pages/deleteProductTypeError.jsp" />
 	</definition>
 
 	<definition name="updateUserError" extends="baseLayout">

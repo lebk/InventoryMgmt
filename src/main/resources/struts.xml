@@ -45,6 +45,7 @@
 
 		<action name="*tilesAction" method="{1}"
 			class="com.lebk.action.TilesAction">
+
 			<result name="showProductList" type="tiles">showProductList</result>
 			<result name="showProductDetailsList" type="tiles">showProductDetailsList
 			</result>
@@ -67,11 +68,13 @@
 			<result name="showProductColorList" type="tiles">showProductColorList
 			</result>
 			<result name="addProductColor" type="tiles">addProductColor</result>
-
 		</action>
 
-
-
+		<action name="deleteProductTypetilesAction" method="deleteProductType"
+			class="com.lebk.action.TilesAction">
+			<result name="success" type="redirectAction">showProductTypeListtilesAction</result>
+			<result name="error" type="tiles">deleteProductTypeError</result>
+		</action>
 	</package>
 </struts>
 

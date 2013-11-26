@@ -28,7 +28,7 @@ public class ProductTypeServiceImpl implements ProductTypeService
   public boolean deletePtType(String ptType, String opUser)
   {
     // TODO Auto-generated method stub
-    return false;
+    return ptd.deletePtType(ptType);
   }
 
   public List<Pttype> getAllPtType()
@@ -39,6 +39,13 @@ public class ProductTypeServiceImpl implements ProductTypeService
   public Integer getIdByPtType(String pttypeName)
   {
     return ptd.getIdByPtType(pttypeName);
+  }
+
+  public boolean deletePtType(Integer ptTypeId, String opUser)
+  {
+    String ptType = ptd.getNameByPtTypeId(ptTypeId);
+    logger.info("The pt type name of ptTypeId:" + ptTypeId + " is:" + ptType);
+    return ptd.deletePtType(ptType);
   }
 
 }

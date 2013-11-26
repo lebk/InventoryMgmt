@@ -10,8 +10,10 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.lebk.dao.ProductDao;
 import com.lebk.dao.PtTypeDao;
 import com.lebk.po.Businesstype;
+import com.lebk.po.Product;
 import com.lebk.po.Pttype;
 import com.lebk.po.Ptcolor;
 import com.lebk.util.HibernateUtil;
@@ -79,6 +81,12 @@ public class PtTypeDaoImpl implements PtTypeDao
     }
 
     Integer id = this.getIdByPtType(ptType);
+
+    if (this.isUsed(id))
+    {
+      logger.info("The product type is already used, return false");
+      return false;
+    }
     Session session = HibernateUtil.getSessionFactory().openSession();
     Transaction transaction = null;
     try
@@ -277,4 +285,18 @@ public class PtTypeDaoImpl implements PtTypeDao
     return false;
   }
 
+  public boolean isUsed(Integer ptTypeId)
+  {
+    ProductDao pd = new ProductDaoImpl();
+    List<Product> pl = pd.getProductList();
+    for (Product p : pl)
+    {
+      if (ptTypeId.equals(p.getPtTypeId()))
+      {
+        logger.info("This product type id is already used by product:" + p.getName());
+        return true;
+      }
+    }
+    return false;
+  }
 }
