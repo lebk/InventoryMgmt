@@ -32,6 +32,10 @@ public class PtSizeDaoImpl implements PtSizeDao
 
   public boolean addPtSize(String ptSizeName, Integer opUserId)
   {
+    if (ptSizeName == null || ptSizeName.length() == 0)
+    {
+      return false;
+    }
     if (this.isPtSizeExisted(ptSizeName))
     {
       logger.warn("the size " + ptSizeName + " is already existed");

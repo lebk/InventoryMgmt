@@ -30,11 +30,16 @@ public class PtTypeDaoImpl implements PtTypeDao
 {
   static Logger logger = Logger.getLogger(PtTypeDaoImpl.class);
 
-  public boolean addPtType(String ptType, Integer opUserId)
+  public boolean addPtType(String ptTypeName, Integer opUserId)
   {
-    if (this.isPtTypeExisted(ptType))
+    if (ptTypeName == null || ptTypeName.length() == 0)
     {
-      logger.warn("the product type " + ptType + " is already existed");
+      return false;
+    }
+    
+    if (this.isPtTypeExisted(ptTypeName))
+    {
+      logger.warn("the product type " + ptTypeName + " is already existed");
       return false;
     }
     Session session = HibernateUtil.getSessionFactory().openSession();
@@ -43,12 +48,12 @@ public class PtTypeDaoImpl implements PtTypeDao
 
     try
     {
-      logger.info("begin to add product type: " + ptType);
+      logger.info("begin to add product type: " + ptTypeName);
 
       transaction = session.beginTransaction();
       Pttype pt = new Pttype();
 
-      pt.setType(ptType);
+      pt.setType(ptTypeName);
       pt.setOpUserId(opUserId);
       pt.setCreateTime(new Date());
       session.save(pt);

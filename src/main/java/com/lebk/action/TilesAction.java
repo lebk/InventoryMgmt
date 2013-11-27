@@ -55,7 +55,9 @@ public class TilesAction extends ActionSupport
   private String addUserPassword;
   private boolean addasAdmin;
   private List<UserDTO> userDtoList;
-
+  private String addProductType;
+  private String addProductSize;
+  private String addProductColor;
   ProductTypeService pts = new ProductTypeServiceImpl();
   ProductSizeService pss = new ProductSizeServiceImpl();
   ProductColorService pcs = new ProductColorServiceImpl();
@@ -301,6 +303,36 @@ public class TilesAction extends ActionSupport
     return addasAdmin;
   }
 
+  public String getAddProductType()
+  {
+    return addProductType;
+  }
+
+  public void setAddProductType(String addProductType)
+  {
+    this.addProductType = addProductType;
+  }
+
+  public String getAddProductSize()
+  {
+    return addProductSize;
+  }
+
+  public void setAddProductSize(String addProductSize)
+  {
+    this.addProductSize = addProductSize;
+  }
+
+  public String getAddProductColor()
+  {
+    return addProductColor;
+  }
+
+  public void setAddProductColor(String addProductColor)
+  {
+    this.addProductColor = addProductColor;
+  }
+
   public String addNewUser()
   {
     return "addNewUser";
@@ -472,6 +504,64 @@ public class TilesAction extends ActionSupport
   public String addNewProductSize()
   {
     return "addNewProductSize";
+  }
+
+  public String addProductType()
+  {
+    Map session = ActionContext.getContext().getSession();
+    String opUser = (String) session.get("username");
+    String ptType = this.addProductType;
+    logger.info("The product type is:" + ptType);
+    if (ptType == null || ptType.length() == 0)
+    {
+      logger.info("The product type is emtpy");
+      return ERROR;
+    }
+    Boolean status = pts.addPtType(ptType, opUser);
+    if (status == true)
+    {
+      return SUCCESS;
+    }
+    return ERROR;
+  }
+
+  public String addProductColor()
+  {
+    Map session = ActionContext.getContext().getSession();
+    String opUser = (String) session.get("username");
+    String ptColor = this.addProductColor;
+    logger.info("The product color is:" + ptColor);
+    if (ptColor == null || ptColor.length() == 0)
+    {
+      logger.info("The product color is emtpy");
+      return ERROR;
+    }
+    Boolean status = pcs.addPtColor(ptColor, opUser);
+    if (status == true)
+    {
+      return SUCCESS;
+    }
+    return ERROR;
+  }
+
+  public String addProductSize()
+  {
+    Map session = ActionContext.getContext().getSession();
+    String opUser = (String) session.get("username");
+    String ptSize = this.addProductSize;
+    logger.info("The product size is:" + ptSize);
+    if (ptSize == null || ptSize.length() == 0)
+    {
+      logger.info("The product size is emtpy");
+      return ERROR;
+    }
+
+    Boolean status = pss.addPtSize(ptSize, opUser);
+    if (status == true)
+    {
+      return SUCCESS;
+    }
+    return ERROR;
   }
 
   public String addNewProductColor()

@@ -21,12 +21,16 @@ public class PtColorDaoImpl implements PtColorDao
 {
   static Logger logger = Logger.getLogger(PtColorDaoImpl.class);
 
-  public boolean addPtColor(String ptColor, Integer opUserId)
+  public boolean addPtColor(String ptColorName, Integer opUserId)
   {
-
-    if (this.isPtColorExisted(ptColor))
+    if (ptColorName == null || ptColorName.length() == 0)
     {
-      logger.warn("the color " + ptColor + " is already existed");
+      return false;
+    }
+    
+    if (this.isPtColorExisted(ptColorName))
+    {
+      logger.warn("the color " + ptColorName + " is already existed");
       return false;
     }
     Session session = HibernateUtil.getSessionFactory().openSession();
@@ -35,12 +39,12 @@ public class PtColorDaoImpl implements PtColorDao
 
     try
     {
-      logger.info("begin to add product color: " + ptColor);
+      logger.info("begin to add product color: " + ptColorName);
 
       transaction = session.beginTransaction();
       Ptcolor pc = new Ptcolor();
 
-      pc.setColor(ptColor);
+      pc.setColor(ptColorName);
       pc.setOpUserId(opUserId);
       pc.setCreateTime(new Date());
       session.save(pc);

@@ -81,17 +81,17 @@
 		<put-attribute name="title" value="添加新产品类型" />
 		<put-attribute name="body" value="/pages/addNewProductType.jsp" />
 	</definition>
-	
-		<definition name="addNewProductColor" extends="baseLayout">
+
+	<definition name="addNewProductColor" extends="baseLayout">
 		<put-attribute name="title" value="添加新产品花色" />
 		<put-attribute name="body" value="/pages/addNewProductColor.jsp" />
 	</definition>
-	
-		<definition name="addNewProductSize" extends="baseLayout">
+
+	<definition name="addNewProductSize" extends="baseLayout">
 		<put-attribute name="title" value="添加新产品尺寸" />
 		<put-attribute name="body" value="/pages/addNewProductSize.jsp" />
 	</definition>
-	
+
 	<definition name="deleteUserError" extends="baseLayout">
 		<put-attribute name="title" value="删除用户出错" />
 		<put-attribute name="body" value="/pages/deleteusererror.jsp" />
@@ -117,8 +117,23 @@
 	</definition>
 
 	<definition name="addUserError" extends="baseLayout">
-		<put-attribute name="title" value="Add User Error" />
-		<put-attribute name="body" value="/pages/addusererror.jsp" />
+		<put-attribute name="title" value="添加用户出错" />
+		<put-attribute name="body" value="/pages/addUserError.jsp" />
+	</definition>
+
+	<definition name="addProductTypeError" extends="baseLayout">
+		<put-attribute name="title" value="添加产品类型出错" />
+		<put-attribute name="body" value="/pages/addProductTypeError.jsp" />
+	</definition>
+
+	<definition name="addProductColorError" extends="baseLayout">
+		<put-attribute name="title" value="添加产品花色出错" />
+		<put-attribute name="body" value="/pages/addProductColorError.jsp" />
+	</definition>
+
+	<definition name="addProductSizeError" extends="baseLayout">
+		<put-attribute name="title" value="添加产品大小出错" />
+		<put-attribute name="body" value="/pages/addProductSizeError.jsp" />
 	</definition>
 
 

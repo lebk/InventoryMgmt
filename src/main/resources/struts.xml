@@ -43,6 +43,23 @@
 			<result name="error" type="tiles">addUserError</result>
 		</action>
 
+		<action name="addProductTypetilesAction" method="addProductType"
+			class="com.lebk.action.TilesAction">
+			<result name="success" type="redirectAction">showProductTypeListtilesAction</result>
+			<result name="error" type="tiles">addProductTypeError</result>
+		</action>
+
+		<action name="addProductColortilesAction" method="addProductColor"
+			class="com.lebk.action.TilesAction">
+			<result name="success" type="redirectAction">showProductColorListtilesAction</result>
+			<result name="error" type="tiles">addProductColorError</result>
+		</action>
+
+		<action name="addProductSizetilesAction" method="addProductSize"
+			class="com.lebk.action.TilesAction">
+			<result name="success" type="redirectAction">showProductSizeListtilesAction</result>
+			<result name="error" type="tiles">addProductSizeError</result>
+		</action>
 		<action name="*tilesAction" method="{1}"
 			class="com.lebk.action.TilesAction">
 
@@ -56,12 +73,15 @@
 
 			<result name="admin" type="tiles">admin</result>
 			<result name="showUserList" type="tiles">showUserList</result>
-			
+
 			<result name="addNewUser" type="tiles">addNewUser</result>
-			<result name="addNewProductType" type="tiles">addNewProductType</result>
-			<result name="addNewProductColor" type="tiles">addNewProductColor</result>
-			<result name="addNewProductSize" type="tiles">addNewProductSize</result>
-			
+			<result name="addNewProductType" type="tiles">addNewProductType
+			</result>
+			<result name="addNewProductColor" type="tiles">addNewProductColor
+			</result>
+			<result name="addNewProductSize" type="tiles">addNewProductSize
+			</result>
+
 			<result name="aboutSystem" type="tiles">aboutSystem</result>
 			<result name="showProductTypeList" type="tiles">showProductTypeList
 			</result>

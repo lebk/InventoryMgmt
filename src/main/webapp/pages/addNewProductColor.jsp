@@ -16,22 +16,14 @@
 </head>
 
 <div id="link">
-<s:url action="showUserListtilesAction" var="aURL" />
-<s:a href="%{aURL}"><u>[返回用户列表界面]</u></s:a>
+<s:url action="showProductColorListtilesAction" var="aURL" />
+<s:a href="%{aURL}"><u>[返回产品花色列表界面]</u></s:a>
 </div>
 
-<s:form action="addUsertilesAction" enctype="multipart/form-data" method="post">
+<s:form action="addProductColortilesAction" enctype="multipart/form-data" method="post">
 <div style="text-align:center">
-    <s:textfield name="addUserName" key="用户名"/>
+    <s:textfield name="addProductColor" key="产品花色"/>
 </div>
-
-<div style="text-align:center">
-    <s:textfield name="addUserPassword" key="用户密码"/>
-</div> 
-
-<div style="text-align:center">
-    <s:checkbox name="addasAdmin" fieldValue="true" label="添加为管理员？"/>
-</div> 
 <div style="text-align:center">    
     <s:submit key="提交" name="update"/>
 </div>
