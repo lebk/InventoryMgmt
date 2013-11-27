@@ -56,18 +56,20 @@
 
 			<result name="admin" type="tiles">admin</result>
 			<result name="showUserList" type="tiles">showUserList</result>
-			<result name="displayUser" type="tiles">displayUser</result>
+			
+			<result name="addNewUser" type="tiles">addNewUser</result>
+			<result name="addNewProductType" type="tiles">addNewProductType</result>
+			<result name="addNewProductColor" type="tiles">addNewProductColor</result>
+			<result name="addNewProductSize" type="tiles">addNewProductSize</result>
+			
 			<result name="aboutSystem" type="tiles">aboutSystem</result>
 			<result name="showProductTypeList" type="tiles">showProductTypeList
 			</result>
-			<result name="addProductType" type="tiles">addProductType</result>
 			<result name="showProductSizeList" type="tiles">showProductSizeList
 			</result>
-			<result name="addProductSize" type="tiles">addProductSize</result>
 
 			<result name="showProductColorList" type="tiles">showProductColorList
 			</result>
-			<result name="addProductColor" type="tiles">addProductColor</result>
 		</action>
 
 		<action name="deleteProductTypetilesAction" method="deleteProductType"

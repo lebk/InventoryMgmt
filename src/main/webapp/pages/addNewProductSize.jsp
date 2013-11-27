@@ -3,12 +3,12 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
 <h3>
-	<center>添加产品大小</center>
+	<center>添加产品尺寸</center>
 </h3>
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>添加产品大小</title>
+<title>添加产品尺寸</title>
 <link href="<s:url value="/css/InventoryMgmt.css"/>" rel="stylesheet"
 	type="text/css" />
 <link href="<s:url value="/css/main.css"/>" rel="stylesheet"

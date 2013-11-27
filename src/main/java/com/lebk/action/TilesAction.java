@@ -301,9 +301,9 @@ public class TilesAction extends ActionSupport
     return addasAdmin;
   }
 
-  public String displayUser()
+  public String addNewUser()
   {
-    return "displayUser";
+    return "addNewUser";
   }
 
   public List<UserDTO> getUserList()
@@ -464,19 +464,19 @@ public class TilesAction extends ActionSupport
 
   }
 
-  public String addProductType()
+  public String addNewProductType()
   {
-    return "addProductType";
+    return "addNewProductType";
   }
 
-  public String addProductSize()
+  public String addNewProductSize()
   {
-    return "addProductSize";
+    return "addNewProductSize";
   }
 
-  public String addProductColor()
+  public String addNewProductColor()
   {
-    return "addProductColor";
+    return "addNewProductColor";
   }
 
   private boolean deleteUser(Integer userId, String opUser)

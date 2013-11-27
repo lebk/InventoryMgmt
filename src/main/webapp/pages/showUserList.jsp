@@ -17,7 +17,7 @@
 <h3>用户管理</h3>
 <div id="container">
 <div id="link">
-<s:url action="displayUsertilesAction.action" var="aURL" />
+<s:url action="addNewUsertilesAction.action" var="aURL" />
 <s:a href="%{aURL}"><u>[添加用户]</u></s:a>
 </div>
 <div id="link">

@@ -70,26 +70,28 @@
 		<put-attribute name="body" value="/pages/aboutInventoryMgmt.jsp" />
 	</definition>
 
-	<definition name="addProductType" extends="baseLayout">
-		<put-attribute name="title" value="添加产品类型" />
-		<put-attribute name="body" value="/pages/addProductType.jsp" />
-	</definition>
 
-	<definition name="addProductSize" extends="baseLayout">
-		<put-attribute name="title" value="添加产品大小" />
-		<put-attribute name="body" value="/pages/addProductSize.jsp" />
-	</definition>
 
-	<definition name="addProductColor" extends="baseLayout">
-		<put-attribute name="title" value="添加产品花色" />
-		<put-attribute name="body" value="/pages/addProductColor.jsp" />
-	</definition>
-
-	<definition name="displayUser" extends="baseLayout">
+	<definition name="addNewUser" extends="baseLayout">
 		<put-attribute name="title" value="添加新用户" />
-		<put-attribute name="body" value="/pages/adduser.jsp" />
+		<put-attribute name="body" value="/pages/addNewUser.jsp" />
 	</definition>
 
+	<definition name="addNewProductType" extends="baseLayout">
+		<put-attribute name="title" value="添加新产品类型" />
+		<put-attribute name="body" value="/pages/addNewProductType.jsp" />
+	</definition>
+	
+		<definition name="addNewProductColor" extends="baseLayout">
+		<put-attribute name="title" value="添加新产品花色" />
+		<put-attribute name="body" value="/pages/addNewProductColor.jsp" />
+	</definition>
+	
+		<definition name="addNewProductSize" extends="baseLayout">
+		<put-attribute name="title" value="添加新产品尺寸" />
+		<put-attribute name="body" value="/pages/addNewProductSize.jsp" />
+	</definition>
+	
 	<definition name="deleteUserError" extends="baseLayout">
 		<put-attribute name="title" value="删除用户出错" />
 		<put-attribute name="body" value="/pages/deleteusererror.jsp" />

@@ -28,7 +28,7 @@
 		<h3>产品花色管理</h3>
 		<div id="container">
 			<div id="link">
-				<s:url action="addProductColortilesAction.action" var="aURL" />
+				<s:url action="addNewProductColortilesAction.action" var="aURL" />
 				<s:a href="%{aURL}">
 					<u>[添加产品花色]</u>
 				</s:a>

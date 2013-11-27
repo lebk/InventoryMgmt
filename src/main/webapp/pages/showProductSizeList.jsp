@@ -29,7 +29,7 @@
 		<h3>产品尺寸管理</h3>
 		<div id="container">
 			<div id="link">
-				<s:url action="addProductSizetilesAction.action" var="aURL" />
+				<s:url action="addNewProductSizetilesAction.action" var="aURL" />
 				<s:a href="%{aURL}">
 					<u>[添加产品尺寸]</u>
 				</s:a>

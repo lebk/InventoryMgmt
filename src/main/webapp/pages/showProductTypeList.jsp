@@ -18,7 +18,7 @@
 <h3>产品类型管理</h3>
 <div id="container">
 <div id="link">
-<s:url action="addProductTypetilesAction.action" var="aURL" />
+<s:url action="addNewProductTypetilesAction.action" var="aURL" />
 <s:a href="%{aURL}"><u>[添加产品类型]</u></s:a>
 </div>
 <div id="link">
