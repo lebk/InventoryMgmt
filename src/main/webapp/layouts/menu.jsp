@@ -8,8 +8,8 @@
 <br>
 
 <ul><a href="<s:url action="showProductListtilesAction"/>"><b>库存状态</b></a><br></ul>
-<ul><a href="<s:url action="productIntilesAction"/>"><b>入库单</b></a><br></ul>
-<ul><a href="<s:url action="productOuttilesAction"/>"><b>出库单</b></a><br></ul>
+<ul><a href="<s:url action="gotoProductIn"/>"><b>入库单</b></a><br></ul>
+<ul><a href="<s:url action="gotoProductOut"/>"><b>出库单</b></a><br></ul>
 <% 
   String userName = (String) session.getAttribute("username");
   UserService us = new UserServiceImpl();

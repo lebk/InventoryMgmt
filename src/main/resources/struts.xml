@@ -45,30 +45,31 @@
 
 		<action name="addProductTypetilesAction" method="addProductType"
 			class="com.lebk.action.TilesAction">
-			<result name="success" type="redirectAction">showProductTypeListtilesAction</result>
+			<result name="success" type="redirectAction">showProductTypeListtilesAction
+			</result>
 			<result name="error" type="tiles">addProductTypeError</result>
-		</action>
-
-		<action name="addProductColortilesAction" method="addProductColor"
-			class="com.lebk.action.TilesAction">
-			<result name="success" type="redirectAction">showProductColorListtilesAction</result>
-			<result name="error" type="tiles">addProductColorError</result>
 		</action>
 
 		<action name="addProductSizetilesAction" method="addProductSize"
 			class="com.lebk.action.TilesAction">
-			<result name="success" type="redirectAction">showProductSizeListtilesAction</result>
+			<result name="success" type="redirectAction">showProductSizeListtilesAction
+			</result>
 			<result name="error" type="tiles">addProductSizeError</result>
 		</action>
+
+		<action name="addPtilesAction" method="addProductSize"
+			class="com.lebk.action.TilesAction">
+			<result name="success" type="redirectAction">showProductSizeListtilesAction
+			</result>
+			<result name="error" type="tiles">addProductSizeError</result>
+		</action>
+
 		<action name="*tilesAction" method="{1}"
 			class="com.lebk.action.TilesAction">
 
 			<result name="showProductList" type="tiles">showProductList</result>
 			<result name="showProductDetailsList" type="tiles">showProductDetailsList
 			</result>
-			<result name="productIn" type="tiles">productIn</result>
-
-			<result name="productOut" type="tiles">productOut</result>
 			<result name="productQuery" type="tiles">productQuery</result>
 
 			<result name="admin" type="tiles">admin</result>
@@ -112,6 +113,31 @@
 			</result>
 			<result name="error" type="tiles">deleteProductSizeError</result>
 		</action>
+
+		<!-- Product In/Out Related Action -->
+		<action name="gotoProductIn" method="gotoProductIn"
+			class="com.lebk.action.ProductAction">
+			<result name="success" type="tiles">productIn</result>
+			<result name="error" type="tiles">defaultError</result>
+		</action>
+		<action name="gotoProductOut" method="gotoProductOut"
+			class="com.lebk.action.ProductAction">
+			<result name="success" type="tiles">productOut</result>
+			<result name="error" type="tiles">defaultError</result>
+		</action>
+
+		<action name="productIn" method="productIn" class="com.lebk.action.ProductAction">
+			<result name="success" type="tiles">productIn</result>
+			<result name="error" type="tiles">defaultError</result>
+		</action>
+
+
+		<action name="productOut" method="productOut"
+			class="com.lebk.action.ProductAction">
+			<result name="success" type="tiles">productOut</result>
+			<result name="error" type="tiles">defaultError</result>
+		</action>
+		<!-- Product In/Out Related Action End -->
 	</package>
 </struts>
 
