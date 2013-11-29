@@ -1,11 +1,11 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
-<link href="<s:url value="/css/main.css"/>" rel="stylesheet"
-	type="text/css" />
+
 <html>
 <head>
 <title>产品入库</title>
+
 <style type="text/css" rel="stylesheet">
 #container {
 	width: 80%;
@@ -22,18 +22,19 @@
 }
 </style>
 
+<link href="<s:url value="/css/main.css"/>" rel="stylesheet" type="text/css" />
 </head>
+
 <body>
 	<center>
-		<h3>产品入库</h3>
-		<div id="container">
+		<h2>产品入库</h2>
+</center>
+<s:form action="login" enctype="multipart/form-data" method="post">
+	
+	<div id="container">
 			<div id="link">
-				<s:url action="addNewProductColortilesAction.action" var="aURL" />
-				<s:a href="%{aURL}">
-					<u>[提交]</u>
-				</s:a>
+				<s:submit value="提交"  theme="simple"/>
 			</div>
-			
 		<table align=center class="borderAll">
 			<tr>
 				<th><s:text name="编号" /></th>
@@ -55,8 +56,8 @@
 					<td class="nowrap"><s:textfield name="inNum" size="5" theme="simple"/></td>
 				</tr>
 			</s:iterator>
-		</table>
+		<table>
 		</div>
-	</center>
+</s:form>
 </body>
 </html>

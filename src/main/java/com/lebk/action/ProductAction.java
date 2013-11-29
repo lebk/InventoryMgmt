@@ -39,10 +39,9 @@ public class ProductAction extends ActionSupport
     for (int i = 0; i < listSize; i++)
     {
       ProductInRow row = new ProductInRow(i, "产品类型", "产品花色", "产品尺寸", 99, 0);
-      logger.info("the row is:" + row);
-      logger.info("the row is:" + row);
+
       productInList.add(row);
-      logger.info("the row is:" + row);
+
     }
 
   }
