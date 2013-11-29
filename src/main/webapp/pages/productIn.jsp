@@ -29,7 +29,7 @@
 	<center>
 		<h2>产品入库</h2>
 </center>
-<s:form action="login" enctype="multipart/form-data" method="post">
+<s:form action="productInSubmit" enctype="multipart/form-data" method="post">
 	
 	<div id="container">
 			<div id="link">

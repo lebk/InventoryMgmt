@@ -29,7 +29,7 @@ public class ProductAction extends ActionSupport
   ProductTypeService pts = new ProductTypeServiceImpl();
   ProductSizeService pss = new ProductSizeServiceImpl();
   ProductColorService pcs = new ProductColorServiceImpl();
-  private List<ProductInRow> productInList;
+  private static List<ProductInRow> productInList;
   private static Integer listSize = 10;
   private static String emptyStr = "";
   private List<String> ptList;
@@ -91,6 +91,28 @@ public class ProductAction extends ActionSupport
 
   }
 
+  public String productInSubmit()
+  {
+    return "productInSubmit";
+  }
+
+  public void validate()
+  {
+    
+//    //first time to login
+//    if (productInList == null)
+//    {
+//      return;
+//    }
+//    for (ProductInRow productIn : productInList)
+//    {
+//      if (productIn.getInNum() == 0)
+//      {
+//        addFieldError("productInList.ptList", "产品类型没有选择");
+//      }
+//    }
+  }
+
   public String gotoProductIn()
   {
     return SUCCESS;
@@ -111,6 +133,7 @@ public class ProductAction extends ActionSupport
     return "productOut";
   }
 
+  // class TO hold the row of productIn
   class ProductInRow
   {
     private Integer id;
