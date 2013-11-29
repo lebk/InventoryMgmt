@@ -29,7 +29,7 @@ public class ProductAction extends ActionSupport
   ProductTypeService pts = new ProductTypeServiceImpl();
   ProductSizeService pss = new ProductSizeServiceImpl();
   ProductColorService pcs = new ProductColorServiceImpl();
-  private static List<ProductInRow> productInList;
+  private List<ProductInRow> productInList;
   private static Integer listSize = 10;
   private static String emptyStr = "";
   private List<String> ptList;
@@ -44,6 +44,10 @@ public class ProductAction extends ActionSupport
 
   public void setProductInList(List<ProductInRow> productInList)
   {
+    for (ProductInRow productIn : productInList)
+    {
+      logger.info(productIn);
+    }
     this.productInList = productInList;
   }
 
@@ -93,24 +97,29 @@ public class ProductAction extends ActionSupport
 
   public String productInSubmit()
   {
+    for (ProductInRow productIn : productInList)
+    {
+      logger.info(productIn);
+    }
     return "productInSubmit";
   }
 
+
   public void validate()
   {
-    
-//    //first time to login
-//    if (productInList == null)
-//    {
-//      return;
-//    }
-//    for (ProductInRow productIn : productInList)
-//    {
-//      if (productIn.getInNum() == 0)
-//      {
-//        addFieldError("productInList.ptList", "产品类型没有选择");
-//      }
-//    }
+
+    // //first time to login
+    // if (productInList == null)
+    // {
+    // return;
+    // }
+    // for (ProductInRow productIn : productInList)
+    // {
+    // if (productIn.getInNum() == 0)
+    // {
+    // addFieldError("productInList.ptList", "产品类型没有选择");
+    // }
+    // }
   }
 
   public String gotoProductIn()
@@ -138,11 +147,13 @@ public class ProductAction extends ActionSupport
   {
     private Integer id;
     private List<String> ptList;
-
     private List<String> pcList;
     private List<String> psList;
     private Integer ptNumber;
     private Integer InNum;
+    private String selectedProductType;
+    private String selectedProductColor;
+    private String selectedProductSize;
 
     public ProductInRow(int id, List<String> ptList, List<String> pcList, List<String> psList, int ptNumber, int inNum)
     {
@@ -214,9 +225,40 @@ public class ProductAction extends ActionSupport
       InNum = inNum;
     }
 
+    public String getSelectedProductType()
+    {
+      return selectedProductType;
+    }
+
+    public void setSelectedProductType(String selectedProductType)
+    {
+      this.selectedProductType = selectedProductType;
+    }
+
+    public String getSelectedProductColor()
+    {
+      return selectedProductColor;
+    }
+
+    public void setSelectedProductColor(String selectedProductColor)
+    {
+      this.selectedProductColor = selectedProductColor;
+    }
+
+    public String getSelectedProductSize()
+    {
+      return selectedProductSize;
+    }
+
+    public void setSelectedProductSize(String selectedProductSize)
+    {
+      this.selectedProductSize = selectedProductSize;
+    }
+
     public String toString()
     {
-      return this.getId() + ":" + this.getPtNumber() + ":" + this.getInNum();
+      return this.getId() + ":" + this.getSelectedProductType() + ":" + this.getSelectedProductColor() + ":" + this.getSelectedProductSize() + ":"
+          + +this.getPtNumber() + ":" + this.getInNum();
     }
   }
 }
