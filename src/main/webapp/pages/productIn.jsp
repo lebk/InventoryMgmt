@@ -49,9 +49,9 @@
 				<tr
 					class="<s:if test="#status.even">even</s:if><s:else>odd</s:else>">
 					<td class="nowrap"><s:property value="id" /></td>
-					<td class="nowrap"><s:property value="ptType" /></td>
-					<td class="nowrap"><s:property value="ptColor" /></td>
-					<td class="nowrap"><s:property value="ptSize" /></td>
+				<td class="nowrap"><s:select list="ptList" theme="simple"/></td>
+				<td class="nowrap"><s:select list="pcList" theme="simple"/></td>
+				<td class="nowrap"><s:select list="psList" theme="simple"/></td>
 					<td class="nowrap"><s:property value="ptNumber" /></td>
 					<td class="nowrap"><s:textfield name="inNum" size="5" theme="simple"/></td>
 				</tr>

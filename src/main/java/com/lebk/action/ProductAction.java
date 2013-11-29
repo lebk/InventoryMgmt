@@ -5,8 +5,17 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import com.lebk.po.Ptcolor;
+import com.lebk.po.Ptsize;
+import com.lebk.po.Pttype;
+import com.lebk.services.ProductColorService;
 import com.lebk.services.ProductService;
+import com.lebk.services.ProductSizeService;
+import com.lebk.services.ProductTypeService;
+import com.lebk.services.impl.ProductColorServiceImpl;
 import com.lebk.services.impl.ProductServiceImpl;
+import com.lebk.services.impl.ProductSizeServiceImpl;
+import com.lebk.services.impl.ProductTypeServiceImpl;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
@@ -17,10 +26,15 @@ public class ProductAction extends ActionSupport
 
   static Logger logger = Logger.getLogger(ProductAction.class);
   ProductService ps = new ProductServiceImpl();
-
+  ProductTypeService pts = new ProductTypeServiceImpl();
+  ProductSizeService pss = new ProductSizeServiceImpl();
+  ProductColorService pcs = new ProductColorServiceImpl();
   private List<ProductInRow> productInList;
-
   private static Integer listSize = 10;
+  private static String emptyStr = "";
+  private List<String> ptList;
+  private List<String> pcList;
+  private List<String> psList;
 
   public List<ProductInRow> getProductInList()
   {
@@ -35,11 +49,42 @@ public class ProductAction extends ActionSupport
 
   private void constructProductInList()
   {
+    // get the product type list, append a empty string
+    ptList = new ArrayList<String>();
+    List<Pttype> ptl = pts.getAllPtType();
+    ptList.add(emptyStr);
+    for (Pttype pt : ptl)
+    {
+      ptList.add(pt.getType());
+    }
+
+    // get the product color list, append a empty string
+
+    pcList = new ArrayList<String>();
+
+    List<Ptcolor> pcl = pcs.getAllPtColor();
+    pcList.add(emptyStr);
+    for (Ptcolor pt : pcl)
+    {
+      pcList.add(pt.getColor());
+    }
+
+    // get the product size list, append a empty string
+
+    psList = new ArrayList<String>();
+
+    List<Ptsize> psl = pss.getAllPtSize();
+    psList.add(emptyStr);
+    for (Ptsize ps : psl)
+    {
+      psList.add(ps.getSize());
+    }
+
     productInList = new ArrayList<ProductInRow>();
     for (int i = 0; i < listSize; i++)
     {
-      ProductInRow row = new ProductInRow(i, "产品类型", "产品花色", "产品尺寸", 99, 0);
 
+      ProductInRow row = new ProductInRow(i, ptList, pcList, psList, 99, 0);
       productInList.add(row);
 
     }
@@ -69,18 +114,19 @@ public class ProductAction extends ActionSupport
   class ProductInRow
   {
     private Integer id;
-    private String ptType;
-    private String ptColor;
-    private String ptSize;
+    private List<String> ptList;
+
+    private List<String> pcList;
+    private List<String> psList;
     private Integer ptNumber;
     private Integer InNum;
 
-    public ProductInRow(int id, String ptType, String ptColor, String ptSize, int ptNumber, int inNum)
+    public ProductInRow(int id, List<String> ptList, List<String> pcList, List<String> psList, int ptNumber, int inNum)
     {
       this.id = Integer.valueOf(id);
-      this.ptType = ptType;
-      this.ptColor = ptColor;
-      this.ptSize = ptSize;
+      this.ptList = ptList;
+      this.pcList = pcList;
+      this.psList = psList;
       this.ptNumber = Integer.valueOf(ptNumber);
       this.InNum = Integer.valueOf(inNum);
     }
@@ -95,34 +141,34 @@ public class ProductAction extends ActionSupport
       this.id = id;
     }
 
-    public String getPtType()
+    public List<String> getPtList()
     {
-      return ptType;
+      return ptList;
     }
 
-    public void setPtType(String ptType)
+    public void setPtList(List<String> ptList)
     {
-      this.ptType = ptType;
+      this.ptList = ptList;
     }
 
-    public String getPtColor()
+    public List<String> getPcList()
     {
-      return ptColor;
+      return pcList;
     }
 
-    public void setPtColor(String ptColor)
+    public void setPcList(List<String> pcList)
     {
-      this.ptColor = ptColor;
+      this.pcList = pcList;
     }
 
-    public String getPtSize()
+    public List<String> getPsList()
     {
-      return ptSize;
+      return psList;
     }
 
-    public void setPtSize(String ptSize)
+    public void setPsList(List<String> psList)
     {
-      this.ptSize = ptSize;
+      this.psList = psList;
     }
 
     public Integer getPtNumber()
@@ -147,7 +193,7 @@ public class ProductAction extends ActionSupport
 
     public String toString()
     {
-      return this.getId() + ":" + this.getPtType() + ":" + this.getPtColor() + ":" + this.getPtSize() + ":" + this.getPtNumber() + ":" + this.getInNum();
+      return this.getId() + ":" + this.getPtNumber() + ":" + this.getInNum();
     }
   }
 }
