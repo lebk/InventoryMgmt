@@ -31,12 +31,26 @@ public interface ProductService
   public boolean updateProduct(String pName, String ptType, String ptColor, String ptSize, Integer pNum, String businessType, String opUser);
 
   /**
+   * \
+   * 
+   * @param ptType
+   * @param ptColor
+   * @param ptSize
+   * @param pNum
+   * @param businessType
+   * @param opUser
+   * @return
+   */
+  public boolean updateProduct(String ptType, String ptColor, String ptSize, Integer pNum, String businessType, String opUser);
+
+  /**
    * Dangerous method, honest speaking, I d not want to expose this method,
    * currently, only admin user can call it.
    * 
    * @param opUser
    * @return
    */
+
   public boolean cleanUpAll(String opUser);
 
   /**

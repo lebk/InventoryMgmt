@@ -78,6 +78,12 @@ public class ProductServiceImpl implements ProductService
     return pd.updateProduct(pName, ptTypeId, ptColorId, ptSizeId, pNum, btId, opUserId);
   }
 
+  public boolean updateProduct(String ptType, String ptColor, String ptSize, Integer pNum, String businessType, String opUser)
+  {
+    String pName = this.constructProductName(ptType, ptColor, ptSize);
+    return this.updateProduct(pName, ptType, ptColor, ptSize, pNum, businessType, opUser);
+  }
+
   public boolean cleanUpAll(String opUser)
   {
     Integer id = us.getUserIdByUsername(opUser);

@@ -120,7 +120,7 @@
 			<result name="success" type="tiles">productIn</result>
 			<result name="error" type="tiles">defaultError</result>
 		</action>
-		<action name="gotoProductOut" method="gotoProductOut"productInSubmit
+		<action name="gotoProductOut" method="gotoProductOut"
 			class="com.lebk.action.ProductAction">
 			<result name="success" type="tiles">productOut</result>
 			<result name="error" type="tiles">defaultError</result>

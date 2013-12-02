@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import com.lebk.enumType.BusinessEnumType;
 import com.lebk.po.Ptcolor;
 import com.lebk.po.Ptsize;
 import com.lebk.po.Pttype;
@@ -16,6 +17,7 @@ import com.lebk.services.impl.ProductColorServiceImpl;
 import com.lebk.services.impl.ProductServiceImpl;
 import com.lebk.services.impl.ProductSizeServiceImpl;
 import com.lebk.services.impl.ProductTypeServiceImpl;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
@@ -107,20 +109,32 @@ public class ProductAction extends ActionSupport
     {
       logger.info(productIn);
     }
+    // Should move this method to a place where the nput has been validated.
+    this.submit(productInList);
     return SUCCESS;
+  }
+
+  private boolean submit(List<ProductInRow> productInList)
+  {
+    for (ProductInRow pir : productInList)
+    {
+      String ptType = pir.getSelectedProductType();
+      String ptColor = pir.getSelectedProductColor();
+      String ptSize = pir.getSelectedProductSize();
+      String businessType = BusinessEnumType.in;
+      Integer pNum = pir.getInNum();
+      String opUser = (String) ActionContext.getContext().getSession().get("username");
+      logger.info("The submit product is:(" + ptType + ":" + ptColor + ":" + ptSize + ":" + pNum + " by " + opUser + ")");
+      ps.updateProduct(ptType, ptColor, ptSize, pNum, businessType, opUser);
+    }
+    return true;
   }
 
   public void validate()
   {
-
-    // //first time to login
-    // if (productInList == null)
-    // {
-    // return;
-    // }
     // for (ProductInRow productIn : productInList)
     // {
-    // if (productIn.getInNum() == 0)
+    // if (productIn.getInNum() > 0)
     // {
     // addFieldError("productInList.ptList", "产品类型没有选择");
     // }

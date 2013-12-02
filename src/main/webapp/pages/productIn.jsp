@@ -48,7 +48,7 @@
 			<s:iterator value="productInList"  status="status" var="productInRow">
 				<tr
 					class="<s:if test="#status.even">even</s:if><s:else>odd</s:else>">
-					<td class="nowrap"><s:property value="productInList[%{#status.index}].id" /></td>
+					<td class="nowrap"><s:property value="id" /></td>
 				    <td class="nowrap"><s:select list="ptList" name="productInList[%{#status.index}].selectedProductType" theme="simple"/></td>
 				    <td class="nowrap"><s:select list="pcList" name="productInList[%{#status.index}].selectedProductColor"  theme="simple"/></td>
 				    <td class="nowrap"><s:select list="psList" name="productInList[%{#status.index}].selectedProductSize"  theme="simple"/></td>
