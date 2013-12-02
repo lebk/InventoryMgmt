@@ -45,15 +45,15 @@
 				<th><s:text name="入库数量" /></th>
 				<th>&nbsp;</th>
 			</tr>
-			<s:iterator value="productInList"  status="status">
+			<s:iterator value="productInList"  status="status" var="productInRow">
 				<tr
 					class="<s:if test="#status.even">even</s:if><s:else>odd</s:else>">
-					<td class="nowrap"><s:property value="id" /></td>
-				    <td class="nowrap"><s:select list="ptList" name="selectedProductType" theme="simple"/></td>
-				    <td class="nowrap"><s:select list="pcList" name="selectedProductColor"  theme="simple"/></td>
-				    <td class="nowrap"><s:select list="psList" name="selectedProductSize"  theme="simple"/></td>
-					<td class="nowrap"><s:property value="ptNumber" /></td>
-					<td class="nowrap"><s:textfield name="inNum" size="5" theme="simple"/></td>
+					<td class="nowrap"><s:property value="productInList[%{#status.index}].id" /></td>
+				    <td class="nowrap"><s:select list="ptList" name="productInList[%{#status.index}].selectedProductType" theme="simple"/></td>
+				    <td class="nowrap"><s:select list="pcList" name="productInList[%{#status.index}].selectedProductColor"  theme="simple"/></td>
+				    <td class="nowrap"><s:select list="psList" name="productInList[%{#status.index}].selectedProductSize"  theme="simple"/></td>
+					<td class="nowrap"><s:property value="productInList[%{#status.index}].ptNumber" /></td>
+					<td class="nowrap"><s:textfield name="productInList[%{#status.index}].inNum" size="5" theme="simple"/></td>
 				</tr>
 			</s:iterator>
 		<table>

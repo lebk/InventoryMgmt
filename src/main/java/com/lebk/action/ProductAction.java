@@ -36,9 +36,15 @@ public class ProductAction extends ActionSupport
   private List<String> pcList;
   private List<String> psList;
 
+  public ProductAction()
+  {
+    this.constructProductInList();
+  }
+
   public List<ProductInRow> getProductInList()
   {
-    constructProductInList();
+
+    // constructProductInList();
     return productInList;
   }
 
@@ -101,9 +107,8 @@ public class ProductAction extends ActionSupport
     {
       logger.info(productIn);
     }
-    return "productInSubmit";
+    return SUCCESS;
   }
-
 
   public void validate()
   {

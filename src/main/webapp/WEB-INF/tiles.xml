@@ -29,6 +29,12 @@
 		<put-attribute name="body" value="/pages/productIn.jsp" />
 	</definition>
 
+<definition name="ProductInPreSubmit" extends="baseLayout">
+		<put-attribute name="title" value="入库前检测" />
+		<put-attribute name="body" value="/pages/productInPreSubmit.jsp" />
+	</definition>
+
+
 	<definition name="productOut" extends="baseLayout">
 		<put-attribute name="title" value="出库单" />
 		<put-attribute name="body" value="/pages/productOut.jsp" />
