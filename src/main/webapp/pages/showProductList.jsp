@@ -7,21 +7,6 @@
 <META HTTP-EQUIV="Refresh" CONTENT="15" />
 <link href="<s:url value="/css/main.css"/>" rel="stylesheet"
 	type="text/css" />
-<style type="text/css" rel="stylesheet">
-#container {
-	width: 80%;
-	margin: 10px auto;
-}
-
-#container table {
-	text-align: center;
-	width: 80%
-}
-
-#container #link {
-	text-align: right;
-}
-</style>
 </head>
 <body>
 	<center>

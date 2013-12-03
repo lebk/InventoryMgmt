@@ -57,3 +57,17 @@ A:hover { text-decoration:none; color: red;}
     padding-right:5px;
 }
 
+#container {
+	width: 80%;
+	margin: 10px auto;
+}
+
+#container table {
+	text-align: center;
+	width: 80%
+}
+
+#container #link {
+	text-align: right;
+}
+
