@@ -5,20 +5,9 @@
 
 
 <dwr>
-  <allow>
-   <create creator="new" javascript="JDate">
-    	<param name="class" value="java.util.Date"/>
-    </create>
-    
+  <allow>    
     <create creator="new" javascript="ProdServ">
        <param name="class" value="com.lebk.services.impl.ProductServiceImpl"/>
-    </create>
-  
-  	<convert converter="bean" match="com.lebk.upload.UploadInfo">
-    </convert>
-    <create creator="new" javascript="UploadMonitor">
-      <param name="class" value="com.lebk.upload.UploadMonitor"/>
-    </create>
-    
+    </create>  
   </allow>
 </dwr>
