@@ -7,24 +7,28 @@
 <META HTTP-EQUIV="Refresh" CONTENT="15" />
 <link href="<s:url value="/css/main.css"/>" rel="stylesheet"
 	type="text/css" />
+<style type="text/css" rel="stylesheet">
+#container {
+	width: 80%;
+	margin: 10px auto;
+}
+
+#container table {
+	text-align: center;
+	width: 80%
+}
+
+#container #link {
+	text-align: right;
+}
+</style>
 </head>
 <body>
 	<center>
 		<h3>
 		当前库存状态
 		</h3>
-		<%
-		  String nojobfound = (String) session.getAttribute("NOJOBFOUND");
-
-		  if ("true" == nojobfound)
-		  {
-		    session.removeAttribute("NOJOBFOUND");
-		%>
-		显示当前库存状态
-		<%
-		  } else
-		  {
-		%>
+	<div id="container">
 		<table align=center class="borderAll">
 			<tr>
 				<th><s:text name="编号" /></th>
@@ -57,6 +61,7 @@
 				</tr>
 			</s:iterator>
 		</table>
+		</div>
 		<s:url id="url_first" action="showProductListtilesAction">
 			<s:param name="pageNow" value="1" />
 		</s:url>
@@ -86,9 +91,7 @@
 			<s:param name="pageNow" value="pageInTotal" />
 		</s:url>
 		<s:a href="%{url_last}">最后一页</s:a>
-		<%
-		  }
-		%>
+
 	</center>
 </body>
 </html>
