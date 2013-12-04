@@ -9,12 +9,16 @@
 <script type="text/javascript" src="dwr/engine.js"></script>  
 <script type="text/javascript" src="dwr/util.js"></script>  
 <script type="text/javascript">
-function handleChange() {
-  var type = dwr.util.getValue("selectedProductType");
-  var color = dwr.util.getValue("selectedProductColor");
-   var size = dwr.util.getValue("selectedProductSize");
-  ProdServ.getProductNumber(type,color,size, function(data) {
-    dwr.util.setValue("pNum", data);
+function handleChange(index) {
+	var typename="selectedProductType["+index+"]";
+	var colorname="selectedProductColor["+index+"]";
+	var sizename="selectedProductSize["+index+"]";
+    var pNum="pNum["+index+"]";
+	var type = dwr.util.getValue(typename);
+    var color = dwr.util.getValue(colorname);
+    var size = dwr.util.getValue(sizename);
+    ProdServ.getProductNumber(type,color,size, function(data) {
+    dwr.util.setValue(pNum, data);
   });
 }
 </script>
@@ -48,14 +52,50 @@ function handleChange() {
 						<td class="nowrap"><s:property value="id"/></td>
 						<td class="nowrap"><s:select list="ptList"
 								name="productInList[%{#status.index}].selectedProductType" 
-								theme="simple" id="selectedProductType" onchange="handleChange(this.value)"/></td>
+								theme="simple" id="selectedProductType[%{#status.index}]" onchange="handleChange(%{#status.index})"/></td>
 						<td class="nowrap"><s:select list="pcList"
 								name="productInList[%{#status.index}].selectedProductColor"
-								theme="simple" id="selectedProductColor" onchange="handleChange(this.value)" /></td>
+								theme="simple" id="selectedProductColor[%{#status.index}]" onchange="handleChange(%{#status.index})" /></td>
 						<td class="nowrap"><s:select list="psList"
 								name="productInList[%{#status.index}].selectedProductSize"
-								theme="simple" id="selectedProductSize" onchange="handleChange(this.value)" /></td>
-						<td class="nowrap"><span id="pNum"></span></td>
+								theme="simple" id="selectedProductSize[%{#status.index}]" onchange="handleChange(%{#status.index})" /></td>
+					
+<s:if test="%{#status.index==0}">
+<td class="nowrap"><span id="pNum[0]"></span></td>
+</s:if>
+<s:elseif test="%{#status.index==1}">
+<td class="nowrap"><span id="pNum[1]"></span></td>
+</s:elseif>
+<s:elseif test="%{#status.index==2}">
+<td class="nowrap"><span id="pNum[2]"></span></td>
+</s:elseif>
+<s:elseif test="%{#status.index==3}">
+<td class="nowrap"><span id="pNum[3]"></span></td>
+</s:elseif>
+<s:elseif test="%{#status.index==4}">
+<td class="nowrap"><span id="pNum[4]"></span></td>
+</s:elseif>
+<s:elseif test="%{#status.index==5}">
+<td class="nowrap"><span id="pNum[5]"></span></td>
+</s:elseif>
+<s:elseif test="%{#status.index==6}">
+<td class="nowrap"><span id="pNum[6]"></span></td>
+</s:elseif>
+<s:elseif test="%{#status.index==7}">
+<td class="nowrap"><span id="pNum[7]"></span></td>
+</s:elseif>
+<s:elseif test="%{#status.index==8}">
+<td class="nowrap"><span id="pNum[8]"></span></td>
+</s:elseif>
+<s:elseif test="%{#status.index==9}">
+<td class="nowrap"><span id="pNum[9]"></span></td>
+</s:elseif>
+<s:else>
+<td class="nowrap"><span id="pNum[0]"></span></td>
+</s:else>
+
+
+					
 						<td class="nowrap"><s:textfield
 								name="productInList[%{#status.index}].inNum" size="5"
 								theme="simple" /></td>
