@@ -138,6 +138,13 @@
 			<result name="error" type="tiles">defaultError</result>
 		</action>
 
+		<action name="productOutSubmit" method="productOutSubmit"
+			class="com.lebk.action.ProductAction">
+			<result name="input">productOut</result>
+			<result name="success" type="tiles">ProductOutPreSubmit</result>
+			<result name="error" type="tiles">defaultError</result>
+		</action>
+
 		<action name="productOut" method="productOut"
 			class="com.lebk.action.ProductAction">
 			<result name="success" type="tiles">productOut</result>

@@ -32,6 +32,7 @@ public class ProductAction extends ActionSupport
   ProductSizeService pss = new ProductSizeServiceImpl();
   ProductColorService pcs = new ProductColorServiceImpl();
   private List<ProductRow> productInList;
+  private List<ProductRow> productOutList;
   private static Integer listSize = 10;
   private static String emptyStr = "";
   private List<String> ptList;
@@ -40,7 +41,7 @@ public class ProductAction extends ActionSupport
 
   public ProductAction()
   {
-    this.constructProductInList();
+    this.constructProductTxnList();
   }
 
   public List<ProductRow> getProductInList()
@@ -52,14 +53,20 @@ public class ProductAction extends ActionSupport
 
   public void setProductInList(List<ProductRow> productInList)
   {
-    for (ProductRow productIn : productInList)
-    {
-      logger.info(productIn);
-    }
     this.productInList = productInList;
   }
 
-  private void constructProductInList()
+  public List<ProductRow> getProductOutList()
+  {
+    return productOutList;
+  }
+
+  public void setProductOutList(List<ProductRow> productOutList)
+  {
+    this.productOutList = productOutList;
+  }
+
+  private void constructProductTxnList()
   {
     // get the product type list, append a empty string
     ptList = new ArrayList<String>();
@@ -93,11 +100,13 @@ public class ProductAction extends ActionSupport
     }
 
     productInList = new ArrayList<ProductRow>();
+    productOutList = new ArrayList<ProductRow>();
     for (int i = 0; i < listSize; i++)
     {
 
-      ProductRow row = new ProductRow(i, ptList, pcList, psList, 99, 0);
+      ProductRow row = new ProductRow(i, ptList, pcList, psList, 0, 0);
       productInList.add(row);
+      productOutList.add(row);
 
     }
 
@@ -110,22 +119,34 @@ public class ProductAction extends ActionSupport
       logger.info(productIn);
     }
     // Should move this method to a place where the nput has been validated.
-    this.submit(productInList);
+    this.submit(productInList, BusinessEnumType.in);
     return SUCCESS;
   }
 
-  private boolean submit(List<ProductRow> productInList)
+  public String productOutSubmit()
+  {
+    for (ProductRow productIn : productOutList)
+    {
+      logger.info(productIn);
+    }
+    // Should move this method to a place where the input has been validated.
+    this.submit(productOutList, BusinessEnumType.out);
+    return SUCCESS;
+  }
+
+  private boolean submit(List<ProductRow> productInList, String txnType)
   {
     for (ProductRow pr : productInList)
     {
       String ptType = pr.getSelectedProductType();
       String ptColor = pr.getSelectedProductColor();
       String ptSize = pr.getSelectedProductSize();
-      String businessType = BusinessEnumType.in;
+      String businessType = txnType;
       Integer pNum = pr.getTxnNum();
       String opUser = (String) ActionContext.getContext().getSession().get("username");
       logger.info("The submit product is:(" + ptType + ":" + ptColor + ":" + ptSize + ":" + pNum + " by " + opUser + ")");
-      ps.updateProduct(ptType, ptColor, ptSize, pNum, businessType, opUser);
+      boolean status = ps.updateProduct(ptType, ptColor, ptSize, pNum, businessType, opUser);
+      logger.info("The update status is: " + status);
     }
     return true;
   }
@@ -241,7 +262,7 @@ public class ProductAction extends ActionSupport
 
     public void setTxnNum(Integer txnNum)
     {
-      txnNum = txnNum;
+      this.txnNum = txnNum;
     }
 
     public String getSelectedProductType()
