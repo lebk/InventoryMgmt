@@ -108,8 +108,23 @@ public class ProductServiceImpl implements ProductService
     return pName;
   }
 
-  public String sayHello(String name)
+  public String getProductNumber(String ptType, String ptColor, String ptSize)
   {
-    return "Hello," + name;
+    if ((ptType == null || ptType.length() == 0) || (ptColor == null || ptColor.length() == 0) || (ptSize == null || ptSize.length() == 0))
+    {
+      logger.info("return empty");
+      return "";
+    }
+    String pName = this.constructProductName(ptType, ptColor, ptSize);
+    logger.info("The selected product is:" + pName);
+    Integer pId=pd.getIdByProdName(pName);
+    if(pId==null)
+    {
+      logger.info("no product found by the selected items, return 0");
+      return String.valueOf(0);
+    }
+    Integer pNum = pd.getProductById(pId).getPtNumber();
+    logger.info("the product number is:" + pNum);
+    return String.valueOf(pNum);
   }
 }

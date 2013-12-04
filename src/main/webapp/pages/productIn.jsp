@@ -1,7 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-
-
 <html>
 <head>
 <title>产品入库</title>
@@ -15,27 +13,18 @@ function handleChange() {
   var type = dwr.util.getValue("selectedProductType");
   var color = dwr.util.getValue("selectedProductColor");
    var size = dwr.util.getValue("selectedProductSize");
-  ProdServ.sayHello(type+color+size, function(data) {
-    dwr.util.setValue("demoReply", data);
+  ProdServ.getProductNumber(type,color,size, function(data) {
+    dwr.util.setValue("pNum", data);
   });
 }
 </script>
 	</head>
 
-
-
-
 <body>
 	<center>
 		<h2>产品入库</h2>
 	</center>
-	<p>
-  Name:
-  <input type="text" id="demoName"/>
-  <input value="Send" type="button" onclick="update()"/>
-  <br/>
-  Reply: <span id="demoReply"></span>
-</p>
+
 	<s:form action="productInSubmit" enctype="multipart/form-data"
 		method="post">
 
@@ -66,8 +55,7 @@ function handleChange() {
 						<td class="nowrap"><s:select list="psList"
 								name="productInList[%{#status.index}].selectedProductSize"
 								theme="simple" id="selectedProductSize" onchange="handleChange(this.value)" /></td>
-						<td class="nowrap"><s:property
-								value="productInList[%{#status.index}].ptNumber" /></td>
+						<td class="nowrap"><span id="pNum"></span></td>
 						<td class="nowrap"><s:textfield
 								name="productInList[%{#status.index}].inNum" size="5"
 								theme="simple" /></td>
