@@ -31,7 +31,7 @@ public class ProductAction extends ActionSupport
   ProductTypeService pts = new ProductTypeServiceImpl();
   ProductSizeService pss = new ProductSizeServiceImpl();
   ProductColorService pcs = new ProductColorServiceImpl();
-  private List<ProductInRow> productInList;
+  private List<ProductRow> productInList;
   private static Integer listSize = 10;
   private static String emptyStr = "";
   private List<String> ptList;
@@ -43,16 +43,16 @@ public class ProductAction extends ActionSupport
     this.constructProductInList();
   }
 
-  public List<ProductInRow> getProductInList()
+  public List<ProductRow> getProductInList()
   {
 
     // constructProductInList();
     return productInList;
   }
 
-  public void setProductInList(List<ProductInRow> productInList)
+  public void setProductInList(List<ProductRow> productInList)
   {
-    for (ProductInRow productIn : productInList)
+    for (ProductRow productIn : productInList)
     {
       logger.info(productIn);
     }
@@ -92,11 +92,11 @@ public class ProductAction extends ActionSupport
       psList.add(ps.getSize());
     }
 
-    productInList = new ArrayList<ProductInRow>();
+    productInList = new ArrayList<ProductRow>();
     for (int i = 0; i < listSize; i++)
     {
 
-      ProductInRow row = new ProductInRow(i, ptList, pcList, psList, 99, 0);
+      ProductRow row = new ProductRow(i, ptList, pcList, psList, 99, 0);
       productInList.add(row);
 
     }
@@ -105,7 +105,7 @@ public class ProductAction extends ActionSupport
 
   public String productInSubmit()
   {
-    for (ProductInRow productIn : productInList)
+    for (ProductRow productIn : productInList)
     {
       logger.info(productIn);
     }
@@ -114,15 +114,15 @@ public class ProductAction extends ActionSupport
     return SUCCESS;
   }
 
-  private boolean submit(List<ProductInRow> productInList)
+  private boolean submit(List<ProductRow> productInList)
   {
-    for (ProductInRow pir : productInList)
+    for (ProductRow pr : productInList)
     {
-      String ptType = pir.getSelectedProductType();
-      String ptColor = pir.getSelectedProductColor();
-      String ptSize = pir.getSelectedProductSize();
+      String ptType = pr.getSelectedProductType();
+      String ptColor = pr.getSelectedProductColor();
+      String ptSize = pr.getSelectedProductSize();
       String businessType = BusinessEnumType.in;
-      Integer pNum = pir.getInNum();
+      Integer pNum = pr.getTxnNum();
       String opUser = (String) ActionContext.getContext().getSession().get("username");
       logger.info("The submit product is:(" + ptType + ":" + ptColor + ":" + ptSize + ":" + pNum + " by " + opUser + ")");
       ps.updateProduct(ptType, ptColor, ptSize, pNum, businessType, opUser);
@@ -132,7 +132,7 @@ public class ProductAction extends ActionSupport
 
   public void validate()
   {
-    // for (ProductInRow productIn : productInList)
+    // for (ProductRow productIn : productInList)
     // {
     // if (productIn.getInNum() > 0)
     // {
@@ -162,26 +162,26 @@ public class ProductAction extends ActionSupport
   }
 
   // class TO hold the row of productIn
-  class ProductInRow
+  class ProductRow
   {
     private Integer id;
     private List<String> ptList;
     private List<String> pcList;
     private List<String> psList;
     private Integer ptNumber;
-    private Integer InNum;
+    private Integer txnNum;
     private String selectedProductType;
     private String selectedProductColor;
     private String selectedProductSize;
 
-    public ProductInRow(int id, List<String> ptList, List<String> pcList, List<String> psList, int ptNumber, int inNum)
+    public ProductRow(int id, List<String> ptList, List<String> pcList, List<String> psList, int ptNumber, int inNum)
     {
       this.id = Integer.valueOf(id);
       this.ptList = ptList;
       this.pcList = pcList;
       this.psList = psList;
       this.ptNumber = Integer.valueOf(ptNumber);
-      this.InNum = Integer.valueOf(inNum);
+      this.txnNum = Integer.valueOf(inNum);
     }
 
     public Integer getId()
@@ -234,14 +234,14 @@ public class ProductAction extends ActionSupport
       this.ptNumber = ptNumber;
     }
 
-    public Integer getInNum()
+    public Integer getTxnNum()
     {
-      return InNum;
+      return txnNum;
     }
 
-    public void setInNum(Integer inNum)
+    public void setTxnNum(Integer txnNum)
     {
-      InNum = inNum;
+      txnNum = txnNum;
     }
 
     public String getSelectedProductType()
@@ -277,7 +277,7 @@ public class ProductAction extends ActionSupport
     public String toString()
     {
       return this.getId() + ":" + this.getSelectedProductType() + ":" + this.getSelectedProductColor() + ":" + this.getSelectedProductSize() + ":"
-          + +this.getPtNumber() + ":" + this.getInNum();
+          + +this.getPtNumber() + ":" + this.getTxnNum();
     }
   }
 }
