@@ -108,4 +108,8 @@ public class ProductServiceImpl implements ProductService
     return pName;
   }
 
+  public String sayHello(String name)
+  {
+    return "Hello," + name;
+  }
 }

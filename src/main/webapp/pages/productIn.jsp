@@ -7,11 +7,35 @@
 <title>产品入库</title>
 <link href="<s:url value="/css/main.css"/>" rel="stylesheet"
 	type="text/css" />
-</head>
+	<script type="text/javascript" src="dwr/interface/ProdServ.js"></script>  
+<script type="text/javascript" src="dwr/engine.js"></script>  
+<script type="text/javascript" src="dwr/util.js"></script>  
+<script type="text/javascript">
+function handleChange() {
+  var type = dwr.util.getValue("selectedProductType");
+  var color = dwr.util.getValue("selectedProductColor");
+   var size = dwr.util.getValue("selectedProductSize");
+  ProdServ.sayHello(type+color+size, function(data) {
+    dwr.util.setValue("demoReply", data);
+  });
+}
+</script>
+	</head>
+
+
+
+
 <body>
 	<center>
 		<h2>产品入库</h2>
 	</center>
+	<p>
+  Name:
+  <input type="text" id="demoName"/>
+  <input value="Send" type="button" onclick="update()"/>
+  <br/>
+  Reply: <span id="demoReply"></span>
+</p>
 	<s:form action="productInSubmit" enctype="multipart/form-data"
 		method="post">
 
@@ -32,16 +56,16 @@
 				<s:iterator value="productInList" status="status" var="productInRow">
 					<tr
 						class="<s:if test="#status.even">even</s:if><s:else>odd</s:else>">
-						<td class="nowrap"><s:property value="id" /></td>
+						<td class="nowrap"><s:property value="id"/></td>
 						<td class="nowrap"><s:select list="ptList"
-								name="productInList[%{#status.index}].selectedProductType"
-								theme="simple" /></td>
+								name="productInList[%{#status.index}].selectedProductType" 
+								theme="simple" id="selectedProductType" onchange="handleChange(this.value)"/></td>
 						<td class="nowrap"><s:select list="pcList"
 								name="productInList[%{#status.index}].selectedProductColor"
-								theme="simple" /></td>
+								theme="simple" id="selectedProductColor" onchange="handleChange(this.value)" /></td>
 						<td class="nowrap"><s:select list="psList"
 								name="productInList[%{#status.index}].selectedProductSize"
-								theme="simple" /></td>
+								theme="simple" id="selectedProductSize" onchange="handleChange(this.value)" /></td>
 						<td class="nowrap"><s:property
 								value="productInList[%{#status.index}].ptNumber" /></td>
 						<td class="nowrap"><s:textfield
