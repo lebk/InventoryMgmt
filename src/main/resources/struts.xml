@@ -21,7 +21,7 @@
 		</result-types>
 
 		<action name="login" method="authUser" class="com.lebk.action.UserAction">
-			<result name="success" type="tiles">showProductList</result>
+			<result name="success">index.jsp</result>
 			<result name="error">Login.jsp</result>
 		</action>
 		<action name="logout" method="logout" class="com.lebk.action.UserAction">

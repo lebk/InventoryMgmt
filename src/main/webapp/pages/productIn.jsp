@@ -96,9 +96,6 @@ function handleChange(index) {
 						<s:else>
 							<td class="nowrap"><span id="pNum[0]"></span></td>
 						</s:else>
-
-
-
 						<td class="nowrap"><s:textfield
 								name="productInList[%{#status.index}].txnNum" size="5"
 								theme="simple" /></td>
