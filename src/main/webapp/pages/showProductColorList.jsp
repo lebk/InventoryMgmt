@@ -25,7 +25,7 @@
 </head>
 <body>
 	<center>
-		<h3>产品花色管理</h3>
+		<h2>产品花色管理</h2>
 		<div id="container">
 			<div id="link">
 				<s:url action="addNewProductColortilesAction.action" var="aURL" />

@@ -10,9 +10,9 @@
 </head>
 <body>
 	<center>
-		<h3>
+		<h2>
 		当前库存状态
-		</h3>
+		</h2>
 	<div id="container">
 		<table align=center class="borderAll">
 			<tr>

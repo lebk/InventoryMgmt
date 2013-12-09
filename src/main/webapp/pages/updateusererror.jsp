@@ -5,9 +5,9 @@
 <link href="<s:url value="/css/main.css"/>" rel="stylesheet" type="text/css"/>
 </head>
 <center>
-<h1>
+<h2>
 更改用户错误!
-</h1>
+</h2>
 <p>
 系统错误，请联系管理员
 </p>

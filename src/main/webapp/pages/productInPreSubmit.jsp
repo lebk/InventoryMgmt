@@ -10,7 +10,7 @@
 </head>
 <body>
 	<center>
-		<h3>入库前检测</h3>
+		<h2>入库前检测</h2>
 		<table align=center class="borderAll">
 			<tr>
 				<th><s:text name="编号" /></th>

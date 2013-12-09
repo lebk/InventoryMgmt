@@ -14,7 +14,7 @@
 </head>
 <body>
 <center>
-<h3>用户管理</h3>
+<h2>用户管理</h2>
 <div id="container">
 <div id="link">
 <s:url action="addNewUsertilesAction.action" var="aURL" />

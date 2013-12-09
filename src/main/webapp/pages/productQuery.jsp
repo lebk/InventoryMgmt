@@ -13,7 +13,7 @@
 <body>
 
 <center>
-<h3>库存查询</h3>
+<h2>库存查询</h2>
 <div id="container">
 <div id="link">
 <s:url action="showProductListtilesAction.action" var="aURL" />

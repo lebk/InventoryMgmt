@@ -15,7 +15,7 @@
 </head>
 <body>
 <center>
-<h3>产品类型管理</h3>
+<h2>产品类型管理</h2>
 <div id="container">
 <div id="link">
 <s:url action="addNewProductTypetilesAction.action" var="aURL" />

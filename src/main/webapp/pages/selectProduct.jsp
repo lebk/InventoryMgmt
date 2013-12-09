@@ -13,7 +13,7 @@
 </head>
 <body>
 <center>
-<h3>VMF Product Management</h3>
+<h2>VMF Product Management</h2>
 <div id="container">
 <div id="linkR">
 <s:url action="admintilesAction.action" var="aURL" />
