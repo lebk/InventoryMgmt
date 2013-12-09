@@ -19,7 +19,6 @@
 				<th><s:text name="花色" /></th>
 				<th><s:text name="尺寸" /></th>
 				<th><s:text name="数量" /></th>
-				<th>&nbsp;</th>
 			</tr>
 			<s:iterator value="productList" status="status">
 				<tr

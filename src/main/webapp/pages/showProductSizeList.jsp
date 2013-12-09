@@ -44,7 +44,6 @@
 				<tr>
 					<th><s:text name="类型" /></th>
 					<th><s:text name="删除" /></th>
-					<th>&nbsp;</th>
 				</tr>
 				<s:iterator value="productSizeList" status="status">
 					<tr

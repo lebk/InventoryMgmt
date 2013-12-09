@@ -29,7 +29,6 @@
     <tr>
         <th><s:text name="类型"/></th>
         <th><s:text name="删除"/></th>
-        <th>&nbsp;</th>
     </tr>
     <s:iterator value="productTypeList" status="status">
         <tr class="<s:if test="#status.even">even</s:if><s:else>odd</s:else>">

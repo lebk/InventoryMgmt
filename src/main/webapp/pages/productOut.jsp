@@ -44,7 +44,6 @@ function handleChange(index) {
 					<th><s:text name="尺寸" /></th>
 					<th><s:text name="库存数量" /></th>
 					<th><s:text name="出库数量" /></th>
-					<th>&nbsp;</th>
 				</tr>
 				<s:iterator value="productOutList" status="status">
 					<tr

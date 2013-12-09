@@ -23,7 +23,6 @@
 				<th><s:text name="大小" /></th>
 				<th><s:text name="数量" /></th>
 				<th><s:text name="详情" /></th>
-				<th>&nbsp;</th>
 			</tr>
 			<s:iterator value="productList" status="status">
 				<tr

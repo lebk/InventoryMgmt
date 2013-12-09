@@ -29,7 +29,6 @@
          <th><s:text name="数量"/></th>
          <th><s:text name="操作员"/></th>
          <th><s:text name="时间"/></th>	 
-        <th>&nbsp;</th>
     </tr>
 <s:subset source="productDetailsList">
    <s:iterator>

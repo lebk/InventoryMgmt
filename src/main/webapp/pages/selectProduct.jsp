@@ -23,7 +23,6 @@
     <tr>
         <th><s:text name="Product Name"/></th>
         <th><s:text name="Update"/></th>
-        <th>&nbsp;</th>
     </tr>
     <s:iterator value="productList" status="status">
         <tr class="<s:if test="#status.even">even</s:if><s:else>odd</s:else>">

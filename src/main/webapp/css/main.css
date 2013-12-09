@@ -27,7 +27,7 @@ h1 { font-weight:bold; color: brown; font-size:15px; text-align:center;}
 .nowrap { white-space:nowrap; }
 
 td { font-size:13px; padding-right:10px; }
-th { text-align:center; font-weight:bold; font-size:14px; padding-right:10px; }
+th { text-align:center; font-weight:bold; font-size:14px; padding-right:10px;background-color:#4A825A}
 .tdLabel { font-weight: bold;}
 
 A { color:#4A825A; text-decoration:none;}
