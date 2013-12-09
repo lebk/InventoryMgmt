@@ -20,7 +20,7 @@
 <body>
 <table align="center" class="borderAll">
 <tr>
-<td>
+<td style="text-align:left">
 <ul type="square">
 <li>
 <s:a href="showUserListtilesAction.action">用户管理</s:a>
@@ -30,7 +30,7 @@
 </tr>
 
 <tr>
-<td>
+<td style="text-align:left">
 <ul type="square">
 <li>
 <s:a href="showProductTypeListtilesAction.action">产品分类管理</s:a>
@@ -40,7 +40,7 @@
 </tr>
 
 <tr>
-<td>
+<td style="text-align:left">
 <ul type="square">
 <li>
 <s:a href="showProductSizeListtilesAction.action">产品尺寸管理</s:a>
@@ -50,7 +50,7 @@
 </tr>
 
 <tr>
-<td>
+<td style="text-align:left">
 <ul type="square">
 <li>
 <s:a href="showProductColorListtilesAction.action">产品花色管理</s:a>
