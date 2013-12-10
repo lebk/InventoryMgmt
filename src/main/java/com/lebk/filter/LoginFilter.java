@@ -39,7 +39,7 @@ public class LoginFilter implements Filter
     String login = (String) session.getAttribute("username");
     // If it is the login page, skip the filter operation
 
-    if ("/InventoryMgmt/src/main/webapp/Login.jsp".equals(request.getRequestURI()))
+    if ("/InventoryMgmt/src/main/webapp/login.jsp".equals(request.getRequestURI()))
     {
       
       chain.doFilter(req, res);
@@ -49,7 +49,7 @@ public class LoginFilter implements Filter
       // Check whether the user has loged in, if not, forward to the login page
       if (login == null || "".equals(login))
       {
-        request.getRequestDispatcher("Login.jsp").forward(req, res);
+        request.getRequestDispatcher("login.jsp").forward(req, res);
       } else
       {
         chain.doFilter(req, res);

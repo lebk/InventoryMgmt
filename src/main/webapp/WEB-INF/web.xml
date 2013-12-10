@@ -7,7 +7,7 @@
 		<session-timeout>30</session-timeout>
 	</session-config>
 	<welcome-file-list>
-		<welcome-file>/Login.jsp</welcome-file>
+		<welcome-file>/login.jsp</welcome-file>
 	</welcome-file-list>
 	<listener>
 		<listener-class>org.apache.struts2.tiles.StrutsTilesListener</listener-class>
@@ -24,11 +24,11 @@
 		</init-param>
 		<init-param>
 			<param-name>redirectURL</param-name>
-			<param-value>/Login.jsp</param-value>
+			<param-value>/login.jsp</param-value>
 		</init-param>
 		<init-param>
 			<param-name>notCheckURLList</param-name>
-			<param-value>/Login.jsp,/login.action,/logout.action,/css/InventoryMgmt.css</param-value>
+			<param-value>/login.jsp,/login.action,/logout.action,/css/InventoryMgmt.css</param-value>
 		</init-param>
 	</filter>
 	<filter-mapping>
