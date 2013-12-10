@@ -22,7 +22,7 @@
 
 		<action name="login" method="authUser" class="com.lebk.action.UserAction">
 			<result name="success">index.jsp</result>
-			<result name="error">Login.jsp</result>
+			<result name="error">login.jsp</result>
 		</action>
 		<action name="logout" method="logout" class="com.lebk.action.UserAction">
 			<result name="success">Login.jsp</result>
