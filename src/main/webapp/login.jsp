@@ -5,6 +5,7 @@
 <head>
 <title>登录 佳瑞佳仓存管理系统</title>
 <link href="<s:url value="/css/InventoryMgmt.css"/>" rel="stylesheet" type="text/css"/>
+<link href="<s:url value="/css/main.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<s:url value="/css/favicon.ico"/>" rel="shortcut icon" type="text/x-icon"/>
 <style type="text/css">
 table.wwFormTable {
@@ -17,18 +18,19 @@ background-color: #ada;
 width: 30%;
 margin-left:35%;
 margin-right:35%;
-margin-top:15%;
+margin-top:12%;
 } 
 </style>
 </head>
 
 
 <body>
-<h1 style="text-align:center"> <font color="black">佳瑞佳仓存管理系统</font></h1>
+<br/>
+<h1> 佳瑞佳仓存管理系统</h1>
 <s:actionerror />
 <s:form action="login.action" method="post">
 	<s:textfield name="username" key="用户名" size="20" />
-	<s:password name="password" key="用户密码" size="20" />
+	<s:password name="password" key="密码" size="20" />
 	<tr>
 	<td style="text-align:left">
    
