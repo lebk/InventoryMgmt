@@ -5,9 +5,9 @@
 <link href="<s:url value="/css/main.css"/>" rel="stylesheet" type="text/css"/>
 </head>
 <center>
-<h1>
+<h2>
 操作失败！
-</h1>
+</h2>
 <p>
 请检查输入是否正确..
 </p>
