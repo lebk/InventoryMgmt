@@ -2,9 +2,9 @@
 
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
-<h3>
-	<center>添加产品尺寸</center>
-</h3>
+<h2>
+	添加产品尺寸
+</h2>
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">

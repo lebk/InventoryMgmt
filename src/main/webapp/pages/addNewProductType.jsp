@@ -2,11 +2,9 @@
     
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
-<h3>
-<center>
+<h2>
 添加产品类型
-</center>
-</h3>
+</h2>
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
