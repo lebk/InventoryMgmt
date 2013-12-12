@@ -4,7 +4,6 @@
 <html>
 <head>
 <title>欢迎使用本系统</title>
-<META HTTP-EQUIV="Refresh" CONTENT="15" />
 <link href="<s:url value="/css/main.css"/>" rel="stylesheet"
 	type="text/css" />
 </head>
