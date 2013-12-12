@@ -5,6 +5,7 @@
 <head>
 <title>登录 佳瑞佳仓存管理系统</title>
 <link href="<s:url value="/css/InventoryMgmt.css"/>" rel="stylesheet" type="text/css"/>
+<link href="<s:url value="/css/favicon.ico"/>" rel="shortcut icon" type="text/x-icon"/>
 <style type="text/css">
 table.wwFormTable {
 font: 12px verdana, arial, helvetica, sans-serif;
