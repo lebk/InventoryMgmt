@@ -9,11 +9,9 @@
 }
 </style>
 <title>管理页面</title>
-<h3>
-<center>
+<h2>
 基本资料配置
-</center>
-</h3>
+</h2>
 </head>
 
 

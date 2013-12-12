@@ -17,9 +17,8 @@ html, body  {
     padding-bottom:10px;
     border:2px solid #8F99EF;
 }
-h1 { font-weight:bold; color: brown; font-size:15px; text-align:center;}
-
-
+h1 { font-weight:bold; color: brown; font-size:18px; text-align:center;}
+h2 { font-weight:bold; color: brown; font-size:15px; text-align:center;}
 
 .even { background-color: #EFFBEF; }
 .odd { background-color: white; }
