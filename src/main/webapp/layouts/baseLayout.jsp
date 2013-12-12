@@ -8,6 +8,7 @@
 <html>
     <head>
         <link href="<s:url value="/css/InventoryMgmt.css"/>" rel="stylesheet" type="text/css" />
+        <link href="<s:url value="/css/favicon.ico"/>" rel="shortcut icon" type="text/x-icon"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title><tiles:insertAttribute name="title" ignore="true" /></title>
     </head>
