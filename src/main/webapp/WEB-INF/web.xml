@@ -28,7 +28,7 @@
 		</init-param>
 		<init-param>
 			<param-name>notCheckURLList</param-name>
-			<param-value>/login.jsp,/login.action,/logout.action,/css/InventoryMgmt.css</param-value>
+			<param-value>/login.jsp,/login.action,/logout.action,/css/InventoryMgmt.css,main.css</param-value>
 		</init-param>
 	</filter>
 	<filter-mapping>
