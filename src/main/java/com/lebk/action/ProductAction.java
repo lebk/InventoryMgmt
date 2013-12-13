@@ -182,6 +182,43 @@ public class ProductAction extends ActionSupport
     return "productOut";
   }
 
+  public String gotoProductQuery()
+  {
+    
+    logger.info("call gotoProductQuery");
+    return SUCCESS;
+  }
+  
+  public List<String> getPtList()
+  {
+    return ptList;
+  }
+
+  public void setPtList(List<String> ptList)
+  {
+    this.ptList = ptList;
+  }
+
+  public List<String> getPcList()
+  {
+    return pcList;
+  }
+
+  public void setPcList(List<String> pcList)
+  {
+    this.pcList = pcList;
+  }
+
+  public List<String> getPsList()
+  {
+    return psList;
+  }
+
+  public void setPsList(List<String> psList)
+  {
+    this.psList = psList;
+  }
+
   // class TO hold the row of productIn
   class ProductRow
   {

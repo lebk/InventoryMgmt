@@ -353,11 +353,6 @@ public class TilesAction extends ActionSupport
     return "aboutSystem";
   }
 
-  public String productQuery()
-  {
-    return "productQuery";
-  }
-
   public String showUserList()
   {
     userDtoList = new ArrayList<UserDTO>();

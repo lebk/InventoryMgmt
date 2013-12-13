@@ -70,7 +70,6 @@
 			<result name="showProductList" type="tiles">showProductList</result>
 			<result name="showProductDetailsList" type="tiles">showProductDetailsList
 			</result>
-			<result name="productQuery" type="tiles">productQuery</result>
 
 			<result name="admin" type="tiles">admin</result>
 			<result name="showUserList" type="tiles">showUserList</result>
@@ -150,6 +149,13 @@
 			<result name="success" type="tiles">productOut</result>
 			<result name="error" type="tiles">defaultError</result>
 		</action>
+
+		<action name="gotoProductQuery" method="gotoProductQuery"
+			class="com.lebk.action.ProductAction">
+			<result name="success" type="tiles">productQuery</result>
+			<result name="error" type="tiles">defaultError</result>
+		</action>
+
 		<!-- Product In/Out Related Action End -->
 	</package>
 </struts>

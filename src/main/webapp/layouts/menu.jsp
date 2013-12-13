@@ -21,7 +21,7 @@
 <%
   }
 %>
-<ul><a href="<s:url action="productQuerytilesAction"/>"><b>库存查询</b></a><br></ul>
+<ul><a href="<s:url action="gotoProductQuery"/>"><b>库存查询</b></a><br></ul>
 
 </DIV>
    
