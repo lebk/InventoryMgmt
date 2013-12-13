@@ -122,7 +122,12 @@ public class ProductServiceImpl implements ProductService {
 
 	public List<Product> searchProduct(String ptType, String ptColor,
 			String ptSize, Date startDate, Date endDate) {
-		// TODO Auto-generated method stub
+
+	  if(ptType==null)
+	  {
+	  logger.info(" ptType is not selected, return all ptTypes");
+	  }
+	  
 		return null;
 	}
 }
