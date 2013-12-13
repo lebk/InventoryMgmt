@@ -1,5 +1,6 @@
 package com.lebk.services;
 
+import java.util.Date;
 import java.util.List;
 
 import com.lebk.po.Product;
@@ -59,5 +60,18 @@ public interface ProductService
    * @return
    */
   public List<Product> getAllProductList();
+  
+  /**
+   * 
+   * @param ptType
+   * @param ptColor
+   * @param ptSize
+   * @param startDate
+   * @param endDate
+   * @return
+   *
+   *Search the product by product type, color, size, or the enterred date.
+   */
+  public List<Product> searchProduct(String ptType, String ptColor,String ptSize, Date startDate, Date endDate);
 
 }
