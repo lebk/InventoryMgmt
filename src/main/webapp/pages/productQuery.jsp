@@ -7,7 +7,6 @@
 <style type="text/css" rel="stylesheet">
 #container{width:600px; margin:10px auto;}
 #container table{text-align:center;width:100%}
-#uppserSection{text-align:center;width:100%;height:60px;margin-top:10px}
 #container #link{text-align:right;}
 .tableHeader { text-align:center; font-weight:bold; font-size:14px; padding-right:10px;background-color:white}
 
@@ -22,14 +21,15 @@
 <s:url action="showProductListtilesAction.action" var="aURL" />
 <s:a href="%{aURL}"><u>[返回首页]</u></s:a>
 </div>
+
+<s:form action="productQuery" enctype="multipart/form-data" method="post">
 <div id="uppserSection">
 <table>
 				<tr>
 					<th class="tableHeader"><s:text name="类型" /></th>
 					<th  class="tableHeader"><s:text name="花色" /></th>
 					<th class="tableHeader"> <s:text name="尺寸" /></th>
-					<th class="tableHeader"><button type="button">查询 </button></th>
-
+					<th class="tableHeader"><s:submit value="提交" theme="simple" /></th>
 <tr>
 <td class="nowrap"><s:select list="ptList" theme="simple"/></td>
 <td class="nowrap"><s:select list="pcList" theme="simple"/></td>
@@ -38,6 +38,7 @@
 </tr>
 </table>
 </div>
+</s:form>
 
 <hr/>
 
