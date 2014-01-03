@@ -11,15 +11,28 @@
 </style>
 </head>
 <body>
-
-<center>
 <h2>库存查询</h2>
+
 <div id="container">
 <div id="link">
 <s:url action="showProductListtilesAction.action" var="aURL" />
 <s:a href="%{aURL}"><u>[返回首页]</u></s:a>
 </div>
+<div id="uppserSection">
+<table>
+<tr>
+<td class="nowrap"><s:select label="类型" list="ptList" theme="simple"/></td>
+<td class="nowrap"><s:select list="pcList" theme="simple"/></td>
+<td class="nowrap"><s:select list="psList" theme="simple"/></td>
+</tr>
+</table>
 </div>
-</center>
+
+<hr/>
+
+<div id="lowerSection">
+</div>
+</div>
+
 </body>
 </html>

@@ -29,13 +29,13 @@ margin-top:12%;
 <h1> 佳瑞佳仓存管理系统</h1>
 <s:actionerror />
 <s:form action="login.action" method="post">
-	<s:textfield name="username" key="用户名" size="20" />
+	<s:textfield name="username" key="用户" size="20" />
 	<s:password name="password" key="密码" size="20" />
 	<tr>
 	<td style="text-align:left">
    
 	</td>
-	<td style="text-align:left">
+	<td style="text-align:center">
 	<s:submit value="登录" name="login" theme="simple"/>
 	<s:reset value="重置" name="reset" theme="simple"/>
 	</td>
