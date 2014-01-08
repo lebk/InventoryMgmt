@@ -189,6 +189,14 @@ public class ProductAction extends ActionSupport
     return SUCCESS;
   }
   
+  public String productQueryResult()
+  {
+    
+    logger.info("call productQueryResult");
+    return SUCCESS;
+  }
+  
+  
   public List<String> getPtList()
   {
     return ptList;

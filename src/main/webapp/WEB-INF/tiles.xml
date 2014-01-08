@@ -48,7 +48,12 @@
 		<put-attribute name="title" value="库存查询" />
 		<put-attribute name="body" value="/pages/productQuery.jsp" />
 	</definition>
-
+	
+	<definition name="productQueryResult" extends="baseLayout">
+		<put-attribute name="title" value="库存查询结果" />
+		<put-attribute name="body" value="/pages/productQueryResult.jsp" />
+	</definition>
+	
 	<definition name="admin" extends="baseLayout">
 		<put-attribute name="title" value="管理页面" />
 		<put-attribute name="body" value="/pages/admin.jsp" />

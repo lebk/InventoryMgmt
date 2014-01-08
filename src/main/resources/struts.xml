@@ -156,6 +156,12 @@
 			<result name="error" type="tiles">defaultError</result>
 		</action>
 
+		<action name="productQueryResult" method="productQueryResult"
+			class="com.lebk.action.ProductAction">
+			<result name="success" type="tiles">productQueryResult</result>
+			<result name="error" type="tiles">defaultError</result>
+		</action>
+		
 		<!-- Product In/Out Related Action End -->
 	</package>
 </struts>
