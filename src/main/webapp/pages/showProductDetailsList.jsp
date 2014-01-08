@@ -2,7 +2,7 @@
 <%@ page import="com.lebk.services.*, com.lebk.services.impl.*" %>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <head>
-<title>Job Progress</title>
+<title>产品详细信息</title>
 <link href="<s:url value="/css/main.css"/>" rel="stylesheet" type="text/css"/>
 <style type="text/css" rel="stylesheet">
 #container{width:500px; margin:10px auto;}
