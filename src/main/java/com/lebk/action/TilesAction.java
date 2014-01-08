@@ -40,6 +40,7 @@ import com.lebk.services.impl.ProductServiceImpl;
 import com.lebk.services.impl.ProductSizeServiceImpl;
 import com.lebk.services.impl.ProductTypeServiceImpl;
 import com.lebk.services.impl.UserServiceImpl;
+import com.lebk.util.ProductUtil;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -253,18 +254,12 @@ public class TilesAction extends ActionSupport
 
     productDetailsList = new ArrayList<PtDetailsDTO>();
 
-    Map session = ActionContext.getContext().getSession();
 
     logger.info("The selected product id is: " + this.selectedPoId);
 
     List<Ptdetails> pdl = pds.getProductDetailsByProductId(selectedPoId);
-    // convertProductListToProductDTOList(pl, productDtoList);
-    for (Ptdetails pd : pdl)
-    {
-      logger.info("showProductDetailsList:" + pd);
-    }
-    logger.info("There are:" + pdl.size() + " in showProductDetailsList");
-    convertPtdetailsListToPtdetailsDTOList(pdl, productDetailsList);
+
+    this.productDetailsList=ProductUtil.convertPtdetailsListToPtdetailsDTOList(pdl);
     return "showProductDetailsList";
   }
 
