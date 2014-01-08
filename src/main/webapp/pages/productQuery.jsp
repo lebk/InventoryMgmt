@@ -39,9 +39,9 @@
 					<th class="tableHeader"> <s:text name="结束时间" /></th>
 					<th class="tableHeader"><s:submit value="查询" theme="simple" /></th>
 <tr>
-<td class="nowrap"><s:select list="ptList" theme="simple"/></td>
-<td class="nowrap"><s:select list="pcList" theme="simple"/></td>
-<td class="nowrap"><s:select list="psList" theme="simple"/></td>
+<td class="nowrap"><s:select list="ptList" theme="simple" name="selectedQueryProductType" /></td>
+<td class="nowrap"><s:select list="pcList" theme="simple" name="selectedQueryProductColor"/></td>
+<td class="nowrap"><s:select list="psList" theme="simple" name="selectedQueryProductSize"/></td>
 <td class="nowrap"><s:select list="psList" theme="simple"/></td>
 <td class="nowrap"><s:select list="psList" theme="simple"/></td>
 

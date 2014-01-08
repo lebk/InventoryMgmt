@@ -2,18 +2,23 @@ package com.lebk.action;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 
+import com.lebk.dto.PtDetailsDTO;
 import com.lebk.enumType.BusinessEnumType;
 import com.lebk.po.Ptcolor;
+import com.lebk.po.Ptdetails;
 import com.lebk.po.Ptsize;
 import com.lebk.po.Pttype;
 import com.lebk.services.ProductColorService;
+import com.lebk.services.ProductDetailsService;
 import com.lebk.services.ProductService;
 import com.lebk.services.ProductSizeService;
 import com.lebk.services.ProductTypeService;
 import com.lebk.services.impl.ProductColorServiceImpl;
+import com.lebk.services.impl.ProductDetailsServiceImpl;
 import com.lebk.services.impl.ProductServiceImpl;
 import com.lebk.services.impl.ProductSizeServiceImpl;
 import com.lebk.services.impl.ProductTypeServiceImpl;
@@ -38,6 +43,14 @@ public class ProductAction extends ActionSupport
   private List<String> ptList;
   private List<String> pcList;
   private List<String> psList;
+
+  private String selectedQueryProductType;
+  private String selectedQueryProductColor;
+  private String selectedQueryProductSize;
+  
+  private List<PtDetailsDTO> productQueryDetailsList;
+  
+  ProductDetailsService pds = new ProductDetailsServiceImpl();
 
   public ProductAction()
   {
@@ -66,6 +79,46 @@ public class ProductAction extends ActionSupport
     this.productOutList = productOutList;
   }
 
+  public String getSelectedQueryProductType()
+  {
+    return selectedQueryProductType;
+  }
+
+  public void setSelectedQueryProductType(String selectedQueryProductType)
+  {
+    this.selectedQueryProductType = selectedQueryProductType;
+  }
+
+  public String getSelectedQueryProductColor()
+  {
+    return selectedQueryProductColor;
+  }
+
+  public void setSelectedQueryProductColor(String selectedQueryProductColor)
+  {
+    this.selectedQueryProductColor = selectedQueryProductColor;
+  }
+
+  public String getSelectedQueryProductSize()
+  {
+    return selectedQueryProductSize;
+  }
+
+  public void setSelectedQueryProductSize(String selectedQueryProductSize)
+  {
+    this.selectedQueryProductSize = selectedQueryProductSize;
+  }
+  
+  public List<PtDetailsDTO> getProductQueryDetailsList()
+  {
+    return productQueryDetailsList;
+  }
+
+  public void setProductQueryDetailsList(List<PtDetailsDTO> productQueryDetailsList)
+  {
+    this.productQueryDetailsList = productQueryDetailsList;
+  }
+  
   private void constructProductTxnList()
   {
     // get the product type list, append a empty string
@@ -191,12 +244,38 @@ public class ProductAction extends ActionSupport
   
   public String productQueryResult()
   {
-    
+    logger.info("Selected Product type is: "+ this.getSelectedQueryProductType());
+    logger.info("selected Product color is: "+ this.getSelectedQueryProductColor());
+    logger.info("Selected Product size is: "+ this.getSelectedQueryProductSize());
     logger.info("call productQueryResult");
+   
+    productQueryDetailsList = new ArrayList<PtDetailsDTO>();
+
+    Map session = ActionContext.getContext().getSession();
+
+   
+
+    List<Ptdetails> pdl = pds.getProductDetailsByProductId(2);
+    for (Ptdetails pd : pdl)
+    {
+      logger.info("showProductDetailsList:" + pd);
+    }
+    logger.info("There are:" + pdl.size() + " in showProductDetailsList");
+    convertPtdetailsListToPtdetailsDTOList(pdl, productQueryDetailsList);
+    
     return SUCCESS;
   }
   
   
+  private void convertPtdetailsListToPtdetailsDTOList(List<Ptdetails> pdl, List<PtDetailsDTO> productQueryDetailsList)
+  {
+    for (Ptdetails pd : pdl)
+    {
+      logger.info("the pd is:" + pd);
+      this.productQueryDetailsList.add(new PtDetailsDTO(pd));
+    }
+  }
+
   public List<String> getPtList()
   {
     return ptList;
@@ -339,6 +418,7 @@ public class ProductAction extends ActionSupport
     {
       this.selectedProductSize = selectedProductSize;
     }
+    
 
     public String toString()
     {
