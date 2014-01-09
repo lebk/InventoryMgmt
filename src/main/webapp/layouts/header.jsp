@@ -5,6 +5,7 @@
 <IMG src="/InventoryMgmt/css/InventoryIcon.jpg"/>
 </DIV>
 <DIV id=welcome_msg>
+<span style="FLOAT:left">当前用户：<%=session.getAttribute("username")%>  &nbsp; &nbsp;</span>
 <a href="<s:url action="logout"/>"><font color="yellow">注销</font></a>
 </P>
 </DIV>
