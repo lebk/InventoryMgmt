@@ -24,6 +24,7 @@ public class ProductUtil
     {
       logger.info("the pd is:" + pd);
       ptdt.add(new PtDetailsDTO(pd));
+      logger.info("the ptdt is:" + ptdt);
     }
     return ptdt;
   }
