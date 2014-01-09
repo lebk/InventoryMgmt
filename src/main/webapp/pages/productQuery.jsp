@@ -1,8 +1,16 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="sx" uri="/struts-dojo-tags" %>
 
 <html>
 <head>
+
+<sx:head debug="true"   
+ locale="zh"   
+ parseContent="true"   
+ extraLocales="en-us,zh-cn,de-de"   
+ /> 
+
 <link href="<s:url value="/css/main.css"/>" rel="stylesheet" type="text/css"/>
 <style type="text/css" rel="stylesheet">
 #container{width:600px; margin:10px auto;}
@@ -14,11 +22,11 @@
     padding-bottom:10px;
 	}
 
-
 .tableHeader { text-align:center; font-weight:bold; font-size:14px; padding-right:10px;background-color:white}
 
-
 </style>
+
+
 </head>
 <body>
 <h2>库存查询</h2>
@@ -42,9 +50,8 @@
 <td class="nowrap"><s:select list="ptList" theme="simple" name="selectedQueryProductType" /></td>
 <td class="nowrap"><s:select list="pcList" theme="simple" name="selectedQueryProductColor"/></td>
 <td class="nowrap"><s:select list="psList" theme="simple" name="selectedQueryProductSize"/></td>
-<td class="nowrap"><s:select list="psList" theme="simple"/></td>
-<td class="nowrap"><s:select list="psList" theme="simple"/></td>
-
+<td class="nowrap"><sx:datetimepicker name="startDate"  displayFormat="yy-MM-dd" value="todayDate" /></td>
+<td class="nowrap"><sx:datetimepicker name="endDate"  displayFormat="yy-MM-dd" value="todayDate" /></td>
 </tr>
 </table>
 </s:form>

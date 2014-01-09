@@ -1,6 +1,7 @@
 package com.lebk.action;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -49,6 +50,8 @@ public class ProductAction extends ActionSupport
   private String selectedQueryProductType;
   private String selectedQueryProductColor;
   private String selectedQueryProductSize;
+  private Date startDate;
+  private Date endDate;
 
   private List<PtDetailsDTO> productQueryDetailsList;
 
@@ -119,6 +122,26 @@ public class ProductAction extends ActionSupport
   public void setProductQueryDetailsList(List<PtDetailsDTO> productQueryDetailsList)
   {
     this.productQueryDetailsList = productQueryDetailsList;
+  }
+
+  public Date getStartDate()
+  {
+    return startDate;
+  }
+
+  public void setStartDate(Date startDate)
+  {
+    this.startDate = startDate;
+  }
+
+  public Date getEndDate()
+  {
+    return endDate;
+  }
+
+  public void setEndDate(Date endDate)
+  {
+    this.endDate = endDate;
   }
 
   private void constructProductTxnList()
@@ -250,6 +273,9 @@ public class ProductAction extends ActionSupport
     logger.info("selected Product color is: " + this.getSelectedQueryProductColor());
     logger.info("Selected Product size is: " + this.getSelectedQueryProductSize());
 
+    logger.info("Selected start date is: " + this.getStartDate());
+    logger.info("Selected end date is: " + this.getEndDate());
+
     List<Product> pl = ps.searchProduct(this.getSelectedQueryProductType(), this.getSelectedQueryProductColor(), this.getSelectedQueryProductSize());
 
     List<Integer> poIdList = new ArrayList<Integer>();
@@ -259,7 +285,6 @@ public class ProductAction extends ActionSupport
     }
 
     List<Ptdetails> pdl = pds.getProductDetailsByPoIdList(poIdList);
-
     this.productQueryDetailsList = ProductUtil.convertPtdetailsListToPtdetailsDTOList(pdl);
 
     return SUCCESS;

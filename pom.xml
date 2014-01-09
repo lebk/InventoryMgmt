@@ -75,6 +75,12 @@
 			<version>2.3.1.2</version>
 		</dependency>
 		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-dojo-plugin</artifactId>
+			<version>2.3.1.2</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-servlet</artifactId>
 			<version>2.2.2</version>
