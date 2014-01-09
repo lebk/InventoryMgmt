@@ -1,6 +1,7 @@
 package com.lebk.services.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -36,7 +37,7 @@ public class ProductDetailsServiceImpl implements ProductDetailsService
     return pdd.getAllPtDetails();
   }
 
-  public List<Ptdetails> getProductDetailsByPoIdList(List<Integer> poIdList)
+  public List<Ptdetails> searchProductDetails(List<Integer> poIdList, Date startDate, Date endDate)
   {
     List<Ptdetails> pdl = new ArrayList<Ptdetails>();
     if (poIdList == null || poIdList.size() == 0)
@@ -44,6 +45,6 @@ public class ProductDetailsServiceImpl implements ProductDetailsService
       logger.info("The po id list is null, return empty string");
       return pdl;
     }
-    return pdd.getProductDetailsByPoIdList(poIdList);
+    return pdd.searchProductDetails(poIdList, startDate, endDate);
   }
 }

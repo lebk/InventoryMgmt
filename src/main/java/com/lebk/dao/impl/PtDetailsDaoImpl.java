@@ -237,7 +237,7 @@ public class PtDetailsDaoImpl implements PtDetailsDao
     return false;
   }
 
-  public List<Ptdetails> getProductDetailsByPoIdList(List<Integer> poIdList)
+  public List<Ptdetails> searchProductDetails(List<Integer> poIdList, Date startDate, Date endDate)
   {
     // build the where clause
     StringBuffer whereClause = new StringBuffer(" where poId in(");
@@ -250,6 +250,15 @@ public class PtDetailsDaoImpl implements PtDetailsDao
       whereClause.delete(whereClause.lastIndexOf(","), whereClause.length());
     }
     whereClause.append(")");
+
+    if (startDate != null)
+    {
+      whereClause.append(" and date >= '" + new java.sql.Date(startDate.getTime()) + "'");
+    }
+    if (endDate != null)
+    {
+      whereClause.append(" and date <= '" + new java.sql.Date(endDate.getTime()) + "'");
+    }
     logger.info("The where clause is:" + whereClause);
 
     Session session = HibernateUtil.getSessionFactory().openSession();

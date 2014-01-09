@@ -1,5 +1,6 @@
 package com.lebk.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import com.lebk.po.Ptdetails;
@@ -29,7 +30,7 @@ public interface PtDetailsDao
 
   public List<Ptdetails> getAllPtDetailsbyPoId(Integer poId);
 
-  public List<Ptdetails> getProductDetailsByPoIdList(List<Integer> poIdList);
+  public List<Ptdetails> searchProductDetails(List<Integer> poIdList, Date startDate, Date endDate);
 
   public List<Ptdetails> getAllPtDetails();
 

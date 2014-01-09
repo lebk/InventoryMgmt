@@ -284,7 +284,7 @@ public class ProductAction extends ActionSupport
       poIdList.add(p.getId());
     }
 
-    List<Ptdetails> pdl = pds.getProductDetailsByPoIdList(poIdList);
+    List<Ptdetails> pdl = pds.searchProductDetails(poIdList, this.getStartDate(), this.getEndDate());
     this.productQueryDetailsList = ProductUtil.convertPtdetailsListToPtdetailsDTOList(pdl);
 
     return SUCCESS;

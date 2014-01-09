@@ -1,5 +1,6 @@
 package com.lebk.services;
 
+import java.util.Date;
 import java.util.List;
 
 import com.lebk.po.Ptdetails;
@@ -17,7 +18,7 @@ public interface ProductDetailsService
 
   List<Ptdetails> getProductDetailsByProductId(Integer poId);
 
-  List<Ptdetails> getProductDetailsByPoIdList(List<Integer> poIdList);
+  List<Ptdetails> searchProductDetails(List<Integer> poIdList, Date startDate, Date endDate);
 
   List<Ptdetails> getAllProductDetails();
 
