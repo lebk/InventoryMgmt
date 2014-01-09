@@ -237,4 +237,45 @@ public class PtDetailsDaoImpl implements PtDetailsDao
     return false;
   }
 
+  public List<Ptdetails> getProductDetailsByPoIdList(List<Integer> poIdList)
+  {
+    // build the where clause
+    StringBuffer whereClause = new StringBuffer(" where poId in(");
+    for (Integer poId : poIdList)
+    {
+      whereClause.append(poId + ",");
+    }
+    if (whereClause.lastIndexOf(",") != -1)
+    {
+      whereClause.delete(whereClause.lastIndexOf(","), whereClause.length());
+    }
+    whereClause.append(")");
+    logger.info("The where clause is:" + whereClause);
+
+    Session session = HibernateUtil.getSessionFactory().openSession();
+    List pdl = new ArrayList<Ptdetails>();
+    Transaction transaction = null;
+
+    try
+    {
+      transaction = session.beginTransaction();
+      List pdq = session.createQuery("from " + Ptdetails.class.getName() + whereClause).list();
+      for (Iterator it = pdq.iterator(); it.hasNext();)
+      {
+        Ptdetails pd = (Ptdetails) it.next();
+        pdl.add(pd);
+      }
+      transaction.commit();
+    } catch (HibernateException e)
+    {
+      transaction.rollback();
+      e.printStackTrace();
+
+    } finally
+    {
+      session.close();
+    }
+    return pdl;
+  }
+
 }

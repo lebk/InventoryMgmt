@@ -72,6 +72,6 @@ public interface ProductService
    *
    *Search the product by product type, color, size, or the enterred date.
    */
-  public List<Product> searchProduct(String ptType, String ptColor,String ptSize, Date startDate, Date endDate);
+  public List<Product> searchProduct(String ptType, String ptColor,String ptSize);
 
 }

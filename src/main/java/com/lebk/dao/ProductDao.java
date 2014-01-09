@@ -35,5 +35,6 @@ public interface ProductDao
   public String getProdTypebyProdTypeId(Integer prodTypeId);
 
   public boolean cleanUpAll();
-
+  
+  public List<Product> searchProduct(Integer ptTypeId, Integer ptColorId, Integer ptSizeId);
 }

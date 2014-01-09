@@ -2,6 +2,7 @@ package com.lebk.dao.test;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -162,5 +163,41 @@ public class ProductDaoTest
     Assert.assertTrue("expect the product number will not change after a failed ship out", pNumInStoreAfterShipFail.equals(pNumInStore));
     Integer ptdNumInStoreAfterShipFail = pdd.getAllPtDetails().size();
     Assert.assertTrue("expect the product detail number will not change after a failed ship out", ptdNumInStoreAfterShipFail == ptdNumInStore);
+  }
+
+  @Test
+  public void testSearchProduct()
+  {
+    List<Product> pl = new ArrayList<Product>();
+    pl = pd.searchProduct(1, 1, 1);
+    printProductList(pl);
+
+    pl = pd.searchProduct(1, 1, null);
+    printProductList(pl);
+
+    pl = pd.searchProduct(1, null, 1);
+    printProductList(pl);
+
+    pl = pd.searchProduct(null, 1, 1);
+    printProductList(pl);
+
+    pl = pd.searchProduct(1, null, null);
+    printProductList(pl);
+
+    pl = pd.searchProduct(null, 1, null);
+    printProductList(pl);
+
+    pl = pd.searchProduct(null, null, 1);
+    printProductList(pl);
+
+    pl = pd.searchProduct(null, null, null);
+    printProductList(pl);
+
+  }
+
+  private void printProductList(List<Product> pl)
+  {
+    for (Product p : pl)
+      logger.info(p);
   }
 }

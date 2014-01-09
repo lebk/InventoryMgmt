@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 
 import com.lebk.dto.PtDetailsDTO;
 import com.lebk.enumType.BusinessEnumType;
+import com.lebk.po.Product;
 import com.lebk.po.Ptcolor;
 import com.lebk.po.Ptdetails;
 import com.lebk.po.Ptsize;
@@ -249,14 +250,20 @@ public class ProductAction extends ActionSupport
     logger.info("selected Product color is: " + this.getSelectedQueryProductColor());
     logger.info("Selected Product size is: " + this.getSelectedQueryProductSize());
 
-    List<Ptdetails> pdl = pds.getProductDetailsByProductId(2);
-   
-    this.productQueryDetailsList=ProductUtil.convertPtdetailsListToPtdetailsDTOList(pdl);
+    List<Product> pl = ps.searchProduct(this.getSelectedQueryProductType(), this.getSelectedQueryProductColor(), this.getSelectedQueryProductSize());
+
+    List<Integer> poIdList = new ArrayList<Integer>();
+    for (Product p : pl)
+    {
+      poIdList.add(p.getId());
+    }
+
+    List<Ptdetails> pdl = pds.getProductDetailsByPoIdList(poIdList);
+
+    this.productQueryDetailsList = ProductUtil.convertPtdetailsListToPtdetailsDTOList(pdl);
 
     return SUCCESS;
   }
-
-
 
   public List<String> getPtList()
   {

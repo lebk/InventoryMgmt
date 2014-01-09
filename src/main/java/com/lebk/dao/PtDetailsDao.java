@@ -27,7 +27,10 @@ public interface PtDetailsDao
    */
   public boolean cleanUpAll();
 
+  public List<Ptdetails> getAllPtDetailsbyPoId(Integer poId);
+
+  public List<Ptdetails> getProductDetailsByPoIdList(List<Integer> poIdList);
+
   public List<Ptdetails> getAllPtDetails();
 
-  public List<Ptdetails> getAllPtDetailsbyPoId(Integer poId);
 }

@@ -17,6 +17,8 @@ public interface ProductDetailsService
 
   List<Ptdetails> getProductDetailsByProductId(Integer poId);
 
+  List<Ptdetails> getProductDetailsByPoIdList(List<Integer> poIdList);
+
   List<Ptdetails> getAllProductDetails();
 
 }

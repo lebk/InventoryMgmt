@@ -584,4 +584,60 @@ public class ProductDaoImpl implements ProductDao
     return status;
   }
 
+  public List<Product> searchProduct(Integer ptTypeId, Integer ptColorId, Integer ptSizeId)
+  {
+    // build the where clause
+    StringBuffer whereClause = new StringBuffer(" where ");
+    if (ptTypeId != null)
+    {
+      whereClause.append(" ptTypeId=" + ptTypeId + " and ");
+    }
+    if (ptColorId != null)
+    {
+      whereClause.append(" ptColorId=" + ptColorId + " and ");
+    }
+    if (ptSizeId != null)
+    {
+      whereClause.append(" ptSizeId=" + ptSizeId + " and ");
+    }
+    // delete the last "and" if it existed
+    if (whereClause.lastIndexOf(" and ") != -1)
+    {
+      whereClause.delete(whereClause.lastIndexOf(" and "), whereClause.length());
+    } else
+    {
+      // delete the " where " as there is no "where clause needs here.
+
+      whereClause.delete(whereClause.lastIndexOf(" where "), whereClause.length());
+    }
+    logger.info("The where clause is:" + whereClause);
+
+    List pl = new ArrayList<Product>();
+
+    Session session = HibernateUtil.getSessionFactory().openSession();
+
+    Transaction transaction = null;
+
+    try
+    {
+      transaction = session.beginTransaction();
+      List ql = session.createQuery("from " + Product.class.getName() + whereClause).list();
+      for (Iterator it = ql.iterator(); it.hasNext();)
+      {
+        Product p = (Product) it.next();
+        logger.info("Product:" + p.getName());
+        pl.add(p);
+      }
+      transaction.commit();
+    } catch (HibernateException e)
+    {
+      transaction.rollback();
+      e.printStackTrace();
+
+    } finally
+    {
+      session.close();
+    }
+    return pl;
+  }
 }

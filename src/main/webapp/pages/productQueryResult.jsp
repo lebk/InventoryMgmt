@@ -18,8 +18,8 @@
 <center>
 <div id="container">
 <div id="link">
-<s:url action="showProductListtilesAction.action" var="aURL" />
-<s:a href="%{aURL}"><u>[返回首页]</u></s:a>
+<s:url action="gotoProductQuery.action" var="aURL" />
+<s:a href="%{aURL}"><u>[返回查询页面]</u></s:a>
 </div>
 <table align=center class="borderAll">
     <tr>
