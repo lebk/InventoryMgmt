@@ -253,11 +253,11 @@ public class PtDetailsDaoImpl implements PtDetailsDao
 
     if (startDate != null)
     {
-      whereClause.append(" and date >= '" + new java.sql.Date(startDate.getTime()) + "'");
+      whereClause.append(" and date(date) >= '" + new java.sql.Date(startDate.getTime()) + "'");
     }
     if (endDate != null)
     {
-      whereClause.append(" and date <= '" + new java.sql.Date(endDate.getTime()) + "'");
+      whereClause.append(" and date(date) <= '" + new java.sql.Date(endDate.getTime()) + "'");
     }
     logger.info("The where clause is:" + whereClause);
 
