@@ -6,7 +6,7 @@
 <head>
 
 <sx:head debug="true"   
- locale="zh"   
+ locale="us"   
  parseContent="true"   
  extraLocales="en-us,zh-cn,de-de"   
  /> 
