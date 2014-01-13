@@ -12,17 +12,17 @@
     </head>
     <body>
     
-    <table frame="hsides" width="100%" align="center">
+    <table frame="hsides" width="100%">
     <tr>
     <td colspan=2>
                     <tiles:insertAttribute name="header" />
     </td>
     </tr>
-    <tr>
-    <td valign="top" width="10%" height="800">
+    <tr height="840">
+    <td valign="top" width="10%">
                     <tiles:insertAttribute name="menu" />
     </td>
-    <td valign="top" width="90%" height="800">
+    <td valign="top" width="90%">
                     <tiles:insertAttribute name="body" />
     </td>
     </tr>
