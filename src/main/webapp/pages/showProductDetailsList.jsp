@@ -5,7 +5,7 @@
 <title>产品详细信息</title>
 <link href="<s:url value="/css/main.css"/>" rel="stylesheet" type="text/css"/>
 <style type="text/css" rel="stylesheet">
-#container{width:500px; margin:10px auto;}
+#container{width:640px; margin:10px auto;}
 #container table{text-align:center;width:100%}
 #container #link{text-align:right;}
 </style>
@@ -21,7 +21,7 @@
 <s:url action="showProductListtilesAction.action" var="aURL" />
 <s:a href="%{aURL}"><u>[返回首页]</u></s:a>
 </div>
-<table align=center class="borderAll">
+<table  class="borderAll">
     <tr>
         <th><s:text name="编号"/></th>
         <th><s:text name="产品"/></th>
