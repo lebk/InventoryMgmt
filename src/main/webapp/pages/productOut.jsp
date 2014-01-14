@@ -36,9 +36,6 @@ function handleChange(index) {
 		method="post">
 
 		<div id="container">
-			<div id="link">
-				<s:submit value="提交" theme="simple" />
-			</div>
 			<table align=center class="borderAll">
 				<tr>
 					<th class="tableHeader"></th>
