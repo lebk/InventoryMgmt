@@ -5,7 +5,7 @@
 <title>产品详细信息</title>
 <link href="<s:url value="/css/main.css"/>" rel="stylesheet" type="text/css"/>
 <style type="text/css" rel="stylesheet">
-#container{width:640px; margin:10px auto;}
+#container{width:720px; margin:10px auto;}
 #container table{text-align:center;width:100%}
 #container #link{text-align:right;}
 </style>

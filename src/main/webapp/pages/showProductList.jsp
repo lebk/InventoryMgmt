@@ -3,17 +3,27 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <html>
 <head>
+
 <title>欢迎使用本系统</title>
 <link href="<s:url value="/css/main.css"/>" rel="stylesheet"
 	type="text/css" />
-</head>
+<style type="text/css" rel="stylesheet">
+#container{width:720px; margin:10px auto;}
+#container table{text-align:center;width:100%}
+#container #link{text-align:right;}
+</style>
+	</head>
 <body>
 	<center>
 		<h2>
 		当前库存状态
 		</h2>
 	<div id="container">
-		<table align=center class="borderAll">
+	<div id="link">
+<s:url action="gotoProductQuery.action" var="aURL" />
+<s:a href="%{aURL}"><u>[库存查询]</u></s:a>
+</div>
+		<table class="borderAll">
 			<tr>
 				<th><s:text name="编号" /></th>
 				<th><s:text name="名字" /></th>
