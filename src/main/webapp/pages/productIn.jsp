@@ -5,6 +5,9 @@
 <title>产品入库</title>
 <link href="<s:url value="/css/main.css"/>" rel="stylesheet"
 	type="text/css" />
+<style type="text/css" rel="stylesheet">
+	.tableHeader { text-align:center; font-weight:bold; font-size:14px; padding-right:10px;background-color:white}
+</style>
 <script type="text/javascript" src="dwr/interface/ProdServ.js"></script>
 <script type="text/javascript" src="dwr/engine.js"></script>
 <script type="text/javascript" src="dwr/util.js"></script>
@@ -31,12 +34,16 @@ function handleChange(index) {
 
 	<s:form action="productInSubmit" enctype="multipart/form-data"
 		method="post">
-
 		<div id="container">
-			<div id="link">
-				<s:submit value="提交" theme="simple" />
-			</div>
 			<table align=center class="borderAll">
+				<tr>
+					<th class="tableHeader"></th>
+					<th class="tableHeader"></th>
+					<th class="tableHeader"></th>
+					<th class="tableHeader"></th>
+				    <th class="tableHeader"></th>
+					<th class="tableHeader"><s:submit value="提交" theme="simple" /></th>
+				</tr>
 				<tr>
 					<th><s:text name="编号" /></th>
 					<th><s:text name="类型" /></th>
