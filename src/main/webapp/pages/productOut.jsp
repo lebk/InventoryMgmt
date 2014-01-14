@@ -2,7 +2,7 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <html>
 <head>
-<title>产品入库</title>
+<title>产品出库</title>
 <link href="<s:url value="/css/main.css"/>" rel="stylesheet"
 	type="text/css" />
 <style type="text/css" rel="stylesheet">
@@ -29,12 +29,16 @@ function handleChange(index) {
 
 <body>
 	<center>
-		<h2>产品入库</h2>
+		<h2>产品出库</h2>
 	</center>
 
-	<s:form action="productInSubmit" enctype="multipart/form-data"
+	<s:form action="productOutSubmit" enctype="multipart/form-data"
 		method="post">
+
 		<div id="container">
+			<div id="link">
+				<s:submit value="提交" theme="simple" />
+			</div>
 			<table align=center class="borderAll">
 				<tr>
 					<th class="tableHeader"></th>
@@ -50,22 +54,22 @@ function handleChange(index) {
 					<th><s:text name="花色" /></th>
 					<th><s:text name="尺寸" /></th>
 					<th><s:text name="库存数量" /></th>
-					<th><s:text name="入库数量" /></th>
+					<th><s:text name="出库数量" /></th>
 				</tr>
-				<s:iterator value="productInList" status="status" var="productInRow">
+				<s:iterator value="productOutList" status="status">
 					<tr
 						class="<s:if test="#status.even">even</s:if><s:else>odd</s:else>">
 						<td class="nowrap"><s:property value="id" /></td>
 						<td class="nowrap"><s:select list="ptList"
-								name="productInList[%{#status.index}].selectedProductType"
+								name="productOutList[%{#status.index}].selectedProductType"
 								theme="simple" id="selectedProductType[%{#status.index}]"
 								onchange="handleChange(%{#status.index})" /></td>
 						<td class="nowrap"><s:select list="pcList"
-								name="productInList[%{#status.index}].selectedProductColor"
+								name="productOutList[%{#status.index}].selectedProductColor"
 								theme="simple" id="selectedProductColor[%{#status.index}]"
 								onchange="handleChange(%{#status.index})" /></td>
 						<td class="nowrap"><s:select list="psList"
-								name="productInList[%{#status.index}].selectedProductSize"
+								name="productOutList[%{#status.index}].selectedProductSize"
 								theme="simple" id="selectedProductSize[%{#status.index}]"
 								onchange="handleChange(%{#status.index})" /></td>
 
@@ -103,7 +107,7 @@ function handleChange(index) {
 							<td class="nowrap"><span id="pNum[0]"></span></td>
 						</s:else>
 						<td class="nowrap"><s:textfield
-								name="productInList[%{#status.index}].txnNum" size="5"
+								name="productOutList[%{#status.index}].txnNum" size="5"
 								theme="simple" /></td>
 					</tr>
 				</s:iterator>
