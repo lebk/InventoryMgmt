@@ -40,6 +40,7 @@ public class PtDetailsDTO {
 		this.id = ptd.getId();
 		this.poId = ptd.getPoId();
 		this.prdName = pd.getNameByProductId(poId);
+		this.ptNumber=ptd.getNum();
 		this.date = ptd.getDate();
 		this.businessType = btd.getTypeById(ptd.getBtId());
 		this.opUser = ud.getUsernamebyUserid(ptd.getOpUserId());
@@ -101,7 +102,7 @@ public class PtDetailsDTO {
 	}
 
 	public String toString() {
-		return this.getId() + ":" + this.getPoId() + ":" + this.getPrdName()
+		return this.getId() + ":" + this.getPoId() + ":" + this.getPtNumber() + ":" + this.getPrdName()
 				+ ":" + this.getDate();
 	}
 }
