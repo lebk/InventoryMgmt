@@ -49,7 +49,7 @@ public class ProductServiceTest
     String ptType = "油漆地板类";
     String ptColor = "测试颜色";
     String ptSize = "测试大小";
-    Integer pNum = 99;
+    Float pNum = new Float(99);
     String businessType = "入库";
     String opUser = "管理员";
     Boolean status = ps.updateProduct(pName, ptType, ptColor, ptSize, pNum, businessType, opUser);
@@ -63,7 +63,7 @@ public class ProductServiceTest
     status = ps.updateProduct(pName, ptType, ptColor, ptSize, pNum, businessType, opUser);
     Assert.assertTrue("Expect update successfully, return true", status == true);
     // 没有足够铲平出库，返回false
-    status = ps.updateProduct(pName, ptType, ptColor, ptSize, 999999999, businessType, opUser);
+    status = ps.updateProduct(pName, ptType, ptColor, ptSize, new Float(999999999), businessType, opUser);
     Assert.assertTrue("Expect update successfully, return true", status == false);
 
   }

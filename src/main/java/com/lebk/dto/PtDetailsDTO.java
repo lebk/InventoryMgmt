@@ -25,7 +25,7 @@ public class PtDetailsDTO {
 	private Integer poId;
 	private String prdName;
 	private String businessType;
-	private Integer ptNumber;
+	private Float ptNumber;
 	private String opUser;
 	private Date date;
 	UserDao ud = new UserDaoImpl();
@@ -77,11 +77,11 @@ public class PtDetailsDTO {
 		this.businessType = businessType;
 	}
 
-	public Integer getPtNumber() {
+	public Float getPtNumber() {
 		return ptNumber;
 	}
 
-	public void setPtNumber(Integer ptNumber) {
+	public void setPtNumber(Float ptNumber) {
 		this.ptNumber = ptNumber;
 	}
 

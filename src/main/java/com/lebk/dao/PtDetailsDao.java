@@ -15,7 +15,7 @@ public interface PtDetailsDao
   // in the wareshouse, then the btId is 1(in), if ship out(sell), the btId is
   // 2(out), will use btId to distingish product in or out, other than use the
   // postive/negative product number(pNum)
-  public boolean addPtDetail(Integer poId, Integer btId, Integer pNum, Integer opUserId);
+  public boolean addPtDetail(Integer poId, Integer btId, Float pNum, Integer opUserId);
 
   public boolean deletePtDetail(Integer id);
 

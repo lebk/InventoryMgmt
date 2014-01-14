@@ -20,7 +20,7 @@ public class ProductDTO
   private String ptType;
   private String ptColor;
   private String ptSize;
-  private Integer ptNumber;
+  private Float ptNumber;
   private Date lastUpateTime;
   PtTypeDao ptd = new PtTypeDaoImpl();
   PtColorDao pcd = new PtColorDaoImpl();
@@ -92,12 +92,12 @@ public class ProductDTO
     this.ptColor = ptColor;
   }
 
-  public Integer getPtNumber()
+  public Float getPtNumber()
   {
     return ptNumber;
   }
 
-  public void setPtNumber(Integer ptNumber)
+  public void setPtNumber(Float ptNumber)
   {
     this.ptNumber = ptNumber;
   }

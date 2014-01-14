@@ -20,7 +20,7 @@
         <property name="ptColorId" type="java.lang.Integer">
             <column name="ptColorId" />
         </property>
-        <property name="ptNumber" type="java.lang.Integer">
+        <property name="ptNumber" type="java.lang.Float">
             <column name="ptNumber" />
         </property>
         <property name="lastUpdateTime" type="timestamp">

@@ -19,7 +19,7 @@ public class TestUtil
   private static String ptcolorName = "测试颜色";
   private static String ptSizeName = "测试大小";
   private static Integer opUserId = 1;// 管理员
-  private static Integer pNum = 100;
+  private static Float pNum = new Float(100.0);
   static Logger logger = Logger.getLogger(TestUtil.class);
 
   public static String getPtTypeName()
@@ -60,7 +60,7 @@ public class TestUtil
     return psd.getIdByPtSizeName(ptSizeName);
   }
 
-  public static Integer getPNum()
+  public static Float getPNum()
   {
     return pNum;
   }
@@ -74,7 +74,7 @@ public class TestUtil
   public static Integer getPoId()
   {
     ProductDao pd = new ProductDaoImpl();
-    pd.updateProduct(getPName(), getPtTypeId(), getPtColorId(), getPtSizeId(), 1, pNum, 1);
+    pd.updateProduct(getPName(), getPtTypeId(), getPtColorId(), getPtSizeId(), pNum,1, 1);
     return pd.getIdByProdName(getPName());
   }
 

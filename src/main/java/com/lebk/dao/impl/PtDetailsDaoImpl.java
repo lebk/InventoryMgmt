@@ -23,7 +23,7 @@ public class PtDetailsDaoImpl implements PtDetailsDao
 {
   static Logger logger = Logger.getLogger(PtDetailsDaoImpl.class);
 
-  public boolean addPtDetail(Integer poId, Integer btId, Integer pNum, Integer opUserId)
+  public boolean addPtDetail(Integer poId, Integer btId, Float pNum, Integer opUserId)
   {
 
     if (pNum <= 0)

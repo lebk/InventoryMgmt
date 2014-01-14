@@ -29,7 +29,7 @@ public class PtDetailsDaoTest
 
   PtDetailsDao pdd;
   Integer opUserId = 1;
-  Integer pNum = TestUtil.getPNum();
+  Float pNum = TestUtil.getPNum();
   Integer btId = BusinessEnumType.getIdByBusinessType(BusinessEnumType.in);
   Integer poId = 1;
 
@@ -74,7 +74,7 @@ public class PtDetailsDaoTest
     
     // invalid product number
     btId = BusinessEnumType.getIdByBusinessType(BusinessEnumType.out);
-    status = pdd.addPtDetail(poId, btId, -1, opUserId);
+    status = pdd.addPtDetail(poId, btId, new Float(-1), opUserId);
     Assert.assertTrue("Expect add fail, as the pNum is negative", status == false);
     
   }

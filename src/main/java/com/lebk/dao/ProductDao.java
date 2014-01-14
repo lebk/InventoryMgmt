@@ -18,7 +18,7 @@ public interface ProductDao
 
   public List<Product> getProductList();
 
-  public boolean updateProduct(String pName, Integer ptTypeId, Integer ptColorId, Integer ptSizeId, Integer pNum, Integer btId, Integer opUserId);
+  public boolean updateProduct(String pName, Integer ptTypeId, Integer ptColorId, Integer ptSizeId, Float pNum, Integer btId, Integer opUserId);
 
   public boolean removeProduct(Integer id);
 

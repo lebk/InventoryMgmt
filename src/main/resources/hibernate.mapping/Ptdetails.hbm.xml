@@ -14,7 +14,7 @@
         <property name="btId" type="int">
             <column name="btId" not-null="true" />
         </property>
-        <property name="num" type="java.lang.Integer">
+        <property name="num" type="java.lang.Float">
             <column name="num" />
         </property>
         <property name="opUserId" type="java.lang.Integer">

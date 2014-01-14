@@ -14,7 +14,7 @@ public class Ptdetails implements java.io.Serializable
   private int id;
   private int poId;
   private int btId;
-  private Integer num;
+  private Float num;
   private Integer opUserId;
   private Date date;
 
@@ -29,7 +29,7 @@ public class Ptdetails implements java.io.Serializable
     this.btId = btId;
   }
 
-  public Ptdetails(int id, int poId, int btId, Integer num, Integer opUserId, Date date)
+  public Ptdetails(int id, int poId, int btId, Float num, Integer opUserId, Date date)
   {
     this.id = id;
     this.poId = poId;
@@ -69,12 +69,12 @@ public class Ptdetails implements java.io.Serializable
     this.btId = btId;
   }
 
-  public Integer getNum()
+  public Float getNum()
   {
     return this.num;
   }
 
-  public void setNum(Integer num)
+  public void setNum(Float num)
   {
     this.num = num;
   }

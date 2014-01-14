@@ -40,7 +40,7 @@ public class ProductDaoTest
 {
   static Logger logger = Logger.getLogger(ProductDaoTest.class);
   ProductDao pd;
-  Integer pNum = TestUtil.getPNum();
+  Float pNum = TestUtil.getPNum();
   Integer ptSizeId;
   Integer ptTypeId;
   Integer ptColorId;
@@ -142,23 +142,23 @@ public class ProductDaoTest
     Integer opUserId = 1;
     // in
     Integer btId = BusinessEnumType.getIdByBusinessType(BusinessEnumType.in);
-    Boolean status = pd.updateProduct(pName, ptTypeId, ptColorId, ptSizeId, 100, btId, opUserId);
+    Boolean status = pd.updateProduct(pName, ptTypeId, ptColorId, ptSizeId, new Float(100), btId, opUserId);
 
     Assert.assertTrue("expect return true while ship in", status == true);
     // out
     btId = BusinessEnumType.getIdByBusinessType(BusinessEnumType.out);
-    status = pd.updateProduct(pName, ptTypeId, ptColorId, ptSizeId, 50, btId, opUserId);
+    status = pd.updateProduct(pName, ptTypeId, ptColorId, ptSizeId, new Float(50), btId, opUserId);
     Assert.assertTrue("expect return true while ship out", status == true);
 
     // ship more product than we have
 
-    Integer pNumInStore = pd.getProductById(pd.getIdByProdName(pName)).getPtNumber();
+    Float pNumInStore = pd.getProductById(pd.getIdByProdName(pName)).getPtNumber();
     Integer ptdNumInStore = pdd.getAllPtDetails().size();
     logger.info("The pNumInStore is:" + pNumInStore);
     // btId is ship out
     status = pd.updateProduct(pName, ptTypeId, ptColorId, ptSizeId, pNumInStore + 1, btId, opUserId);
     Assert.assertTrue("expect return false while ship out more product than we have in store", status == false);
-    Integer pNumInStoreAfterShipFail = pd.getProductById(pd.getIdByProdName(pName)).getPtNumber();
+    Float pNumInStoreAfterShipFail = pd.getProductById(pd.getIdByProdName(pName)).getPtNumber();
     logger.info("The pNumInStoreAfterShipFail is:" + pNumInStoreAfterShipFail);
     Assert.assertTrue("expect the product number will not change after a failed ship out", pNumInStoreAfterShipFail.equals(pNumInStore));
     Integer ptdNumInStoreAfterShipFail = pdd.getAllPtDetails().size();

@@ -27,7 +27,7 @@ public class ProductServiceImpl implements ProductService {
 	static Logger logger = Logger.getLogger(ProductServiceImpl.class);
 
 	public boolean updateProduct(String pName, String ptType, String ptColor,
-			String ptSize, Integer pNum, String businessType, String opUser) {
+			String ptSize, Float pNum, String businessType, String opUser) {
 
 		if (pNum <= 0) {
 			logger.info("The product number should greater than 0,but:" + pNum);
@@ -74,7 +74,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	public boolean updateProduct(String ptType, String ptColor, String ptSize,
-			Integer pNum, String businessType, String opUser) {
+			Float pNum, String businessType, String opUser) {
 		String pName = this.constructProductName(ptType, ptColor, ptSize);
 		return this.updateProduct(pName, ptType, ptColor, ptSize, pNum,
 				businessType, opUser);
@@ -116,7 +116,7 @@ public class ProductServiceImpl implements ProductService {
 			logger.info("no product found by the selected items, return 0");
 			return String.valueOf(0);
 		}
-		Integer pNum = pd.getProductById(pId).getPtNumber();
+		Float pNum = pd.getProductById(pId).getPtNumber();
 		logger.info("the product number is:" + pNum);
 		return String.valueOf(pNum);
 	}

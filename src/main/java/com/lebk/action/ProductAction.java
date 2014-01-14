@@ -182,7 +182,7 @@ public class ProductAction extends ActionSupport
     for (int i = 0; i < listSize; i++)
     {
 
-      ProductRow row = new ProductRow(i, ptList, pcList, psList, 0, 0);
+      ProductRow row = new ProductRow(i, ptList, pcList, psList, new Float(0), new Float(0));
       productInList.add(row);
       productOutList.add(row);
 
@@ -220,7 +220,7 @@ public class ProductAction extends ActionSupport
       String ptColor = pr.getSelectedProductColor();
       String ptSize = pr.getSelectedProductSize();
       String businessType = txnType;
-      Integer pNum = pr.getTxnNum();
+      Float pNum = pr.getTxnNum();
       String opUser = (String) ActionContext.getContext().getSession().get("username");
       logger.info("The submit product is:(" + ptType + ":" + ptColor + ":" + ptSize + ":" + pNum + " by " + opUser + ")");
       boolean status = ps.updateProduct(ptType, ptColor, ptSize, pNum, businessType, opUser);
@@ -327,20 +327,20 @@ public class ProductAction extends ActionSupport
     private List<String> ptList;
     private List<String> pcList;
     private List<String> psList;
-    private Integer ptNumber;
-    private Integer txnNum;
+    private Float ptNumber;
+    private Float txnNum;
     private String selectedProductType;
     private String selectedProductColor;
     private String selectedProductSize;
 
-    public ProductRow(int id, List<String> ptList, List<String> pcList, List<String> psList, int ptNumber, int inNum)
+    public ProductRow(int id, List<String> ptList, List<String> pcList, List<String> psList, Float ptNumber, Float inNum)
     {
       this.id = Integer.valueOf(id);
       this.ptList = ptList;
       this.pcList = pcList;
       this.psList = psList;
-      this.ptNumber = Integer.valueOf(ptNumber);
-      this.txnNum = Integer.valueOf(inNum);
+      this.ptNumber = Float.valueOf(ptNumber);
+      this.txnNum = Float.valueOf(inNum);
     }
 
     public Integer getId()
@@ -383,22 +383,22 @@ public class ProductAction extends ActionSupport
       this.psList = psList;
     }
 
-    public Integer getPtNumber()
+    public Float getPtNumber()
     {
       return ptNumber;
     }
 
-    public void setPtNumber(Integer ptNumber)
+    public void setPtNumber(Float ptNumber)
     {
       this.ptNumber = ptNumber;
     }
 
-    public Integer getTxnNum()
+    public Float getTxnNum()
     {
       return txnNum;
     }
 
-    public void setTxnNum(Integer txnNum)
+    public void setTxnNum(Float txnNum)
     {
       this.txnNum = txnNum;
     }

@@ -70,13 +70,13 @@ public class ProductDaoImpl implements ProductDao
 
   }
 
-  private boolean addPtDetails(Integer poId, Integer btId, Integer pNum, Integer opUserId)
+  private boolean addPtDetails(Integer poId, Integer btId, Float pNum, Integer opUserId)
   {
     PtDetailsDao pdd = new PtDetailsDaoImpl();
     return pdd.addPtDetail(poId, btId, pNum, opUserId);
   }
 
-  public boolean updateProduct(String pName, Integer ptTypeId, Integer ptColorId, Integer ptSizeId, Integer pNum, Integer btId, Integer opUserId)
+  public boolean updateProduct(String pName, Integer ptTypeId, Integer ptColorId, Integer ptSizeId, Float pNum, Integer btId, Integer opUserId)
   {
     if (pNum <= 0)
     {
@@ -93,7 +93,7 @@ public class ProductDaoImpl implements ProductDao
     return this.addPtDetails(poId, btId, pNum, opUserId);
   }
 
-  private Integer updateProductRecord(String pName, Integer ptTypeId, Integer ptColorId, Integer ptSizeId, Integer pNum, Integer btId)
+  private Integer updateProductRecord(String pName, Integer ptTypeId, Integer ptColorId, Integer ptSizeId, Float pNum, Integer btId)
   {
 
     Integer shipoutBtId = BusinessEnumType.getIdByBusinessType(BusinessEnumType.out);
@@ -106,7 +106,7 @@ public class ProductDaoImpl implements ProductDao
         logger.info("Fail to get the poId by pName:" + pName + " return null");
         return null;
       }
-      Integer pn = this.getProductById(poId).getPtNumber();
+      Float pn = this.getProductById(poId).getPtNumber();
 
       // ship out the product
       if (btId == shipoutBtId)
@@ -223,7 +223,7 @@ public class ProductDaoImpl implements ProductDao
     return false;
   }
 
-  private boolean updateProductNumber(Integer poId, Integer ptNumber)
+  private boolean updateProductNumber(Integer poId, Float ptNumber)
   {
 
     if (ptNumber < 0)
@@ -253,7 +253,7 @@ public class ProductDaoImpl implements ProductDao
     return false;
   }
 
-  private boolean updateProductNumber(String pName, Integer ptNumber)
+  private boolean updateProductNumber(String pName, Float ptNumber)
   {
     Integer poId = this.getIdByProdName(pName);
     if (poId == null)

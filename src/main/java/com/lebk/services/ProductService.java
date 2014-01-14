@@ -29,7 +29,7 @@ public interface ProductService
    * @param opUser
    * @return
    */
-  public boolean updateProduct(String pName, String ptType, String ptColor, String ptSize, Integer pNum, String businessType, String opUser);
+  public boolean updateProduct(String pName, String ptType, String ptColor, String ptSize, Float pNum, String businessType, String opUser);
 
   /**
    * \
@@ -42,7 +42,7 @@ public interface ProductService
    * @param opUser
    * @return
    */
-  public boolean updateProduct(String ptType, String ptColor, String ptSize, Integer pNum, String businessType, String opUser);
+  public boolean updateProduct(String ptType, String ptColor, String ptSize, Float pNum, String businessType, String opUser);
 
   /**
    * Dangerous method, honest speaking, I d not want to expose this method,

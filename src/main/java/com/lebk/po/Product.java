@@ -13,14 +13,14 @@ public class Product implements java.io.Serializable
   private Integer ptTypeId;
   private Integer ptSizeId;
   private Integer ptColorId;
-  private Integer ptNumber;
+  private Float ptNumber;
   private Date lastUpdateTime;
 
   public Product()
   {
   }
 
-  public Product(String name, Integer ptTypeId, Integer ptSizeId, Integer ptColorId, Integer ptNumber, Date lastUpdateTime)
+  public Product(String name, Integer ptTypeId, Integer ptSizeId, Integer ptColorId, Float ptNumber, Date lastUpdateTime)
   {
     this.name = name;
     this.ptTypeId = ptTypeId;
@@ -80,12 +80,12 @@ public class Product implements java.io.Serializable
     this.ptColorId = ptColorId;
   }
 
-  public Integer getPtNumber()
+  public Float getPtNumber()
   {
     return this.ptNumber;
   }
 
-  public void setPtNumber(Integer ptNumber)
+  public void setPtNumber(Float ptNumber)
   {
     this.ptNumber = ptNumber;
   }
