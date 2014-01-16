@@ -55,35 +55,41 @@
 			</s:iterator>
 		</table>
 		</div>
-		<s:url id="url_first" action="showProductListtilesAction">
-			<s:param name="pageNow" value="1" />
-		</s:url>
-		<s:a href="%{url_first}">第一页</s:a>
-		&nbsp; &nbsp; &nbsp;
-		<s:url id="url_pre" action="showProductListtilesAction">
-			<s:param name="pageNow" value="pageNow-1" />
-		</s:url>
-		<s:url id="url_next" action="showProductListtilesAction">
-			<s:param name="pageNow" value="pageNow+1" />
-		</s:url>
-		<s:if test="pageNow>1">
-			<s:a href="%{url_pre}">[上一页]</s:a>
-		</s:if>
-		<s:if test="pageNow<=1">
+ <s:url id="url_first" action="showProductListtilesAction">
+    <s:param name="pageNow" value="1"/>
+ </s:url>
+ <s:a href="%{url_first}">第一页</s:a>
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ <s:url id="url_pre" action="showProductListtilesAction">
+    <s:param name="pageNow" value="pageNow-1"/>
+ </s:url>
+ <s:url id="url_next" action="showProductListtilesAction">
+    <s:param name="pageNow" value="pageNow+1"/>
+ </s:url>
+ <s:if test="pageNow>1">
+ <s:a href="%{url_pre}">[上一页]</s:a>
+ </s:if>
+ <s:if test="pageNow<=1">
  [上一页]
  </s:if>
-		&nbsp; &nbsp; &nbsp;
-		<s:if test="pageNow<pageInTotal">
-			<s:a href="%{url_next}">[下一页]</s:a>
-		</s:if>
-		<s:if test="pageNow>=pageInTotal">
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ <s:if test="pageNow<pageInTotal">
+ <s:a href="%{url_next}">[下一页]</s:a>
+ </s:if>
+ <s:if test="pageNow>=pageInTotal">
  [下一页]
  </s:if>
-		&nbsp; &nbsp; &nbsp;
-		<s:url id="url_last" action="showProductListtilesAction">
-			<s:param name="pageNow" value="pageInTotal" />
-		</s:url>
-		<s:a href="%{url_last}">最后一页</s:a>
+ &nbsp;
+ &nbsp;
+ &nbsp;
+<s:url id="url_last" action="showProductListtilesAction">
+    <s:param name="pageNow" value="pageInTotal"/>
+ </s:url>
+ <s:a href="%{url_last}">尾页</s:a>
 
 	</center>
 </body>
