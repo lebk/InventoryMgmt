@@ -2,10 +2,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.lebk</groupId>
-	<artifactId>InventoryMgmt</artifactId>
+	<artifactId>WebStart</artifactId>
 	<packaging>war</packaging>
 	<version>0.1</version>
-	<name>InventoryMgmt Maven Webapp</name>
+	<name>WebStart Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
 		<dependency>
@@ -99,7 +99,7 @@
 		</repository>
 	</repositories>
 	<build>
-		<finalName>InventoryMgmt</finalName>
+		<finalName>WebStart</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

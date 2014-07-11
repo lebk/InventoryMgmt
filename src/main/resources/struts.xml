@@ -57,11 +57,11 @@
 			<result name="error" type="tiles">addProductSizeError</result>
 		</action>
 
-		<action name="addPtilesAction" method="addProductSize"
+		<action name="addProductColortilesAction" method="addProductColor"
 			class="com.lebk.action.TilesAction">
-			<result name="success" type="redirectAction">showProductSizeListtilesAction
+			<result name="success" type="redirectAction">showProductColorListtilesAction
 			</result>
-			<result name="error" type="tiles">addProductSizeError</result>
+			<result name="error" type="tiles">addProductColorError</result>
 		</action>
 
 		<action name="*tilesAction" method="{1}"
